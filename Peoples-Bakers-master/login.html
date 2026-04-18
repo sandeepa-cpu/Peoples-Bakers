@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peoples Bakers — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --purple: #9c2d96;
+      --yellow: #FFE033;
+      --dark:   #0d0d0d;
+      --muted:  #888;
+      --text:   #f0e8d8;
+      --border: rgba(255,224,51,0.18);
+      --font-h: 'Playfair Display', serif;
+      --font-b: 'Inter', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-b);
+      color: var(--text);
+      background: var(--dark);
+    }
+
+    /* ═══════════════════════════════
+       PAGE LAYOUT — side by side
+    ═══════════════════════════════ */
+    .page {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── LEFT — photo ─── */
+    .photo-side {
+      display: none;
+      position: relative;
+      width: 52%;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    @media (min-width: 960px) {
+      .photo-side { display: flex; flex-direction: column; }
+    }
+
+    .photo-side-img {
+      position: absolute;
+      inset: 0;
+      background:
+        url("images/Logo.jpg") center/cover no-repeat;
+      transition: transform 8s ease;
+    }
+
+    .photo-side:hover .photo-side-img {
+      transform: scale(1.04);
+    }
+
+    /* gradient overlay */
+    .photo-side-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(5, 0, 8, 0.30) 0%,
+          rgba(80, 10, 80, 0.25) 50%,
+          rgba(5, 0, 8, 0.75) 100%
+        );
+    }
+
+    /* bottom content over photo */
+    .photo-side-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 3rem 3.5rem;
+    }
+
+    .photo-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,224,51,0.15);
+      border: 1px solid rgba(255,224,51,0.4);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.2rem;
+    }
+
+    .photo-brand-badge i { font-size: 0.7rem; }
+
+    .photo-side-content blockquote {
+      font-family: var(--font-h);
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.65;
+      max-width: 380px;
+      margin-bottom: 1rem;
+    }
+
+    .photo-side-content footer {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,224,51,0.75);
+    }
+
+    /* vertical divider line */
+    .photo-side::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,224,51,0.35) 25%,
+        rgba(156,45,150,0.5)  50%,
+        rgba(255,224,51,0.35) 75%,
+        transparent
+      );
+    }
+
+    /* ─── RIGHT — form ─── */
+    .form-side {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3.5rem 1.5rem;
+      background: #0d0d0d;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle background glow */
+    .form-side::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(
+        ellipse 65% 55% at 50% 45%,
+        rgba(156,45,150,0.14) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    /* top accent bar (mobile) */
+    .top-bar {
+      display: block;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--yellow));
+      z-index: 100;
+    }
+
+    @media (min-width: 960px) { .top-bar { display: none; } }
+
+    /* ─── Card ─── */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    /* ─── Back link ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--yellow); }
+
+    /* ─── Logo ─── */
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo-ring {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--yellow);
+      box-shadow:
+        0 0 0 4px rgba(156,45,150,0.28),
+        0 8px 28px rgba(0,0,0,0.55);
+    }
+
+    .logo-ring img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-name {
+      font-family: var(--font-h);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    .logo-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      color: var(--yellow);
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .divider-line { flex: 1; height: 1px; background: var(--border); }
+
+    .divider span {
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ─── Tabs ─── */
+    .tabs {
+      display: flex;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 0.52rem;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-b);
+      transition: all 0.25s;
+    }
+
+    .tab.active {
+      background: var(--purple);
+      color: var(--yellow);
+      box-shadow: 0 2px 14px rgba(156,45,150,0.45);
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* ─── Panels ─── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ─── Field ─── */
+    .field { margin-bottom: 1.15rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #bbb;
+      margin-bottom: 0.42rem;
+    }
+
+    .f-wrap { position: relative; }
+
+    .f-wrap .fi {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.88rem;
+      pointer-events: none;
+    }
+
+    .f-wrap input {
+      width: 100%;
+      height: 46px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: var(--font-b);
+      padding: 0 1rem 0 2.5rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+
+    .f-wrap input::placeholder { color: #555; }
+
+    .f-wrap input:focus {
+      background: rgba(156,45,150,0.08);
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(156,45,150,0.18);
+    }
+
+    .pwd-btn {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.88rem;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .pwd-btn:hover { color: var(--text); }
+
+    /* ─── Row ─── */
+    .auth-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .auth-row label {
+      display: flex; align-items: center;
+      gap: 0.4rem; color: var(--muted); cursor: pointer;
+    }
+
+    .auth-row input[type=checkbox] {
+      accent-color: var(--purple);
+      width: 14px; height: 14px; cursor: pointer;
+    }
+
+    .auth-row a { color: var(--yellow); font-weight: 500; }
+    .auth-row a:hover { opacity: 0.75; }
+
+    /* ─── Submit ─── */
+    .btn-submit {
+      width: 100%; height: 50px;
+      border: none; border-radius: 10px;
+      background: var(--purple);
+      color: var(--yellow);
+      font-size: 0.95rem; font-weight: 700;
+      font-family: var(--font-b);
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      box-shadow: 0 4px 18px rgba(156,45,150,0.4);
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.55s ease;
+    }
+
+    .btn-submit:hover::before { left: 130%; }
+
+    .btn-submit:hover {
+      background: #b535af;
+      box-shadow: 0 6px 24px rgba(156,45,150,0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:active { transform: translateY(0) scale(0.99); }
+
+    /* ─── Social divider ─── */
+    .or-divider {
+      display: flex; align-items: center;
+      gap: 0.75rem; margin: 1.4rem 0;
+    }
+
+    .or-line { flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+
+    .or-divider span {
+      font-size: 0.68rem; color: var(--muted); letter-spacing: 1px;
+    }
+
+    /* ─── Google btn ─── */
+    .btn-google {
+      width: 100%; height: 44px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.87rem; font-weight: 500;
+      font-family: var(--font-b);
+      cursor: pointer;
+      display: flex; align-items: center;
+      justify-content: center; gap: 0.55rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-google:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,224,51,0.22);
+    }
+
+    /* ─── Switch ─── */
+    .switch-line {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .switch-line a {
+      color: var(--yellow); font-weight: 600;
+      margin-left: 0.3rem; transition: opacity 0.2s;
+    }
+
+    .switch-line a:hover { opacity: 0.75; }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ══════════════ LEFT — PHOTO ══════════════ -->
+    <div class="photo-side">
+      <div class="photo-side-img"></div>
+      <div class="photo-side-overlay"></div>
+      <div class="photo-side-content">
+        <div class="photo-brand-badge">
+          <i class="fa-solid fa-star"></i>
+          EST. 2015
+        </div>
+        <blockquote>"Baked with love,<br>served with pride."</blockquote>
+        <footer>Peoples Bakers &mdash; හිත ඉල්ලන රස</footer>
+      </div>
+    </div>
+
+    <!-- ══════════════ RIGHT — FORM ══════════════ -->
+    <div class="form-side">
+      <div class="top-bar"></div>
+      <div class="card">
+
+        <a href="index.html" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+
+        <!-- Logo -->
+        <div class="logo-block">
+          <div class="logo-ring">
+            <img src="images/Logo.jpg" alt="Peoples Bakers">
+          </div>
+          <div>
+            <div class="logo-name">Peoples Bakers</div>
+            <div class="logo-tagline">හිත ඉල්ලන රස</div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span>Sign in to your account</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab('login',this)">Sign In</button>
+          <button class="tab" onclick="switchTab('register',this)">Register</button>
+        </div>
+
+        <!-- ── LOGIN ── -->
+        <div id="panel-login" class="panel active">
+          <form onsubmit="return false;">
+
+            <div class="field">
+              <label for="l-email">Email Address</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-envelope fi"></i>
+                <input type="email" id="l-email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="l-pwd">Password</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-lock fi"></i>
+                <input type="password" id="l-pwd" placeholder="Enter your password" required>
+                <button type="button" class="pwd-btn" onclick="togglePwd('l-pwd',this)">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-row">
+              <label><input type="checkbox"> Remember me</label>
+              <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-submit">Sign In</button>
+
+            <div class="or-divider">
+              <div class="or-line"></div>
+              <span>or continue with</span>
+              <div class="or-line"></div>
+            </div>
+
+            <button type="button" class="btn-google">
+              <i class="fa-brands fa-google"></i> Continue with Google
+            </button>
+
+          </form>
+
+          <p class="switch-line">
+            Don't have an account?
+            <a href="#" onclick="switchTab('register',document.querySelectorAll('.tab')[1]);return false;">Sign up</a>
+          </p>
+        </div>
+
+        <!-- ── REGISTER ── -->
+        <div id="panel-register" class="panel">
+          <form onsubmit="return false;">
+
+            <div class="field">
+              <label for="r-name">Full Name</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-user fi"></i>
+                <input type="text" id="r-name" placeholder="Your full name" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="r-email">Email Address</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-envelope fi"></i>
+                <input type="email" id="r-email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="r-phone">Phone Number</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-phone fi"></i>
+                <input type="tel" id="r-phone" placeholder="+94 77 123 4567">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="r-pwd">Password</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-lock fi"></i>
+                <input type="password" id="r-pwd" placeholder="Create a password" required>
+                <button type="button" class="pwd-btn" onclick="togglePwd('r-pwd',this)">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="r-confirm">Confirm Password</label>
+              <div class="f-wrap">
+                <i class="fa-solid fa-lock fi"></i>
+                <input type="password" id="r-confirm" placeholder="Repeat your password" required>
+                <button type="button" class="pwd-btn" onclick="togglePwd('r-confirm',this)">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Create Account</button>
+
+            <div class="or-divider">
+              <div class="or-line"></div>
+              <span>or sign up with</span>
+              <div class="or-line"></div>
+            </div>
+
+            <button type="button" class="btn-google">
+              <i class="fa-brands fa-google"></i> Sign up with Google
+            </button>
+
+          </form>
+
+          <p class="switch-line">
+            Already have an account?
+            <a href="#" onclick="switchTab('login',document.querySelectorAll('.tab')[0]);return false;">Sign in</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(panel, btn) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + panel).classList.add('active');
+    }
+
+    function togglePwd(id, btn) {
+      const inp  = document.getElementById(id);
+      const icon = btn.querySelector('i');
+      const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      icon.classList.toggle('fa-eye',      !show);
+      icon.classList.toggle('fa-eye-slash', show);
+    }
+  </script>
+
+</body>
+</html>

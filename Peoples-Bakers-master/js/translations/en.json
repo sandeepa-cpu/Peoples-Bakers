@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "legacy": "Our Legacy",
+    "products": "Products",
+    "cakes": "All Cakes",
+    "events": "Events",
+    "offers": "Offers",
+    "findus": "Find Us",
+    "login": "Login"
+  },
+  "hero": {
+    "tag": "SINCE 1985",
+    "title": "Traditional Bakery with Modern Excellence",
+    "subtitle": "Experience the finest baked goods made with love and tradition since 1985. From classic breads to exquisite cakes, we bring you the taste of perfection.",
+    "cta_primary": "Order Now",
+    "cta_secondary": "View Menu"
+  },
+  "stats": {
+    "years": "38+ Years",
+    "products": "500+ Products",
+    "customers": "10K+ Happy Customers"
+  },
+  "sections": {
+    "products_title": "Our Products",
+    "products_subtitle": "Freshly baked daily with the finest ingredients",
+    "legacy_title": "Our Story",
+    "legacy_subtitle": "A journey of passion and perfection",
+    "cakes_title": "All Cakes",
+    "cakes_subtitle": "Celebrating life's sweetest moments",
+    "events_title": "Events & Catering",
+    "events_subtitle": "Making your celebrations memorable",
+    "offers_title": "Special Offers",
+    "offers_subtitle": "Best deals on your favorite treats",
+    "findus_title": "Find Us",
+    "findus_subtitle": "Visit our bakery and experience the magic"
+  },
+  "footer": {
+    "quick_links": "Quick Links",
+    "contact": "Contact Info",
+    "follow_us": "Follow Us",
+    "copyright": "© 2024 Peoples Bakers. All rights reserved."
+  }
+}
