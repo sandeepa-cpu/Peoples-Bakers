@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peoples Bakers — Sign In</title>
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -38,7 +42,7 @@
       min-height: 100vh;
     }
 
-    /* ─── LEFT — photo ─── */
+    /* ─── LEFT — animated photo stack ─── */
     .photo-side {
       display: none;
       position: relative;
@@ -51,16 +55,48 @@
       .photo-side { display: flex; flex-direction: column; }
     }
 
-    .photo-side-img {
+    .photo-slides {
       position: absolute;
       inset: 0;
-      background:
-        url("images/Logo.jpg") center/cover no-repeat;
-      transition: transform 8s ease;
     }
 
-    .photo-side:hover .photo-side-img {
-      transform: scale(1.04);
+    .photo-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* Gentle zoom in keyframes so smaller / lower-res images stay sharp */
+      opacity: 0;
+      animation: photoFadeCycle 24s ease-in-out infinite;
+      animation-fill-mode: backwards;
+      backface-visibility: hidden;
+    }
+
+    /* 4 images × 6s each = 24s loop */
+    .photo-slide:nth-child(1) { animation-delay: 0s; }
+    .photo-slide:nth-child(2) { animation-delay: 6s; }
+    .photo-slide:nth-child(3) { animation-delay: 12s; }
+    .photo-slide:nth-child(4) { animation-delay: 18s; }
+
+    @keyframes photoFadeCycle {
+      0%   { opacity: 0; transform: translateZ(0) scale(1.04); }
+      3%   { opacity: 1; }
+      22%  { opacity: 1; }
+      25%  { opacity: 0; transform: translateZ(0) scale(1); }
+      100% { opacity: 0; transform: translateZ(0) scale(1.04); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .photo-slide {
+        animation: none;
+        opacity: 0;
+      }
+      .photo-slide:first-child {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* gradient overlay */
@@ -468,7 +504,12 @@
 
     <!-- ══════════════ LEFT — PHOTO ══════════════ -->
     <div class="photo-side">
-      <div class="photo-side-img"></div>
+      <div class="photo-slides" aria-hidden="true">
+        <img class="photo-slide" src="images/login-slide-1.png" alt="" decoding="async" fetchpriority="high">
+        <img class="photo-slide" src="images/login-slide-2.png" alt="" decoding="async">
+        <img class="photo-slide" src="images/login-slide-3.png" alt="" decoding="async">
+        <img class="photo-slide" src="images/login-slide-4.png" alt="" decoding="async">
+      </div>
       <div class="photo-side-overlay"></div>
       <div class="photo-side-content">
         <div class="photo-brand-badge">
@@ -651,6 +692,16 @@
       inp.type = show ? 'text' : 'password';
       icon.classList.toggle('fa-eye',      !show);
       icon.classList.toggle('fa-eye-slash', show);
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('service-worker.js')
+          .catch((error) => {
+            console.error('Service worker registration failed:', error);
+          });
+      });
     }
   </script>
 

@@ -1,59 +1,97 @@
 class I18n {
   constructor() {
-    this.currentLanguage = localStorage.getItem('language') || 'en';
+    this.supportedLanguages = ['en', 'si', 'ta'];
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    this.currentLanguage = this.supportedLanguages.includes(savedLanguage)
+      ? savedLanguage
+      : 'en';
     this.translations = {};
     this.loadedLanguages = new Set();
     this.init();
   }
 
   async init() {
-    await this.loadLanguage(this.currentLanguage);
+    await this.loadLanguage('en');
+    if (this.currentLanguage !== 'en') {
+      const loaded = await this.loadLanguage(this.currentLanguage);
+      if (!loaded) {
+        this.currentLanguage = 'en';
+      }
+    }
     this.updateLanguage();
     this.setupLanguageSwitcher();
   }
 
   async loadLanguage(lang) {
+    if (!this.supportedLanguages.includes(lang)) {
+      console.warn(`Unsupported language requested: ${lang}`);
+      return false;
+    }
+
     if (this.loadedLanguages.has(lang)) {
-      return;
+      return true;
     }
 
     try {
       const response = await fetch(`js/translations/${lang}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
       const translations = await response.json();
       this.translations[lang] = translations;
       this.loadedLanguages.add(lang);
+      return true;
     } catch (error) {
       console.error(`Failed to load language ${lang}:`, error);
-      // Fallback to English if language loading fails
-      if (lang !== 'en') {
-        await this.loadLanguage('en');
-      }
+      return false;
     }
   }
 
   async setLanguage(lang) {
-    if (!this.loadedLanguages.has(lang)) {
-      await this.loadLanguage(lang);
+    if (!this.supportedLanguages.includes(lang)) {
+      return;
     }
-    this.currentLanguage = lang;
-    localStorage.setItem('language', lang);
+
+    let targetLanguage = lang;
+    if (!this.loadedLanguages.has(lang)) {
+      const loaded = await this.loadLanguage(lang);
+      if (!loaded) {
+        targetLanguage = 'en';
+        await this.loadLanguage('en');
+      }
+    }
+
+    this.currentLanguage = targetLanguage;
+    localStorage.setItem('language', targetLanguage);
     this.updateLanguage();
     this.updateLanguageSwitcher();
   }
 
-  t(key) {
+  getTranslationValue(lang, key) {
+    if (!this.translations[lang]) {
+      return null;
+    }
+
     const keys = key.split('.');
-    let value = this.translations[this.currentLanguage];
-    
+    let value = this.translations[lang];
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
       } else {
-        return key; // Return key if translation not found
+        return null;
       }
     }
-    
-    return value || key;
+
+    return value ?? null;
+  }
+
+  t(key) {
+    return (
+      this.getTranslationValue(this.currentLanguage, key) ||
+      this.getTranslationValue('en', key) ||
+      key
+    );
   }
 
   updateLanguage() {
@@ -61,9 +99,10 @@ class I18n {
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
       const translation = this.t(key);
-      
-      if (element.tagName === 'INPUT' && element.type === 'placeholder') {
-        element.placeholder = translation;
+
+      const targetAttr = element.getAttribute('data-i18n-attr');
+      if (targetAttr) {
+        element.setAttribute(targetAttr, translation);
       } else {
         element.textContent = translation;
       }
@@ -86,10 +125,12 @@ class I18n {
     if (!switcher) {
       switcher = document.createElement('div');
       switcher.className = 'language-switcher';
+      switcher.setAttribute('role', 'group');
+      switcher.setAttribute('aria-label', 'Select language');
       switcher.innerHTML = `
-        <button class="language-btn" data-lang="en">EN</button>
-        <button class="language-btn" data-lang="si">සිං</button>
-        <button class="language-btn" data-lang="ta">த</button>
+        <button class="language-btn" data-lang="en" type="button" title="English">EN</button>
+        <button class="language-btn" data-lang="si" type="button" title="Sinhala">සිං</button>
+        <button class="language-btn" data-lang="ta" type="button" title="Tamil">த</button>
       `;
       
       // Add to nav-actions
@@ -115,8 +156,10 @@ class I18n {
     document.querySelectorAll('.language-btn').forEach(btn => {
       if (btn.getAttribute('data-lang') === this.currentLanguage) {
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
       } else {
         btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
       }
     });
   }

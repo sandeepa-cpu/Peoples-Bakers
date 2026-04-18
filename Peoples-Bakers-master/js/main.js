@@ -41,18 +41,34 @@ counters.forEach(counter => {
   observer.observe(counter);
 });
 
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (!navbar) {
-    return;
-  }
+let lastScrollY = window.scrollY;
+window.addEventListener(
+  'scroll',
+  () => {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) {
+      return;
+    }
 
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    // Hide the social icon bar when scrolling down,
+    // reveal it again while scrolling up.
+    if (currentScrollY > 110 && currentScrollY > lastScrollY + 4) {
+      document.body.classList.add('top-bar-hidden');
+    } else if (currentScrollY < lastScrollY - 4 || currentScrollY <= 30) {
+      document.body.classList.remove('top-bar-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  },
+  { passive: true }
+);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

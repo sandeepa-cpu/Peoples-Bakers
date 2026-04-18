@@ -1,4 +1,4 @@
-const CACHE_NAME = "peoples-bakers-v1";
+const CACHE_NAME = "peoples-bakers-v5";
 const APP_SHELL_FILES = [
   "./",
   "index.html",

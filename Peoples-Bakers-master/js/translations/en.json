@@ -10,9 +10,9 @@
     "login": "Login"
   },
   "hero": {
-    "tag": "SINCE 1985",
-    "title": "Traditional Bakery with Modern Excellence",
-    "subtitle": "Experience the finest baked goods made with love and tradition since 1985. From classic breads to exquisite cakes, we bring you the taste of perfection.",
+    "tag": "FRESH BAKED DAILY",
+    "title": "Turning meals into memories",
+    "subtitle": "Authentic Sri Lankan baking traditions, handcrafted every morning with quality ingredients and heart.",
     "cta_primary": "Order Now",
     "cta_secondary": "View Menu"
   },
@@ -22,23 +22,23 @@
     "customers": "10K+ Happy Customers"
   },
   "sections": {
-    "products_title": "Our Products",
-    "products_subtitle": "Freshly baked daily with the finest ingredients",
+    "products_title": "Popular Products",
+    "products_subtitle": "Daily favorites, baked fresh and loved across generations.",
     "legacy_title": "Our Story",
-    "legacy_subtitle": "A journey of passion and perfection",
+    "legacy_subtitle": "A journey of passion and perfection.",
     "cakes_title": "All Cakes",
-    "cakes_subtitle": "Celebrating life's sweetest moments",
-    "events_title": "Events & Catering",
-    "events_subtitle": "Making your celebrations memorable",
+    "cakes_subtitle": "Perfect cakes for every celebration and every style.",
+    "events_title": "Upcoming Events",
+    "events_subtitle": "Join us for seasonal specials, tasting events, and family celebrations.",
     "offers_title": "Special Offers",
-    "offers_subtitle": "Best deals on your favorite treats",
+    "offers_subtitle": "Best deals on your favorite treats.",
     "findus_title": "Find Us",
-    "findus_subtitle": "Visit our bakery and experience the magic"
+    "findus_subtitle": "Visit our bakery and experience the magic."
   },
   "footer": {
     "quick_links": "Quick Links",
     "contact": "Contact Info",
-    "follow_us": "Follow Us",
-    "copyright": "© 2024 Peoples Bakers. All rights reserved."
+    "follow_us": "Connect",
+    "copyright": "© 2026 Peoples Bakers. All rights reserved."
   }
 }
