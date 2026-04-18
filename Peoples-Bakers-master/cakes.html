@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Cakes | Peoples Bakers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <a href="#" aria-label="Facebook" class="social-icon">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span class="social-label">Facebook</span>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <i class="fa-brands fa-instagram"></i>
+          <span class="social-label">Instagram</span>
+        </a>
+        <a href="#" aria-label="TikTok" class="social-icon">
+          <i class="fa-brands fa-tiktok"></i>
+          <span class="social-label">TikTok</span>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-icon">
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span class="social-label">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo-link">
+          <img src="images/Logo.jpg" alt="Peoples Bakers Logo" class="brand-img">
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="legacy.html">Our Legacy</a>
+          <a href="products.html">Products</a>
+          <a href="cakes.html" class="nav-active">All Cakes</a>
+          <a href="index.html#events">Events</a>
+          <a href="index.html#offers">Offers</a>
+          <a href="index.html#findus">Find Us</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-login" href="login.html">Login</a>
+          <a class="btn btn-primary btn-order" href="#">Order Online</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="legacy-hero cakes-hero">
+      <div class="legacy-hero-content">
+        <span class="hero-tag">HANDCRAFTED WITH LOVE</span>
+        <h1>All Cakes</h1>
+        <p>From birthday celebrations to grand weddings — every cake is crafted to make your moment unforgettable.</p>
+        <a href="#custom" class="btn btn-primary" style="margin-top:1.2rem; display:inline-block;">
+          <i class="fa-solid fa-pen-nib"></i> Order a Custom Cake
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════ FILTER + GALLERY ═══════════ -->
+    <section class="cakes-catalog-section">
+      <div class="container">
+        <span class="section-tag centered">Our Collection</span>
+        <h2 class="section-title centered">Find Your Perfect Cake</h2>
+        <p class="section-subtitle centered">Filter by occasion or style and discover the cake made for your celebration.</p>
+
+        <!-- Filter bar -->
+        <div class="product-toolbar" role="tablist" aria-label="Cake categories">
+          <button type="button" class="product-filter is-active" data-filter="all"       role="tab" aria-selected="true">All</button>
+          <button type="button" class="product-filter" data-filter="birthday"  role="tab" aria-selected="false">Birthday</button>
+          <button type="button" class="product-filter" data-filter="wedding"   role="tab" aria-selected="false">Wedding</button>
+          <button type="button" class="product-filter" data-filter="custom"    role="tab" aria-selected="false">Custom</button>
+          <button type="button" class="product-filter" data-filter="cupcakes"  role="tab" aria-selected="false">Cupcakes</button>
+          <button type="button" class="product-filter" data-filter="seasonal"  role="tab" aria-selected="false">Seasonal</button>
+        </div>
+
+        <!-- Cake grid -->
+        <div class="cakes-page-grid">
+
+          <!-- Birthday -->
+          <article class="cake-card" data-category="birthday">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Classic birthday cake"></div>
+            <div class="cake-card-badge">Birthday</div>
+            <div class="cake-card-body">
+              <h3>Classic Birthday Cake</h3>
+              <p>Vanilla sponge with buttercream frosting and custom message topping.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 2,500</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="birthday">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Chocolate birthday cake"></div>
+            <div class="cake-card-badge">Birthday</div>
+            <div class="cake-card-body">
+              <h3>Chocolate Dream Cake</h3>
+              <p>Rich chocolate layers with ganache drip and edible decorations.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 3,200</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="birthday">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Rainbow cake"></div>
+            <div class="cake-card-badge">Birthday</div>
+            <div class="cake-card-body">
+              <h3>Rainbow Layer Cake</h3>
+              <p>Six colourful layers with cream cheese frosting — perfect for kids.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 3,800</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Wedding -->
+          <article class="cake-card cake-card--featured" data-category="wedding">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1525253086316-d0c936388814?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Classic wedding cake"></div>
+            <div class="cake-card-badge cake-card-badge--gold">Wedding</div>
+            <div class="cake-card-body">
+              <h3>Classic Tiered Wedding Cake</h3>
+              <p>Elegant white tiers with floral fondant — the timeless choice for your special day.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 25,000</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="wedding">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1546430498-b3b90becef4a?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Floral wedding cake"></div>
+            <div class="cake-card-badge cake-card-badge--gold">Wedding</div>
+            <div class="cake-card-body">
+              <h3>Floral Blossom Cake</h3>
+              <p>Hand-piped sugar flowers with a soft blush palette — romantic and refined.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 32,000</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="wedding">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Naked wedding cake"></div>
+            <div class="cake-card-badge cake-card-badge--gold">Wedding</div>
+            <div class="cake-card-body">
+              <h3>Rustic Naked Cake</h3>
+              <p>Unfrosted layers with fresh flowers and fruit — modern, minimal, beautiful.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 28,000</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Custom -->
+          <article class="cake-card" data-category="custom">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Custom chocolate cake"></div>
+            <div class="cake-card-badge cake-card-badge--purple">Custom</div>
+            <div class="cake-card-body">
+              <h3>Fully Custom Design</h3>
+              <p>Your vision, our craft — themed, sculpted, or painted to your exact request.</p>
+              <div class="cake-card-footer">
+                <span class="price">Price on request</span>
+                <a href="#custom" class="cake-order-btn">Enquire</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="custom">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Photo print cake"></div>
+            <div class="cake-card-badge cake-card-badge--purple">Custom</div>
+            <div class="cake-card-body">
+              <h3>Photo Print Cake</h3>
+              <p>Edible photo print on any flavour — personalised for any occasion.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 3,500</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cupcakes -->
+          <article class="cake-card" data-category="cupcakes">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Assorted cupcakes"></div>
+            <div class="cake-card-badge">Cupcakes</div>
+            <div class="cake-card-body">
+              <h3>Assorted Cupcakes</h3>
+              <p>Mixed flavours with swirled buttercream — ideal for parties and gifting.</p>
+              <div class="cake-card-footer">
+                <span class="price">Rs. 220 each</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="cupcakes">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Red velvet cupcakes"></div>
+            <div class="cake-card-badge">Cupcakes</div>
+            <div class="cake-card-body">
+              <h3>Red Velvet Cupcakes</h3>
+              <p>Moist red sponge with cream cheese swirl — always a crowd favourite.</p>
+              <div class="cake-card-footer">
+                <span class="price">Rs. 250 each</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Seasonal -->
+          <article class="cake-card" data-category="seasonal">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Christmas cake"></div>
+            <div class="cake-card-badge cake-card-badge--green">Seasonal</div>
+            <div class="cake-card-body">
+              <h3>Christmas Fruit Cake</h3>
+              <p>Traditional rich fruit cake with marzipan and royal icing — festive &amp; classic.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 4,500</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cake-card" data-category="seasonal">
+            <div class="cake-card-img" style="background-image:url('https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=800&q=85')" role="img" aria-label="Avurudu kokis cake"></div>
+            <div class="cake-card-badge cake-card-badge--green">Seasonal</div>
+            <div class="cake-card-body">
+              <h3>Avurudu Special Cake</h3>
+              <p>Flavours inspired by Sri Lankan New Year — jaggery, coconut &amp; treacle.</p>
+              <div class="cake-card-footer">
+                <span class="price">From Rs. 3,000</span>
+                <a href="#custom" class="cake-order-btn">Order</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CUSTOM ORDER CTA ═══════════ -->
+    <section class="custom-order-section" id="custom">
+      <div class="container">
+        <div class="custom-order-wrap">
+
+          <div class="custom-order-left">
+            <span class="section-tag">Custom Orders</span>
+            <h2 class="section-title">Can't find what you're looking for?</h2>
+            <p>Our bakers can craft any design, any flavour, any size. Tell us your idea and we'll bring it to life.</p>
+            <ul class="custom-order-features">
+              <li><i class="fa-solid fa-check"></i> Any theme or design</li>
+              <li><i class="fa-solid fa-check"></i> Dietary requirements (eggless, gluten-free)</li>
+              <li><i class="fa-solid fa-check"></i> Island-wide delivery available</li>
+              <li><i class="fa-solid fa-check"></i> Minimum 48hrs advance notice</li>
+            </ul>
+          </div>
+
+          <div class="custom-order-form-wrap">
+            <form class="custom-order-form" onsubmit="return false;">
+              <h3>Request a Custom Cake</h3>
+
+              <div class="co-field">
+                <label for="co-name">Your Name</label>
+                <div class="co-field-wrap">
+                  <i class="fa-solid fa-user"></i>
+                  <input type="text" id="co-name" placeholder="Full name" required>
+                </div>
+              </div>
+
+              <div class="co-field">
+                <label for="co-phone">Phone Number</label>
+                <div class="co-field-wrap">
+                  <i class="fa-solid fa-phone"></i>
+                  <input type="tel" id="co-phone" placeholder="+94 77 123 4567" required>
+                </div>
+              </div>
+
+              <div class="co-field">
+                <label for="co-type">Cake Type</label>
+                <div class="co-field-wrap">
+                  <i class="fa-solid fa-cake-candles"></i>
+                  <select id="co-type" required>
+                    <option value="" disabled selected>Select occasion</option>
+                    <option>Birthday</option>
+                    <option>Wedding</option>
+                    <option>Anniversary</option>
+                    <option>Corporate Event</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="co-field">
+                <label for="co-date">Required Date</label>
+                <div class="co-field-wrap">
+                  <i class="fa-solid fa-calendar"></i>
+                  <input type="date" id="co-date" required>
+                </div>
+              </div>
+
+              <div class="co-field">
+                <label for="co-msg">Design Details</label>
+                <textarea id="co-msg" placeholder="Describe your cake — flavour, size, theme, colours, any special requests..." rows="4" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; display:flex; align-items:center; gap:0.5rem;">
+                <i class="fa-solid fa-paper-plane"></i> Send Request
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ OFFER BANNER ═══════════ -->
+    <section class="offer-banner">
+      20% off all cakes — <span>CAKE20</span>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title">Peoples Bakers</h3>
+          <p>Classic Sri Lankan bakery excellence since 2015.</p>
+          <p>Freshly baked, every day.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="legacy.html">Our Legacy</a>
+          <a href="products.html">Products</a>
+          <a href="cakes.html">All Cakes</a>
+          <a href="index.html#events">Events</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">Connect</h3>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">Order Online</a>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Peoples Bakers. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    (function () {
+      var btns  = document.querySelectorAll('.product-filter');
+      var cards = document.querySelectorAll('.cake-card');
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+
+          btns.forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+
+          cards.forEach(function (card) {
+            var cat  = card.getAttribute('data-category');
+            var show = filter === 'all' || cat === filter;
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
