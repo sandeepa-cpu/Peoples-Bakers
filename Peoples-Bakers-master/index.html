@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peoples Bakers | Since 2015</title>
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,9 +45,8 @@
                class="brand-img">
         </a>
         <div class="nav-links">
-          <a href="#" data-i18n="nav.home">Home</a>
           <a href="legacy.html" data-i18n="nav.legacy">Our Legacy</a>
-          <a href="#products" data-i18n="nav.products">Products</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
           <a href="#cakes" data-i18n="nav.cakes">All Cakes</a>
           <a href="#events" data-i18n="nav.events">Events</a>
           <a href="#offers" data-i18n="nav.offers">Offers</a>
@@ -65,7 +68,7 @@
         <p data-i18n="hero.subtitle">Authentic Sri Lankan baking traditions, handcrafted every morning with quality ingredients and heart.</p>
         <div class="hero-cta">
           <a href="#" class="btn btn-primary" data-i18n="hero.cta_primary">Order Now</a>
-          <a href="#products" class="btn btn-outline" data-i18n="hero.cta_secondary">View Menu</a>
+          <a href="products.html" class="btn btn-outline" data-i18n="hero.cta_secondary">View Menu</a>
         </div>
         <div class="platform-links">
           Also available on
@@ -156,23 +159,24 @@
       <div class="container">
         <h2 class="section-title" data-i18n="sections.products_title">Popular Products</h2>
         <p class="section-subtitle" data-i18n="sections.products_subtitle">Daily favorites, baked fresh and loved across generations.</p>
+        <p class="products-home-cta"><a href="products.html" class="btn btn-outline">View all products</a></p>
         <div class="grid products-grid">
           <article class="card">
-            <div class="card-image">Fresh Bread Image Placeholder</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Fresh bread"></div>
             <div class="card-body">
               <h3>Fresh Bread</h3>
               <p class="price">Rs. 150</p>
             </div>
           </article>
           <article class="card">
-            <div class="card-image">Birthday Cake Image Placeholder</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Birthday cake"></div>
             <div class="card-body">
               <h3>Birthday Cake</h3>
               <p class="price">Rs. 2500</p>
             </div>
           </article>
           <article class="card">
-            <div class="card-image">Cream Bun Image Placeholder</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Cream bun"></div>
             <div class="card-body">
               <h3>Cream Bun</h3>
               <p class="price">Rs. 80</p>
@@ -204,19 +208,19 @@
         <p class="section-subtitle" data-i18n="sections.cakes_subtitle">Perfect cakes for every celebration and every style.</p>
         <div class="grid cakes-grid">
           <article class="card">
-            <div class="card-image">Birthday Cakes</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Birthday cakes"></div>
             <div class="card-body"><h3>Birthday Cakes</h3></div>
           </article>
           <article class="card">
-            <div class="card-image">Wedding Cakes</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1525253086316-d0c936388814?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Wedding cakes"></div>
             <div class="card-body"><h3>Wedding Cakes</h3></div>
           </article>
           <article class="card">
-            <div class="card-image">Custom Cakes</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Custom layer cake"></div>
             <div class="card-body"><h3>Custom Cakes</h3></div>
           </article>
           <article class="card">
-            <div class="card-image">Cupcakes</div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Cupcakes"></div>
             <div class="card-body"><h3>Cupcakes</h3></div>
           </article>
         </div>
@@ -279,7 +283,7 @@
         <div class="footer-col">
           <h3 class="footer-title" data-i18n="footer.quick_links">Quick Links</h3>
           <a href="#home">Home</a>
-          <a href="#products">Products</a>
+          <a href="products.html">Products</a>
           <a href="#cakes">All Cakes</a>
           <a href="#events">Events</a>
         </div>

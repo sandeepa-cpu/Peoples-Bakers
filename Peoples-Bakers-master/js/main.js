@@ -43,9 +43,23 @@ counters.forEach(counter => {
 
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
+  if (!navbar) {
+    return;
+  }
+
   if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('service-worker.js')
+      .catch((error) => {
+        console.error('Service worker registration failed:', error);
+      });
+  });
+}
