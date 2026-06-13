@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.order">Order Online | Peoples Bakers</title>
+  <meta name="description" content="Order fresh bakery items, celebration cakes, bulk and corporate orders from Peoples Bakers. Delivery apps, WhatsApp, phone, or 150+ outlets.">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="order-page">
+
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-brand">
+          <span>Peoples Bakers</span>
+        </div>
+        <div class="top-bar-socials">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
+            <i class="fa-brands fa-facebook-f"></i>
+            <span class="social-label">Facebook</span>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-icon">
+            <i class="fa-brands fa-instagram"></i>
+            <span class="social-label">Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
+            <i class="fa-brands fa-tiktok"></i>
+            <span class="social-label">TikTok</span>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+            <span class="social-label">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
+        </a>
+        <div class="nav-links">
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="special-cake.html">Customize Cake</a>
+          <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+        </div>
+        <div class="nav-actions">
+          <button type="button" class="nav-cart-btn" data-cart-open data-i18n-aria-label="common.cart_basket_aria" aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden data-i18n-aria-label="cart.aria_empty" aria-label="Basket is empty">0</span>
+          </button>
+          <a class="btn btn-login" href="login.html" data-i18n="nav.login">Login</a>
+          <a class="btn btn-primary btn-order" href="order.html" data-i18n-aria-label="common.order_online_aria" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span><span data-i18n="common.order_online">Order Online</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="orderx">
+
+    <!-- ═══════════ SLIM HERO ═══════════ -->
+    <section class="orderx-hero">
+      <div class="orderx-hero-bg" aria-hidden="true"></div>
+      <div class="container orderx-hero-inner">
+        <span class="order-hero-status" data-order-status>
+          <span class="order-hero-status-dot" aria-hidden="true"></span>
+          <span class="order-hero-status-text" data-i18n="order.hero.status">Open now · delivering in ~30 min</span>
+        </span>
+        <h1 class="orderx-hero-title"><span data-i18n="order.hero.h1">Order fresh, </span><span class="orderx-accent" data-i18n="order.hero.h1_accent">your way</span></h1>
+        <p class="orderx-hero-lede" data-i18n="order.hero.lede">WhatsApp chat, delivery apps, a direct line to our team, or walk in — every path leads to the same oven-fresh quality Sri Lankan families have trusted since 2015.</p>
+        <ul class="orderx-trust" aria-label="Why order with us">
+          <li><i class="fa-solid fa-bolt" aria-hidden="true"></i> <span>~30 min city delivery</span></li>
+          <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> <span>Baked fresh today</span></li>
+          <li><i class="fa-solid fa-tags" aria-hidden="true"></i> <span>CAKE20 · 20% off cakes</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE ORDER BUILDER ═══════════ -->
+    <section class="orderx-builder" id="quick-order">
+      <div class="container orderx-grid">
+
+        <!-- MAIN: ordering options -->
+        <div class="orderx-main" id="delivery">
+          <span class="orderx-aside-kicker"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Place your order</span>
+          <h2 class="orderx-ways-title">How would you like to order?</h2>
+          <p class="orderx-ways-sub">Pick whatever suits you — our team confirms your items, pricing and timing in minutes.</p>
+
+          <div class="orderx-ways-grid">
+            <a class="orderx-way-card orderx-way-card--wa" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer">
+              <span class="orderx-way-icon"><i class="fa-brands fa-whatsapp"></i></span>
+              <span class="orderx-way-body">
+                <span class="orderx-way-name">WhatsApp</span>
+                <span class="orderx-way-text">Chat &amp; order in seconds</span>
+              </span>
+              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
+            </a>
+
+            <a class="orderx-way-card" href="tel:+94112345678">
+              <span class="orderx-way-icon"><i class="fa-solid fa-phone"></i></span>
+              <span class="orderx-way-body">
+                <span class="orderx-way-name">Call us</span>
+                <span class="orderx-way-text">+94 11 234 5678 · 7am–9pm</span>
+              </span>
+              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
+            </a>
+
+            <a class="orderx-way-card orderx-way-card--uber" href="https://www.ubereats.com/lk" target="_blank" rel="noopener noreferrer">
+              <span class="orderx-way-icon"><i class="fa-solid fa-utensils"></i></span>
+              <span class="orderx-way-body">
+                <span class="orderx-way-name">Uber Eats</span>
+                <span class="orderx-way-text">Order on the app &middot; live tracking</span>
+              </span>
+              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
+            </a>
+
+            <a class="orderx-way-card orderx-way-card--pickme" href="https://pickme.lk/" target="_blank" rel="noopener noreferrer">
+              <span class="orderx-way-icon"><i class="fa-solid fa-motorcycle"></i></span>
+              <span class="orderx-way-body">
+                <span class="orderx-way-name">PickMe Food</span>
+                <span class="orderx-way-text">Fast island-wide delivery</span>
+              </span>
+              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
+            </a>
+
+            <a class="orderx-way-card orderx-way-card--outlet" href="index.html#findus">
+              <span class="orderx-way-icon"><i class="fa-solid fa-store"></i></span>
+              <span class="orderx-way-body">
+                <span class="orderx-way-name">Visit an outlet</span>
+                <span class="orderx-way-text">150+ outlets &middot; find one near you</span>
+              </span>
+              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- SIDE: help + zone + assurance -->
+        <aside class="orderx-aside">
+          <div class="orderx-aside-card orderx-aside-card--accent">
+            <span class="orderx-aside-kicker"><i class="fa-solid fa-headset" aria-hidden="true"></i> Need it faster?</span>
+            <h3 class="orderx-aside-title">Talk to us directly</h3>
+            <p class="orderx-aside-text">Custom, bulk, or urgent order? Chat or call and a real person sorts it instantly.</p>
+            <div class="orderx-aside-actions">
+              <a class="btn btn-primary" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+              <a class="btn btn-outline" href="tel:+94112345678"><i class="fa-solid fa-phone"></i> +94 11 234 5678</a>
+            </div>
+            <p class="orderx-aside-also">Also on <strong>Uber Eats</strong> &amp; <strong>PickMe</strong> in supported areas.</p>
+          </div>
+
+          <div class="orderx-aside-card orderx-zone">
+            <span class="orderx-aside-kicker"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-i18n="order.zone.tag">Delivery check</span></span>
+            <h3 class="orderx-aside-title" data-i18n="order.zone.h2">Do we deliver to you?</h3>
+            <div class="orderx-zone-input">
+              <input type="text" id="order-zone-input" data-i18n-placeholder="order.zone.ph" data-i18n-aria-label="order.zone.aria" placeholder="e.g. Nugegoda, Kandy, Galle" aria-label="Your delivery area">
+              <button type="button" class="btn btn-primary" data-zone-check><i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="order.zone.check">Check</span></button>
+            </div>
+            <div class="order-zone-result" data-zone-result hidden></div>
+            <ul class="orderx-zone-chips" data-i18n-aria-label="order.zone.pop_aria" aria-label="Popular delivery zones">
+              <li><button type="button" data-zone-chip="Colombo">Colombo</button></li>
+              <li><button type="button" data-zone-chip="Nugegoda">Nugegoda</button></li>
+              <li><button type="button" data-zone-chip="Kandy">Kandy</button></li>
+              <li><button type="button" data-zone-chip="Galle">Galle</button></li>
+              <li><button type="button" data-zone-chip="Negombo">Negombo</button></li>
+            </ul>
+          </div>
+
+          <ul class="orderx-assure">
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Baked today — no day-old stock</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Hygienic, sealed packaging</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Same price online or in-store</li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ COMPACT EXTRAS ═══════════ -->
+    <section class="orderx-extras">
+      <div class="container orderx-extras-grid">
+        <div class="orderx-extras-block">
+          <h2 class="orderx-extras-title"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Pay your way</h2>
+          <ul class="order-payment-grid orderx-pay">
+            <li><span class="order-payment-chip"><i class="fa-solid fa-money-bill-wave"></i> Cash on delivery</span></li>
+            <li><span class="order-payment-chip"><i class="fa-brands fa-cc-visa"></i> Visa</span></li>
+            <li><span class="order-payment-chip"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span></li>
+            <li><span class="order-payment-chip"><i class="fa-solid fa-qrcode"></i> LANKAQR</span></li>
+            <li><span class="order-payment-chip"><i class="fa-solid fa-mobile-screen-button"></i> Genie &amp; eZ&nbsp;Cash</span></li>
+            <li><span class="order-payment-chip"><i class="fa-solid fa-building-columns"></i> Bank transfer</span></li>
+          </ul>
+        </div>
+
+        <div class="orderx-extras-block">
+          <h2 class="orderx-extras-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> Quick answers</h2>
+          <div class="order-faq-list orderx-faq">
+            <details class="order-faq-item" open>
+              <summary>How soon can you deliver?</summary>
+              <p>Most city orders reach you within 30–60 minutes once confirmed. Cakes usually need <strong>4–24 hours notice</strong>, custom/tiered cakes <strong>48 hours+</strong>.</p>
+            </details>
+            <details class="order-faq-item">
+              <summary>How do I pay?</summary>
+              <p>Cash on delivery, card (Visa, Mastercard, AmEx), LankaQR, Genie, eZ Cash, or bank transfer. Card links sent via WhatsApp for remote orders.</p>
+            </details>
+            <details class="order-faq-item">
+              <summary>Can you do eggless or custom cakes?</summary>
+              <p>Yes — many cakes have eggless options and we love custom designs. Share a photo on WhatsApp and we'll confirm.</p>
+            </details>
+            <details class="order-faq-item">
+              <summary>Do you do corporate or bulk orders?</summary>
+              <p>Absolutely — offices, events, and weddings with bulk short eats, coffee, and multi-tier cakes. We'll invoice you properly.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ OFFER ═══════════ -->
+    <section class="offer-banner order-offer-banner" id="promo">
+      <span class="order-offer-inner"><i class="fa-solid fa-tag" aria-hidden="true"></i> 20% off all cakes — use code <span>CAKE20</span> when you order.</span>
+    </section>
+  </main>
+
+  <!-- Floating WhatsApp FAB -->
+  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" data-i18n-aria-label="common.fab_aria" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="order-fab-label" data-i18n="common.fab_label">Chat &amp; order</span>
+  </a>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="site.brand_title">Peoples Bakers</h3>
+          <p data-i18n="site.brand_p1">Classic Sri Lankan bakery excellence since 2015.</p>
+          <p data-i18n="site.brand_p2">Freshly baked, every day.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="footer.quick_links">Quick Links</h3>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="products.html#cakes">Our Cakes</a>
+          <a href="order.html" data-i18n="nav.order">Order Online</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="footer.follow_us">Connect</h3>
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" data-i18n="common.social_facebook">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="order.html" data-i18n="nav.order">Order Online</a>
+        </div>
+      </div>
+      <div class="footer-extra">
+        <div class="footer-extra-left">
+          <div class="footer-contact-row">
+            <p class="footer-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
+            </p>
+            <p class="footer-whatsapp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
+            </p>
+          </div>
+          <div class="footer-pay">
+            <span class="footer-pay-label">We Accept</span>
+            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/order-page.js"></script>
+</body>
+</html>

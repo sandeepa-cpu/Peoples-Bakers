@@ -1,23 +1,42 @@
-const CACHE_NAME = "peoples-bakers-v5";
+const CACHE_NAME = "peoples-bakers-v87";
 const APP_SHELL_FILES = [
   "./",
   "index.html",
   "products.html",
   "legacy.html",
+  "cakes.html",
+  "order.html",
+  "special-cake.html",
   "login.html",
+  "feedback.html",
+  "checkout.html",
   "css/style.css",
   "js/main.js",
+  "js/cart.js",
+  "js/feedback-page.js",
+  "js/order-page.js",
+  "js/special-cake-page.js",
   "js/i18n.js",
+  "js/cakes-page.js",
+  "js/cakes-data.js",
+  "js/auth.js",
+  "data/cakes.json",
   "manifest.webmanifest",
-  "icons/app-icon.svg"
+  "icons/app-icon.svg",
+  "images/logo.png"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL_FILES))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.all(
+        APP_SHELL_FILES.map((url) =>
+          cache.add(url).catch((err) => {
+            console.warn("[SW] cache add failed:", url, err && err.message);
+          })
+        )
+      );
+    }).then(() => self.skipWaiting())
   );
 });
 
@@ -36,8 +55,56 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+function isCakeCatalogRequest(url) {
+  const p = url.pathname;
+  return (
+    p.endsWith("/js/cakes-data.js") || p.endsWith("/data/cakes.json")
+  );
+}
+
+function isFreshAlwaysRequest(url) {
+  const p = url.pathname;
+  // HTML pages + translation files — always try network first so nav / copy updates show up.
+  return (
+    p.endsWith(".html") ||
+    p.endsWith("/") ||
+    p.includes("/js/translations/")
+  );
+}
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") {
+    return;
+  }
+
+  const requestUrl = new URL(event.request.url);
+
+  // Never cache or intercept API calls — always hit the network.
+  if (
+    requestUrl.origin === self.location.origin &&
+    requestUrl.pathname.startsWith("/api/")
+  ) {
+    return;
+  }
+
+  // Network-first for cake catalog + HTML pages + translations so nav / copy updates show up fast.
+  if (
+    requestUrl.origin === self.location.origin &&
+    (isCakeCatalogRequest(requestUrl) || isFreshAlwaysRequest(requestUrl))
+  ) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse.ok) {
+            const responseClone = networkResponse.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(event.request, responseClone));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
     return;
   }
 
@@ -49,9 +116,9 @@ self.addEventListener("fetch", (event) => {
 
       return fetch(event.request)
         .then((networkResponse) => {
-          const requestUrl = new URL(event.request.url);
+          const url = new URL(event.request.url);
 
-          if (requestUrl.origin === self.location.origin) {
+          if (url.origin === self.location.origin) {
             const responseClone = networkResponse.clone();
             caches
               .open(CACHE_NAME)

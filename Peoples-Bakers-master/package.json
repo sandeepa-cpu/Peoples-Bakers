@@ -1,0 +1,27 @@
+{
+  "name": "peoples-bakers",
+  "version": "1.0.0",
+  "description": "Peoples Bakers website with a Node/Express backend (auth, orders, feedback, products, admin).",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "seed": "node server/seed.js"
+  },
+  "keywords": [
+    "bakery",
+    "express",
+    "backend"
+  ],
+  "author": "Peoples Bakers",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "google-auth-library": "^9.15.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.10.1"
+  }
+}

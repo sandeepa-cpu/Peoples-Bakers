@@ -11,15 +11,33 @@ class I18n {
   }
 
   async init() {
-    await this.loadLanguage('en');
-    if (this.currentLanguage !== 'en') {
-      const loaded = await this.loadLanguage(this.currentLanguage);
-      if (!loaded) {
-        this.currentLanguage = 'en';
+    try {
+      await this.loadLanguage('en');
+      if (this.currentLanguage !== 'en') {
+        const loaded = await this.loadLanguage(this.currentLanguage);
+        if (!loaded) {
+          this.currentLanguage = 'en';
+        }
       }
+    } catch (e) {
+      console.error('i18n: failed to load default language', e);
     }
-    this.updateLanguage();
-    this.setupLanguageSwitcher();
+    try {
+      this.updateLanguage();
+    } catch (e) {
+      console.error('i18n: updateLanguage failed (page may show mixed EN)', e);
+    }
+    try {
+      this.setupLanguageSwitcher();
+    } catch (e) {
+      console.error('i18n: setupLanguageSwitcher failed', e);
+    }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('i18n:ready', { detail: { language: this.currentLanguage } })
+      );
+    }
+    this.emitLanguageChange();
   }
 
   async loadLanguage(lang) {
@@ -65,9 +83,13 @@ class I18n {
     localStorage.setItem('language', targetLanguage);
     this.updateLanguage();
     this.updateLanguageSwitcher();
+    this.emitLanguageChange();
   }
 
   getTranslationValue(lang, key) {
+    if (key == null || typeof key !== 'string') {
+      return null;
+    }
     if (!this.translations[lang]) {
       return null;
     }
@@ -86,27 +108,96 @@ class I18n {
     return value ?? null;
   }
 
-  t(key) {
-    return (
-      this.getTranslationValue(this.currentLanguage, key) ||
-      this.getTranslationValue('en', key) ||
-      key
-    );
+  t(key, vars) {
+    if (key == null) {
+      return '';
+    }
+    const keyStr = typeof key === 'string' ? key : String(key);
+    let s =
+      this.getTranslationValue(this.currentLanguage, keyStr) ||
+      this.getTranslationValue('en', keyStr) ||
+      keyStr;
+    /* Leaf can be a number in JSON, or a mistaken nested object — never call .split on non-strings */
+    if (typeof s === 'string') {
+      if (vars && typeof vars === 'object') {
+        Object.keys(vars).forEach(k => {
+          s = s.split(`{{${k}}}`).join(String(vars[k]));
+        });
+      }
+      return s;
+    }
+    if (s == null || (typeof s === 'object' && s !== null)) {
+      return keyStr;
+    }
+    if (typeof s === 'number' && vars && typeof vars === 'object') {
+      s = String(s);
+      Object.keys(vars).forEach(k => {
+        s = s.split(`{{${k}}}`).join(String(vars[k]));
+      });
+      return s;
+    }
+    return String(s);
   }
 
   updateLanguage() {
-    // Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const key = element.getAttribute('data-i18n');
-      const translation = this.t(key);
-
-      const targetAttr = element.getAttribute('data-i18n-attr');
-      if (targetAttr) {
-        element.setAttribute(targetAttr, translation);
-      } else {
-        element.textContent = translation;
+    const applyI18n = (element, setFn) => {
+      try {
+        setFn();
+      } catch (err) {
+        console.warn('i18n: skipped one element', err);
       }
+    };
+
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      applyI18n(element, () => {
+        const key = element.getAttribute('data-i18n');
+        if (key == null || key === '') {
+          return;
+        }
+        const translation = this.t(key);
+        const asHtml = element.hasAttribute('data-i18n-html');
+        if (asHtml) {
+          element.innerHTML = translation;
+          return;
+        }
+        const targetAttr = element.getAttribute('data-i18n-attr');
+        if (targetAttr) {
+          element.setAttribute(targetAttr, translation);
+        } else {
+          element.textContent = translation;
+        }
+      });
     });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      applyI18n(element, () => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (key) {
+          element.setAttribute('placeholder', this.t(key));
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(element => {
+      applyI18n(element, () => {
+        const key = element.getAttribute('data-i18n-aria-label');
+        if (key) {
+          element.setAttribute('aria-label', this.t(key));
+        }
+      });
+    });
+
+    const titleI18n = document.querySelector('title[data-i18n]');
+    if (titleI18n) {
+      try {
+        const k = titleI18n.getAttribute('data-i18n');
+        if (k) {
+          titleI18n.textContent = this.t(k);
+        }
+      } catch (e) {
+        console.warn('i18n: title update failed', e);
+      }
+    }
 
     // Update HTML lang attribute
     document.documentElement.lang = this.currentLanguage;
@@ -117,6 +208,15 @@ class I18n {
     } else {
       document.documentElement.dir = 'ltr';
     }
+  }
+
+  /** Call after setLanguage; not inside updateLanguage (avoids re-entrancy / loops). */
+  emitLanguageChange() {
+    window.dispatchEvent(
+      new CustomEvent('i18n:languageChanged', {
+        detail: { language: this.currentLanguage },
+      })
+    );
   }
 
   setupLanguageSwitcher() {

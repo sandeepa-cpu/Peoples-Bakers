@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customize Cake Order | Peoples Bakers</title>
+  <meta name="description" content="Order a custom photo cake from Peoples Bakers with your preferred weight, image, message, and quantity.">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="special-cake-page">
+
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-brand">
+          <span>Peoples Bakers</span>
+        </div>
+        <div class="top-bar-socials">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
+            <i class="fa-brands fa-facebook-f"></i>
+            <span class="social-label">Facebook</span>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-icon">
+            <i class="fa-brands fa-instagram"></i>
+            <span class="social-label">Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
+            <i class="fa-brands fa-tiktok"></i>
+            <span class="social-label">TikTok</span>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+            <span class="social-label">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
+        </a>
+        <div class="nav-links">
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="special-cake.html" class="nav-active">Customize Cake</a>
+          <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+        </div>
+        <div class="nav-actions">
+          <button type="button" class="nav-cart-btn" data-cart-open data-i18n-aria-label="common.cart_basket_aria" aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden data-i18n-aria-label="cart.aria_empty" aria-label="Basket is empty">0</span>
+          </button>
+          <a class="btn btn-login" href="login.html" data-i18n="nav.login">Login</a>
+          <a class="btn btn-primary btn-order" href="order.html" data-i18n-aria-label="common.order_online_aria" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span><span data-i18n="common.order_online">Order Online</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="special-cake-hero">
+      <div class="special-cake-hero-bg" aria-hidden="true"></div>
+      <div class="container special-cake-hero-inner">
+        <div class="special-cake-hero-copy">
+          <span class="section-tag">Photo cake order</span>
+          <h1>Customize Cake</h1>
+          <p>Upload your favourite photo, choose the cake weight, and add a message if you need one. Our team will confirm everything before baking.</p>
+          <div class="special-cake-hero-actions">
+            <a class="btn btn-primary" href="#special-cake-form"><i class="fa-solid fa-image"></i> Start order</a>
+            <a class="btn btn-outline" href="products.html#cakes"><i class="fa-solid fa-cake-candles"></i> Browse cakes</a>
+          </div>
+        </div>
+        <aside class="special-cake-hero-card">
+          <div class="special-cake-preview">
+            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+          </div>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Upload photo for the cake</li>
+            <li><i class="fa-solid fa-circle-check"></i> Select 1kg, 1.5kg, 2kg, or 3kg</li>
+            <li><i class="fa-solid fa-circle-check"></i> Optional message on cake</li>
+            <li><i class="fa-solid fa-circle-check"></i> Team confirms price before baking</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="special-cake-form-section" id="special-cake-form">
+      <div class="container special-cake-product-wrap">
+        <div class="special-cake-product-visual">
+          <div class="special-cake-photo-cake" aria-hidden="true">
+            <div class="special-cake-photo-frame">
+              <i class="fa-solid fa-image"></i>
+              <span>Your photo</span>
+            </div>
+          </div>
+          <p>Design and icing may vary slightly because each cake is finished by hand.</p>
+        </div>
+
+        <form class="special-cake-product-form" data-special-cake-form novalidate>
+          <span class="section-tag">Customize cake</span>
+          <h2>Photo Cake</h2>
+          <p class="special-cake-product-desc">Celebrate your moment with a photo cake. Upload the image, choose the weight, and send the request to our team.</p>
+
+          <label class="special-cake-field">
+            <span>Weight</span>
+            <select name="weight" required>
+              <option value="1KG">1KG</option>
+              <option value="1.5KG">1.5KG</option>
+              <option value="2KG">2KG</option>
+              <option value="3KG">3KG</option>
+            </select>
+          </label>
+
+          <label class="special-cake-field">
+            <span>Upload an image for this cake</span>
+            <input type="file" name="photo" accept="image/*">
+          </label>
+
+          <label class="special-cake-check">
+            <input type="checkbox" name="addMessage" data-cake-message-toggle>
+            <span>Add message on the cake <small>(Charges Rs.120)</small></span>
+          </label>
+
+          <label class="special-cake-field" data-cake-message-field hidden>
+            <span>Message on cake</span>
+            <input type="text" name="cakeMessage" placeholder="e.g. Happy Birthday Amaya">
+          </label>
+
+          <div class="special-cake-qty-row">
+            <div class="special-cake-qty" aria-label="Quantity">
+              <button type="button" data-cake-qty-dec aria-label="Decrease quantity">-</button>
+              <input type="number" name="qty" value="1" min="1" max="20" aria-label="Quantity">
+              <button type="button" data-cake-qty-inc aria-label="Increase quantity">+</button>
+            </div>
+            <a href="#" class="btn btn-primary special-cake-whatsapp" data-special-cake-whatsapp target="_blank" rel="noopener noreferrer">Send Request</a>
+          </div>
+
+          <p class="special-cake-upload-note">After WhatsApp opens, attach the selected image in the chat so our team can print it clearly.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="site.brand_title">Peoples Bakers</h3>
+          <p data-i18n="site.brand_p1">Classic Sri Lankan bakery excellence since 2015.</p>
+          <p data-i18n="site.brand_p2">Freshly baked, every day.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="footer.quick_links">Quick Links</h3>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="products.html#cakes">Our Cakes</a>
+          <a href="order.html" data-i18n="nav.order">Order Online</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title" data-i18n="footer.follow_us">Connect</h3>
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="#">Instagram</a>
+          <a href="order.html">Order Online</a>
+        </div>
+      </div>
+      <div class="footer-extra">
+        <div class="footer-extra-left">
+          <div class="footer-contact-row">
+            <p class="footer-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
+            </p>
+            <p class="footer-whatsapp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
+            </p>
+          </div>
+          <div class="footer-pay">
+            <span class="footer-pay-label">We Accept</span>
+            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20order%20a%20Customize%20Cake" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span class="order-fab-label">Customize cake</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/special-cake-page.js"></script>
+</body>
+</html>

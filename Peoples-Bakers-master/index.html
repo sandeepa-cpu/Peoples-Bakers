@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peoples Bakers | Since 2015</title>
+  <title data-i18n="meta.home">Peoples Bakers | Since 2015</title>
   <meta name="theme-color" content="#1a1a1a">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="home-page">
   <header>
     <div class="top-bar">
       <div class="container">
@@ -22,7 +22,7 @@
           <span>Peoples Bakers</span>
         </div>
         <div class="top-bar-socials">
-          <a href="#" aria-label="Facebook" class="social-icon">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
             <i class="fa-brands fa-facebook-f"></i>
             <span class="social-label">Facebook</span>
           </a>
@@ -30,7 +30,7 @@
             <i class="fa-brands fa-instagram"></i>
             <span class="social-label">Instagram</span>
           </a>
-          <a href="#" aria-label="TikTok" class="social-icon">
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
             <i class="fa-brands fa-tiktok"></i>
             <span class="social-label">TikTok</span>
           </a>
@@ -44,41 +44,97 @@
 
     <nav class="navbar">
       <div class="nav-inner">
-        <a href="#home" class="nav-logo-link">
-          <img src="images/Logo.jpg" 
-               alt="Peoples Bakers Logo"
-               class="brand-img">
+        <a href="#home" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
         </a>
         <div class="nav-links">
-          <a href="legacy.html" data-i18n="nav.legacy">Our Legacy</a>
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
           <a href="products.html" data-i18n="nav.products">Products</a>
-          <a href="cakes.html" data-i18n="nav.cakes">All Cakes</a>
-          <a href="#events" data-i18n="nav.events">Events</a>
+          <a href="special-cake.html">Customize Cake</a>
           <a href="#offers" data-i18n="nav.offers">Offers</a>
           <a href="#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="nav-actions">
+          <button type="button" class="nav-cart-btn" data-cart-open data-i18n-aria-label="common.cart_basket_aria" aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden data-i18n-aria-label="cart.aria_empty" aria-label="Basket is empty">0</span>
+          </button>
           <a class="btn btn-login" href="login.html" data-i18n="nav.login">Login</a>
-          <a class="btn btn-primary btn-order" href="#">Order Online</a>
+          <a class="btn btn-primary btn-order" href="order.html" data-i18n-aria-label="common.order_online_aria" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span><span data-i18n="common.order_online">Order Online</span></span>
+          </a>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero hero-slider" id="home">
+      <div class="hero-slides" aria-hidden="true">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async" fetchpriority="high">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async">
+        <img class="hero-slide" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1920&q=90" alt="" decoding="async">
+      </div>
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
         <span class="hero-tag" data-i18n="hero.tag">FRESH BAKED DAILY</span>
         <h1 data-i18n="hero.title">Turning meals into memories</h1>
         <p data-i18n="hero.subtitle">Authentic Sri Lankan baking traditions, handcrafted every morning with quality ingredients and heart.</p>
         <div class="hero-cta">
-          <a href="#" class="btn btn-primary" data-i18n="hero.cta_primary">Order Now</a>
+          <a href="order.html" class="btn btn-primary" data-i18n="hero.cta_primary">Order Now</a>
           <a href="products.html" class="btn btn-outline" data-i18n="hero.cta_secondary">View Menu</a>
         </div>
+        <ul class="hero-features" aria-label="Why Peoples Bakers">
+          <li><i class="fa-solid fa-wheat-awn"></i> 100% Natural</li>
+          <li><i class="fa-solid fa-clock"></i> Baked Daily</li>
+          <li><i class="fa-solid fa-truck-fast"></i> Island-wide Delivery</li>
+        </ul>
         <div class="platform-links">
           Also available on
-          <a href="#" aria-label="Uber Eats">Uber Eats</a> &amp;
-          <a href="#" aria-label="PickMe Food">PickMe</a>
+          <a href="order.html#delivery" aria-label="Uber Eats">Uber Eats</a> &amp;
+          <a href="order.html#delivery" aria-label="PickMe Food">PickMe</a>
+        </div>
+      </div>
+
+      <a href="#why-us" class="hero-scroll" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <section class="why-us" id="why-us">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="section-tag centered">Why Peoples Bakers</span>
+          <h2 class="section-title centered">Fresh every morning,<br>trusted every day</h2>
+          <p class="section-subtitle centered home-why-lead">Quality ingredients, honest baking, and outlets across the island — so your favourite treat is never far away.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-bread-slice"></i></div>
+            <h3>Baked Fresh Daily</h3>
+            <p>Every loaf, bun and cake leaves our ovens each morning.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Quality Ingredients</h3>
+            <p>We use premium local &amp; imported ingredients you can trust.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h3>Island-wide Outlets</h3>
+            <p>Fresh Peoples Bakers goodness close to your home.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-heart"></i></div>
+            <h3>Made With Love</h3>
+            <p>Traditional recipes crafted by our passionate bakers.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -108,20 +164,15 @@
       </div>
     </section>
 
-    <section id="outlets">
+    <section id="outlets" class="home-outlets-section">
       <div class="container">
-        <h2 class="section-title">
-          Our Outlets
-        </h2>
-        <p class="section-subtitle">
-          Find us across Sri Lanka
-        </p>
+        <span class="section-tag centered">Visit us</span>
+        <h2 class="section-title centered">Our outlets</h2>
+        <p class="section-subtitle centered">Find fresh Peoples Bakers goodness near you — open early, every day.</p>
         <div class="outlets-grid">
 
           <div class="outlet-card">
-            <div class="outlet-img">
-              <!-- image placeholder -->
-            </div>
+            <div class="outlet-img" role="img" aria-label="Bakery counter and fresh bread display"></div>
             <div class="outlet-info">
               <h3>Colombo 03</h3>
               <p>25 Galle Road, Colombo 03</p>
@@ -133,7 +184,7 @@
           </div>
 
           <div class="outlet-card">
-            <div class="outlet-img"></div>
+            <div class="outlet-img" role="img" aria-label="Bakery kitchen and ovens"></div>
             <div class="outlet-info">
               <h3>Nugegoda</h3>
               <p>45 High Level Road, Nugegoda</p>
@@ -145,7 +196,7 @@
           </div>
 
           <div class="outlet-card">
-            <div class="outlet-img"></div>
+            <div class="outlet-img" role="img" aria-label="Pastry and cake display"></div>
             <div class="outlet-info">
               <h3>Kandy</h3>
               <p>12 Dalada Veediya, Kandy</p>
@@ -160,34 +211,102 @@
       </div>
     </section>
 
+    <section id="categories" class="categories-section">
+      <div class="container">
+        <span class="section-tag centered">Shop by category</span>
+        <h2 class="section-title centered">Explore our kitchen</h2>
+        <p class="section-subtitle centered">Handcrafted bakery delights, from morning buns to celebration cakes.</p>
+        <div class="categories-grid">
+          <a href="products.html" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Breads &amp; Buns</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#cakes" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Cakes</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Muffins</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Cupcakes</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Donuts</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');">
+            <div class="category-overlay">
+              <h3>Eclairs</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="products">
       <div class="container">
-        <h2 class="section-title" data-i18n="sections.products_title">Popular Products</h2>
-        <p class="section-subtitle" data-i18n="sections.products_subtitle">Daily favorites, baked fresh and loved across generations.</p>
-        <p class="products-home-cta"><a href="products.html" class="btn btn-outline">View all products</a></p>
-        <div class="grid products-grid">
+        <span class="section-tag centered">Bestsellers</span>
+        <h2 class="section-title centered" data-i18n="sections.products_title">Popular Products</h2>
+        <p class="section-subtitle centered" data-i18n="sections.products_subtitle">Daily favorites, baked fresh and loved across generations.</p>
+        <div class="grid products-grid home-products-grid">
           <article class="card">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Fresh bread"></div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Butter bun"></div>
             <div class="card-body">
-              <h3>Fresh Bread</h3>
-              <p class="price">Rs. 150</p>
+              <h3>Butter Bun</h3>
+              <p class="price">Rs. 90</p>
             </div>
           </article>
           <article class="card">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Birthday cake"></div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate Swiss Roll"></div>
             <div class="card-body">
-              <h3>Birthday Cake</h3>
-              <p class="price">Rs. 2500</p>
+              <h3>Chocolate Swiss Roll</h3>
+              <p class="price">Rs. 850</p>
             </div>
           </article>
           <article class="card">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Cream bun"></div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Vanilla Sprinkle Cupcake"></div>
             <div class="card-body">
-              <h3>Cream Bun</h3>
-              <p class="price">Rs. 80</p>
+              <h3>Vanilla Cupcake</h3>
+              <p class="price">Rs. 220</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate Eclair"></div>
+            <div class="card-body">
+              <h3>Chocolate Eclair</h3>
+              <p class="price">Rs. 200</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Sprinkle Donut"></div>
+            <div class="card-body">
+              <h3>Sprinkle Donut</h3>
+              <p class="price">Rs. 180</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate Muffin"></div>
+            <div class="card-body">
+              <h3>Chocolate Muffin</h3>
+              <p class="price">Rs. 200</p>
             </div>
           </article>
         </div>
+        <p class="products-home-cta"><a href="products.html" class="btn btn-outline">View all products <i class="fa-solid fa-arrow-right"></i></a></p>
       </div>
     </section>
 
@@ -202,15 +321,16 @@
           <h2 class="section-title" data-i18n="sections.legacy_title">Our Story</h2>
           <p>Baking since 2015, Peoples Bakers has grown from a neighborhood bakery into a trusted name across Sri Lanka.</p>
           <p>From fresh loaves and buns to celebration cakes, we combine classic craftsmanship with modern taste to make every meal memorable.</p>
-          <a href="legacy.html" class="btn btn-outline">Read Our Legacy</a>
+          <a href="legacy.html" class="btn btn-outline" data-i18n="sections.read_history">Read Our History</a>
         </div>
       </div>
     </section>
 
-    <section id="cakes">
+    <section id="cakes" class="home-cakes-preview">
       <div class="container">
-        <h2 class="section-title" data-i18n="sections.cakes_title">All Cakes</h2>
-        <p class="section-subtitle" data-i18n="sections.cakes_subtitle">Perfect cakes for every celebration and every style.</p>
+        <span class="section-tag centered">Celebrations</span>
+        <h2 class="section-title centered" data-i18n="sections.cakes_title">Cakes for every moment</h2>
+        <p class="section-subtitle centered" data-i18n="sections.cakes_subtitle">Birthdays, weddings, or a Tuesday treat — explore the full catalogue anytime.</p>
         <div class="grid cakes-grid">
           <article class="card">
             <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Birthday cakes"></div>
@@ -229,35 +349,79 @@
             <div class="card-body"><h3>Cupcakes</h3></div>
           </article>
         </div>
+        <p class="home-cakes-cta"><a href="products.html#cakes" class="btn btn-primary">View full cake catalogue <i class="fa-solid fa-arrow-right"></i></a></p>
       </div>
     </section>
 
-    <section id="events">
+    <section class="testimonials-section" id="testimonials">
       <div class="container">
-        <h2 class="section-title" data-i18n="sections.events_title">Upcoming Events</h2>
-        <p class="section-subtitle" data-i18n="sections.events_subtitle">Join us for seasonal specials, tasting events, and family celebrations.</p>
-        <div class="events-grid">
-          <article class="event">
-            <div class="event-date">15<br>APR</div>
-            <div>
-              <h3>Avurudu Sweet Festival</h3>
-              <p>Exclusive festive treats and live bakery counters.</p>
+        <span class="section-tag centered">Customer love</span>
+        <h2 class="section-title centered">What our customers say</h2>
+        <p class="section-subtitle centered">Real stories from families who trust Peoples Bakers every day.</p>
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">"The cream bun at Peoples Bakers is the best I've ever had. Fresh every single morning — it's a daily ritual for our family."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar">S</div>
+              <div>
+                <strong>Sanduni P.</strong>
+                <span>Colombo 03</span>
+              </div>
             </div>
           </article>
-          <article class="event">
-            <div class="event-date">04<br>MAY</div>
-            <div>
-              <h3>Kids Cupcake Day</h3>
-              <p>Decorating workshop for young bakers and families.</p>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">"Ordered a custom birthday cake and everyone was blown away. Taste, texture and design — everything was perfect."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar">R</div>
+              <div>
+                <strong>Ravindu K.</strong>
+                <span>Nugegoda</span>
+              </div>
             </div>
           </article>
-          <article class="event">
-            <div class="event-date">26<br>JUN</div>
-            <div>
-              <h3>Wedding Cake Showcase</h3>
-              <p>Discover premium designs and tasting platters.</p>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="testimonial-quote">"Their muffins and eclairs taste like proper bakery treats. Nothing like the mass-made stuff — you can feel the quality."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar">N</div>
+              <div>
+                <strong>Nadeesha A.</strong>
+                <span>Kandy</span>
+              </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-wrap">
+          <div class="newsletter-text">
+            <span class="section-tag">Stay sweet</span>
+            <h2>Join the Peoples Bakers family</h2>
+            <p>Subscribe for exclusive offers, new product launches, and seasonal treats straight to your inbox.</p>
+          </div>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Subscribed ✓';">
+            <input type="email" required placeholder="your@email.com" aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
         </div>
       </div>
     </section>
@@ -270,7 +434,7 @@
           <p><strong>Phone:</strong> +94 11 234 5678</p>
           <p><strong>Email:</strong> hello@peoplesbakers.lk</p>
           <p><strong>Hours:</strong> 6:00 AM - 10:00 PM (Daily)</p>
-          <a class="btn btn-primary" href="#">Get Directions</a>
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=NO.+623%2C%20Egaloya%2C%20Bulathsinhala%2C%20Sri%20Lanka" target="_blank" rel="noopener noreferrer">Get Directions</a>
         </div>
         <div class="map-placeholder">Google Map Placeholder</div>
       </div>
@@ -289,24 +453,54 @@
           <h3 class="footer-title" data-i18n="footer.quick_links">Quick Links</h3>
           <a href="#home">Home</a>
           <a href="products.html">Products</a>
-          <a href="#cakes">All Cakes</a>
-          <a href="#events">Events</a>
+          <a href="products.html#cakes">Our Cakes</a>
+          <a href="order.html">Order Online</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="footer-col">
           <h3 class="footer-title" data-i18n="footer.follow_us">Connect</h3>
-          <a href="#">Facebook</a>
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
           <a href="#">Instagram</a>
           <a href="#">YouTube</a>
-          <a href="#">Order Online</a>
+          <a href="order.html">Order Online</a>
         </div>
       </div>
-      <div class="copyright" data-i18n="footer.copyright">
-        &copy; 2026 Peoples Bakers. All rights reserved.
+      <div class="footer-extra">
+        <div class="footer-extra-left">
+          <div class="footer-contact-row">
+            <p class="footer-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
+            </p>
+            <p class="footer-whatsapp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
+            </p>
+          </div>
+          <div class="footer-pay">
+            <span class="footer-pay-label">We Accept</span>
+            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
       </div>
     </div>
   </footer>
+
+  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span class="order-fab-label">Chat &amp; order</span>
+  </a>
+
   <script src="js/main.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 </html>
 

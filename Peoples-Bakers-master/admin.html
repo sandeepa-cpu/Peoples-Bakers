@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Peoples Bakers</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple: #9c2d96;
+      --yellow: #ffd700;
+      --dark: #141016;
+      --panel: #ffffff;
+      --bg: #f4eef2;
+      --muted: #7a6f78;
+      --line: #e7dde4;
+      --ok: #2d6a4f;
+      --warn: #b8860b;
+      --danger: #c0392b;
+    }
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: #221b22;
+      min-height: 100vh;
+    }
+    a { color: var(--purple); }
+
+    /* Login gate */
+    .gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at 30% 20%, #2a0f28, #141016);
+    }
+    .gate-card {
+      width: 100%;
+      max-width: 380px;
+      background: var(--panel);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .gate-card h1 { font-size: 1.3rem; margin-bottom: .35rem; }
+    .gate-card p { color: var(--muted); font-size: .88rem; margin-bottom: 1.3rem; }
+    .gate img { height: 54px; margin-bottom: 1rem; border-radius: 12px; }
+
+    label { display:block; font-size:.8rem; font-weight:600; margin-bottom:.35rem; }
+    input, select, textarea {
+      width: 100%; padding: .6rem .75rem; font: inherit;
+      border: 1px solid var(--line); border-radius: 9px; background: #fff;
+      outline: none; transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--purple); box-shadow: 0 0 0 3px rgba(156,45,150,.14);
+    }
+    .field { margin-bottom: 1rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem; justify-content: center;
+      border: none; border-radius: 9px; padding: .6rem 1rem; font: inherit;
+      font-weight: 700; cursor: pointer; transition: transform .15s, filter .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--purple); color: var(--yellow); width: 100%; }
+    .btn-sm { padding: .35rem .6rem; font-size: .8rem; font-weight: 600; }
+    .btn-ghost { background: #f0e9ee; color: #4a3f48; }
+    .btn-danger { background: #fbe9e7; color: var(--danger); }
+    .msg { font-size: .82rem; margin-top: .6rem; min-height: 1.1em; }
+    .msg.err { color: var(--danger); }
+    .msg.ok { color: var(--ok); }
+
+    /* App shell */
+    .shell { display: none; min-height: 100vh; }
+    .shell.show { display: block; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .85rem 1.25rem; background: var(--dark); color: #fff;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
+    .topbar .brand img { height: 34px; border-radius: 8px; }
+    .topbar .who { font-size: .82rem; color: #d8c9d6; }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.25rem; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: .9rem; margin-bottom: 1.5rem; }
+    .stat { background: var(--panel); border-radius: 14px; padding: 1rem 1.1rem; box-shadow: 0 4px 14px rgba(0,0,0,.05); }
+    .stat .n { font-size: 1.6rem; font-weight: 800; }
+    .stat .l { font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+
+    .tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tab { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .45rem .95rem; font-weight: 600; font-size: .85rem; cursor: pointer; }
+    .tab.active { background: var(--purple); color: var(--yellow); border-color: var(--purple); }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .card { background: var(--panel); border-radius: 14px; box-shadow: 0 4px 14px rgba(0,0,0,.05); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+    th, td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #faf6f9; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+
+    .pill { display:inline-block; padding:.15rem .5rem; border-radius:999px; font-size:.72rem; font-weight:700; }
+    .s-pending { background:#fff4d6; color:#8a6d00; }
+    .s-confirmed { background:#e3f0ff; color:#1d4ed8; }
+    .s-preparing { background:#ede0ff; color:#5b21b6; }
+    .s-delivered { background:#e1f5e9; color:#1b7a47; }
+    .s-cancelled { background:#fde2e0; color:#b3261e; }
+
+    .stars { color: var(--yellow); }
+    .empty { padding: 2rem; text-align: center; color: var(--muted); }
+    .row-actions { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.8rem; flex-wrap:wrap; }
+    .panel-head h2 { font-size: 1.1rem; }
+
+    dialog { border: none; border-radius: 14px; padding: 0; max-width: 460px; width: 92%; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    dialog::backdrop { background: rgba(20,16,22,.55); }
+    .dlg-body { padding: 1.4rem; }
+    .dlg-body h3 { margin-bottom: 1rem; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    @media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN GATE -->
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <img src="images/logo.png" alt="Peoples Bakers">
+      <h1>Admin Dashboard</h1>
+      <p>Sign in with an administrator account.</p>
+      <form id="login-form">
+        <div class="field">
+          <label for="g-email">Email</label>
+          <input type="email" id="g-email" placeholder="admin@peoplesbakers.lk" required>
+        </div>
+        <div class="field">
+          <label for="g-pass">Password</label>
+          <input type="password" id="g-pass" placeholder="••••••••" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign In</button>
+        <div class="msg err" id="g-msg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div class="shell" id="shell">
+    <div class="topbar">
+      <div class="brand"><img src="images/logo.png" alt=""> Peoples Bakers · Admin</div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <span class="who" id="who"></span>
+        <a href="index.html" class="btn btn-sm btn-ghost"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
+        <button class="btn btn-sm btn-ghost" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="stats" id="stats"></div>
+
+      <div class="tabs">
+        <button class="tab active" data-view="orders">Orders</button>
+        <button class="tab" data-view="feedback">Feedback</button>
+        <button class="tab" data-view="products">Products</button>
+        <button class="tab" data-view="users">Users</button>
+      </div>
+
+      <!-- ORDERS -->
+      <section class="view active" id="view-orders">
+        <div class="card"><div id="orders-body"><div class="empty">Loading…</div></div></div>
+      </section>
+
+      <!-- FEEDBACK -->
+      <section class="view" id="view-feedback">
+        <div class="card"><div id="feedback-body"><div class="empty">Loading…</div></div></div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="view" id="view-products">
+        <div class="panel-head">
+          <h2>Products</h2>
+          <button class="btn btn-sm btn-primary" style="width:auto" id="add-product"><i class="fa-solid fa-plus"></i> Add product</button>
+        </div>
+        <div class="card"><div id="products-body"><div class="empty">Loading…</div></div></div>
+      </section>
+
+      <!-- USERS -->
+      <section class="view" id="view-users">
+        <div class="card"><div id="users-body"><div class="empty">Loading…</div></div></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PRODUCT DIALOG -->
+  <dialog id="product-dialog">
+    <form method="dialog" class="dlg-body" id="product-form">
+      <h3 id="pd-title">Add product</h3>
+      <input type="hidden" id="pd-id">
+      <div class="field"><label for="pd-name">Title</label><input id="pd-name" required></div>
+      <div class="grid2">
+        <div class="field"><label for="pd-cat">Category</label><input id="pd-cat" placeholder="round, square…"></div>
+        <div class="field"><label for="pd-price">Price (Rs.)</label><input id="pd-price" type="number" min="0"></div>
+      </div>
+      <div class="field"><label for="pd-img">Image URL</label><input id="pd-img" placeholder="images/cakes/…"></div>
+      <div class="field"><label for="pd-desc">Description</label><textarea id="pd-desc" rows="2"></textarea></div>
+      <div class="field"><label><input type="checkbox" id="pd-avail" checked style="width:auto;margin-right:.4rem">Available</label></div>
+      <div style="display:flex;gap:.5rem;justify-content:flex-end">
+        <button type="button" class="btn btn-ghost" id="pd-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" style="width:auto">Save</button>
+      </div>
+      <div class="msg err" id="pd-msg"></div>
+    </form>
+  </dialog>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

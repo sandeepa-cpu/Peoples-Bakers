@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products | Peoples Bakers</title>
+  <title data-i18n="meta.products">Products | Peoples Bakers</title>
   <meta name="theme-color" content="#1a1a1a">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="page-products">
 
   <header>
     <div class="top-bar">
@@ -23,7 +23,7 @@
           <span>Peoples Bakers</span>
         </div>
         <div class="top-bar-socials">
-          <a href="#" aria-label="Facebook" class="social-icon">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
             <i class="fa-brands fa-facebook-f"></i>
             <span class="social-label">Facebook</span>
           </a>
@@ -31,7 +31,7 @@
             <i class="fa-brands fa-instagram"></i>
             <span class="social-label">Instagram</span>
           </a>
-          <a href="#" aria-label="TikTok" class="social-icon">
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
             <i class="fa-brands fa-tiktok"></i>
             <span class="social-label">TikTok</span>
           </a>
@@ -45,21 +45,27 @@
 
     <nav class="navbar">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo-link">
-          <img src="images/Logo.jpg" alt="Peoples Bakers Logo" class="brand-img">
+        <a href="index.html" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
         </a>
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="legacy.html">Our Legacy</a>
-          <a href="products.html" class="nav-active">Products</a>
-          <a href="index.html#cakes">All Cakes</a>
-          <a href="index.html#events">Events</a>
-          <a href="index.html#offers">Offers</a>
-          <a href="index.html#findus">Find Us</a>
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" class="nav-active" data-i18n="nav.products">Products</a>
+          <a href="special-cake.html">Customize Cake</a>
+          <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="nav-actions">
-          <a class="btn btn-login" href="login.html">Login</a>
-          <a class="btn btn-primary btn-order" href="#">Order Online</a>
+          <button type="button" class="nav-cart-btn" data-cart-open data-i18n-aria-label="common.cart_basket_aria" aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden data-i18n-aria-label="cart.aria_empty" aria-label="Basket is empty">0</span>
+          </button>
+          <a class="btn btn-login" href="login.html" data-i18n="nav.login">Login</a>
+          <a class="btn btn-primary btn-order" href="order.html" data-i18n-aria-label="common.order_online_aria" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span><span data-i18n="common.order_online">Order Online</span></span>
+          </a>
         </div>
       </div>
     </nav>
@@ -69,25 +75,26 @@
 
     <section class="legacy-hero products-hero">
       <div class="legacy-hero-content">
-        <span class="hero-tag">FRESH BAKED DAILY</span>
-        <h1>Our Products</h1>
-        <p>Breads, cakes, savouries, and more — crafted with quality ingredients and served with pride.</p>
+        <span class="hero-tag" data-i18n="products_page.hero_tag">FRESH BAKED DAILY</span>
+        <h1 data-i18n="products_page.h1">Our Products</h1>
+        <p data-i18n="products_page.sub">Breads, cakes, savouries, and more — crafted with quality ingredients and served with pride.</p>
       </div>
     </section>
 
     <section class="products-catalog-section">
       <div class="container">
-        <span class="section-tag centered">Menu</span>
-        <h2 class="section-title centered">Explore the range</h2>
-        <p class="section-subtitle centered">Filter by category or browse everything we offer at Peoples Bakers.</p>
 
-        <div class="product-toolbar" role="tablist" aria-label="Product categories">
-          <button type="button" class="product-filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button type="button" class="product-filter" data-filter="breads" role="tab" aria-selected="false">Breads</button>
-          <button type="button" class="product-filter" data-filter="cakes" role="tab" aria-selected="false">Cakes</button>
-          <button type="button" class="product-filter" data-filter="sweets" role="tab" aria-selected="false">Sweets</button>
-          <button type="button" class="product-filter" data-filter="savory" role="tab" aria-selected="false">Savory</button>
-          <button type="button" class="product-filter" data-filter="drinks" role="tab" aria-selected="false">Drinks</button>
+        <span class="section-tag centered" data-i18n="products_page.menu_tag">Menu</span>
+        <h2 class="section-title centered" data-i18n="products_page.h2">Explore the range</h2>
+        <p class="section-subtitle centered" data-i18n="products_page.sub2">Filter by category or browse everything we offer at Peoples Bakers.</p>
+
+        <div class="product-toolbar product-toolbar--categories" role="tablist" data-i18n-aria-label="products_page.toolbar_aria" aria-label="Product categories">
+          <button type="button" class="product-filter is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="products_page.f_all">All</button>
+          <button type="button" class="product-filter" data-filter="breads" role="tab" aria-selected="false" data-i18n="products_page.f_breads">Breads</button>
+          <button type="button" class="product-filter" data-filter="cakes" role="tab" aria-selected="false" data-i18n="products_page.f_cakes">Cakes</button>
+          <button type="button" class="product-filter" data-filter="sweets" role="tab" aria-selected="false" data-i18n="products_page.f_sweets">Sweets</button>
+          <button type="button" class="product-filter" data-filter="savory" role="tab" aria-selected="false" data-i18n="products_page.f_savory">Savory</button>
+          <button type="button" class="product-filter" data-filter="drinks" role="tab" aria-selected="false" data-i18n="products_page.f_drinks">Drinks</button>
         </div>
 
         <div class="grid products-grid products-page-grid">
@@ -95,8 +102,8 @@
           <article class="card product-card" data-category="breads">
             <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Fresh bread"></div>
             <div class="card-body">
-              <h3>Fresh Bread</h3>
-              <p class="product-card-desc">Daily baked loaves — soft inside, golden crust.</p>
+              <h3 data-i18n="products_catalog.items.i1.n">Fresh Bread</h3>
+              <p class="product-card-desc" data-i18n="products_catalog.items.i1.d">Daily baked loaves — soft inside, golden crust.</p>
               <p class="price">From Rs. 150</p>
             </div>
           </article>
@@ -104,14 +111,14 @@
           <article class="card product-card" data-category="breads">
             <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Cream bun"></div>
             <div class="card-body">
-              <h3>Cream Bun</h3>
-              <p class="product-card-desc">Fluffy bun with rich vanilla cream filling.</p>
+              <h3 data-i18n="products_catalog.items.i2.n">Cream Bun</h3>
+              <p class="product-card-desc" data-i18n="products_catalog.items.i2.d">Fluffy bun with rich vanilla cream filling.</p>
               <p class="price">Rs. 80</p>
             </div>
           </article>
 
           <article class="card product-card" data-category="savory">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Seeni sambol roll"></div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1589984662646-e7b2cc09ad1c?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Seeni sambol roll"></div>
             <div class="card-body">
               <h3>Seeni Sambol Roll</h3>
               <p class="product-card-desc">Sweet onion relish wrapped in soft bakery bread.</p>
@@ -147,10 +154,10 @@
           </article>
 
           <article class="card product-card" data-category="cakes">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1525253086316-d0c936388814?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Tiered wedding cake"></div>
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Signature gateau"></div>
             <div class="card-body">
-              <h3>Wedding Cake</h3>
-              <p class="product-card-desc">Elegant tiers for your special day.</p>
+              <h3>Signature gateau</h3>
+              <p class="product-card-desc">Layered gateau and celebration-style cakes for sharing.</p>
               <p class="price">From Rs. 25,000</p>
             </div>
           </article>
@@ -200,12 +207,395 @@
             </div>
           </article>
 
+          <!-- ═══════════════ BREADS ═══════════════ -->
+          <article class="card product-card" data-category="breads">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Butter bun"></div>
+            <div class="card-body">
+              <h3>Butter Bun</h3>
+              <p class="product-card-desc">Soft golden bun with a warm buttery finish.</p>
+              <p class="price">Rs. 90</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="breads">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Classic bakery bun"></div>
+            <div class="card-body">
+              <h3>Classic Bakery Bun</h3>
+              <p class="product-card-desc">Everyday favourite — soft inside, lightly golden.</p>
+              <p class="price">Rs. 70</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="breads">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Cherry jam bun"></div>
+            <div class="card-body">
+              <h3>Cherry Jam Bun</h3>
+              <p class="product-card-desc">Sesame-coated bun with a sweet cherry centre.</p>
+              <p class="price">Rs. 110</p>
+            </div>
+          </article>
+
+          <!-- ═══════════════ SWEETS ═══════════════ -->
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Vanilla sprinkle cupcake"></div>
+            <div class="card-body">
+              <h3>Vanilla Sprinkle Cupcake</h3>
+              <p class="product-card-desc">Classic vanilla cupcake topped with colourful sprinkles.</p>
+              <p class="price">Rs. 220</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="White cream cupcake"></div>
+            <div class="card-body">
+              <h3>White Cream Cupcake</h3>
+              <p class="product-card-desc">Buttercream swirl with delicate gold star sprinkles.</p>
+              <p class="price">Rs. 240</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate frosting cupcake"></div>
+            <div class="card-body">
+              <h3>Chocolate Frosting Cupcake</h3>
+              <p class="product-card-desc">Moist chocolate cake with rich cocoa frosting.</p>
+              <p class="price">Rs. 260</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Apple glaze cupcake"></div>
+            <div class="card-body">
+              <h3>Apple Glaze Cupcake</h3>
+              <p class="product-card-desc">Festive spiced cupcake with bright apple glaze topping.</p>
+              <p class="price">Rs. 250</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate chip muffin"></div>
+            <div class="card-body">
+              <h3>Chocolate Chip Muffin</h3>
+              <p class="product-card-desc">Double chocolate muffin loaded with chips.</p>
+              <p class="price">Rs. 200</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Dark chocolate muffin"></div>
+            <div class="card-body">
+              <h3>Dark Chocolate Muffin</h3>
+              <p class="product-card-desc">Deep cocoa muffin with melted chocolate centre.</p>
+              <p class="price">Rs. 210</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Banana muffin"></div>
+            <div class="card-body">
+              <h3>Banana Muffin</h3>
+              <p class="product-card-desc">Soft banana muffin — perfect with morning tea.</p>
+              <p class="price">Rs. 180</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Vanilla muffin"></div>
+            <div class="card-body">
+              <h3>Vanilla Muffin</h3>
+              <p class="product-card-desc">Classic buttery vanilla muffin, baked fresh daily.</p>
+              <p class="price">Rs. 160</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Strawberry muffin"></div>
+            <div class="card-body">
+              <h3>Strawberry Muffin</h3>
+              <p class="product-card-desc">Pink berry muffin with real strawberry chunks.</p>
+              <p class="price">Rs. 220</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate sprinkle donuts"></div>
+            <div class="card-body">
+              <h3>Chocolate Sprinkle Donut</h3>
+              <p class="product-card-desc">Chocolate-glazed donut finished with rainbow sprinkles.</p>
+              <p class="price">Rs. 180</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Pink glazed donut"></div>
+            <div class="card-body">
+              <h3>Strawberry Glaze Donut</h3>
+              <p class="product-card-desc">Pink-glazed ring donut with a sweet berry finish.</p>
+              <p class="price">Rs. 170</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate eclairs"></div>
+            <div class="card-body">
+              <h3>Chocolate Eclair</h3>
+              <p class="product-card-desc">Choux pastry filled with cream, topped with chocolate.</p>
+              <p class="price">Rs. 190</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Cream eclair with drizzle"></div>
+            <div class="card-body">
+              <h3>Cream Eclair</h3>
+              <p class="product-card-desc">Classic eclair with vanilla cream and chocolate drizzle.</p>
+              <p class="price">Rs. 200</p>
+            </div>
+          </article>
+
+          <article class="card product-card" data-category="sweets">
+            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate wafer stack"></div>
+            <div class="card-body">
+              <h3>Chocolate Wafer Stack</h3>
+              <p class="product-card-desc">Crispy layered wafers with rich chocolate cream.</p>
+              <p class="price">Rs. 150</p>
+            </div>
+          </article>
+
         </div>
 
-        <p class="products-page-note">
+        <p class="products-page-note products-page-note--after-grid">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-          Prices may vary by outlet. Use <strong>Order Online</strong> or visit <a href="index.html#findus">Find Us</a> for the branch nearest you.
+          Prices may vary by outlet. Use <a href="order.html"><strong>Order Online</strong></a> or visit <a href="index.html#findus">Find Us</a> for the branch nearest you.
         </p>
+
+        <div class="products-cake-gallery cakes-catalog-section" id="cakes">
+          <div class="products-cake-gallery__panel">
+            <div class="products-cake-gallery__head">
+              <span class="products-cake-gallery__eyebrow"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Baked fresh daily</span>
+              <p class="products-cake-gallery__category-hint" id="cakes-category-hint" hidden>
+                <i class="fa-solid fa-filter" aria-hidden="true"></i>
+                <span>Category: <strong>Cakes</strong> — use <strong>Birthday / Print / Gateau</strong> below to narrow the list.</span>
+              </p>
+              <h2 class="products-cake-gallery__title" data-i18n="cakes.h2">Cakes for every celebration</h2>
+              <p class="products-cake-gallery__lede" data-i18n="cakes.sub">Filter by birthday, print, or gateau and find the cake for your moment.</p>
+            </div>
+
+            <div class="products-cake-gallery__cat-intro" id="cakes-shape-label">
+              <h3 class="products-cake-gallery__cat-h3"><i class="fa-solid fa-store" aria-hidden="true"></i> Shop by categories</h3>
+              <p class="products-cake-gallery__cat-p" data-i18n="cakes.cat_shop_sub">Choose birthday, print, or gateau — tap a big card or a filter below.</p>
+            </div>
+
+            <hr class="products-cake-gallery__rule" aria-hidden="true">
+
+            <div class="cakes-catalog-layout" id="cakes-catalog-layout">
+              <aside
+                class="cakes-filter-sidebar"
+                aria-label="Refine cake results"
+                data-i18n-aria-label="cakes.filter_aside_aria"
+              >
+                <div class="cakes-filter-card">
+                  <h4 class="cakes-filter-card__title" data-i18n="cakes.adv_price">Price (Rs.)</h4>
+                  <div class="cakes-adv-range" id="cakes-adv-range">
+                    <div class="cakes-adv-range__values">
+                      <span id="cakes-price-min-label" class="cakes-adv-range__num" aria-hidden="true">0</span>
+                      <span id="cakes-price-max-label" class="cakes-adv-range__num" aria-hidden="true">8500</span>
+                    </div>
+                    <div class="cakes-adv-range__track" role="group" aria-label="Price range">
+                      <div class="cakes-adv-range__fill" id="cakes-adv-range-fill" aria-hidden="true"></div>
+                      <input
+                        type="range"
+                        class="cakes-adv-range__input cakes-adv-range__input--min"
+                        id="cakes-price-min"
+                        min="0"
+                        max="8500"
+                        value="0"
+                        step="50"
+                        aria-label="Minimum price in rupees"
+                        data-i18n-aria-label="cakes.adv_range_min_aria"
+                      />
+                      <input
+                        type="range"
+                        class="cakes-adv-range__input cakes-adv-range__input--max"
+                        id="cakes-price-max"
+                        min="0"
+                        max="8500"
+                        value="8500"
+                        step="50"
+                        aria-label="Maximum price in rupees"
+                        data-i18n-aria-label="cakes.adv_range_max_aria"
+                      />
+                    </div>
+                  </div>
+
+                  <h4 class="cakes-filter-card__title cakes-filter-card__title--spaced" data-i18n="cakes.adv_flavour">Flavour</h4>
+                  <ul class="cakes-adv-checks" id="cakes-adv-checks">
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="chocolate" data-flavour-key />
+                        <span data-i18n="cakes.fl_chocolate">Chocolate</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="pineapple" data-flavour-key />
+                        <span data-i18n="cakes.fl_pineapple">Pineapple</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="choc_vanilla" data-flavour-key />
+                        <span data-i18n="cakes.fl_choc_vanilla">Chocolate &amp; vanilla</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="coffee" data-flavour-key />
+                        <span data-i18n="cakes.fl_coffee">Coffee</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="orange" data-flavour-key />
+                        <span data-i18n="cakes.fl_orange">Orange</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="mango" data-flavour-key />
+                        <span data-i18n="cakes.fl_mango">Mango</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="berry" data-flavour-key />
+                        <span data-i18n="cakes.fl_berry">Berries</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="cakes-adv-check">
+                        <input type="checkbox" name="cake-flavour" value="butter" data-flavour-key />
+                        <span data-i18n="cakes.fl_butter">Butter &amp; cream</span>
+                      </label>
+                    </li>
+                  </ul>
+
+                  <div class="cakes-filter-card__actions">
+                    <button type="button" class="btn cakes-adv-apply" id="cakes-apply-filters" data-i18n="cakes.adv_apply">
+                      Apply filters
+                    </button>
+                    <button type="button" class="cakes-adv-reset" id="cakes-reset-filters" data-i18n="cakes.adv_reset">Reset</button>
+                  </div>
+                </div>
+              </aside>
+
+              <div class="cakes-catalog-layout__main">
+            <div class="cakes-subcategory-wrap">
+              <div class="cakes-subcategory-banner" role="navigation" aria-label="Cake subcategories">
+                <a href="#cakes-grid-anchor" class="cakes-subcat-card cakes-subcat-card--birthday" data-apply-cake-filter="birthday">
+                  <div class="cakes-subcat-card__content">
+                    <h3 class="cakes-subcat-card__title">Birthday &amp; celebration</h3>
+                    <p class="cakes-subcat-card__tagline">Party cakes, themes, and everyday celebration favourites</p>
+                    <span class="cakes-subcat-card__cta">Shop now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="cakes-subcat-card__visual" aria-hidden="true">
+                    <img
+                      class="cakes-subcat-card__img"
+                      src="images/cakes/branded-5018-1-0-5-pink.png"
+                      alt="Birthday and celebration cakes"
+                      width="600"
+                      height="400"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=82';"
+                    />
+                  </div>
+                </a>
+                <a href="#cakes-grid-anchor" class="cakes-subcat-card cakes-subcat-card--printed" data-apply-cake-filter="printed">
+                  <div class="cakes-subcat-card__content">
+                    <h3 class="cakes-subcat-card__title">Photo print cakes</h3>
+                    <p class="cakes-subcat-card__tagline">Edible print designs &mdash; your photo on the cake</p>
+                    <span class="cakes-subcat-card__cta">Shop now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="cakes-subcat-card__visual" aria-hidden="true">
+                    <img
+                      class="cakes-subcat-card__img"
+                      src="images/cakes/printed-chocolate-round-500g.png"
+                      alt="Photo print cakes"
+                      width="600"
+                      height="400"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=82';"
+                    />
+                  </div>
+                </a>
+                <a href="#cakes-grid-anchor" class="cakes-subcat-card cakes-subcat-card--gateau" data-apply-cake-filter="gateau">
+                  <div class="cakes-subcat-card__content">
+                    <h3 class="cakes-subcat-card__title">Signature gateau</h3>
+                    <p class="cakes-subcat-card__tagline">Layered gateau, pieces, and dessert-style cakes &mdash; great for sharing</p>
+                    <span class="cakes-subcat-card__cta">Shop now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="cakes-subcat-card__visual" aria-hidden="true">
+                    <img
+                      class="cakes-subcat-card__img"
+                      src="images/cakes/coffee-gateau-pieces.png"
+                      alt="Signature gateau cakes"
+                      width="600"
+                      height="400"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=82';"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="cakes-shapes-wrap"
+              data-cakes-shapes
+              aria-labelledby="cakes-shapes-heading"
+            >
+              <div class="cakes-shapes-wrap__head">
+                <p class="cakes-shapes-wrap__eyebrow" data-i18n="cakes.shapes_eyebrow">Browse by occasion</p>
+                <h3 class="products-cake-gallery__shapes-title" id="cakes-shapes-heading">
+                  <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                  <span data-i18n="cakes.shapes_h3">Birthday, print, or gateau</span>
+                </h3>
+                <p class="cakes-shapes-wrap__sub" data-i18n="cakes.shapes_sub">Pick a type to show only those cakes — the list updates in one tap.</p>
+              </div>
+
+            <div class="product-toolbar product-toolbar--shapes product-toolbar--cakes-tiles" role="tablist" data-i18n-aria-label="cakes.toolbar_aria" aria-label="Cake types">
+              <button type="button" class="product-filter cakes-cat-tile is-active" data-filter="all" role="tab" aria-selected="true">
+                <span class="cakes-cat-tile__icon" aria-hidden="true"><i class="fa-solid fa-border-all"></i></span>
+                <span class="cakes-cat-tile__text" data-i18n="cakes.f_all">All</span>
+              </button>
+              <button type="button" class="product-filter cakes-cat-tile" data-filter="birthday" role="tab" aria-selected="false">
+                <span class="cakes-cat-tile__icon" aria-hidden="true"><i class="fa-solid fa-cake-candles"></i></span>
+                <span class="cakes-cat-tile__text" data-i18n="cakes.f_birthday">Birthday cake</span>
+              </button>
+              <button type="button" class="product-filter cakes-cat-tile" data-filter="printed" role="tab" aria-selected="false">
+                <span class="cakes-cat-tile__icon" aria-hidden="true"><i class="fa-solid fa-image"></i></span>
+                <span class="cakes-cat-tile__text" data-i18n="cakes.f_printed">Print cakes</span>
+              </button>
+              <button type="button" class="product-filter cakes-cat-tile" data-filter="gateau" role="tab" aria-selected="false">
+                <span class="cakes-cat-tile__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="cakes-cat-tile__text" data-i18n="cakes.f_gateau">Gateau</span>
+              </button>
+            </div>
+            </div>
+
+            <div class="cakes-catalog-groups" id="cakes-grid-anchor" aria-busy="true" aria-live="polite"></div>
+
+            <p class="products-cake-gallery__foot">
+              <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+              Need something custom? <a href="special-cake.html">Request a custom cake</a> — any theme, any flavour, minimum 48hr notice.
+            </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -226,43 +616,119 @@
         <div class="footer-col">
           <h3 class="footer-title">Quick Links</h3>
           <a href="index.html">Home</a>
-          <a href="legacy.html">Our Legacy</a>
+          <a href="legacy.html">Our History</a>
           <a href="products.html">Products</a>
-          <a href="index.html#cakes">All Cakes</a>
-          <a href="index.html#events">Events</a>
+          <a href="products.html#cakes">Our Cakes</a>
+          <a href="order.html">Order Online</a>
+          <a href="feedback.html">Feedback</a>
         </div>
         <div class="footer-col">
           <h3 class="footer-title">Connect</h3>
-          <a href="#">Facebook</a>
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="#">Instagram</a>
-          <a href="#">TikTok</a>
-          <a href="#">Order Online</a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="order.html">Order Online</a>
         </div>
       </div>
-      <div class="copyright">
-        &copy; 2026 Peoples Bakers. All rights reserved.
+      <div class="footer-extra">
+        <div class="footer-extra-left">
+          <div class="footer-contact-row">
+            <p class="footer-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
+            </p>
+            <p class="footer-whatsapp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
+            </p>
+          </div>
+          <div class="footer-pay">
+            <span class="footer-pay-label">We Accept</span>
+            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
       </div>
     </div>
   </footer>
 
+  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span class="order-fab-label">Chat &amp; order</span>
+  </a>
+
+  <script src="js/cakes-data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/cakes-page.js"></script>
   <script>
     (function () {
-      var buttons = document.querySelectorAll('.product-filter');
-      var cards = document.querySelectorAll('.product-card');
+      var buttons = document.querySelectorAll('.product-toolbar--categories .product-filter');
+      var cards = document.querySelectorAll('.products-catalog-section .product-card');
+      var cakeZone = document.getElementById('cakes');
+      var categoryHint = document.getElementById('cakes-category-hint');
+      var shapeLabel = document.getElementById('cakes-shape-label');
+
+      function applyCategoryFilter(filter) {
+        buttons.forEach(function (b) {
+          b.classList.toggle('is-active', b.getAttribute('data-filter') === filter);
+          b.setAttribute('aria-selected', b.getAttribute('data-filter') === filter ? 'true' : 'false');
+        });
+        cards.forEach(function (card) {
+          var cat = card.getAttribute('data-category');
+          var show = filter === 'all' || cat === filter;
+          card.style.display = show ? '' : 'none';
+        });
+        var isCakes = filter === 'cakes';
+        document.body.classList.toggle('is-cakes-focus', isCakes);
+        if (categoryHint) {
+          categoryHint.hidden = !isCakes;
+        }
+        if (shapeLabel) {
+          shapeLabel.classList.toggle('is-linked-to-cakes-filter', isCakes);
+        }
+        if (isCakes && cakeZone) {
+          window.requestAnimationFrame(function () {
+            cakeZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+      }
+
       buttons.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var filter = btn.getAttribute('data-filter');
-          buttons.forEach(function (b) {
-            b.classList.toggle('is-active', b === btn);
-            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
-          });
-          cards.forEach(function (card) {
-            var cat = card.getAttribute('data-category');
-            var show = filter === 'all' || cat === filter;
-            card.style.display = show ? '' : 'none';
-          });
+          applyCategoryFilter(btn.getAttribute('data-filter'));
+        });
+      });
+
+      if (window.location.hash === '#cakes') {
+        window.setTimeout(function () {
+          applyCategoryFilter('cakes');
+        }, 120);
+      }
+
+      /* Caravan-style big cards → same filters as shape tiles */
+      document.querySelectorAll('[data-apply-cake-filter]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var f = link.getAttribute('data-apply-cake-filter');
+          var target = document.querySelector(
+            '.product-toolbar--shapes .cakes-cat-tile[data-filter="' + f + '"]'
+          );
+          if (target) {
+            target.click();
+            window.setTimeout(function () {
+              var grid = document.getElementById('cakes-grid-anchor');
+              if (grid) {
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 80);
+          }
         });
       });
     })();

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Peoples Bakers P&amp;S Logo</title>
+  <desc id="desc">A simple dark and gold P and S bakery logo.</desc>
+
+  <rect x="42" y="42" width="428" height="428" rx="52" fill="#17110D"/>
+  <rect x="70" y="70" width="372" height="372" rx="34" fill="none" stroke="#D6A629" stroke-width="16"/>
+
+  <text x="256" y="245" text-anchor="middle" dominant-baseline="middle"
+    fill="#F6D46B" font-family="Georgia, 'Times New Roman', serif"
+    font-size="142" font-weight="800" letter-spacing="-12">P&amp;S</text>
+
+  <line x1="150" y1="313" x2="362" y2="313" stroke="#D6A629" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="256" y="374" text-anchor="middle"
+    fill="#FFF2C2" font-family="Arial, sans-serif"
+    font-size="32" font-weight="800" letter-spacing="8">BAKERS</text>
+</svg>

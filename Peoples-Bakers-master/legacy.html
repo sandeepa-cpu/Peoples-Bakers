@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Legacy | Peoples Bakers</title>
+  <title>Our History | Peoples Bakers</title>
   <meta name="theme-color" content="#1a1a1a">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
           <span>Peoples Bakers</span>
         </div>
         <div class="top-bar-socials">
-          <a href="#" aria-label="Facebook" class="social-icon">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
             <i class="fa-brands fa-facebook-f"></i>
             <span class="social-label">Facebook</span>
           </a>
@@ -32,7 +32,7 @@
             <i class="fa-brands fa-instagram"></i>
             <span class="social-label">Instagram</span>
           </a>
-          <a href="#" aria-label="TikTok" class="social-icon">
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
             <i class="fa-brands fa-tiktok"></i>
             <span class="social-label">TikTok</span>
           </a>
@@ -46,21 +46,27 @@
 
     <nav class="navbar">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo-link">
-          <img src="images/Logo.jpg" alt="Peoples Bakers Logo" class="brand-img">
+        <a href="index.html" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
         </a>
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="legacy.html" class="nav-active">Our Legacy</a>
-          <a href="products.html">Products</a>
-          <a href="index.html#cakes">All Cakes</a>
-          <a href="index.html#events">Events</a>
-          <a href="index.html#offers">Offers</a>
-          <a href="index.html#findus">Find Us</a>
+          <a href="legacy.html" class="nav-active" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="special-cake.html">Customize Cake</a>
+          <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="nav-actions">
+          <button type="button" class="nav-cart-btn" data-cart-open aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden aria-label="Basket is empty">0</span>
+          </button>
           <a class="btn btn-login" href="login.html">Login</a>
-          <a class="btn btn-primary btn-order" href="#">Order Online</a>
+          <a class="btn btn-primary btn-order" href="order.html" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span>Order Online</span>
+          </a>
         </div>
       </div>
     </nav>
@@ -72,7 +78,7 @@
     <section class="legacy-hero">
       <div class="legacy-hero-content">
         <span class="hero-tag">EST. 2015</span>
-        <h1>Our Legacy</h1>
+        <h1>Our History</h1>
         <p>Turning meals into memories — one fresh loaf at a time.</p>
       </div>
     </section>
@@ -84,9 +90,9 @@
           <span class="section-tag">Our History</span>
         </div>
         <div class="ab-history-body">
-          <h2 class="section-title">Unfolding a Legacy,<br>One Bake at a Time</h2>
+          <h2 class="section-title">Unfolding Our History,<br>One Bake at a Time</h2>
           <p>
-            Unfolding a legendary chapter in the year 2015 with not so much of economic advantage, but with a strong determination and a truthful desire to earn a living by catering quality bakery products, our founder baked the very first loaf of bread in a modest kitchen in Bulathsinhala. Through barriers and challenges, he served his neighbourhood with warmth and consistency.
+            In 2015—with more determination than capital, and a simple promise to earn an honest living through quality bakes—our founder pulled the very first loaf from a modest kitchen in Bulathsinhala. Through every barrier, he served the neighbourhood with warmth and consistency.
           </p>
           <p>
             As word spread through the community — not through advertising, but through honest taste and genuine care — the little bakery began to grow. New products joined the shelves: cream buns, seeni sambol rolls, celebration cakes, and seasonal treats that became household favourites across generations.
@@ -276,26 +282,54 @@
         <div class="footer-col">
           <h3 class="footer-title">Quick Links</h3>
           <a href="index.html">Home</a>
-          <a href="legacy.html">Our Legacy</a>
+          <a href="legacy.html">Our History</a>
           <a href="products.html">Products</a>
-          <a href="index.html#cakes">All Cakes</a>
-          <a href="index.html#events">Events</a>
+          <a href="products.html#cakes">Our Cakes</a>
+          <a href="order.html">Order Online</a>
+          <a href="feedback.html">Feedback</a>
         </div>
         <div class="footer-col">
           <h3 class="footer-title">Connect</h3>
-          <a href="#">Facebook</a>
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="#">Instagram</a>
-          <a href="#">TikTok</a>
-          <a href="#">Order Online</a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="order.html">Order Online</a>
         </div>
       </div>
-      <div class="copyright">
-        &copy; 2026 Peoples Bakers. All rights reserved.
+      <div class="footer-extra">
+        <div class="footer-extra-left">
+          <div class="footer-contact-row">
+            <p class="footer-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
+            </p>
+            <p class="footer-whatsapp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
+            </p>
+          </div>
+          <div class="footer-pay">
+            <span class="footer-pay-label">We Accept</span>
+            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
       </div>
     </div>
   </footer>
 
+  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span class="order-fab-label">Chat &amp; order</span>
+  </a>
+
   <script src="js/main.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 </html>

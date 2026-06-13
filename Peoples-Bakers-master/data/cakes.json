@@ -1,0 +1,1901 @@
+[
+  {
+    "category": "square",
+    "title": "Chocolate Square Printed Cake 500g",
+    "description": "Photo printed chocolate square cake for birthdays and celebrations.",
+    "price": "MRP Rs. 1600.00",
+    "imageUrl": "images/cakes/printed-chocolate-square-500g.png",
+    "imageAlt": "Chocolate square printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Printed Cake 500g",
+    "description": "Soft butter base round printed cake, ideal for kids' events.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/printed-butter-round-500g.png",
+    "imageAlt": "Butter round printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Printed Cake 1kg",
+    "description": "Larger 1kg butter round printed cake for medium celebrations.",
+    "price": "MRP Rs. 2500.00",
+    "imageUrl": "images/cakes/printed-butter-round-1kg.png",
+    "imageAlt": "Butter round printed cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Round Printed Cake 500g",
+    "description": "Chocolate round printed cake with bright themed decoration.",
+    "price": "MRP Rs. 1600.00",
+    "imageUrl": "images/cakes/printed-chocolate-round-500g.png",
+    "imageAlt": "Chocolate round printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Butter Heart Printed Cake 500g",
+    "description": "Heart-shaped butter cake with edible print for special moments.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/printed-butter-heart-500g.png",
+    "imageAlt": "Butter heart printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Round Printed Cake 1kg",
+    "description": "Premium 1kg chocolate round printed cake for birthday parties.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/printed-chocolate-round-1kg.png",
+    "imageAlt": "Chocolate round printed cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Butter Square Printed Cake 500g",
+    "description": "Butter square printed cake, perfect for cartoon-themed orders.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/printed-butter-square-500g.png",
+    "imageAlt": "Butter square printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Coffee Gateau Pieces",
+    "description": "Coffee gateau slices for tea-time and daily dessert cravings.",
+    "price": "MRP Rs. 290.00",
+    "imageUrl": "images/cakes/coffee-gateau-pieces.png",
+    "imageAlt": "Coffee gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Chocolate Heart Printed Cake 500g",
+    "description": "Chocolate heart printed cake designed for romantic occasions.",
+    "price": "MRP Rs. 1600.00",
+    "imageUrl": "images/cakes/printed-chocolate-heart-500g.png",
+    "imageAlt": "Chocolate heart printed cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Coffee Gateau Cake",
+    "description": "Full coffee gateau cake with smooth cream finish and crunch.",
+    "price": "MRP Rs. 1925.00",
+    "imageUrl": "images/cakes/coffee-gateau-cake.png",
+    "imageAlt": "Coffee gateau cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Butter Rectangle Printed Cake 1kg",
+    "description": "1kg butter rectangle printed cake for larger family gatherings.",
+    "price": "MRP Rs. 2500.00",
+    "imageUrl": "images/cakes/printed-butter-rectangle-1kg.png",
+    "imageAlt": "Butter rectangle printed cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Chocolate Rectangle Printed Cake 1kg",
+    "description": "1kg chocolate rectangle printed cake with vivid custom artwork.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/printed-chocolate-rectangle-1kg.png",
+    "imageAlt": "Chocolate rectangle printed cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Butter Gateau Pieces",
+    "description": "Individual butter gateau slice — code 5048.1.",
+    "price": "MRP Rs. 270.00",
+    "imageUrl": "images/cakes/butter-gateau-pieces.png",
+    "imageAlt": "Butter gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Blueberry Gateau Pieces",
+    "description": "Blueberry-topped gateau slice — code 5050.1.",
+    "price": "MRP Rs. 280.00",
+    "imageUrl": "images/cakes/blueberry-gateau-pieces.png",
+    "imageAlt": "Blueberry gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Chocolate Gateau Pieces",
+    "description": "Rich chocolate layered gateau slice — code 5049.2.",
+    "price": "MRP Rs. 280.00",
+    "imageUrl": "images/cakes/chocolate-gateau-pieces-slice.png",
+    "imageAlt": "Chocolate gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Butter Pineapple Gateau Pieces",
+    "description": "Butter sponge with pineapple topping — code 5051.1.",
+    "price": "MRP Rs. 280.00",
+    "imageUrl": "images/cakes/butter-pineapple-gateau-pieces.png",
+    "imageAlt": "Butter pineapple gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Fudge Cake 650g",
+    "description": "Round chocolate fudge cake — code 5047.2.0.65.",
+    "price": "MRP Rs. 1950.00",
+    "imageUrl": "images/cakes/chocolate-fudge-cake-650g.png",
+    "imageAlt": "Chocolate fudge cake 650g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Chocolate Pineapple Gateau Pieces",
+    "description": "Chocolate sponge with pineapple — code 5051.2.",
+    "price": "MRP Rs. 290.00",
+    "imageUrl": "images/cakes/chocolate-pineapple-gateau-pieces.png",
+    "imageAlt": "Chocolate pineapple gateau pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Gateau Cake 650g (Nutty)",
+    "description": "650g round gateau with nut topping — code 5045.2.0.5.",
+    "price": "MRP Rs. 1920.00",
+    "imageUrl": "images/cakes/chocolate-gateau-650g-nuts.png",
+    "imageAlt": "Chocolate gateau cake 650g with nuts",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "gateau",
+    "title": "Fudge Cake Pieces",
+    "description": "Rich fudge cake portion — code 5053.2.",
+    "price": "MRP Rs. 320.00",
+    "imageUrl": "images/cakes/fudge-cake-pieces.png",
+    "imageAlt": "Fudge cake pieces",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Gateau Cake 650g (Cream)",
+    "description": "650g chocolate gateau, cream-frosted style — code 5045.2.0.5.",
+    "price": "MRP Rs. 1950.00",
+    "imageUrl": "images/cakes/chocolate-gateau-650g-cream.png",
+    "imageAlt": "Chocolate gateau cake 650g cream style",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Gateau Cake 650g",
+    "description": "650g butter gateau with chocolate accents — code 5044.1.0.5.",
+    "price": "MRP Rs. 1850.00",
+    "imageUrl": "images/cakes/butter-gateau-cake-650g.png",
+    "imageAlt": "Butter gateau cake 650g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Gateau Cake 1kg",
+    "description": "Full-size butter gateau — code 5043.1.1.",
+    "price": "MRP Rs. 2850.00",
+    "imageUrl": "images/cakes/butter-gateau-cake-1kg.png",
+    "imageAlt": "Butter gateau cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Bento Butter Heart Cake 300g",
+    "description": "Heart-shaped bento cake — code 5040.1.0.3.",
+    "price": "MRP Rs. 800.00",
+    "imageUrl": "images/cakes/bento-butter-heart-cake-300g.png",
+    "imageAlt": "Bento butter heart cake 300g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Bento Cake Butter (Round) 300g",
+    "description": "Round bento butter cake — code 5039.1.0.3.",
+    "price": "MRP Rs. 800.00",
+    "imageUrl": "images/cakes/bento-cake-butter-round-300g.png",
+    "imageAlt": "Bento cake butter round 300g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Gateau Cake 1kg",
+    "description": "Rich chocolate gateau — code 5043.2.1.",
+    "price": "MRP Rs. 2950.00",
+    "imageUrl": "images/cakes/chocolate-gateau-cake-1kg.png",
+    "imageAlt": "Chocolate gateau cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Chocolate Ganache Rectangle Cake 1kg",
+    "description": "Rectangle chocolate ganache — code 5037.2.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/chocolate-ganache-rectangle-1kg.png",
+    "imageAlt": "Chocolate ganache rectangle cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Gateau Cake 650g (Feather Icing)",
+    "description": "Chocolate gateau with feather icing — code 5042.2.0.65.",
+    "price": "MRP Rs. 1925.00",
+    "imageUrl": "images/cakes/chocolate-gateau-650g-feather.png",
+    "imageAlt": "Chocolate gateau cake 650g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Gateau Cake 650g",
+    "description": "Butter icing gateau — code 5042.1.0.65.",
+    "price": "MRP Rs. 1850.00",
+    "imageUrl": "images/cakes/butter-icing-gateau-cake-650g.png",
+    "imageAlt": "Butter icing gateau cake 650g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Chocolate Icing Square Cake 1kg",
+    "description": "Square chocolate icing cake — code 5038.2.1.",
+    "price": "MRP Rs. 2400.00",
+    "imageUrl": "images/cakes/chocolate-icing-square-cake-1kg.png",
+    "imageAlt": "Chocolate icing square cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "White Forest Butter Gateau Cake (S)",
+    "description": "White forest butter gateau — code 5041.1.0.65.",
+    "price": "MRP Rs. 2675.00",
+    "imageUrl": "images/cakes/white-forest-butter-gateau-cake-s.png",
+    "imageAlt": "White forest butter gateau cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Rectangle Chocolate Ganache Cake 1kg",
+    "description": "Rectangle ganache with rose detail — code 5035.2.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/rectangle-chocolate-ganache-cake-1kg.png",
+    "imageAlt": "Rectangle chocolate ganache cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Black Forest Chocolate Gateau Cake",
+    "description": "Black forest style gateau — code 5041.2.0.65.",
+    "price": "MRP Rs. 2690.00",
+    "imageUrl": "images/cakes/black-forest-chocolate-gateau-cake.png",
+    "imageAlt": "Black forest chocolate gateau cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Barbie Rectangle Butter Icing Cake 1kg",
+    "description": "Themed rectangle butter icing — code 5034.1.1.",
+    "price": "MRP Rs. 1900.00",
+    "imageUrl": "images/cakes/barbie-rectangle-butter-icing-cake-1kg.png",
+    "imageAlt": "Barbie rectangle butter icing cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Rectangle Choco Ganache Cake 1kg",
+    "description": "Choco ganache with cup/flower style — code 5036.2.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/rectangle-choco-ganache-cake-1kg.png",
+    "imageAlt": "Rectangle choco ganache cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Butter Icing Rectangle Cake 1kg",
+    "description": "Butter icing rectangle — code 5033.1.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/butter-icing-rectangle-cake-1kg.png",
+    "imageAlt": "Butter icing rectangle cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Chocolate Ganache Rectangle Cake 1kg (Alt)",
+    "description": "Alternate ganache design — code 5037.2.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/chocolate-ganache-rectangle-1kg-alt.png",
+    "imageAlt": "Chocolate ganache rectangle cake 1kg alternate",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1765903742)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1765903742.jpg",
+    "imageAlt": "Peoples Bakers Cake (1765903742)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766201316)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766201316.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766201316)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766201637)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766201637.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766201637)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766201895)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766201895.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766201895)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766202333)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766202333.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766202333)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766202562)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766202562.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766202562)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766202697)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766202697.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766202697)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766202844)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766202844.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766202844)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766213267)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766213267.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766213267)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766213475)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766213475.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766213475)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766729036)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766729036.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766729036)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766729164)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766729164.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766729164)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766729257)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766729257.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766729257)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766729358)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766729358.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766729358)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766729433)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766729433.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766729433)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766734186)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766734186.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766734186)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766734210)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766734210.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766734210)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766734226)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766734226.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766734226)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1766734304)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1766734304.jpg",
+    "imageAlt": "Peoples Bakers Cake (1766734304)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1770713061)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1770713061.jpg",
+    "imageAlt": "Peoples Bakers Cake (1770713061)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1770713206)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1770713206.jpg",
+    "imageAlt": "Peoples Bakers Cake (1770713206)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1770713346)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1770713346.jpg",
+    "imageAlt": "Peoples Bakers Cake (1770713346)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1770713464)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1770713464.jpg",
+    "imageAlt": "Peoples Bakers Cake (1770713464)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1770713621)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1770713621.jpg",
+    "imageAlt": "Peoples Bakers Cake (1770713621)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773984699)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773984699.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773984699)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773984902)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773984902.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773984902)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773984947)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773984947.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773984947)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773984967)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773984967.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773984967)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773984991)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773984991.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773984991)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1773985021)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1773985021.jpg",
+    "imageAlt": "Peoples Bakers Cake (1773985021)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330361)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330361.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330361)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330403)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330403.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330403)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330424)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330424.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330424)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330445)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330445.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330445)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330465)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330465.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330465)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330485)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330485.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330485)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330513)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330513.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330513)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330548)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330548.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330548)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330571)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330571.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330571)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330598)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330598.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330598)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330635)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330635.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330635)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330662)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330662.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330662)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330688)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330688.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330688)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330718)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330718.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330718)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330752)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330752.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330752)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330771)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330771.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330771)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330796)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330796.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330796)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330817)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330817.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330817)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330839)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330839.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330839)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330862)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330862.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330862)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330896)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330896.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330896)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330914)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330914.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330914)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774330938)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774330938.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774330938)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331072)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331072.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331072)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331092)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331092.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331092)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331113)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331113.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331113)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331133)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331133.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331133)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331151)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331151.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331151)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331166)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331166.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331166)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331183)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331183.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331183)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331209)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331209.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331209)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331225)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331225.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331225)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331241)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331241.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331241)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331264)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331264.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331264)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331289)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331289.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331289)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331312)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331312.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331312)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331329)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331329.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331329)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331345)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331345.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331345)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331366)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331366.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331366)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331418)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331418.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331418)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331435)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331435.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331435)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331450)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331450.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331450)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774331476)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774331476.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774331476)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337527 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337527 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337527 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337527)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337527.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337527)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337539)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337539.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337539)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337551 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337551 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337551 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337564 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337564 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337564 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337591 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337591 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337591 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337607 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337607 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337607 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337616)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337616.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337616)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337631)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337631.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337631)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337640 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337640 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337640 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337650)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337650.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337650)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337663 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337663 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337663 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337674 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337674 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337674 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337685 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337685 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337685 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337695 - Copy)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337695 - Copy.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337695 - Copy)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337706)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337706.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337706)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337715)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337715.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337715)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337726)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337726.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337726)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337742)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337742.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337742)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337752)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337752.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337752)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337769)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337769.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337769)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337917)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337917.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337917)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337957)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337957.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337957)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774337999)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774337999.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774337999)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338015)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338015.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338015)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338031)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338031.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338031)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338044)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338044.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338044)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338059)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338059.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338059)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338085)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338085.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338085)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338103)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338103.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338103)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338131)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338131.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338131)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338208)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338208.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338208)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Cake (1774338230)",
+    "description": "See photo — ask in-store for price and product code.",
+    "price": "MRP on request",
+    "imageUrl": "item-images/1774338230.jpg",
+    "imageAlt": "Peoples Bakers Cake (1774338230)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Butter Square Icing Cake 500g",
+    "description": "Code 5001.2.0.5 — butter square icing.",
+    "price": "MRP Rs. 850.00",
+    "imageUrl": "images/cakes/butter-square-icing-cake-500g-5001-2.png",
+    "imageAlt": "Butter Square Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Chocolate Square Icing Cake 500g",
+    "description": "Code 5001.2.0.5 — chocolate square icing.",
+    "price": "MRP Rs. 1250.00",
+    "imageUrl": "images/cakes/chocolate-square-icing-cake-500g-5001-2.png",
+    "imageAlt": "Chocolate Square Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Butter Square Icing Cake 500g",
+    "description": "Code 5001.1.0.5 — butter square icing.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/butter-square-icing-cake-500g-5001-1.png",
+    "imageAlt": "Butter Square Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Nougat Butter Icing Cake 500g",
+    "description": "Code 5000.1.0.5.",
+    "price": "MRP Rs. 1100.00",
+    "imageUrl": "images/cakes/nougat-butter-icing-cake-500g.png",
+    "imageAlt": "Nougat Butter Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Nougat Chocolate Icing Cake 500g",
+    "description": "Code 5000.2.0.5.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/nougat-chocolate-icing-cake-500g.png",
+    "imageAlt": "Nougat Chocolate Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Valentine Butter Mini Heart Cake 300g",
+    "description": "Code 5085.1.0.3.",
+    "price": "MRP Rs. 1100.00",
+    "imageUrl": "images/cakes/valentine-butter-mini-heart-300g.png",
+    "imageAlt": "Valentine Butter Mini Heart Cake 300g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Valentine Butter Cake",
+    "description": "Code 5087.1.0.5.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/valentine-butter-cake-5087.png",
+    "imageAlt": "Valentine Butter Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Valentine Butter Cake",
+    "description": "Code 5088.1.0.5.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/valentine-butter-cake-5088.png",
+    "imageAlt": "Valentine Butter Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Valentine Curd Cake",
+    "description": "Code 5086.1.0.5.",
+    "price": "MRP Rs. 1600.00",
+    "imageUrl": "images/cakes/valentine-curd-cake.png",
+    "imageAlt": "Valentine Curd Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "New Year Butter Square Cake 500g (II)",
+    "description": "Code 5082.1.0.5 — Happy New Year theme.",
+    "price": "MRP Rs. 1300.00",
+    "imageUrl": "images/cakes/new-year-butter-square-cake-500g-ii.png",
+    "imageAlt": "New Year Butter Square Cake 500g (II)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Santa Face Butter Icing Cake 500g",
+    "description": "Code 5073.1.0.5.",
+    "price": "MRP Rs. 1400.00",
+    "imageUrl": "images/cakes/santa-face-butter-icing-cake-500g.png",
+    "imageAlt": "Santa Face Butter Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Christmas Tree Chocolate Icing Cake 500g",
+    "description": "Code 5072.2.0.5.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/christmas-tree-chocolate-icing-cake-500g.png",
+    "imageAlt": "Christmas Tree Chocolate Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Christmas Butter Icing Cake 500g",
+    "description": "Code 5074.1.0.5 — reindeer design.",
+    "price": "MRP Rs. 1400.00",
+    "imageUrl": "images/cakes/christmas-butter-icing-cake-500g-reindeer.png",
+    "imageAlt": "Christmas Butter Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Christmas Cup Cake Vanilla",
+    "description": "Code 5075.1.",
+    "price": "MRP Rs. 180.00",
+    "imageUrl": "images/cakes/christmas-cupcake-vanilla.png",
+    "imageAlt": "Christmas Cup Cake Vanilla",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Christmas Cup Cake Chocolate",
+    "description": "Code 5077.2.",
+    "price": "MRP Rs. 190.00",
+    "imageUrl": "images/cakes/christmas-cupcake-chocolate.png",
+    "imageAlt": "Christmas Cup Cake Chocolate",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Christmas Rectangle Butter Icing Cake 1kg",
+    "description": "Code 5070.1.1.",
+    "price": "MRP Rs. 2100.00",
+    "imageUrl": "images/cakes/christmas-rectangle-butter-cake-1kg.png",
+    "imageAlt": "Christmas Rectangle Butter Icing Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Christmas Square Butter Icing Cake 1kg",
+    "description": "Code 5071.1.1.",
+    "price": "MRP Rs. 2200.00",
+    "imageUrl": "images/cakes/christmas-square-butter-cake-1kg.png",
+    "imageAlt": "Christmas Square Butter Icing Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-18.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-19.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-20.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-21.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-22.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-23.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-24.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-25.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-26.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-27.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-28.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-29.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-30.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-31.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-32.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-33.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-34.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Peoples Bakers Seasonal Cake",
+    "description": "See photo — ask in-store for code and price.",
+    "price": "MRP on request",
+    "imageUrl": "images/cakes/seasonal-cake-35.png",
+    "imageAlt": "Peoples Bakers Seasonal Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Icing Cake 500g (Pink Birthday)",
+    "description": "Code 5018.1.0.5.",
+    "price": "MRP Rs. 1300.00",
+    "imageUrl": "images/cakes/branded-5018-1-0-5-pink.png",
+    "imageAlt": "Butter Round Icing Cake 500g (Pink Birthday)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Round Cake 500g (Blue Hearts)",
+    "description": "Code 5017.1.0.5.",
+    "price": "MRP Rs. 1100.00",
+    "imageUrl": "images/cakes/branded-5017-1-0-5-blue-hearts.png",
+    "imageAlt": "Butter Icing Round Cake 500g (Blue Hearts)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Mini Round Cake 500g (Princess)",
+    "description": "Code 5020.2.0.5.",
+    "price": "MRP Rs. 1000.00",
+    "imageUrl": "images/cakes/branded-5020-2-0-5-mini-princess.png",
+    "imageAlt": "Butter Mini Round Cake 500g (Princess)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Round Cake 1kg (Pearls)",
+    "description": "Code 5016.1.0.5.",
+    "price": "MRP Rs. 3000.00",
+    "imageUrl": "images/cakes/branded-5016-1-0-5-pearls.png",
+    "imageAlt": "Butter Icing Round Cake 1kg (Pearls)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Barbie Round Butter Icing Cake 1kg",
+    "description": "Code 5023.1.1.",
+    "price": "MRP Rs. 2150.00",
+    "imageUrl": "images/cakes/branded-5023-1-1-barbie-round.png",
+    "imageAlt": "Barbie Round Butter Icing Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Round Cake 500g (Purple)",
+    "description": "Code 5014.1.0.5.",
+    "price": "MRP Rs. 1300.00",
+    "imageUrl": "images/cakes/branded-5014-1-0-5-purple.png",
+    "imageAlt": "Butter Icing Round Cake 500g (Purple)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Choco Round Icing Cake 500g",
+    "description": "Code 5020.2.0.5.",
+    "price": "MRP Rs. 1350.00",
+    "imageUrl": "images/cakes/branded-5020-2-0-5-choco.png",
+    "imageAlt": "Choco Round Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Choco Ganache Round with Pebbles Cake 500g",
+    "description": "Code 5021.2.0.5.",
+    "price": "MRP Rs. 1700.00",
+    "imageUrl": "images/cakes/branded-5021-2-0-5-pebbles.png",
+    "imageAlt": "Choco Ganache Round with Pebbles Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Icing Cake 1kg (Purple Roses)",
+    "description": "Code 5024.1.1.",
+    "price": "MRP Rs. 2150.00",
+    "imageUrl": "images/cakes/branded-5024-1-1-purple-roses.png",
+    "imageAlt": "Butter Round Icing Cake 1kg (Purple Roses)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Choco Ganache Round Cake 500g",
+    "description": "Code 5022.2.0.5.",
+    "price": "MRP Rs. 1300.00",
+    "imageUrl": "images/cakes/branded-5022-2-0-5-ganache.png",
+    "imageAlt": "Choco Ganache Round Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Round Chocolate Ganache Cake 1kg",
+    "description": "Code 5025.2.1.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/branded-5025-2-1-ganache.png",
+    "imageAlt": "Round Chocolate Ganache Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Ganache Round Cake 1kg (Roses)",
+    "description": "Code 5026.2.1.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/branded-5026-2-1-roses.png",
+    "imageAlt": "Chocolate Ganache Round Cake 1kg (Roses)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Ganache Icing Round Cake 1kg (Sprinkles)",
+    "description": "Code 5027.2.1.",
+    "price": "MRP Rs. 2800.00",
+    "imageUrl": "images/cakes/branded-5027-2-1-sprinkles.png",
+    "imageAlt": "Chocolate Ganache Icing Round Cake 1kg (Sprinkles)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Ganache Icing Round Cake 1kg (Birthday)",
+    "description": "Code 5029.2.1.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/branded-5029-2-1-birthday.png",
+    "imageAlt": "Chocolate Ganache Icing Round Cake 1kg (Birthday)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Butter Icing Square Cake 500g (Rosebuds)",
+    "description": "Code 5030.1.0.5.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/branded-5030-1-0-5-rosebuds.png",
+    "imageAlt": "Butter Icing Square Cake 500g (Rosebuds)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Round Cake 500g (Butterflies)",
+    "description": "Code 5015.1.0.5.",
+    "price": "MRP Rs. 1500.00",
+    "imageUrl": "images/cakes/branded-5015-1-0-5-butterflies.png",
+    "imageAlt": "Butter Icing Round Cake 500g (Butterflies)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Ganache Icing Round Cake 1kg (My Sweet Mom)",
+    "description": "Code 5028.2.1.",
+    "price": "MRP Rs. 2600.00",
+    "imageUrl": "images/cakes/branded-5028-2-1-mom.png",
+    "imageAlt": "Chocolate Ganache Icing Round Cake 1kg (My Sweet Mom)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Choco Ganache Square with Cherry Cake",
+    "description": "Code 5032.2.0.5.",
+    "price": "MRP Rs. 2300.00",
+    "imageUrl": "images/cakes/branded-5032-2-0-5-cherry.png",
+    "imageAlt": "Choco Ganache Square with Cherry Cake",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Butter Square Icing Cake 500g (Pink Rose)",
+    "description": "Code 5031.1.0.5.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/branded-5031-1-0-5-pink-rose.png",
+    "imageAlt": "Butter Square Icing Cake 500g (Pink Rose)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Heart Shape Chocolate Ganache Cake 500g",
+    "description": "Code 5005.2.0.5.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/branded-5005-2-0-5-heart-choco.png",
+    "imageAlt": "Heart Shape Chocolate Ganache Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Heart Shape Butter Icing Cake 500g",
+    "description": "Code 5005.1.0.5.",
+    "price": "MRP Rs. 1150.00",
+    "imageUrl": "images/cakes/branded-5005-1-0-5-heart-butter.png",
+    "imageAlt": "Heart Shape Butter Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Heart Shape Butter Ganache Cake 1kg",
+    "description": "Code 5006.2.1.",
+    "price": "MRP Rs. 2200.00",
+    "imageUrl": "images/cakes/branded-5006-2-1-butter.png",
+    "imageAlt": "Heart Shape Butter Ganache Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Rectangle Chocolate Icing Cake 1kg",
+    "description": "Code 5007.2.1.",
+    "price": "MRP Rs. 2000.00",
+    "imageUrl": "images/cakes/branded-5007-2-1-choco.png",
+    "imageAlt": "Rectangle Chocolate Icing Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "heart",
+    "title": "Heart Shape Chocolate Ganache Cake 1kg",
+    "description": "Code 5006.2.1.",
+    "price": "MRP Rs. 2300.00",
+    "imageUrl": "images/cakes/branded-5006-2-1-choco.png",
+    "imageAlt": "Heart Shape Chocolate Ganache Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "rectangle",
+    "title": "Rectangle Butter Icing Cake 1kg",
+    "description": "Code 5007.1.1.",
+    "price": "MRP Rs. 1900.00",
+    "imageUrl": "images/cakes/branded-5007-1-1-butter.png",
+    "imageAlt": "Rectangle Butter Icing Cake 1kg",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Square Chocolate Icing Cake 500g",
+    "description": "Code 5008.2.0.5.",
+    "price": "MRP Rs. 1250.00",
+    "imageUrl": "images/cakes/branded-5008-2-0-5-choco.png",
+    "imageAlt": "Square Chocolate Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "square",
+    "title": "Square Butter Icing Cake 500g",
+    "description": "Code 5008.1.0.5.",
+    "price": "MRP Rs. 1200.00",
+    "imageUrl": "images/cakes/branded-5008-1-0-5-butter.png",
+    "imageAlt": "Square Butter Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Chocolate Round Icing Cake 500g",
+    "description": "Code 5009.2.0.5.",
+    "price": "MRP Rs. 1100.00",
+    "imageUrl": "images/cakes/branded-5009-2-0-5-choco.png",
+    "imageAlt": "Chocolate Round Icing Cake 500g",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Icing Cake 500g (Cream Roses)",
+    "description": "Code 5009.1.0.5.",
+    "price": "MRP Rs. 1000.00",
+    "imageUrl": "images/cakes/branded-5009-1-0-5-cream-roses.png",
+    "imageAlt": "Butter Round Icing Cake 500g (Cream Roses)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Round Butter Icing Cake 500g (Pink & Red)",
+    "description": "Code 5011.1.0.5.",
+    "price": "MRP Rs. 1000.00",
+    "imageUrl": "images/cakes/branded-5011-1-0-5-pink-red.png",
+    "imageAlt": "Round Butter Icing Cake 500g (Pink & Red)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Icing Round Cake 500g (Yellow)",
+    "description": "Code 5010.1.0.5.",
+    "price": "MRP Rs. 1000.00",
+    "imageUrl": "images/cakes/branded-5010-1-0-5-yellow.png",
+    "imageAlt": "Butter Icing Round Cake 500g (Yellow)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Butter Round Icing Cake 500g (Pink & White)",
+    "description": "Code 5012.1.0.5.",
+    "price": "MRP Rs. 1300.00",
+    "imageUrl": "images/cakes/branded-5012-1-0-5-pink-white.png",
+    "imageAlt": "Butter Round Icing Cake 500g (Pink & White)",
+    "orderLabel": "Order"
+  },
+  {
+    "category": "round",
+    "title": "Choco Icing Round Cake 500g",
+    "description": "Code 5010.2.0.5.",
+    "price": "MRP Rs. 1100.00",
+    "imageUrl": "images/cakes/branded-5010-2-0-5-choco.png",
+    "imageAlt": "Choco Icing Round Cake 500g",
+    "orderLabel": "Order"
+  }
+]
