@@ -87,7 +87,14 @@
         </div>
         <aside class="special-cake-hero-card">
           <div class="special-cake-preview">
-            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+            <img
+              src="images/photo-cake-sample.jpg"
+              alt="Sample photo cake with a custom birthday print"
+              class="special-cake-preview-img"
+              width="640"
+              height="480"
+              loading="eager"
+              decoding="async">
           </div>
           <ul>
             <li><i class="fa-solid fa-circle-check"></i> Upload photo for the cake</li>
@@ -101,15 +108,19 @@
 
     <section class="special-cake-form-section" id="special-cake-form">
       <div class="container special-cake-product-wrap">
-        <div class="special-cake-product-visual">
-          <div class="special-cake-photo-cake" aria-hidden="true">
-            <div class="special-cake-photo-frame">
-              <i class="fa-solid fa-image"></i>
-              <span>Your photo</span>
-            </div>
+        <figure class="special-cake-product-visual special-cake-showcase">
+          <div class="special-cake-showcase-inner">
+            <img
+              src="images/photo-cake-sample.jpg"
+              alt="Example photo cake — upload your own image for a similar finish"
+              class="special-cake-showcase-img"
+              width="640"
+              height="480"
+              loading="lazy"
+              decoding="async">
           </div>
-          <p>Design and icing may vary slightly because each cake is finished by hand.</p>
-        </div>
+          <figcaption>Design and icing may vary slightly because each cake is finished by hand.</figcaption>
+        </figure>
 
         <form class="special-cake-product-form" data-special-cake-form novalidate>
           <span class="section-tag">Customize cake</span>

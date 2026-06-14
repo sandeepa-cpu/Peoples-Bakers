@@ -1,4 +1,4 @@
-const CACHE_NAME = "peoples-bakers-v87";
+const CACHE_NAME = "peoples-bakers-v89";
 const APP_SHELL_FILES = [
   "./",
   "index.html",
@@ -23,7 +23,8 @@ const APP_SHELL_FILES = [
   "data/cakes.json",
   "manifest.webmanifest",
   "icons/app-icon.svg",
-  "images/logo.png"
+  "images/logo.png",
+  "images/photo-cake-sample.jpg"
 ];
 
 self.addEventListener("install", (event) => {
