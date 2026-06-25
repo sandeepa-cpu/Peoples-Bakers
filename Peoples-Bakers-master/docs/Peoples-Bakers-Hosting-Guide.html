@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peoples Bakers — Hosting Guide</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 12mm;
+    }
+    h1 {
+      font-size: 22pt;
+      color: #6b1f63;
+      margin: 0 0 4px;
+      border-bottom: 3px solid #ef9f27;
+      padding-bottom: 8px;
+    }
+    .subtitle { color: #666; font-size: 10pt; margin-bottom: 20px; }
+    h2 {
+      font-size: 13pt;
+      color: #854f0b;
+      margin: 22px 0 8px;
+      page-break-after: avoid;
+    }
+    h3 { font-size: 11pt; color: #333; margin: 14px 0 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 14px;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 7px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #faf6f1; color: #6b1f63; font-weight: 600; }
+    tr:nth-child(even) td { background: #fcfcfc; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9pt;
+      font-weight: 600;
+    }
+    .badge-red { background: #fde8e8; color: #b91c1c; }
+    .badge-green { background: #e8f5e9; color: #2e7d32; }
+    .badge-yellow { background: #fff8e1; color: #854f0b; }
+    .box {
+      background: #faf6f1;
+      border-left: 4px solid #ef9f27;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+    .message-box {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 12px 14px;
+      font-size: 9.5pt;
+      white-space: pre-wrap;
+      font-family: Consolas, "Courier New", monospace;
+      margin: 8px 0 14px;
+    }
+    ul { margin: 6px 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before { content: "☐ "; }
+    .footer {
+      margin-top: 24px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      font-size: 9pt;
+      color: #777;
+      text-align: center;
+    }
+    .page-break { page-break-before: always; }
+    @media print {
+      body { padding: 0; }
+      h2 { page-break-after: avoid; }
+      table, .box { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Peoples Bakers — Website Hosting Guide</h1>
+<p class="subtitle">Complete requirements, setup checklist &amp; Mobitel inquiry template · June 2026</p>
+
+<div class="box">
+  <strong>Important:</strong> This is not a simple static website. It requires a <strong>Node.js server (v22.5+)</strong> with backend API, SQLite database, and HTTPS. PHP-only shared hosting will <strong>NOT</strong> work.
+</div>
+
+<h2>1. What You Are Hosting</h2>
+<table>
+  <tr><th>Item</th><th>Requirement</th></tr>
+  <tr><td>Runtime</td><td>Node.js 22.5 or higher</td></tr>
+  <tr><td>Start command</td><td><code>npm start</code> → runs Express server</td></tr>
+  <tr><td>Database</td><td>SQLite file (peoples-bakers.db) — no MySQL server needed</td></tr>
+  <tr><td>Storage</td><td>Persistent disk (~1 GB) — orders must not be lost on restart</td></tr>
+  <tr><td>SSL/HTTPS</td><td>Required (login, PayHere payments, secure cookies)</td></tr>
+  <tr><td>RAM</td><td>Minimum 512 MB (1 GB recommended)</td></tr>
+</table>
+
+<h3>Website Features (Backend Required)</h3>
+<ul>
+  <li>Online ordering &amp; checkout</li>
+  <li>Customer login / registration / Google Sign-In</li>
+  <li>Admin panel — orders, products, feedback, users</li>
+  <li>PayHere online payment (Sri Lanka)</li>
+  <li>Email order notifications (SMTP)</li>
+  <li>Multi-language (English, Sinhala, Tamil)</li>
+</ul>
+
+<h2>2. Accounts You Need to Create</h2>
+<table>
+  <tr><th>#</th><th>Account</th><th>Purpose</th></tr>
+  <tr><td>1</td><td>Domain registrar (Register.lk / LankaHost)</td><td>peoplesbakers.lk domain</td></tr>
+  <tr><td>2</td><td>Node.js hosting (Render / VPS / Mobitel Cloud)</td><td>Run the server 24/7</td></tr>
+  <tr><td>3</td><td>GitHub (optional)</td><td>Code upload &amp; auto deploy</td></tr>
+  <tr><td>4</td><td>Gmail or business email</td><td>Order confirmation emails (SMTP)</td></tr>
+  <tr><td>5</td><td>PayHere (payhere.lk)</td><td>Online card payments</td></tr>
+  <tr><td>6</td><td>Google Cloud (optional)</td><td>Google login &amp; Maps API</td></tr>
+</table>
+
+<h2>3. Hosting Options</h2>
+<table>
+  <tr><th>Option</th><th>Suitable?</th><th>Notes</th></tr>
+  <tr><td>Render.com (Node.js)</td><td><span class="badge badge-green">✓ Best</span></td><td>Project includes render.yaml — Singapore region</td></tr>
+  <tr><td>VPS (DigitalOcean, Linode)</td><td><span class="badge badge-green">✓ Good</span></td><td>Full control — ~$5–12/month</td></tr>
+  <tr><td>Mobitel VPS/Cloud (if Node.js supported)</td><td><span class="badge badge-yellow">Ask first</span></td><td>Confirm Node.js support before buying</td></tr>
+  <tr><td>PHP-only cPanel hosting</td><td><span class="badge badge-red">✗ No</span></td><td>Cannot run Node.js backend</td></tr>
+  <tr><td>GitHub Pages / Static Netlify</td><td><span class="badge badge-red">✗ No</span></td><td>No backend server</td></tr>
+</table>
+
+<h2>4. Environment Variables (.env)</h2>
+
+<h3>Must Have (Production)</h3>
+<table>
+  <tr><th>Variable</th><th>Example</th><th>Purpose</th></tr>
+  <tr><td>NODE_ENV</td><td>production</td><td>Production mode</td></tr>
+  <tr><td>JWT_SECRET</td><td>long random 32+ characters</td><td>Login security — change default!</td></tr>
+  <tr><td>SITE_URL</td><td>https://www.peoplesbakers.lk</td><td>Email links, PayHere URLs</td></tr>
+  <tr><td>DB_PATH</td><td>/var/data/peoples-bakers.db</td><td>Persistent database location</td></tr>
+</table>
+
+<h3>Recommended</h3>
+<table>
+  <tr><th>Variable</th><th>Purpose</th></tr>
+  <tr><td>ADMIN_PATH</td><td>Secret admin URL (not linked on public site)</td></tr>
+  <tr><td>ADMIN_PROMOTE_EMAIL</td><td>Your email promoted to admin on server start</td></tr>
+  <tr><td>SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS</td><td>Order confirmation emails</td></tr>
+  <tr><td>MAIL_FROM</td><td>Sender name for emails</td></tr>
+  <tr><td>WHATSAPP_NUMBER</td><td>94771234567 — chat button number</td></tr>
+</table>
+
+<h3>Optional</h3>
+<table>
+  <tr><th>Variable</th><th>Purpose</th></tr>
+  <tr><td>GOOGLE_CLIENT_ID</td><td>Sign in with Google</td></tr>
+  <tr><td>GOOGLE_MAPS_API_KEY</td><td>Find Us — outlet auto-import</td></tr>
+  <tr><td>PAYHERE_MERCHANT_ID / PAYHERE_MERCHANT_SECRET</td><td>Online payments</td></tr>
+  <tr><td>PAYHERE_SANDBOX</td><td>true = test mode, false = live</td></tr>
+  <tr><td>PHONE_DISCOUNT_PERCENT / PHONE_DISCOUNT_MIN</td><td>Checkout phone discount (default 20%, min Rs.500)</td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>5. PayHere Setup</h2>
+<ol>
+  <li>Register at <strong>payhere.lk</strong> → get Merchant ID &amp; Secret</li>
+  <li>Test first with sandbox: sandbox.payhere.lk (PAYHERE_SANDBOX=true)</li>
+  <li>Set Notify URL in PayHere dashboard:<br>
+    <code>https://www.peoplesbakers.lk/api/payments/payhere/notify</code></li>
+  <li>Must be public HTTPS — localhost will not work</li>
+  <li>Go live: PAYHERE_SANDBOX=false + live merchant keys</li>
+</ol>
+
+<h2>6. Gmail SMTP Setup</h2>
+<ol>
+  <li>Enable 2-Step Verification on Google account</li>
+  <li>Create App Password: myaccount.google.com/apppasswords</li>
+  <li>Set SMTP_HOST=smtp.gmail.com, SMTP_PORT=587, SMTP_USER, SMTP_PASS</li>
+  <li>If SMTP is blank, site works but no emails are sent</li>
+</ol>
+
+<h2>7. Domain &amp; DNS</h2>
+<table>
+  <tr><th>Record</th><th>Name</th><th>Value</th></tr>
+  <tr><td>CNAME</td><td>www</td><td>Your hosting URL (e.g. peoples-bakers.onrender.com)</td></tr>
+  <tr><td>A or CNAME</td><td>@ (root)</td><td>Hosting IP or URL</td></tr>
+</table>
+<p>Enable SSL on hosting dashboard. Update SITE_URL to your live HTTPS domain.</p>
+
+<h2>8. Admin Panel</h2>
+<table>
+  <tr><th>Item</th><th>Details</th></tr>
+  <tr><td>Default URL</td><td>https://yoursite.lk/pb-office.html</td></tr>
+  <tr><td>Change URL</td><td>Set ADMIN_PATH in environment variables</td></tr>
+  <tr><td>First login (seed)</td><td>admin@peoplesbakers.lk / admin123</td></tr>
+  <tr><td>⚠ Must do before live</td><td>Change admin password immediately</td></tr>
+</table>
+
+<h2>9. Go-Live Checklist</h2>
+<ul class="checklist">
+  <li>Code pushed to GitHub / uploaded to server</li>
+  <li>Node.js hosting deployed with persistent disk</li>
+  <li>JWT_SECRET set to strong random string</li>
+  <li>SITE_URL set to live HTTPS URL</li>
+  <li>Domain purchased and DNS configured</li>
+  <li>SSL certificate active (HTTPS working)</li>
+  <li>Admin password changed from default</li>
+  <li>ADMIN_PATH changed to secret URL</li>
+  <li>SMTP configured and test email sent</li>
+  <li>PayHere sandbox payment tested</li>
+  <li>All images uploaded (images/home/, products, outlets)</li>
+  <li>Run: npm run verify — all checks pass</li>
+</ul>
+
+<h2>10. Estimated Costs</h2>
+<table>
+  <tr><th>Item</th><th>Approximate Cost</th></tr>
+  <tr><td>.lk domain</td><td>Rs. 3,000 – 5,000 / year</td></tr>
+  <tr><td>Render paid + 1GB disk</td><td>$7 – 15 / month</td></tr>
+  <tr><td>VPS alternative</td><td>$5 – 12 / month</td></tr>
+  <tr><td>Gmail SMTP</td><td>Free</td></tr>
+  <tr><td>SSL certificate</td><td>Free (Let's Encrypt / Render)</td></tr>
+  <tr><td>PayHere</td><td>Merchant account setup via bank</td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>11. Mobitel Inquiry — Email Template</h2>
+<p>Send this to Mobitel Business Support to confirm if they can host your application:</p>
+
+<div class="message-box">Subject: Inquiry — Website Hosting for Online Bakery (Node.js Application)
+
+Dear Mobitel Business Support Team,
+
+We are Peoples Bakers, a bakery business in Sri Lanka planning to launch our official website with online ordering, customer login, admin panel, and PayHere payment integration.
+
+Our website requires a Node.js server (version 22+) — it is NOT a simple static HTML or PHP website. Data is stored in a SQLite database file and requires persistent storage.
+
+Please confirm:
+1. Does Mobitel provide Node.js hosting or VPS/Cloud suitable for this?
+2. What packages are available and the cost?
+3. Can you provide SSL and .lk domain support?
+4. Is persistent disk storage included?
+5. What documents/details do you need from us?
+
+Technical requirements:
+• Node.js 22.5+
+• 512MB–1GB RAM
+• 1GB persistent storage
+• HTTPS/SSL certificate
+• Custom domain support
+• 24/7 server uptime
+
+Thank you.
+[Your Name] — Peoples Bakers
+Phone: [07X XXX XXXX]
+Email: [your@email.com]</div>
+
+<h2>12. Mobitel WhatsApp / Phone Script (Sinhala)</h2>
+<div class="message-box">Ayubowan, mam Peoples Bakers bakery business eken online website ekak live karanna hadanawa.
+
+Me site eka Node.js server ekak run wenna one — online orders, login, admin panel, PayHere payment. PHP-only hosting valin backend eka run wenne ne.
+
+Confirm karanna puluwanda:
+1. Mobitel eken Node.js / VPS / cloud server support thiyenawada?
+2. HTTPS, domain (.lk), 24/7 uptime thiyenawada?
+3. Orders save wenna persistent storage thiyenawada?
+4. Monthly cost monawada?
+5. Apita denna one documents monawada?
+
+Technical: Node.js 22+, 1GB storage, SSL, custom domain.
+
+Thank you. [Name] [Phone]</div>
+
+<h2>13. Key Questions to Ask Any Host</h2>
+<table>
+  <tr><th>Question</th><th>Why</th></tr>
+  <tr><td>Does it support Node.js 22+?</td><td>PHP-only hosts will not work</td></tr>
+  <tr><td>Is disk storage persistent?</td><td>Orders must not delete on restart</td></tr>
+  <tr><td>Is SSL/HTTPS included?</td><td>Required for PayHere &amp; login</td></tr>
+  <tr><td>Can PayHere webhook URL receive HTTPS callbacks?</td><td>Payment notifications</td></tr>
+  <tr><td>Monthly cost &amp; setup fee?</td><td>Budget planning</td></tr>
+  <tr><td>Do you help with setup?</td><td>Technical assistance availability</td></tr>
+</table>
+
+<h2>14. If Mobitel Cannot Support Node.js</h2>
+<div class="box">
+  Use <strong>Render.com</strong> (Node.js hosting) + buy <strong>.lk domain</strong> separately from Register.lk or LankaHost. Point DNS to Render. This is the recommended alternative and the project already includes a Render deployment configuration (render.yaml).
+</div>
+
+<h2>15. Useful Commands (Developer)</h2>
+<table>
+  <tr><th>Command</th><th>Purpose</th></tr>
+  <tr><td>npm install</td><td>Install dependencies</td></tr>
+  <tr><td>npm start</td><td>Start server (port 3000)</td></tr>
+  <tr><td>npm run verify</td><td>Check all backend endpoints</td></tr>
+  <tr><td>npm run promote-admin -- email@example.com</td><td>Make user an admin</td></tr>
+</table>
+
+<div class="footer">
+  Peoples Bakers Website Hosting Guide · Generated June 2026 · Confidential — do not share JWT_SECRET or PayHere keys
+</div>
+
+</body>
+</html>

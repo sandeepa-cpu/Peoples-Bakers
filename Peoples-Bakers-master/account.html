@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="account.meta">My Account | Peoples Bakers</title>
+  <meta name="description" content="Manage your Peoples Bakers profile and view your order history.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css?v=126">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="page-account">
+
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-brand"><span>Peoples Bakers</span></div>
+        <div class="top-bar-socials">
+          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/peoplesbakers/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon" data-social-instagram><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo-link nav-logo-oval" aria-label="Peoples Bakers Home">
+          <img src="images/logo.png" alt="Peoples Bakers Logo" class="brand-img">
+        </a>
+        <div class="nav-links">
+          <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+          <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="special-cake.html" data-i18n="nav.special_cake">Customize Cake</a>
+          <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+          <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
+          <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+        </div>
+        <div class="nav-actions">
+          <button type="button" class="nav-cart-btn" data-cart-open data-i18n-aria-label="common.cart_basket_aria" aria-label="Shopping basket" aria-expanded="false">
+            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            <span class="nav-cart-count" data-cart-count hidden data-i18n-aria-label="cart.aria_empty" aria-label="Basket is empty">0</span>
+          </button>
+          <a class="btn btn-login" href="login.html" data-i18n="nav.login">Login</a>
+          <a class="btn btn-primary btn-order" href="order.html" data-i18n-aria-label="common.order_online_aria" aria-label="Order Online">
+            <span class="btn-order-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="btn-order-label"><span class="btn-order-pulse" aria-hidden="true"></span><span data-i18n="common.order_online">Order Online</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="ac-wrap">
+      <div class="ac-gate" id="ac-gate">
+        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+        <p data-i18n="account.loading">Loading your account…</p>
+      </div>
+
+      <div id="ac-app" hidden>
+        <div class="ac-hero">
+          <div class="ac-hero-top">
+            <div class="ac-avatar" id="ac-avatar">P</div>
+            <div class="ac-hero-text">
+              <h1 id="ac-welcome" data-i18n="account.welcome">Welcome back</h1>
+              <p data-i18n="account.hero_sub">Your orders, profile &amp; checkout details in one place.</p>
+              <span id="ac-email-display"></span>
+            </div>
+          </div>
+          <div class="ac-stats">
+            <div class="ac-stat">
+              <div class="ac-stat-val" id="ac-stat-orders">0</div>
+              <div class="ac-stat-label" data-i18n="account.stat_orders">Total orders</div>
+            </div>
+            <div class="ac-stat">
+              <div class="ac-stat-val" id="ac-stat-active">0</div>
+              <div class="ac-stat-label" data-i18n="account.stat_active">Active now</div>
+            </div>
+            <div class="ac-stat">
+              <div class="ac-stat-val" id="ac-stat-spent">Rs. 0</div>
+              <div class="ac-stat-label" data-i18n="account.stat_spent">Total spent</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ac-quick">
+          <a href="order.html" class="ac-quick-btn"><i class="fa-solid fa-bag-shopping"></i> <span data-i18n="account.quick_order">Order again</span></a>
+          <a href="products.html" class="ac-quick-btn"><i class="fa-solid fa-cake-candles"></i> <span data-i18n="account.quick_browse">Browse cakes</span></a>
+          <a href="https://wa.me/947228955477" class="ac-quick-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="account.quick_wa">WhatsApp us</span></a>
+          <button type="button" class="ac-quick-btn" data-ac-tab-jump="orders"><i class="fa-solid fa-box"></i> <span data-i18n="account.quick_my_orders">My orders</span></button>
+        </div>
+
+        <div class="ac-discount-banner" id="ac-phone-discount" hidden>
+          <div class="ac-discount-badge" aria-hidden="true">
+            <span class="ac-discount-pct" id="ac-discount-pct">20%</span>
+            <span class="ac-discount-off" data-i18n="account.off">OFF</span>
+          </div>
+          <div class="ac-discount-body">
+            <span class="ac-discount-tag"><i class="fa-solid fa-gift"></i> <span data-i18n="account.discount_tag">Member offer</span></span>
+            <strong id="ac-discount-title" data-i18n="account.discount_title">Add your phone for a discount</strong>
+            <p id="ac-discount-hint"></p>
+            <button type="button" class="ac-discount-btn" data-ac-tab-jump="profile">
+              <span class="ac-discount-btn-icon"><i class="fa-solid fa-phone"></i></span>
+              <span class="ac-discount-btn-text" data-i18n="account.discount_btn">Add phone number</span>
+              <i class="fa-solid fa-arrow-right ac-discount-btn-arrow" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ac-discount-deco" aria-hidden="true"></div>
+        </div>
+
+        <div class="ac-tabs" role="tablist">
+          <button type="button" class="ac-tab is-active" data-ac-tab="profile" role="tab">
+            <i class="fa-solid fa-user"></i> <span data-i18n="account.tab_profile">Profile</span>
+          </button>
+          <button type="button" class="ac-tab" data-ac-tab="overview" role="tab">
+            <i class="fa-solid fa-house"></i> <span data-i18n="account.tab_overview">Overview</span>
+          </button>
+          <button type="button" class="ac-tab" data-ac-tab="orders" role="tab">
+            <i class="fa-solid fa-box"></i> <span data-i18n="account.tab_orders">My Orders</span>
+            <span class="ac-tab-badge" id="ac-orders-badge" hidden>0</span>
+          </button>
+        </div>
+
+        <section class="ac-card" data-ac-panel="profile" aria-labelledby="ac-profile-heading">
+          <div class="ac-card-head">
+            <div>
+              <h2 id="ac-profile-heading" data-i18n="account.profile_h2">Your details</h2>
+              <p class="ac-card-sub" data-i18n="account.profile_sub">Saved for faster checkout on your next order.</p>
+            </div>
+          </div>
+          <div class="ac-profile-grid">
+            <form id="ac-profile-form">
+              <div class="ac-field">
+                <label for="ac-name" data-i18n="account.lbl_name">Full name</label>
+                <input id="ac-name" autocomplete="name" required>
+              </div>
+              <div class="ac-field">
+                <label for="ac-email" data-i18n="account.lbl_email">Email</label>
+                <input id="ac-email" type="email" readonly aria-readonly="true">
+              </div>
+              <div class="ac-field">
+                <label for="ac-phone" data-i18n="account.lbl_phone">Phone (WhatsApp)</label>
+                <input id="ac-phone" type="tel" autocomplete="tel" data-i18n-placeholder="account.phone_ph" placeholder="07X XXX XXXX">
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="account.save_profile">Save profile</span></button>
+              <p class="ac-msg" id="ac-profile-msg"></p>
+            </form>
+            <div class="ac-tip">
+              <p><i class="fa-solid fa-percent"></i> <strong data-i18n="account.discount_label">Discount:</strong> <span id="ac-profile-discount-hint" data-i18n="account.discount_hint">Add a valid mobile number to unlock checkout discounts on your orders.</span></p>
+              <p><i class="fa-solid fa-lightbulb"></i> <strong data-i18n="account.tip_label">Tip:</strong> <span data-i18n="account.tip_phone">Keep your phone number updated — we use it for delivery updates and order confirmations on WhatsApp.</span></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ac-card" data-ac-panel="overview" hidden aria-labelledby="ac-overview-heading">
+          <div class="ac-card-head">
+            <div>
+              <h2 id="ac-overview-heading" data-i18n="account.overview_h2">Your dashboard</h2>
+              <p class="ac-card-sub" data-i18n="account.overview_sub">Latest order &amp; quick actions at a glance.</p>
+            </div>
+          </div>
+          <div id="ac-latest-order" class="ac-latest-wrap">
+            <div class="ac-empty"><i class="fa-solid fa-spinner fa-spin"></i><p data-i18n="account.loading_short">Loading…</p></div>
+          </div>
+          <div class="ac-dash-grid">
+            <a href="order.html" class="ac-dash-tile">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <strong data-i18n="account.dash_order">Order online</strong>
+              <span data-i18n="account.dash_order_sub">Delivery or pickup</span>
+            </a>
+            <a href="account.html#orders" class="ac-dash-tile" data-ac-tab-jump="orders">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <strong data-i18n="account.dash_history">Order history</strong>
+              <span data-i18n="account.dash_history_sub">Track every order</span>
+            </a>
+            <a href="special-cake.html" class="ac-dash-tile">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <strong data-i18n="account.dash_cake">Custom cake</strong>
+              <span data-i18n="account.dash_cake_sub">Photo &amp; special designs</span>
+            </a>
+            <a href="find-us.html" class="ac-dash-tile">
+              <i class="fa-solid fa-location-dot"></i>
+              <strong data-i18n="account.dash_branch">Find a branch</strong>
+              <span data-i18n="account.dash_branch_sub">Colombo &amp; outlets</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="ac-card" data-ac-panel="orders" hidden aria-labelledby="ac-orders-heading">
+          <div class="ac-card-head">
+            <div>
+              <h2 id="ac-orders-heading" data-i18n="account.orders_h2">Order history</h2>
+              <p class="ac-card-sub" data-i18n="account.orders_sub">Tap an order to see full details and track progress.</p>
+            </div>
+          </div>
+          <div class="ac-order-toolbar">
+            <button type="button" class="ac-filter is-active" data-order-filter="all" data-i18n="account.filter_all">All</button>
+            <button type="button" class="ac-filter" data-order-filter="active" data-i18n="account.filter_active">Active</button>
+            <button type="button" class="ac-filter" data-order-filter="delivered" data-i18n="account.filter_delivered">Delivered</button>
+            <button type="button" class="ac-filter" data-order-filter="cancelled" data-i18n="account.filter_cancelled">Cancelled</button>
+            <div class="ac-search-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" id="ac-order-search" data-i18n-placeholder="account.search_ph" placeholder="Search orders…" data-i18n-aria-label="account.search_aria" aria-label="Search orders">
+            </div>
+          </div>
+          <div class="ac-order-list" id="ac-orders-body"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/account-page.js?v=130"></script>
+</body>
+</html>

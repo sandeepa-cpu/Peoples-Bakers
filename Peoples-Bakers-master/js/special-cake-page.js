@@ -2,7 +2,12 @@
  * Customize Cake page — simple photo cake request flow.
  */
 (function () {
-  var WHATSAPP_NUMBER = '94712345678';
+  function getWhatsAppNumber() {
+    if (window.PB_CONTACT && window.PB_CONTACT.whatsappNumber) {
+      return String(window.PB_CONTACT.whatsappNumber).replace(/\D/g, '');
+    }
+    return '947228955477';
+  }
 
   function getFormState(form) {
     function val(name) {
@@ -89,7 +94,7 @@
         var message = buildLines(getFormState(form)).join('\n');
         whatsapp.setAttribute(
           'href',
-          'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message)
+          'https://wa.me/' + getWhatsAppNumber() + '?text=' + encodeURIComponent(message)
         );
       });
     }

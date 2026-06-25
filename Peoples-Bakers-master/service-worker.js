@@ -1,7 +1,8 @@
-const CACHE_NAME = "peoples-bakers-v87";
+const CACHE_NAME = "peoples-bakers-v147";
 const APP_SHELL_FILES = [
   "./",
   "index.html",
+  "find-us.html",
   "products.html",
   "legacy.html",
   "cakes.html",
@@ -10,20 +11,33 @@ const APP_SHELL_FILES = [
   "login.html",
   "feedback.html",
   "checkout.html",
+  "account.html",
+  "css/account.css",
+  "payment-return.html",
   "css/style.css",
+  "css/admin.css",
   "js/main.js",
   "js/cart.js",
+  "js/find-us.js",
+  "js/admin.js",
+  "data/outlets.json",
   "js/feedback-page.js",
   "js/order-page.js",
+  "js/checkout-page.js",
   "js/special-cake-page.js",
   "js/i18n.js",
   "js/cakes-page.js",
   "js/cakes-data.js",
   "js/auth.js",
+  "js/account-page.js",
   "data/cakes.json",
   "manifest.webmanifest",
   "icons/app-icon.svg",
-  "images/logo.png"
+  "images/logo.png",
+  "images/photo-cake-sample.jpg",
+  "images/outlets/outlet-colombo.png",
+  "images/outlets/outlet-govinna.png",
+  "images/outlets/outlet-event.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -55,6 +69,19 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+function stripQuery(url) {
+  const u = new URL(url);
+  u.search = "";
+  return u.toString();
+}
+
+function cacheMatch(request) {
+  return caches.match(request).then((hit) => {
+    if (hit) return hit;
+    return caches.match(stripQuery(request.url));
+  });
+}
+
 function isCakeCatalogRequest(url) {
   const p = url.pathname;
   return (
@@ -64,11 +91,20 @@ function isCakeCatalogRequest(url) {
 
 function isFreshAlwaysRequest(url) {
   const p = url.pathname;
-  // HTML pages + translation files — always try network first so nav / copy updates show up.
   return (
     p.endsWith(".html") ||
     p.endsWith("/") ||
-    p.includes("/js/translations/")
+    p.includes("/js/translations/") ||
+    p.endsWith("/css/style.css") ||
+    p.endsWith("/css/account.css") ||
+    p.endsWith("/css/admin.css") ||
+    p.endsWith("/js/main.js") ||
+    p.endsWith("/js/cart.js") ||
+    p.endsWith("/js/order-page.js") ||
+    p.endsWith("/js/checkout-page.js") ||
+    p.endsWith("/js/auth.js") ||
+    p.endsWith("/js/account-page.js") ||
+    p.endsWith("/js/admin.js")
   );
 }
 
@@ -79,7 +115,6 @@ self.addEventListener("fetch", (event) => {
 
   const requestUrl = new URL(event.request.url);
 
-  // Never cache or intercept API calls — always hit the network.
   if (
     requestUrl.origin === self.location.origin &&
     requestUrl.pathname.startsWith("/api/")
@@ -87,7 +122,6 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Network-first for cake catalog + HTML pages + translations so nav / copy updates show up fast.
   if (
     requestUrl.origin === self.location.origin &&
     (isCakeCatalogRequest(requestUrl) || isFreshAlwaysRequest(requestUrl))
@@ -97,19 +131,19 @@ self.addEventListener("fetch", (event) => {
         .then((networkResponse) => {
           if (networkResponse.ok) {
             const responseClone = networkResponse.clone();
-            caches
-              .open(CACHE_NAME)
-              .then((cache) => cache.put(event.request, responseClone));
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(stripQuery(event.request.url), responseClone);
+            });
           }
           return networkResponse;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => cacheMatch(event.request))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
+    cacheMatch(event.request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
@@ -120,9 +154,9 @@ self.addEventListener("fetch", (event) => {
 
           if (url.origin === self.location.origin) {
             const responseClone = networkResponse.clone();
-            caches
-              .open(CACHE_NAME)
-              .then((cache) => cache.put(event.request, responseClone));
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(stripQuery(event.request.url), responseClone);
+            });
           }
 
           return networkResponse;

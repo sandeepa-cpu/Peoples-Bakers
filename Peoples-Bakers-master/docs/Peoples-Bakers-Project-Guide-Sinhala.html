@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>Peoples Bakers — Project Guide (සිංහල)</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Iskoola Pota", "Nirmala UI", "Segoe UI", Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.62;
+      color: #1a1a1a;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 10mm;
+    }
+    h1 {
+      font-size: 19pt;
+      color: #6b1f63;
+      margin: 0 0 4px;
+      border-bottom: 3px solid #ef9f27;
+      padding-bottom: 8px;
+      line-height: 1.3;
+    }
+    .subtitle { color: #555; font-size: 10pt; margin-bottom: 18px; }
+    h2 {
+      font-size: 12.5pt;
+      color: #854f0b;
+      margin: 20px 0 8px;
+      page-break-after: avoid;
+      border-bottom: 1px solid #e8dcc8;
+      padding-bottom: 4px;
+    }
+    h3 { font-size: 10.5pt; color: #333; margin: 12px 0 5px; page-break-after: avoid; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #faf6f1; color: #6b1f63; font-weight: 600; }
+    tr:nth-child(even) td { background: #fcfcfc; }
+    .box {
+      background: #faf6f1;
+      border-left: 4px solid #ef9f27;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+    .box-purple {
+      background: #f8f0f7;
+      border-left-color: #6b1f63;
+    }
+    .box-green {
+      background: #eef7ef;
+      border-left-color: #2e7d32;
+    }
+    .box-red {
+      background: #fdecea;
+      border-left-color: #c0392b;
+    }
+    pre, .code-block {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9pt;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 8px 0 12px;
+    }
+    ul, ol { margin: 6px 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    .diagram {
+      background: #fff;
+      border: 1px dashed #ccc;
+      padding: 12px;
+      font-family: Consolas, monospace;
+      font-size: 8.5pt;
+      line-height: 1.45;
+      margin: 10px 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 8.5pt;
+      font-weight: 600;
+    }
+    .badge-ok { background: #e8f5e9; color: #2e7d32; }
+    .badge-warn { background: #fff8e1; color: #854f0b; }
+    .badge-fix { background: #e3f2fd; color: #1565c0; }
+    .toc { font-size: 10pt; }
+    .toc li { margin: 5px 0; }
+    .footer {
+      margin-top: 20px;
+      padding-top: 8px;
+      border-top: 1px solid #ddd;
+      font-size: 9pt;
+      color: #666;
+      text-align: center;
+    }
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+
+<h1>Peoples Bakers — Project Guide</h1>
+<p class="subtitle">Frontend + Backend architecture, server run කරන හැටි, bug fixes, mobile responsive, සහ daily use — සම්පූර්ණ සිංහල මාර්ගෝපදේශය<br>
+<strong>Version:</strong> 1.1 &nbsp;|&nbsp; <strong>Date:</strong> June 2026 &nbsp;|&nbsp; <strong>Stack:</strong> HTML/CSS/JS + Node.js 22+ + SQLite</p>
+
+<div class="box box-purple">
+  <strong>මේ guide එක කවුද?</strong> — Project එක internet hosting කරන්න කලින්, local computer එකේ run කරලා understand කරගන්න ඕන අයට. Developer නොවුනත් පියවර follow කරලා site එක test කරන්න පුළුවන්.
+</div>
+
+<h2>Contents — අන්තර්ගතය</h2>
+<ol class="toc">
+  <li>Project එක මොකක්ද?</li>
+  <li>Frontend vs Backend — simple විස්තරය</li>
+  <li>Technology stack</li>
+  <li>Folder structure (files කොහෙද?)</li>
+  <li>Server run කරන හැටි — step by step</li>
+  <li>Important URLs &amp; pages</li>
+  <li>Backend (API) කරන දේවල්</li>
+  <li>Database (SQLite)</li>
+  <li>Admin panel</li>
+  <li>Languages — Sinhala / English / Tamil</li>
+  <li>Fix කළ bugs — summary</li>
+  <li>Environment variables (.env)</li>
+  <li>Testing &amp; verify</li>
+  <li>Common mistakes</li>
+  <li>Production / hosting (short)</li>
+  <li>Mobile responsive — phone user experience (NEW)</li>
+</ol>
+
+<h2 class="page-break">1. Project එක මොකක්ද?</h2>
+<p><strong>Peoples Bakers</strong> website එක Sri Lankan bakery business එකක් online වෙන්න build කරපු full-stack web application එකක්. Customer එකට:</p>
+<ul>
+  <li>Products &amp; cakes browse කරන්න</li>
+  <li>Shopping basket එකට items add කර order place කරන්න</li>
+  <li>WhatsApp / phone / PayHere payment use කරන්න</li>
+  <li>Account create කර order history බලන්න</li>
+  <li>Feedback send කරන්න</li>
+  <li>Outlets map එකෙන් branch සොයන්න</li>
+</ul>
+<p>Business owner / staff ට <strong>Admin panel</strong> එකෙන් orders, products, feedback manage කරන්න පුළුවන්.</p>
+
+<div class="box">
+  <strong>Important:</strong> මේ project එක <em>plain HTML file double-click</em> කරලා open කරන්න බෑ. <strong>Node.js server</strong> එක run කරලා <code>http://localhost:3000</code> වලින් open කරන්න ඕන. Live Server, file://, හෝ PHP-only hosting වල backend work වෙන්නේ නැහැ.
+</div>
+
+<h2>2. Frontend vs Backend — simple විස්තරය</h2>
+
+<h3>Frontend (ඉදිරිපස — user දකින එක)</h3>
+<p>Browser එකේ run වෙන දේවල්. User click කර, scroll කර, form fill කරන සියල්ල.</p>
+<ul>
+  <li><strong>HTML</strong> — page structure (index.html, order.html, …)</li>
+  <li><strong>CSS</strong> — colors, layout, mobile design (css/style.css)</li>
+  <li><strong>JavaScript</strong> — cart, checkout, language switch, maps (js/ folder)</li>
+  <li><strong>Images</strong> — products, hero photos (images/ folder)</li>
+</ul>
+<p>Frontend එක alone වලින් orders save වෙන්නේ, login work වෙන්නේ, admin panel live data show වෙන්නේ <strong>නැහැ</strong>. API call කරන්න backend server එක ඕන.</p>
+
+<h3>Backend (පසුපස — server එකේ run වෙන එක)</h3>
+<p>Computer/server එකේ run වෙන <strong>Node.js + Express</strong> program එක (<code>server/server.js</code>). මේක:</p>
+<ul>
+  <li>Static files (HTML, CSS, JS, images) browser එකට serve කරනවා</li>
+  <li>REST API endpoints handle කරනවා (<code>/api/...</code>)</li>
+  <li>Login tokens (JWT) verify කරනවා</li>
+  <li>Orders, users, feedback, products <strong>SQLite database</strong> එකේ save කරනවා</li>
+  <li>PayHere payment webhooks process කරනවා</li>
+  <li>Admin-only data protect කරනවා</li>
+</ul>
+
+<div class="diagram">
+  ┌─────────────┐         HTTP requests          ┌──────────────────────┐
+  │   Browser   │  ───────────────────────────►  │  Node.js Server      │
+  │  (Frontend) │  ◄───────────────────────────  │  (Backend)           │
+  │  HTML/CSS/JS│    HTML + JSON responses       │  server/server.js    │
+  └─────────────┘                                └──────────┬───────────┘
+                                                              │
+                                                              ▼
+                                                   ┌──────────────────────┐
+                                                   │  SQLite Database     │
+                                                   │  peoples-bakers.db   │
+                                                   └──────────────────────┘
+</div>
+
+<p><strong>Simple analogy:</strong> Frontend = shop display window. Backend = kitchen + cashier + record book. Customer window එක බලනවා; order kitchen එකට යනවා database එකේ save වෙනවා.</p>
+
+<h2>3. Technology stack</h2>
+<table>
+  <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>Frontend</td><td>HTML5, CSS3, Vanilla JavaScript</td><td>Pages, styling, cart, i18n</td></tr>
+  <tr><td>Backend</td><td>Node.js 22.5+ , Express 4</td><td>API + static file server</td></tr>
+  <tr><td>Database</td><td>SQLite (node:sqlite built-in)</td><td>Users, orders, products, feedback</td></tr>
+  <tr><td>Auth</td><td>JWT + httpOnly cookies, bcrypt</td><td>Secure login</td></tr>
+  <tr><td>Payments</td><td>PayHere integration</td><td>Online card/LankaQR payments</td></tr>
+  <tr><td>Email</td><td>Nodemailer (optional SMTP)</td><td>Order confirmations, welcome emails</td></tr>
+  <tr><td>PWA</td><td>service-worker.js</td><td>Offline cache for static assets</td></tr>
+  <tr><td>i18n</td><td>js/i18n.js + en/si/ta JSON</td><td>3 languages</td></tr>
+</table>
+
+<h2 class="page-break">4. Folder structure — files කොහෙද?</h2>
+<pre>
+Peoples-Bakers-master/
+├── index.html          ← Home page
+├── order.html          ← Order online + checkout
+├── products.html       ← Products &amp; cakes catalogue
+├── account.html        ← Customer account
+├── login.html          ← Sign in / register
+├── admin.html          ← Admin dashboard UI
+├── pb-office.html      ← Admin (alternate URL — same as admin)
+├── css/                ← Stylesheets
+├── js/                 ← Frontend JavaScript
+│   ├── main.js         ← Site-wide (cart, contact, social links)
+│   ├── cart.js         ← Shopping basket
+│   ├── checkout-page.js← Checkout form + PayHere
+│   ├── i18n.js         ← Language switcher
+│   └── translations/   ← en.json, si.json, ta.json
+├── images/             ← Product &amp; hero images
+├── data/               ← outlets.json (branch list)
+├── server/             ← ★ BACKEND ★
+│   ├── server.js       ← Main server (start here)
+│   ├── auth.js         ← Login/JWT
+│   ├── store.js        ← SQLite database layer
+│   ├── seed.js         ← First-run data seeding
+│   ├── payhere.js      ← Payment gateway
+│   ├── admin-api.js    ← Admin routes
+│   └── data/
+│       └── peoples-bakers.db  ← Database file (auto-created)
+├── scripts/
+│   └── verify-backend.js ← Health check script
+├── .env                ← Secret settings (YOU create — not in git)
+├── .env.example        ← Template for .env
+└── package.json        ← npm commands
+</pre>
+
+<h2>5. Server run කරන හැටි — Step by Step</h2>
+
+<h3>Requirements (අවශ්‍ය දේවල්)</h3>
+<ul>
+  <li><strong>Node.js 22.5 or newer</strong> — <a href="https://nodejs.org">nodejs.org</a> download</li>
+  <li>Project folder extract කරලා තියෙන්න ඕන</li>
+  <li>Windows: PowerShell හෝ Command Prompt</li>
+</ul>
+
+<h3>Step 1 — Project folder එකට යන්න</h3>
+<pre>cd "C:\Users\...\Peoples-Bakers-master"</pre>
+
+<h3>Step 2 — Dependencies install (පළමු වතාවට විතර)</h3>
+<pre>npm install</pre>
+<p>මේක <code>node_modules</code> folder එක create කර dependencies download කරනවා. Internet connection ඕන.</p>
+
+<h3>Step 3 — Server start කරන්න</h3>
+<pre>npm start</pre>
+<p>Terminal එකේ මේ විදිහ message එකක් පෙන්වන්න ඕන:</p>
+<pre>Peoples Bakers server running at http://localhost:3000</pre>
+
+<h3>Step 4 — Browser එක open කරන්න</h3>
+<p>Address bar එකේ type කරන්න:</p>
+<pre>http://localhost:3000</pre>
+
+<div class="box box-green">
+  <strong>✓ Success check:</strong> Home page load වෙනවා, images පෙන්වනවා, cart button work වෙනවා. Terminal window එක <strong>close කරන්න එපා</strong> — server stop වෙනවා.
+</div>
+
+<h3>Other useful commands</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>npm start</code></td><td>Server run කරනවා (production mode)</td></tr>
+  <tr><td><code>npm run dev</code></td><td>Auto-restart when files change (development)</td></tr>
+  <tr><td><code>npm run verify</code></td><td>Backend health check (server running වෙන්න ඕන)</td></tr>
+  <tr><td><code>npm run seed</code></td><td>Database re-seed (existing data duplicate නොවෙන විදිහට)</td></tr>
+</table>
+
+<h3>Server stop කරන්න</h3>
+<p>Terminal එකේ <strong>Ctrl + C</strong> press කරන්න.</p>
+
+<h2 class="page-break">6. Important URLs &amp; Pages</h2>
+<table>
+  <tr><th>URL</th><th>Page</th><th>Description</th></tr>
+  <tr><td><code>http://localhost:3000/</code></td><td>index.html</td><td>Home — hero, products, outlets</td></tr>
+  <tr><td><code>/order.html</code></td><td>Order Online</td><td>WhatsApp, checkout, PayHere</td></tr>
+  <tr><td><code>/products.html</code></td><td>Products</td><td>Full catalogue + cakes</td></tr>
+  <tr><td><code>/account.html</code></td><td>My Account</td><td>Profile, order history (login required)</td></tr>
+  <tr><td><code>/login.html</code></td><td>Login / Register</td><td>Customer accounts</td></tr>
+  <tr><td><code>/find-us.html</code></td><td>Find Us</td><td>Outlet map &amp; search</td></tr>
+  <tr><td><code>/feedback.html</code></td><td>Feedback</td><td>Customer reviews</td></tr>
+  <tr><td><code>/special-cake.html</code></td><td>Customize Cake</td><td>Photo cake requests</td></tr>
+  <tr><td><code>/pb-office.html</code></td><td>Admin Panel</td><td>Staff dashboard (admin login)</td></tr>
+  <tr><td><code>/admin.html</code></td><td>Admin (alt URL)</td><td>Same admin panel</td></tr>
+  <tr><td><code>/api/health</code></td><td>API check</td><td>Server alive ද? JSON response</td></tr>
+</table>
+
+<h3>Default admin login (development)</h3>
+<div class="box box-warn">
+  First run වෙද්දී terminal එකේ admin credentials print වෙනවා. Development default:<br>
+  <strong>Email:</strong> admin@peoplesbakers.lk<br>
+  <strong>Password:</strong> admin123 (dev only — production වල strong password set කරන්න!)
+</div>
+
+<h2>7. Backend (API) — server එක handle කරන දේවල්</h2>
+<table>
+  <tr><th>Area</th><th>Endpoints</th><th>Notes</th></tr>
+  <tr><td>Auth</td><td>POST /api/auth/register, login, logout<br>GET /api/auth/me</td><td>JWT cookie — secure login</td></tr>
+  <tr><td>Orders</td><td>POST /api/orders, GET /api/orders<br>POST /api/orders/:id/cancel</td><td>Checkout saves here</td></tr>
+  <tr><td>Products</td><td>GET /api/products<br>Admin: POST/PUT/DELETE</td><td>Catalog from database</td></tr>
+  <tr><td>Feedback</td><td>POST /api/feedback</td><td>feedback.html → here</td></tr>
+  <tr><td>Payments</td><td>POST /api/payments/payhere/checkout<br>POST /api/payments/payhere/notify</td><td>PayHere gateway</td></tr>
+  <tr><td>Outlets</td><td>GET /api/outlets, /nearby, /geojson</td><td>Branch finder API</td></tr>
+  <tr><td>Config</td><td>GET /api/config</td><td>WhatsApp, phone, social URLs</td></tr>
+  <tr><td>Admin</td><td>GET /api/admin/stats, orders, users…</td><td>Admin role required</td></tr>
+</table>
+
+<h2>8. Database (SQLite)</h2>
+<p>Data save වෙන්නේ single file එකක්:</p>
+<pre>server/data/peoples-bakers.db</pre>
+<ul>
+  <li>Users, orders, products, feedback, settings — සියල්ල මේ file එකේ</li>
+  <li>First start වෙද්දී auto-create + seed වෙනවා</li>
+  <li>Reset කරන්න ඕන නම්: server stop → <code>server/data/</code> folder delete → <code>npm start</code></li>
+  <li>Production: <code>DB_PATH</code> env var use කර persistent disk path එකක් set කරන්න</li>
+</ul>
+
+<h2 class="page-break">9. Admin Panel</h2>
+<p><code>http://localhost:3000/pb-office.html</code> — admin login කරලා:</p>
+<ul>
+  <li>New orders view &amp; status update (pending → confirmed → preparing → delivered)</li>
+  <li>Products add/edit/delete</li>
+  <li>Customer feedback read</li>
+  <li>Users list</li>
+  <li>Settings (WhatsApp number, business name, …)</li>
+  <li>Kitchen display mode</li>
+</ul>
+<p>Admin routes protected — normal customer login වලින් admin data access වෙන්නේ නැහැ.</p>
+
+<h2>10. Languages — Sinhala / English / Tamil</h2>
+<p>Site එකේ top-right corner එකේ language switcher: <strong>EN | සිං | த</strong></p>
+<ul>
+  <li>Translation files: <code>js/translations/en.json</code>, <code>si.json</code>, <code>ta.json</code></li>
+  <li>HTML elements use <code>data-i18n="key.name"</code> attributes</li>
+  <li>Choice saved in browser localStorage</li>
+</ul>
+
+<h2>11. Fix කළ Bugs — Summary</h2>
+<p>Project audit එකකින් හමු වුණ issues fix කරලා තියෙනවා. Main categories:</p>
+
+<h3>Critical fixes <span class="badge badge-ok">FIXED</span></h3>
+<table>
+  <tr><th>Bug</th><th>Fix</th></tr>
+  <tr><td>Checkout stale cart</td><td>Submit වෙද්දී cart re-read + event listener</td></tr>
+  <tr><td>Client price manipulation</td><td>Server-side catalog prices only; invalid products rejected</td></tr>
+  <tr><td>Default admin password</td><td>Production: ADMIN_SEED_PASSWORD required; dev-only admin123</td></tr>
+  <tr><td>Weak JWT secret</td><td>Production: JWT_SECRET 32+ chars required; secure cookies</td></tr>
+</table>
+
+<h3>Medium fixes <span class="badge badge-fix">FIXED</span></h3>
+<table>
+  <tr><th>Bug</th><th>Fix</th></tr>
+  <tr><td>Admin URL 404</td><td>/pb-office.html + /admin.html both work</td></tr>
+  <tr><td>Stale JWT user role</td><td>Auth middleware DB refresh</td></tr>
+  <tr><td>PayHere sandbox default</td><td>Production defaults to live unless PAYHERE_SANDBOX=true</td></tr>
+  <tr><td>PayHere fail cancels order</td><td>Failed payment no longer auto-cancels order</td></tr>
+  <tr><td>Phone discount fraud</td><td>Discount only for logged-in users with matching phone</td></tr>
+  <tr><td>Wrong WhatsApp numbers</td><td>All pages use config API + correct default 947228955477</td></tr>
+  <tr><td>Service worker stale cache</td><td>Network-first for main JS/CSS</td></tr>
+  <tr><td>Sinhala broken text</td><td>Translation JSON fixes</td></tr>
+</table>
+
+<h3>Low priority fixes <span class="badge badge-fix">FIXED</span></h3>
+<ul>
+  <li>Instagram / LinkedIn dead links → real social URLs + config API</li>
+  <li>Home page i18n — nav, footer, products, outlets</li>
+  <li>Account page i18n — nav + dynamic order text</li>
+  <li>Order page FAQ &amp; zone Sinhala translations</li>
+  <li>Feedback spam rate limiting</li>
+  <li>SQLite write transactions (crash safety)</li>
+  <li>Outlets catalog missing file — graceful fallback</li>
+  <li><strong>Mobile hamburger menu</strong> — phone nav compact drawer</li>
+  <li><strong>Slow network image loading</strong> — hero defer + lazy images</li>
+</ul>
+
+<h2>12. Environment Variables (.env)</h2>
+<p>Project root එකේ <code>.env</code> file එක create කරන්න (<code>.env.example</code> copy කර edit):</p>
+<pre># Development minimum
+JWT_SECRET=your-long-random-string-at-least-32-chars
+SITE_URL=http://localhost:3000
+
+# Contact (optional — defaults work)
+WHATSAPP_NUMBER=947228955477
+SITE_PHONE_TEL=+94228955477
+
+# Production MUST set:
+# NODE_ENV=production
+# ADMIN_SEED_PASSWORD=strong-password
+# SITE_URL=https://www.yourdomain.lk
+# PAYHERE_MERCHANT_ID=...
+# PAYHERE_MERCHANT_SECRET=...</pre>
+<p><strong>Never commit .env to git</strong> — passwords/secrets එකේ තියෙනවා.</p>
+
+<h2 class="page-break">13. Testing — verify කරන්න</h2>
+<p>Server run වෙන state එකේ (terminal එක open):</p>
+<pre>npm run verify</pre>
+<p>All checks passed message එක පෙන්වන්න ඕන:</p>
+<ul>
+  <li>/api/health, /api/config, /api/outlets</li>
+  <li>Admin login test</li>
+  <li>Static assets (index.html, images)</li>
+</ul>
+
+<h3>Manual test checklist</h3>
+<ol>
+  <li>Home page — images, language switch (සිං)</li>
+  <li>Products → cart → order checkout</li>
+  <li>Login → account page → order history</li>
+  <li>Admin login → orders view</li>
+  <li>WhatsApp buttons — correct number</li>
+  <li><strong>Mobile:</strong> ☰ menu open/close, order flow on phone</li>
+  <li>Hard refresh: Ctrl+Shift+R (cache clear)</li>
+</ol>
+
+<h2>14. Common Mistakes — වරදවල්</h2>
+<table>
+  <tr><th>Mistake</th><th>Result</th><th>Solution</th></tr>
+  <tr><td>HTML file double-click</td><td>API calls fail, login broken</td><td><code>npm start</code> → localhost:3000</td></tr>
+  <tr><td>VS Code Live Server use</td><td>Backend not running</td><td><code>npm start</code> use කරන්න</td></tr>
+  <tr><td>Terminal close කරනවා</td><td>Site down</td><td>Terminal open තියන්න</td></tr>
+  <tr><td>Port 3000 busy</td><td>Server start fail</td><td>Old terminal close / PORT=3001 npm start</td></tr>
+  <tr><td>.env missing JWT_SECRET (production)</td><td>Server exit</td><td>.env file create කර set කරන්න</td></tr>
+  <tr><td>Old browser cache</td><td>Old JS/CSS load</td><td>Ctrl+Shift+R hard refresh</td></tr>
+</table>
+
+<h2>15. Production / Hosting (short)</h2>
+<p>Live internet වල deploy කරන්න:</p>
+<ul>
+  <li><strong>Node.js supported hosting</strong> ඕන (cPanel Node, Render, Railway, VPS)</li>
+  <li>Plain PHP-only / GitHub Pages — <strong>NOT suitable</strong></li>
+  <li>SSL certificate (HTTPS) — PayHere webhooks සඳහා mandatory</li>
+  <li>Persistent disk for SQLite database</li>
+  <li>Full hosting guide: <code>docs/Peoples-Bakers-Hosting-Guide-Sinhala.pdf</code></li>
+</ul>
+
+<div class="box box-purple">
+  <strong>Recommended hosting check:</strong> Node.js 22+, 24/7 process, SQLite persistent path, SSL, PayHere notify URL reachable, Singapore DC = OK for SL customers (low latency impact if setup correct).
+</div>
+
+<h2 class="page-break">16. Mobile Responsive — Phone User Experience</h2>
+
+<div class="box box-green">
+  <strong>Why important?</strong> Sri Lanka වල customers බොහෝ දෙනෙක් <strong>mobile phone</strong> එකෙන් site එක use කරනවා. Website එක phone screen එකට fit වෙන්න, fast load වෙන්න, easy navigate වෙන්න ඕන.
+</div>
+
+<h3>16.1 Responsive design — මොකක්ද?</h3>
+<p><strong>Responsive</strong> කියන්නේ screen size එක (phone, tablet, laptop) අනුව layout automatically adjust වෙනවා. Desktop වල wide grid එක, phone වල single column — images, text, buttons overflow නොවී පෙන්වනවා.</p>
+<p>Project එකේ:</p>
+<ul>
+  <li><code>&lt;meta name="viewport" ...&gt;</code> — phone zoom/layout correct</li>
+  <li><code>css/style.css</code> — 30+ media queries (768px, 900px, 1024px breakpoints)</li>
+  <li>Grids (products, outlets, footer) → phone වල <strong>1 column</strong></li>
+  <li>Cart side drawer, WhatsApp floating button — touch-friendly</li>
+  <li>PWA manifest — home screen add කරන්න පුළුවන්</li>
+</ul>
+
+<h3>16.2 Hamburger menu (☰) — NEW improvement</h3>
+<p><strong>Problem (before):</strong> Phone වල nav links wrap වෙලා navbar එක tall, cluttered වුණා.</p>
+<p><strong>Solution (now):</strong> Screen width <strong>900px</strong> යට:</p>
+<ul>
+  <li><strong>☰ Hamburger button</strong> — tap කර menu open</li>
+  <li>Links side drawer එකක stack වෙනවා (Our History, Products, Order, …)</li>
+  <li>Backdrop tap / link click / Escape key — menu close</li>
+  <li>Order Online button compact (icon only on small screens)</li>
+</ul>
+<p>Files: <code>js/main.js</code> (setupMobileNav) + <code>css/style.css</code> (nav drawer styles)</p>
+
+<h3>16.3 Slow network / 3G — image speed improvements</h3>
+<p>Mobile data slow වෙද්දී heavy images site slow කරනවා. Fixes:</p>
+<table>
+  <tr><th>Feature</th><th>What it does</th></tr>
+  <tr><td>Hero slide defer</td><td>Home page first hero image only loads fast; other 4 slides load later (staggered)</td></tr>
+  <tr><td>Hero preload</td><td>First hero image preloaded for faster first paint</td></tr>
+  <tr><td>Lazy images</td><td>Below-fold <code>&lt;img&gt;</code> tags get <code>loading="lazy"</code></td></tr>
+  <tr><td>Product card backgrounds</td><td>Home page product photos load when user scrolls near them</td></tr>
+</table>
+<p>Files: <code>js/main.js</code> (setupProgressiveImages)</p>
+
+<h3>16.4 Mobile UX checklist — test කරන්න</h3>
+<ol>
+  <li>Chrome DevTools → <strong>Ctrl+Shift+M</strong> (mobile view) හෝ real phone</li>
+  <li>☰ menu open → link tap → menu close</li>
+  <li>Home scroll — products images appear when scrolling</li>
+  <li>Cart → checkout form fill (phone keyboard)</li>
+  <li>WhatsApp FAB button tap</li>
+  <li>Language switch <strong>සිං</strong> on phone</li>
+  <li>Hard refresh <strong>Ctrl+Shift+R</strong> after updates</li>
+</ol>
+
+<div class="box">
+  <strong>Live hosting වලත්:</strong> Mobile responsive CSS/JS server එකෙන් serve වෙනවා — domain live කරපු පස්සේ phone වල same experience. Hosting guide: <code>Peoples-Bakers-Hosting-Guide-Sinhala.pdf</code> (Desktop එකේ).
+</div>
+
+<h2>Quick Reference Card</h2>
+<table>
+  <tr><th>Task</th><th>Command / URL</th></tr>
+  <tr><td>Install</td><td><code>npm install</code></td></tr>
+  <tr><td>Run server</td><td><code>npm start</code></td></tr>
+  <tr><td>Open site</td><td><code>http://localhost:3000</code></td></tr>
+  <tr><td>Admin</td><td><code>http://localhost:3000/pb-office.html</code></td></tr>
+  <tr><td>Verify</td><td><code>npm run verify</code></td></tr>
+  <tr><td>Stop server</td><td>Ctrl+C in terminal</td></tr>
+  <tr><td>WhatsApp default</td><td>+94 22 895 5477 (947228955477)</td></tr>
+  <tr><td>Database file</td><td>server/data/peoples-bakers.db</td></tr>
+  <tr><td>Mobile menu</td><td>☰ button (screen &lt; 900px)</td></tr>
+  <tr><td>Hosting PDF</td><td>Peoples-Bakers-Hosting-Guide-Sinhala.pdf</td></tr>
+</table>
+
+<div class="footer">
+  Peoples Bakers Project Guide v1.1 — Sinhala PDF &nbsp;|&nbsp; Updated June 2026<br>
+  Includes: 15 core sections + Mobile responsive guide &nbsp;|&nbsp; hello@peoplesbakers.lk
+</div>
+
+</body>
+</html>

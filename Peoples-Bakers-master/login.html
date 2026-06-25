@@ -394,6 +394,13 @@
       margin-bottom: 0.42rem;
     }
 
+    .field-hint {
+      margin: 0.45rem 0 0;
+      font-size: 0.75rem;
+      color: #9a8fa0;
+      line-height: 1.45;
+    }
+
     .f-wrap { position: relative; }
 
     .f-wrap .fi {
@@ -626,7 +633,7 @@
 
             <div class="auth-row">
               <label><input type="checkbox"> Remember me</label>
-              <a href="#">Forgot Password?</a>
+              <a href="#" onclick="alert('Password reset is not available yet. Contact us on WhatsApp or register a new account.');return false;">Forgot Password?</a>
             </div>
 
             <button type="submit" class="btn-submit">Sign In</button>
@@ -675,6 +682,7 @@
                 <i class="fa-solid fa-phone fi"></i>
                 <input type="tel" id="r-phone" placeholder="+94 77 123 4567">
               </div>
+              <p class="field-hint" id="r-phone-discount-hint">Add a valid mobile number (07XXXXXXXX) to get a discount on your orders.</p>
             </div>
 
             <div class="field">

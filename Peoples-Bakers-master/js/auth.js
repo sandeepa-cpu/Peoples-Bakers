@@ -41,12 +41,22 @@
     el.style.color = ok ? "#7CFC9A" : "#ff8a80";
   }
 
+  function safeNextUrl(next) {
+    if (!next) return null;
+    try {
+      var url = new URL(next, location.origin);
+      if (url.origin !== location.origin) return null;
+      return url.pathname + url.search + url.hash;
+    } catch (e) {
+      if (next.charAt(0) === "/" && next.charAt(1) !== "/") return next;
+      return null;
+    }
+  }
+
   function go(user) {
-    var next = new URLSearchParams(location.search).get("next");
+    var next = safeNextUrl(new URLSearchParams(location.search).get("next"));
     if (next) {
       location.href = next;
-    } else if (user && user.role === "admin") {
-      location.href = "admin.html";
     } else {
       location.href = "index.html";
     }
@@ -195,5 +205,19 @@
           btn.textContent = orig;
         });
     });
+  }
+
+  var phoneHint = document.getElementById("r-phone-discount-hint");
+  if (phoneHint) {
+    fetch("/api/config", { credentials: "same-origin" })
+      .then(function (res) {
+        return res.ok ? res.json() : null;
+      })
+      .then(function (cfg) {
+        if (cfg && cfg.phoneDiscountEnabled && cfg.phoneDiscountHint) {
+          phoneHint.textContent = cfg.phoneDiscountHint;
+        }
+      })
+      .catch(function () {});
   }
 })();

@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
             <i class="fa-brands fa-facebook-f"></i>
             <span class="social-label">Facebook</span>
           </a>
-          <a href="#" aria-label="Instagram" class="social-icon">
+          <a href="https://www.instagram.com/peoplesbakers/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon" data-social-instagram>
             <i class="fa-brands fa-instagram"></i>
             <span class="social-label">Instagram</span>
           </a>
@@ -35,7 +35,7 @@
             <i class="fa-brands fa-tiktok"></i>
             <span class="social-label">TikTok</span>
           </a>
-          <a href="#" aria-label="LinkedIn" class="social-icon">
+          <a href="https://www.linkedin.com/company/peoples-bakers/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon" data-social-linkedin>
             <i class="fa-brands fa-linkedin-in"></i>
             <span class="social-label">LinkedIn</span>
           </a>
@@ -53,7 +53,7 @@
           <a href="products.html" class="nav-active" data-i18n="nav.products">Products</a>
           <a href="special-cake.html">Customize Cake</a>
           <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
-          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
           <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="nav-actions">
@@ -73,20 +73,56 @@
 
   <main>
 
-    <section class="legacy-hero products-hero">
-      <div class="legacy-hero-content">
-        <span class="hero-tag" data-i18n="products_page.hero_tag">FRESH BAKED DAILY</span>
-        <h1 data-i18n="products_page.h1">Our Products</h1>
-        <p data-i18n="products_page.sub">Breads, cakes, savouries, and more — crafted with quality ingredients and served with pride.</p>
+    <section class="legacy-hero products-hero products-hero--premium" aria-labelledby="products-hero-title">
+      <div class="products-hero__bg" aria-hidden="true"></div>
+      <div class="products-hero__overlay" aria-hidden="true"></div>
+      <div class="products-hero__grain" aria-hidden="true"></div>
+
+      <div class="legacy-hero-content products-hero__content">
+        <span class="hero-tag products-hero__tag" data-i18n="products_page.hero_tag">FRESH BAKED DAILY</span>
+        <h1 id="products-hero-title" data-i18n="products_page.h1">Our Products</h1>
+        <p class="products-hero__lede" data-i18n="products_page.sub">Breads, cakes, savouries, and more — crafted with quality ingredients and served with pride.</p>
+
+        <div class="products-hero__cta">
+          <a href="order.html" class="btn btn-primary"><i class="fa-solid fa-bag-shopping"></i> Order Online</a>
+          <a href="#products-menu" class="btn btn-outline"><i class="fa-solid fa-utensils"></i> Browse Menu</a>
+        </div>
+
+        <ul class="products-hero__pills" aria-label="Product highlights">
+          <li><i class="fa-solid fa-bread-slice" aria-hidden="true"></i> Breads &amp; buns</li>
+          <li><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> Celebration cakes</li>
+          <li><i class="fa-solid fa-fire-burner" aria-hidden="true"></i> Baked every morning</li>
+        </ul>
       </div>
+
+      <div class="products-hero__stats" aria-label="Peoples Bakers at a glance">
+        <div class="products-hero__stat">
+          <strong>150+</strong>
+          <span>Outlets island-wide</span>
+        </div>
+        <div class="products-hero__stat">
+          <strong>Since 2015</strong>
+          <span>Trusted baking</span>
+        </div>
+        <div class="products-hero__stat">
+          <strong>Daily</strong>
+          <span>Fresh from the oven</span>
+        </div>
+      </div>
+
+      <a href="#products-menu" class="hero-scroll products-hero__scroll" aria-label="Scroll to menu">
+        <span></span>
+      </a>
     </section>
 
     <section class="products-catalog-section">
       <div class="container">
 
-        <span class="section-tag centered" data-i18n="products_page.menu_tag">Menu</span>
-        <h2 class="section-title centered" data-i18n="products_page.h2">Explore the range</h2>
-        <p class="section-subtitle centered" data-i18n="products_page.sub2">Filter by category or browse everything we offer at Peoples Bakers.</p>
+        <div class="products-menu-head" id="products-menu">
+          <span class="section-tag centered products-menu-head__tag" data-i18n="products_page.menu_tag">Menu</span>
+          <h2 class="section-title centered products-menu-head__title" data-i18n="products_page.h2">Explore the range</h2>
+          <p class="section-subtitle centered products-menu-head__sub" data-i18n="products_page.sub2">Filter by category or browse everything we offer at Peoples Bakers.</p>
+        </div>
 
         <div class="product-toolbar product-toolbar--categories" role="tablist" data-i18n-aria-label="products_page.toolbar_aria" aria-label="Product categories">
           <button type="button" class="product-filter is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="products_page.f_all">All</button>
@@ -97,10 +133,199 @@
           <button type="button" class="product-filter" data-filter="drinks" role="tab" aria-selected="false" data-i18n="products_page.f_drinks">Drinks</button>
         </div>
 
+        <div class="products-bread-gallery" id="breads">
+          <div class="products-bread-gallery__panel">
+            <div class="products-bread-gallery__head">
+              <span class="products-bread-gallery__eyebrow"><i class="fa-solid fa-fire-burner" aria-hidden="true"></i> Baked fresh every morning</span>
+              <h2 class="products-bread-gallery__title">Our breads &amp; buns</h2>
+              <p class="products-bread-gallery__lede">Golden crust, soft inside — everyday favourites from Peoples Bakers ovens.</p>
+            </div>
+
+            <div class="products-bread-hero">
+              <article class="products-bread-hero__main">
+                <div class="products-bread-hero__img">
+                  <img src="images/breads/fresh-bread-loaf.png" alt="Fresh bread loaf on wooden board" width="900" height="600" loading="lazy" decoding="async">
+                  <span class="products-bread-badge">Best seller</span>
+                </div>
+                <div class="products-bread-hero__copy">
+                  <h3>Fresh Bread</h3>
+                  <p>Daily baked loaves — soft inside, golden crust. Perfect for breakfast or tea time.</p>
+                  <strong>From Rs. 150</strong>
+                  <a href="order.html" class="btn btn-primary btn-sm">Order now</a>
+                </div>
+              </article>
+
+              <div class="products-bread-hero__side">
+                <article class="products-bread-mini">
+                  <img src="images/breads/cream-bun.png" alt="Cream bun with vanilla filling" loading="lazy" decoding="async">
+                  <div>
+                    <h4>Cream Bun</h4>
+                    <span>Rs. 80</span>
+                  </div>
+                </article>
+                <article class="products-bread-mini">
+                  <img src="images/breads/butter-croissant.png" alt="Butter croissant" loading="lazy" decoding="async">
+                  <div>
+                    <h4>Butter Croissant</h4>
+                    <span>Rs. 280</span>
+                  </div>
+                </article>
+                <article class="products-bread-mini">
+                  <img src="images/breads/cherry-jam-bun.png" alt="Cherry jam bun" loading="lazy" decoding="async">
+                  <div>
+                    <h4>Cherry Jam Bun</h4>
+                    <span>Rs. 110</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="products-bread-strip" aria-label="Bread favourites">
+              <figure class="products-bread-strip__item">
+                <img src="images/breads/butter-bun.png" alt="Butter bun" loading="lazy" decoding="async">
+                <figcaption>Butter Bun <span>Rs. 90</span></figcaption>
+              </figure>
+              <figure class="products-bread-strip__item">
+                <img src="images/breads/classic-bakery-bun.png" alt="Classic bakery buns" loading="lazy" decoding="async">
+                <figcaption>Classic Bun <span>Rs. 70</span></figcaption>
+              </figure>
+              <figure class="products-bread-strip__item">
+                <img src="images/breads/cream-bun.png" alt="Cream bun" loading="lazy" decoding="async">
+                <figcaption>Cream Bun <span>Rs. 80</span></figcaption>
+              </figure>
+              <figure class="products-bread-strip__item">
+                <img src="images/breads/fresh-bread-loaf.png" alt="Fresh bread" loading="lazy" decoding="async">
+                <figcaption>Fresh Loaf <span>Rs. 150</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-sweet-gallery" id="sweets">
+          <div class="products-sweet-gallery__panel">
+            <div class="products-sweet-gallery__head">
+              <span class="products-sweet-gallery__eyebrow"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Sweet treats &amp; delights</span>
+              <h2 class="products-sweet-gallery__title">Cupcakes, donuts &amp; more</h2>
+              <p class="products-sweet-gallery__lede">Colourful cupcakes, fluffy muffins and glazed donuts — perfect with tea or as a gift.</p>
+            </div>
+
+            <div class="products-sweet-hero">
+              <article class="products-sweet-hero__main">
+                <div class="products-sweet-hero__img">
+                  <img src="images/sweets/vanilla-sprinkle-cupcake.png" alt="Vanilla sprinkle cupcakes" width="900" height="600" loading="lazy" decoding="async">
+                  <span class="products-sweet-badge">Fan favourite</span>
+                </div>
+                <div class="products-sweet-hero__copy">
+                  <h3>Cupcakes &amp; muffins</h3>
+                  <p>From vanilla sprinkles to rich chocolate — baked fresh for every sweet craving.</p>
+                  <strong>From Rs. 160</strong>
+                  <a href="order.html" class="btn btn-primary btn-sm">Order sweets</a>
+                </div>
+              </article>
+
+              <div class="products-sweet-hero__side">
+                <article class="products-sweet-mini">
+                  <img src="images/sweets/glazed-donut.png" alt="Glazed donuts" loading="lazy" decoding="async">
+                  <div><h4>Glazed Donuts</h4><span>Rs. 150</span></div>
+                </article>
+                <article class="products-sweet-mini">
+                  <img src="images/sweets/fruit-tart.png" alt="Fruit tart" loading="lazy" decoding="async">
+                  <div><h4>Fruit Tart</h4><span>Rs. 450</span></div>
+                </article>
+                <article class="products-sweet-mini">
+                  <img src="images/sweets/chocolate-eclair.png" alt="Chocolate eclair" loading="lazy" decoding="async">
+                  <div><h4>Chocolate Eclair</h4><span>Rs. 190</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="products-sweet-strip" aria-label="Sweet favourites">
+              <figure class="products-sweet-strip__item">
+                <img src="images/sweets/chocolate-cupcake.png" alt="Chocolate cupcake" loading="lazy" decoding="async">
+                <figcaption>Chocolate Cupcake <span>Rs. 260</span></figcaption>
+              </figure>
+              <figure class="products-sweet-strip__item">
+                <img src="images/sweets/strawberry-donut.png" alt="Strawberry donut" loading="lazy" decoding="async">
+                <figcaption>Strawberry Donut <span>Rs. 170</span></figcaption>
+              </figure>
+              <figure class="products-sweet-strip__item">
+                <img src="images/sweets/chocolate-chip-muffin.png" alt="Chocolate chip muffin" loading="lazy" decoding="async">
+                <figcaption>Choc Chip Muffin <span>Rs. 200</span></figcaption>
+              </figure>
+              <figure class="products-sweet-strip__item">
+                <img src="images/sweets/chocolate-wafer.png" alt="Chocolate wafer stack" loading="lazy" decoding="async">
+                <figcaption>Wafer Stack <span>Rs. 150</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-savory-gallery" id="savory">
+          <div class="products-savory-gallery__panel">
+            <div class="products-savory-gallery__head">
+              <span class="products-savory-gallery__eyebrow"><i class="fa-solid fa-pepper-hot" aria-hidden="true"></i> Savory snacks &amp; rolls</span>
+              <h2 class="products-savory-gallery__title">Rolls, buns &amp; puffs</h2>
+              <p class="products-savory-gallery__lede">Classic Sri Lankan bakery favourites — seeni sambol rolls, sausage rolls, fish buns and more for tea time.</p>
+            </div>
+
+            <div class="products-savory-hero">
+              <article class="products-savory-hero__main">
+                <div class="products-savory-hero__img">
+                  <img src="images/savory/seeni-sambol-roll.png" alt="Seeni sambol roll on wooden board" width="900" height="600" loading="lazy" decoding="async">
+                  <span class="products-savory-badge">Tea-time classic</span>
+                </div>
+                <div class="products-savory-hero__copy">
+                  <h3>Seeni Sambol Roll</h3>
+                  <p>Sweet caramelized onion relish wrapped in soft bakery bread — a Peoples Bakers signature.</p>
+                  <strong>From Rs. 120</strong>
+                  <a href="order.html" class="btn btn-primary btn-sm">Order savory</a>
+                </div>
+              </article>
+
+              <div class="products-savory-hero__side">
+                <article class="products-savory-mini">
+                  <img src="images/savory/sausage-roll.png" alt="Sausage roll" loading="lazy" decoding="async">
+                  <div><h4>Sausage Roll</h4><span>Rs. 180</span></div>
+                </article>
+                <article class="products-savory-mini">
+                  <img src="images/savory/fish-bun.png" alt="Fish bun" loading="lazy" decoding="async">
+                  <div><h4>Fish Bun</h4><span>Rs. 100</span></div>
+                </article>
+                <article class="products-savory-mini">
+                  <img src="images/savory/chicken-puff.png" alt="Chicken puff" loading="lazy" decoding="async">
+                  <div><h4>Chicken Puff</h4><span>Rs. 160</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="products-savory-strip" aria-label="Savory favourites">
+              <figure class="products-savory-strip__item">
+                <img src="images/savory/egg-bun.png" alt="Egg bun" loading="lazy" decoding="async">
+                <figcaption>Egg Bun <span>Rs. 90</span></figcaption>
+              </figure>
+              <figure class="products-savory-strip__item">
+                <img src="images/savory/vegetable-roll.png" alt="Vegetable roll" loading="lazy" decoding="async">
+                <figcaption>Vegetable Roll <span>Rs. 110</span></figcaption>
+              </figure>
+              <figure class="products-savory-strip__item">
+                <img src="images/savory/sausage-roll.png" alt="Sausage roll" loading="lazy" decoding="async">
+                <figcaption>Sausage Roll <span>Rs. 180</span></figcaption>
+              </figure>
+              <figure class="products-savory-strip__item">
+                <img src="images/savory/seeni-sambol-roll.png" alt="Seeni sambol roll" loading="lazy" decoding="async">
+                <figcaption>Seeni Sambol <span>Rs. 120</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
         <div class="grid products-grid products-page-grid">
 
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Fresh bread"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/fresh-bread-loaf.png" alt="Fresh bread" loading="lazy" decoding="async">
+              <span class="product-card-badge">Fresh daily</span>
+            </div>
             <div class="card-body">
               <h3 data-i18n="products_catalog.items.i1.n">Fresh Bread</h3>
               <p class="product-card-desc" data-i18n="products_catalog.items.i1.d">Daily baked loaves — soft inside, golden crust.</p>
@@ -108,8 +333,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Cream bun"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/cream-bun.png" alt="Cream bun" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3 data-i18n="products_catalog.items.i2.n">Cream Bun</h3>
               <p class="product-card-desc" data-i18n="products_catalog.items.i2.d">Fluffy bun with rich vanilla cream filling.</p>
@@ -117,8 +344,11 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="savory">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1589984662646-e7b2cc09ad1c?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Seeni sambol roll"></div>
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/seeni-sambol-roll.png" alt="Seeni sambol roll" loading="lazy" decoding="async">
+              <span class="product-card-badge">Tea-time classic</span>
+            </div>
             <div class="card-body">
               <h3>Seeni Sambol Roll</h3>
               <p class="product-card-desc">Sweet onion relish wrapped in soft bakery bread.</p>
@@ -126,12 +356,58 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="savory">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Sausage roll"></div>
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/sausage-roll.png" alt="Sausage roll" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Sausage Roll</h3>
               <p class="product-card-desc">Crisp pastry with seasoned sausage filling.</p>
               <p class="price">Rs. 180</p>
+            </div>
+          </article>
+
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/fish-bun.png" alt="Fish bun" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <h3>Fish Bun</h3>
+              <p class="product-card-desc">Soft bun with spiced fish filling — a bakery staple.</p>
+              <p class="price">Rs. 100</p>
+            </div>
+          </article>
+
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/egg-bun.png" alt="Egg bun" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <h3>Egg Bun</h3>
+              <p class="product-card-desc">Fluffy bun with a whole boiled egg inside.</p>
+              <p class="price">Rs. 90</p>
+            </div>
+          </article>
+
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/vegetable-roll.png" alt="Vegetable roll" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <h3>Vegetable Roll</h3>
+              <p class="product-card-desc">Crispy golden roll with seasoned vegetable filling.</p>
+              <p class="price">Rs. 110</p>
+            </div>
+          </article>
+
+          <article class="card product-card product-card--savory" data-category="savory">
+            <div class="card-image product-card-img product-card-img--savory">
+              <img src="images/savory/chicken-puff.png" alt="Chicken puff" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <h3>Chicken Puff</h3>
+              <p class="product-card-desc">Flaky puff pastry with savoury chicken filling.</p>
+              <p class="price">Rs. 160</p>
             </div>
           </article>
 
@@ -162,8 +438,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=1600&q=88');" role="img" aria-label="Cupcakes"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/vanilla-sprinkle-cupcake.png" alt="Cupcakes" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Cupcakes</h3>
               <p class="product-card-desc">Assorted flavours — ideal for sharing.</p>
@@ -171,8 +449,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Donuts"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/glazed-donut.png" alt="Glazed donuts" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Glazed Donuts</h3>
               <p class="product-card-desc">Soft rings with classic sugar glaze.</p>
@@ -180,8 +460,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Croissants"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/butter-croissant.png" alt="Butter croissant" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Butter Croissant</h3>
               <p class="product-card-desc">Layered, flaky, baked fresh each morning.</p>
@@ -189,8 +471,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Fruit tart"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/fruit-tart.png" alt="Fruit tart" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Fruit Tart</h3>
               <p class="product-card-desc">Custard base with seasonal fresh fruit.</p>
@@ -208,8 +492,10 @@
           </article>
 
           <!-- ═══════════════ BREADS ═══════════════ -->
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Butter bun"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/butter-bun.png" alt="Butter bun" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Butter Bun</h3>
               <p class="product-card-desc">Soft golden bun with a warm buttery finish.</p>
@@ -217,8 +503,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Classic bakery bun"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/classic-bakery-bun.png" alt="Classic bakery bun" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Classic Bakery Bun</h3>
               <p class="product-card-desc">Everyday favourite — soft inside, lightly golden.</p>
@@ -226,8 +514,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="breads">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Cherry jam bun"></div>
+          <article class="card product-card product-card--bread" data-category="breads">
+            <div class="card-image product-card-img product-card-img--bread">
+              <img src="images/breads/cherry-jam-bun.png" alt="Cherry jam bun" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Cherry Jam Bun</h3>
               <p class="product-card-desc">Sesame-coated bun with a sweet cherry centre.</p>
@@ -236,8 +526,10 @@
           </article>
 
           <!-- ═══════════════ SWEETS ═══════════════ -->
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1614707267537-ab85c35b3747?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Vanilla sprinkle cupcake"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/vanilla-sprinkle-cupcake.png" alt="Vanilla sprinkle cupcake" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Vanilla Sprinkle Cupcake</h3>
               <p class="product-card-desc">Classic vanilla cupcake topped with colourful sprinkles.</p>
@@ -245,8 +537,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="White cream cupcake"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/white-cream-cupcake.png" alt="White cream cupcake" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>White Cream Cupcake</h3>
               <p class="product-card-desc">Buttercream swirl with delicate gold star sprinkles.</p>
@@ -254,8 +548,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate frosting cupcake"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/chocolate-cupcake.png" alt="Chocolate frosting cupcake" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Chocolate Frosting Cupcake</h3>
               <p class="product-card-desc">Moist chocolate cake with rich cocoa frosting.</p>
@@ -263,8 +559,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Apple glaze cupcake"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/apple-cupcake.png" alt="Apple glaze cupcake" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Apple Glaze Cupcake</h3>
               <p class="product-card-desc">Festive spiced cupcake with bright apple glaze topping.</p>
@@ -272,8 +570,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate chip muffin"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/chocolate-chip-muffin.png" alt="Chocolate chip muffin" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Chocolate Chip Muffin</h3>
               <p class="product-card-desc">Double chocolate muffin loaded with chips.</p>
@@ -281,8 +581,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Dark chocolate muffin"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/dark-chocolate-muffin.png" alt="Dark chocolate muffin" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Dark Chocolate Muffin</h3>
               <p class="product-card-desc">Deep cocoa muffin with melted chocolate centre.</p>
@@ -290,8 +592,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Banana muffin"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/banana-muffin.png" alt="Banana muffin" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Banana Muffin</h3>
               <p class="product-card-desc">Soft banana muffin — perfect with morning tea.</p>
@@ -299,8 +603,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Vanilla muffin"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/vanilla-muffin.png" alt="Vanilla muffin" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Vanilla Muffin</h3>
               <p class="product-card-desc">Classic buttery vanilla muffin, baked fresh daily.</p>
@@ -308,8 +614,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Strawberry muffin"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/strawberry-muffin.png" alt="Strawberry muffin" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Strawberry Muffin</h3>
               <p class="product-card-desc">Pink berry muffin with real strawberry chunks.</p>
@@ -317,8 +625,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate sprinkle donuts"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/chocolate-donut.png" alt="Chocolate sprinkle donut" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Chocolate Sprinkle Donut</h3>
               <p class="product-card-desc">Chocolate-glazed donut finished with rainbow sprinkles.</p>
@@ -326,8 +636,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Pink glazed donut"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/strawberry-donut.png" alt="Strawberry glaze donut" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Strawberry Glaze Donut</h3>
               <p class="product-card-desc">Pink-glazed ring donut with a sweet berry finish.</p>
@@ -335,8 +647,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate eclairs"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/chocolate-eclair.png" alt="Chocolate eclair" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Chocolate Eclair</h3>
               <p class="product-card-desc">Choux pastry filled with cream, topped with chocolate.</p>
@@ -344,8 +658,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Cream eclair with drizzle"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/cream-eclair.png" alt="Cream eclair" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Cream Eclair</h3>
               <p class="product-card-desc">Classic eclair with vanilla cream and chocolate drizzle.</p>
@@ -353,8 +669,10 @@
             </div>
           </article>
 
-          <article class="card product-card" data-category="sweets">
-            <div class="card-image product-card-img" style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=82');" role="img" aria-label="Chocolate wafer stack"></div>
+          <article class="card product-card product-card--sweet" data-category="sweets">
+            <div class="card-image product-card-img product-card-img--sweet">
+              <img src="images/sweets/chocolate-wafer.png" alt="Chocolate wafer stack" loading="lazy" decoding="async">
+            </div>
             <div class="card-body">
               <h3>Chocolate Wafer Stack</h3>
               <p class="product-card-desc">Crispy layered wafers with rich chocolate cream.</p>
@@ -366,7 +684,7 @@
 
         <p class="products-page-note products-page-note--after-grid">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-          Prices may vary by outlet. Use <a href="order.html"><strong>Order Online</strong></a> or visit <a href="index.html#findus">Find Us</a> for the branch nearest you.
+          Prices may vary by outlet. Use <a href="order.html"><strong>Order Online</strong></a> or visit <a href="find-us.html">Find Us</a> for the branch nearest you.
         </p>
 
         <div class="products-cake-gallery cakes-catalog-section" id="cakes">
@@ -605,59 +923,98 @@
 
   </main>
 
-  <footer>
+    <footer class="site-footer site-footer--classic">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3 class="footer-title">Peoples Bakers</h3>
-          <p>Classic Sri Lankan bakery excellence since 2015.</p>
-          <p>Freshly baked, every day.</p>
+      <div class="footer-main-grid">
+        <div class="footer-col footer-col--brand">
+          <a href="index.html" class="footer-logo-link" aria-label="Peoples Bakers Home">
+            <img src="images/logo.png" alt="Peoples Bakers Logo" class="footer-logo-img" width="110" height="110">
+          </a>
+          <p class="footer-about">For over a decade, Peoples Bakers has brought classic Sri Lankan bakery excellence to families across the island — from fresh daily bread and savouries to celebration cakes and custom photo cakes, baked with care every day.</p>
         </div>
         <div class="footer-col">
-          <h3 class="footer-title">Quick Links</h3>
-          <a href="index.html">Home</a>
-          <a href="legacy.html">Our History</a>
-          <a href="products.html">Products</a>
-          <a href="products.html#cakes">Our Cakes</a>
-          <a href="order.html">Order Online</a>
-          <a href="feedback.html">Feedback</a>
+          <h4 class="footer-heading">Our Products</h4>
+          <nav class="footer-list" aria-label="Product categories">
+            <a href="products.html">Breads</a>
+            <a href="products.html#cakes">Cakes</a>
+            <a href="products.html">Savouries</a>
+            <a href="products.html">Beverages</a>
+            <a href="special-cake.html">Photo Cake</a>
+          </nav>
         </div>
         <div class="footer-col">
-          <h3 class="footer-title">Connect</h3>
-          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
-          <a href="order.html">Order Online</a>
+          <h4 class="footer-heading" data-i18n="footer.quick_links">Quick Links</h4>
+                    <nav class="footer-list" aria-label="Quick links">
+            <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+            <a href="products.html" data-i18n="nav.products">Products</a>
+            <a href="special-cake.html">Customize Cake</a>
+            <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+            <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
+            <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+          </nav>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h4 class="footer-heading">Get In Touch</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-map"></i></span>
+              <div class="footer-contact-text">
+                <strong>Head Office :</strong>
+                <span>NO.623, Egaloya, Bulathsinhala, Sri Lanka</span>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-phone"></i></span>
+              <div class="footer-contact-text">
+                <strong>Telephone :</strong>
+                <a href="tel:+94228955477">+94 22 895 5477</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+              <div class="footer-contact-text">
+                <strong>Email :</strong>
+                <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="footer-extra">
-        <div class="footer-extra-left">
-          <div class="footer-contact-row">
-            <p class="footer-email">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
-            </p>
-            <p class="footer-whatsapp">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
-            </p>
-          </div>
-          <div class="footer-pay">
-            <span class="footer-pay-label">We Accept</span>
-            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
-              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
-              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
-              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
-              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
-            </ul>
-          </div>
+    </div>
+    <div class="footer-strip footer-strip--base">
+      <div class="container footer-base">
+        <div class="footer-base-contact">
+          <a class="footer-base-link" href="mailto:hello@peoplesbakers.lk">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span><strong>Email :</strong> hello@peoplesbakers.lk</span>
+          </a>
+          <a class="footer-base-link footer-base-link--wa" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span><strong>WhatsApp :</strong> +94 22 895 5477</span>
+          </a>
         </div>
-        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
+        <div class="footer-base-pay">
+          <span class="footer-pay-label">We Accept</span>
+          <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+            <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+            <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+            <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+            <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+          </ul>
+        </div>
+        <div class="footer-base-bottom">
+          <div class="footer-socials footer-socials--dark" aria-label="Social media">
+            <a href="https://www.instagram.com/peoplesbakers/" class="footer-social footer-social--ig" data-social-instagram target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1Fbz4YYA8t/" class="footer-social footer-social--fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@peoplesbakers" class="footer-social footer-social--tt" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+          <p class="footer-copy footer-copy--dark">&copy; 2026 Peoples Bakers.</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a class="order-fab" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     <span class="order-fab-label">Chat &amp; order</span>
   </a>
@@ -672,6 +1029,9 @@
       var buttons = document.querySelectorAll('.product-toolbar--categories .product-filter');
       var cards = document.querySelectorAll('.products-catalog-section .product-card');
       var cakeZone = document.getElementById('cakes');
+      var breadZone = document.getElementById('breads');
+      var sweetZone = document.getElementById('sweets');
+      var savoryZone = document.getElementById('savory');
       var categoryHint = document.getElementById('cakes-category-hint');
       var shapeLabel = document.getElementById('cakes-shape-label');
 
@@ -686,14 +1046,32 @@
           card.style.display = show ? '' : 'none';
         });
         var isCakes = filter === 'cakes';
+        var isBreads = filter === 'breads';
+        var isSweets = filter === 'sweets';
+        var isSavory = filter === 'savory';
         document.body.classList.toggle('is-cakes-focus', isCakes);
+        document.body.classList.toggle('is-breads-focus', isBreads);
+        document.body.classList.toggle('is-sweets-focus', isSweets);
+        document.body.classList.toggle('is-savory-focus', isSavory);
         if (categoryHint) {
           categoryHint.hidden = !isCakes;
         }
         if (shapeLabel) {
           shapeLabel.classList.toggle('is-linked-to-cakes-filter', isCakes);
         }
-        if (isCakes && cakeZone) {
+        if (isSavory && savoryZone) {
+          window.requestAnimationFrame(function () {
+            savoryZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        } else if (isSweets && sweetZone) {
+          window.requestAnimationFrame(function () {
+            sweetZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        } else if (isBreads && breadZone) {
+          window.requestAnimationFrame(function () {
+            breadZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        } else if (isCakes && cakeZone) {
           window.requestAnimationFrame(function () {
             cakeZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
@@ -709,6 +1087,24 @@
       if (window.location.hash === '#cakes') {
         window.setTimeout(function () {
           applyCategoryFilter('cakes');
+        }, 120);
+      }
+
+      if (window.location.hash === '#breads') {
+        window.setTimeout(function () {
+          applyCategoryFilter('breads');
+        }, 120);
+      }
+
+      if (window.location.hash === '#sweets') {
+        window.setTimeout(function () {
+          applyCategoryFilter('sweets');
+        }, 120);
+      }
+
+      if (window.location.hash === '#savory') {
+        window.setTimeout(function () {
+          applyCategoryFilter('savory');
         }, 120);
       }
 
