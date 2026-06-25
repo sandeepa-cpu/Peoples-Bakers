@@ -4163,6 +4163,15 @@ body.page-products.is-savory-focus .products-savory-gallery__panel {
   box-shadow: 0 0 0 2px rgba(196, 92, 38, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
+body.page-products.is-drinks-focus .products-page-grid {
+  box-shadow: 0 0 0 2px rgba(107, 31, 99, 0.35);
+  border-radius: 12px;
+}
+
+body.page-products [hidden] {
+  display: none !important;
+}
+
 @media (max-width: 900px) {
   body.page-products .products-savory-hero {
     grid-template-columns: 1fr;

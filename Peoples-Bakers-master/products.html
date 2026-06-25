@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=12">
+  <link rel="stylesheet" href="css/style.css?v=28">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -319,7 +319,7 @@
           </div>
         </div>
 
-        <div class="grid products-grid products-page-grid">
+        <div class="grid products-grid products-page-grid" id="products-grid">
 
           <article class="card product-card product-card--bread" data-category="breads">
             <div class="card-image product-card-img product-card-img--bread">
@@ -1024,110 +1024,6 @@
   <script src="js/i18n.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/cakes-page.js"></script>
-  <script>
-    (function () {
-      var buttons = document.querySelectorAll('.product-toolbar--categories .product-filter');
-      var cards = document.querySelectorAll('.products-catalog-section .product-card');
-      var cakeZone = document.getElementById('cakes');
-      var breadZone = document.getElementById('breads');
-      var sweetZone = document.getElementById('sweets');
-      var savoryZone = document.getElementById('savory');
-      var categoryHint = document.getElementById('cakes-category-hint');
-      var shapeLabel = document.getElementById('cakes-shape-label');
-
-      function applyCategoryFilter(filter) {
-        buttons.forEach(function (b) {
-          b.classList.toggle('is-active', b.getAttribute('data-filter') === filter);
-          b.setAttribute('aria-selected', b.getAttribute('data-filter') === filter ? 'true' : 'false');
-        });
-        cards.forEach(function (card) {
-          var cat = card.getAttribute('data-category');
-          var show = filter === 'all' || cat === filter;
-          card.style.display = show ? '' : 'none';
-        });
-        var isCakes = filter === 'cakes';
-        var isBreads = filter === 'breads';
-        var isSweets = filter === 'sweets';
-        var isSavory = filter === 'savory';
-        document.body.classList.toggle('is-cakes-focus', isCakes);
-        document.body.classList.toggle('is-breads-focus', isBreads);
-        document.body.classList.toggle('is-sweets-focus', isSweets);
-        document.body.classList.toggle('is-savory-focus', isSavory);
-        if (categoryHint) {
-          categoryHint.hidden = !isCakes;
-        }
-        if (shapeLabel) {
-          shapeLabel.classList.toggle('is-linked-to-cakes-filter', isCakes);
-        }
-        if (isSavory && savoryZone) {
-          window.requestAnimationFrame(function () {
-            savoryZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        } else if (isSweets && sweetZone) {
-          window.requestAnimationFrame(function () {
-            sweetZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        } else if (isBreads && breadZone) {
-          window.requestAnimationFrame(function () {
-            breadZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        } else if (isCakes && cakeZone) {
-          window.requestAnimationFrame(function () {
-            cakeZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        }
-      }
-
-      buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          applyCategoryFilter(btn.getAttribute('data-filter'));
-        });
-      });
-
-      if (window.location.hash === '#cakes') {
-        window.setTimeout(function () {
-          applyCategoryFilter('cakes');
-        }, 120);
-      }
-
-      if (window.location.hash === '#breads') {
-        window.setTimeout(function () {
-          applyCategoryFilter('breads');
-        }, 120);
-      }
-
-      if (window.location.hash === '#sweets') {
-        window.setTimeout(function () {
-          applyCategoryFilter('sweets');
-        }, 120);
-      }
-
-      if (window.location.hash === '#savory') {
-        window.setTimeout(function () {
-          applyCategoryFilter('savory');
-        }, 120);
-      }
-
-      /* Caravan-style big cards → same filters as shape tiles */
-      document.querySelectorAll('[data-apply-cake-filter]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          var f = link.getAttribute('data-apply-cake-filter');
-          var target = document.querySelector(
-            '.product-toolbar--shapes .cakes-cat-tile[data-filter="' + f + '"]'
-          );
-          if (target) {
-            target.click();
-            window.setTimeout(function () {
-              var grid = document.getElementById('cakes-grid-anchor');
-              if (grid) {
-                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }, 80);
-          }
-        });
-      });
-    })();
-  </script>
+  <script src="js/products-page.js?v=1"></script>
 </body>
 </html>
