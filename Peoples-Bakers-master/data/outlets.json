@@ -1,0 +1,102 @@
+{
+  "updated": "2026-06-14",
+  "source": "Peoples Bakers public listings and Google Maps",
+  "outlets": [
+    {
+      "id": "head-office",
+      "name": "Head Office & Factory",
+      "area": "Bulathsinhala",
+      "region": "Western",
+      "address": "NO.623, Egaloya, Bulathsinhala, Sri Lanka",
+      "phone": "+94 2289 55477",
+      "hours": "6:00 AM – 10:00 PM",
+      "type": "Head Office",
+      "lat": 6.6653,
+      "lng": 80.1699
+    },
+    {
+      "id": "colombo-2",
+      "name": "Peoples Bakers — Colombo 2",
+      "area": "Colombo 02",
+      "region": "Western",
+      "address": "40/34 Metro Homes Residence, Malay Street, Colombo 2",
+      "phone": "+94 11 230 0066",
+      "hours": "6:00 AM – 10:00 PM",
+      "type": "Outlet",
+      "lat": 6.9186,
+      "lng": 79.8654
+    },
+    {
+      "id": "athurugiriya",
+      "name": "Peoples Bakers — Athurugiriya",
+      "area": "Athurugiriya",
+      "region": "Western",
+      "address": "No. 175/1/3, Boralla Road, Athurugiriya 10150",
+      "phone": "+94 76 004 0656",
+      "hours": "6:00 AM – 9:00 PM",
+      "type": "Outlet",
+      "lat": 6.8762,
+      "lng": 79.994
+    },
+    {
+      "id": "malabe",
+      "name": "Peoples Bakers — Malabe",
+      "area": "Malabe",
+      "region": "Western",
+      "address": "888/1, Athurugiriya Road, Thalangama North, Malabe 10115",
+      "phone": "+94 11 234 5678",
+      "hours": "6:30 AM – 9:00 PM",
+      "type": "Outlet",
+      "lat": 6.9105,
+      "lng": 79.972
+    },
+    {
+      "id": "bandaragama",
+      "name": "Peoples Bakers — Bandaragama",
+      "area": "Bandaragama",
+      "region": "Western",
+      "address": "Panadura Road, Bandaragama",
+      "phone": "+94 71 592 7673",
+      "hours": "6:30 AM – 8:00 PM",
+      "type": "Outlet",
+      "lat": 6.7144,
+      "lng": 79.9891
+    },
+    {
+      "id": "nugegoda",
+      "name": "Peoples Bakers — Nugegoda",
+      "area": "Nugegoda",
+      "region": "Western",
+      "address": "45 High Level Road, Nugegoda",
+      "phone": "+94 11 234 5678",
+      "hours": "6:00 AM – 9:00 PM",
+      "type": "Cover Shop",
+      "lat": 6.8649,
+      "lng": 79.8997
+    },
+    {
+      "id": "kandy",
+      "name": "Peoples Bakers — Kandy",
+      "area": "Kandy",
+      "region": "Central",
+      "address": "12 Dalada Veediya, Kandy",
+      "phone": "+94 81 234 5678",
+      "hours": "6:00 AM – 9:00 PM",
+      "type": "Cover Shop",
+      "lat": 7.2936,
+      "lng": 80.6413
+    },
+    {
+      "id": "colombo-3",
+      "name": "Peoples Bakers — Colombo 3",
+      "area": "Colombo 03",
+      "region": "Western",
+      "address": "25 Galle Road, Colombo 03",
+      "phone": "+94 11 234 5678",
+      "hours": "6:00 AM – 10:00 PM",
+      "type": "Main Branch",
+      "lat": 6.9115,
+      "lng": 79.8547
+    }
+  ]
+}

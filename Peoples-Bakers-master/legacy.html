@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our History | Peoples Bakers</title>
+  <title data-i18n="meta.legacy">Our History | Peoples Bakers</title>
   <meta name="theme-color" content="#1a1a1a">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="page-legacy">
 
   <!-- ═══════════════ HEADER ═══════════════ -->
   <header>
@@ -28,7 +28,7 @@
             <i class="fa-brands fa-facebook-f"></i>
             <span class="social-label">Facebook</span>
           </a>
-          <a href="#" aria-label="Instagram" class="social-icon">
+          <a href="https://www.instagram.com/peoplesbakers/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon" data-social-instagram>
             <i class="fa-brands fa-instagram"></i>
             <span class="social-label">Instagram</span>
           </a>
@@ -36,7 +36,7 @@
             <i class="fa-brands fa-tiktok"></i>
             <span class="social-label">TikTok</span>
           </a>
-          <a href="#" aria-label="LinkedIn" class="social-icon">
+          <a href="https://www.linkedin.com/company/peoples-bakers/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon" data-social-linkedin>
             <i class="fa-brands fa-linkedin-in"></i>
             <span class="social-label">LinkedIn</span>
           </a>
@@ -54,7 +54,7 @@
           <a href="products.html" data-i18n="nav.products">Products</a>
           <a href="special-cake.html">Customize Cake</a>
           <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
-          <a href="index.html#findus" data-i18n="nav.findus">Find Us</a>
+          <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
           <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="nav-actions">
@@ -75,180 +75,195 @@
   <main>
 
     <!-- ═══════════════ HERO ═══════════════ -->
-    <section class="legacy-hero">
-      <div class="legacy-hero-content">
-        <span class="hero-tag">EST. 2015</span>
-        <h1>Our History</h1>
-        <p>Turning meals into memories — one fresh loaf at a time.</p>
+    <section class="legacy-hero legacy-hero--premium" aria-labelledby="legacy-hero-title">
+      <div class="legacy-hero__bg" aria-hidden="true"></div>
+      <div class="legacy-hero__overlay" aria-hidden="true"></div>
+      <div class="legacy-hero__grain" aria-hidden="true"></div>
+
+      <div class="legacy-hero-content legacy-hero__content">
+        <span class="hero-tag legacy-hero__tag" data-i18n="legacy.hero_tag">EST. 2015</span>
+        <h1 id="legacy-hero-title" data-i18n="legacy.hero_h1">Our History</h1>
+        <p class="legacy-hero__lede" data-i18n="legacy.hero_p">Turning meals into memories — one fresh loaf at a time.</p>
+
+        <div class="legacy-hero__cta">
+          <a href="#story" class="btn btn-primary"><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span data-i18n="legacy.hero_cta_story">Explore our story</span></a>
+          <a href="products.html" class="btn btn-outline"><i class="fa-solid fa-utensils" aria-hidden="true"></i> <span data-i18n="nav.products">Products</span></a>
+        </div>
+
+        <ul class="legacy-hero__pills" aria-label="Highlights">
+          <li><i class="fa-solid fa-store" aria-hidden="true"></i> <span data-i18n="legacy.hero_pill1">Bulathsinhala roots</span></li>
+          <li><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> <span data-i18n="legacy.hero_pill2">150+ outlets</span></li>
+          <li><i class="fa-solid fa-heart" aria-hidden="true"></i> <span data-i18n="legacy.hero_pill3">Loved island-wide</span></li>
+        </ul>
       </div>
+
+      <div class="legacy-hero__stats" aria-label="Peoples Bakers milestones">
+        <div class="legacy-hero__stat">
+          <strong>2015</strong>
+          <span data-i18n="legacy.stat_founded">Founded</span>
+        </div>
+        <div class="legacy-hero__stat">
+          <strong>150+</strong>
+          <span data-i18n="legacy.st_out">Outlets Island-wide</span>
+        </div>
+        <div class="legacy-hero__stat">
+          <strong>500+</strong>
+          <span data-i18n="legacy.st_team">Team Members</span>
+        </div>
+      </div>
+
+      <a href="#story" class="hero-scroll legacy-hero__scroll" aria-label="Scroll to story">
+        <span></span>
+      </a>
     </section>
 
+    <nav class="legacy-jump-nav" aria-label="Page sections">
+      <div class="container legacy-jump-nav__inner">
+        <a href="#story" class="legacy-jump-nav__link is-active" data-i18n="legacy.jump_story">Story</a>
+        <a href="#growth" class="legacy-jump-nav__link" data-i18n="legacy.jump_growth">Growth</a>
+        <a href="#purpose" class="legacy-jump-nav__link" data-i18n="legacy.jump_purpose">Vision</a>
+        <a href="#csr" class="legacy-jump-nav__link" data-i18n="legacy.jump_csr">CSR</a>
+      </div>
+    </nav>
+
     <!-- ═══════════════ OUR HISTORY ═══════════════ -->
-    <section class="ab-history-section">
-      <div class="container ab-history-wrap">
-        <div class="ab-history-label">
-          <span class="section-tag">Our History</span>
-        </div>
-        <div class="ab-history-body">
-          <h2 class="section-title">Unfolding Our History,<br>One Bake at a Time</h2>
-          <p>
-            In 2015—with more determination than capital, and a simple promise to earn an honest living through quality bakes—our founder pulled the very first loaf from a modest kitchen in Bulathsinhala. Through every barrier, he served the neighbourhood with warmth and consistency.
-          </p>
-          <p>
-            As word spread through the community — not through advertising, but through honest taste and genuine care — the little bakery began to grow. New products joined the shelves: cream buns, seeni sambol rolls, celebration cakes, and seasonal treats that became household favourites across generations.
-          </p>
-          <p>
-            Penetrating all barriers which stood before them, Peoples Bakers kept expanding while maintaining the impeccable essence of their products. New outlets opened in Nugegoda, Kandy, Galle, and beyond. The bakery that started before dawn at a single counter had become a trusted name across Sri Lanka — loved for its consistency, its quality, and its heart.
-          </p>
-          <p>
-            Today, with 150+ outlets island-wide, an online ordering platform, and partnerships with Uber Eats and PickMe Food, Peoples Bakers continues to grow — while holding firmly to the belief that every bake must carry the same love as the very first loaf.
-          </p>
+    <section class="ab-history-section" id="story">
+      <div class="container">
+        <div class="legacy-story-grid">
+          <div class="legacy-story-visual">
+            <figure class="legacy-story-photo">
+              <img src="images/history/peoples-bakers-storefront.png" alt="Peoples Bakers storefront with outdoor seating" width="640" height="800" loading="lazy" decoding="async">
+              <span class="legacy-story-visual__badge" data-i18n="legacy.hero_tag">EST. 2015</span>
+            </figure>
+            <p class="legacy-story-visual__caption" data-i18n="legacy.history_caption">From a modest kitchen in Bulathsinhala to a name families trust across Sri Lanka.</p>
+          </div>
+
+          <div class="legacy-story-main">
+            <span class="section-tag" data-i18n="legacy.ab_tag">Our History</span>
+            <h2 class="section-title legacy-story-main__title" data-i18n="legacy.ab_h2">Unfolding Our History, One Bake at a Time</h2>
+
+            <ol class="legacy-timeline">
+              <li class="legacy-timeline__item">
+                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl1_year">2015</span></div>
+                <article class="legacy-timeline__card">
+                  <h3 data-i18n="legacy.tl1_title">The first loaf</h3>
+                  <p data-i18n="legacy.p1">In 2015—with more determination than capital, and a simple promise to earn an honest living through quality bakes—our founder pulled the very first loaf from a modest kitchen in Bulathsinhala. Through every barrier, he served the neighbourhood with warmth and consistency.</p>
+                </article>
+              </li>
+              <li class="legacy-timeline__item">
+                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl2_year">Growing</span></div>
+                <article class="legacy-timeline__card">
+                  <h3 data-i18n="legacy.tl2_title">Word of mouth</h3>
+                  <p data-i18n="legacy.p2">As word spread through the community — not through advertising, but through honest taste and genuine care — the little bakery began to grow. New products joined the shelves: cream buns, seeni sambol rolls, celebration cakes, and seasonal treats that became household favourites across generations.</p>
+                </article>
+              </li>
+              <li class="legacy-timeline__item">
+                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl3_year">Expanding</span></div>
+                <article class="legacy-timeline__card">
+                  <h3 data-i18n="legacy.tl3_title">Across Sri Lanka</h3>
+                  <p data-i18n="legacy.p3">Penetrating all barriers which stood before them, Peoples Bakers kept expanding while maintaining the impeccable essence of their products. New outlets opened in Nugegoda, Kandy, Galle, and beyond. The bakery that started before dawn at a single counter had become a trusted name across Sri Lanka — loved for its consistency, its quality, and its heart.</p>
+                </article>
+              </li>
+              <li class="legacy-timeline__item">
+                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl4_year">Today</span></div>
+                <article class="legacy-timeline__card">
+                  <h3 data-i18n="legacy.tl4_title">Digital &amp; delivery</h3>
+                  <p data-i18n="legacy.p4">Today, with 150+ outlets island-wide, an online ordering platform, and partnerships with Uber Eats and PickMe Food, Peoples Bakers continues to grow — while holding firmly to the belief that every bake must carry the same love as the very first loaf.</p>
+                </article>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════ OUR GROWTH ═══════════════ -->
-    <section class="ab-growth-section">
+    <section class="ab-growth-section" id="growth">
       <div class="container">
-        <span class="section-tag centered">Our Growth</span>
-        <h2 class="section-title centered">Dedicated in serving passion to those<br>who chase behind flavours</h2>
-        <p class="section-subtitle centered ab-growth-sub">
+        <span class="section-tag centered" data-i18n="legacy.grow_tag">Our Growth</span>
+        <h2 class="section-title centered" data-i18n="legacy.grow_h2">Dedicated in serving passion to those who chase behind flavours</h2>
+        <p class="section-subtitle centered ab-growth-sub" data-i18n="legacy.grow_sub">
           A team of skilful hands putting individual commitment into one shared goal — delivering the finest bakes, every single day.
         </p>
 
-        <div class="ab-stats-grid">
-          <div class="ab-stat-card">
+        <div class="ab-stats-grid legacy-stats-grid">
+          <div class="ab-stat-card legacy-stat-card">
+            <span class="legacy-stat-card__icon" aria-hidden="true"><i class="fa-solid fa-map"></i></span>
             <h3 class="counter" data-target="9">0</h3>
-            <p>Districts Covered</p>
+            <p data-i18n="legacy.st_dist">Districts Covered</p>
           </div>
-          <div class="ab-stat-card">
+          <div class="ab-stat-card legacy-stat-card">
+            <span class="legacy-stat-card__icon" aria-hidden="true"><i class="fa-solid fa-industry"></i></span>
             <h3 class="counter" data-target="5">0</h3>
-            <p>Production Units</p>
+            <p data-i18n="legacy.st_prod">Production Units</p>
           </div>
-          <div class="ab-stat-card">
+          <div class="ab-stat-card legacy-stat-card">
+            <span class="legacy-stat-card__icon" aria-hidden="true"><i class="fa-solid fa-store"></i></span>
             <h3 class="counter" data-target="150">0</h3>
-            <p>Outlets Island-wide</p>
+            <p data-i18n="legacy.st_out">Outlets Island-wide</p>
           </div>
-          <div class="ab-stat-card">
+          <div class="ab-stat-card legacy-stat-card">
+            <span class="legacy-stat-card__icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
             <h3 class="counter" data-target="500">0</h3>
-            <p>Team Members</p>
+            <p data-i18n="legacy.st_team">Team Members</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════ MD VISION ═══════════════ -->
-    <section class="ab-vision-section">
+    <!-- ═══════════════ VISION & MISSION ═══════════════ -->
+    <section class="ab-vm-section" id="purpose">
       <div class="container">
-        <div class="ab-vision-wrap">
-          <div class="ab-vision-img" aria-label="Founder photo"></div>
-          <div class="ab-vision-text">
-            <span class="section-tag">Our Vision</span>
-            <i class="fa-solid fa-quote-left ab-quote-icon"></i>
-            <blockquote>
-              We want to be the most sought-after bakery brand in Sri Lanka. Our ambitions remain unchanged — to bring the authentic taste, warmth, and quality of Peoples Bakers to every corner of the island, and one day, beyond.
-            </blockquote>
-            <div class="ab-vision-name">
-              <strong>Mr. Sandeepa Bandara</strong>
-              <span>Founder &amp; Managing Director, Peoples Bakers</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <span class="section-tag centered" data-i18n="legacy.vm_tag">Our Purpose</span>
+        <h2 class="section-title centered" data-i18n="legacy.vm_h2">Vision &amp; Mission</h2>
 
-    <!-- ═══════════════ OUR TEAM ═══════════════ -->
-    <section class="ab-team-section">
-      <div class="container">
-        <span class="section-tag centered">Our Team</span>
-        <h2 class="section-title centered">Forefrontiers who drive our mission forward</h2>
-        <p class="section-subtitle centered">The leadership behind every loaf, every outlet, and every smile.</p>
+        <div class="ab-vm-grid">
+          <article class="ab-vm-card ab-vm-card--vision">
+            <div class="ab-vm-icon" aria-hidden="true"><i class="fa-solid fa-eye"></i></div>
+            <h3 class="ab-vm-label" data-i18n="legacy.vis_tag">Our Vision</h3>
+            <p class="ab-vm-text" data-i18n="legacy.vis_text">Become the leading figure in the industry as the food manufacturer, by producing, distributing and marketing best quality products for our customers to satisfy their needs and wants.</p>
+          </article>
 
-        <div class="ab-team-grid">
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Sandeepa Bandara</h3>
-              <span>Founder &amp; Managing Director</span>
-            </div>
-          </div>
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Nilmini Perera</h3>
-              <span>Director of Operations</span>
-            </div>
-          </div>
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Kamal Jayawardena</h3>
-              <span>General Manager</span>
-            </div>
-          </div>
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Ruvini Silva</h3>
-              <span>Head of Production</span>
-            </div>
-          </div>
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Dinesh Fernando</h3>
-              <span>Senior Manager — Quality</span>
-            </div>
-          </div>
-
-          <div class="ab-team-card">
-            <div class="ab-team-img" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80')"></div>
-            <div class="ab-team-info">
-              <h3>Amaya Wickrama</h3>
-              <span>Director — Corporate Affairs</span>
-            </div>
-          </div>
-
+          <article class="ab-vm-card ab-vm-card--mission">
+            <div class="ab-vm-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 class="ab-vm-label" data-i18n="legacy.mis_tag">Our Mission</h3>
+            <p class="ab-vm-text" data-i18n="legacy.mis_text">Achieving the success in the business sector, with higher customer satisfaction and building up a strong relationship with all the business related parties through a productive process by offering a product of fresh, healthy, high standard quality with less production cost and minimum waste.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════ CSR CARDS ═══════════════ -->
-    <section class="ab-csr-section">
+    <section class="ab-csr-section" id="csr">
       <div class="container">
-        <span class="section-tag centered">Responsibility</span>
-        <h2 class="section-title centered">Beyond the Bakery</h2>
-        <p class="section-subtitle centered">We believe a great bakery gives back to the community it serves.</p>
+        <span class="section-tag centered" data-i18n="legacy.csr_tag">Responsibility</span>
+        <h2 class="section-title centered" data-i18n="legacy.csr_h2">Beyond the Bakery</h2>
+        <p class="section-subtitle centered" data-i18n="legacy.csr_sub">We believe a great bakery gives back to the community it serves.</p>
 
         <div class="ab-csr-grid">
           <div class="ab-csr-card">
             <div class="ab-csr-icon">
               <i class="fa-solid fa-leaf"></i>
             </div>
-            <h3>Environmental</h3>
-            <p>We are on a mission to reduce waste across all production units, source sustainably, and minimise our environmental footprint by 2027.</p>
-            <a href="#" class="ab-csr-link">View More <i class="fa-solid fa-arrow-right"></i></a>
+            <h3 data-i18n="legacy.csr_e1h">Environmental</h3>
+            <p data-i18n="legacy.csr_e1p">We are on a mission to reduce waste across all production units, source sustainably, and minimise our environmental footprint by 2027.</p>
+            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
           </div>
           <div class="ab-csr-card">
             <div class="ab-csr-icon">
               <i class="fa-solid fa-heart-pulse"></i>
             </div>
-            <h3>Social</h3>
-            <p>Our community initiative focuses on education, healthcare, and social welfare — empowering the neighbourhoods that built us.</p>
-            <a href="#" class="ab-csr-link">View More <i class="fa-solid fa-arrow-right"></i></a>
+            <h3 data-i18n="legacy.csr_e2h">Social</h3>
+            <p data-i18n="legacy.csr_e2p">Our community initiative focuses on education, healthcare, and social welfare — empowering the neighbourhoods that built us.</p>
+            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
           </div>
           <div class="ab-csr-card">
             <div class="ab-csr-icon">
               <i class="fa-solid fa-handshake"></i>
             </div>
-            <h3>Local Sourcing</h3>
-            <p>We partner with local farmers and suppliers to ensure fresh, natural ingredients while supporting Sri Lanka's agricultural economy.</p>
-            <a href="#" class="ab-csr-link">View More <i class="fa-solid fa-arrow-right"></i></a>
+            <h3 data-i18n="legacy.csr_e3h">Local Sourcing</h3>
+            <p data-i18n="legacy.csr_e3p">We partner with local farmers and suppliers to ensure fresh, natural ingredients while supporting Sri Lanka's agricultural economy.</p>
+            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -258,12 +273,12 @@
     <section class="ab-partner-section">
       <div class="container ab-partner-wrap">
         <div class="ab-partner-text">
-          <h2>Wish to Partner with Us?</h2>
-          <p>Reach out and find how we can help your business grow with Peoples Bakers. We would love to discuss partnership and franchise opportunities with you.</p>
+          <h2 data-i18n="legacy.part_h2">Wish to Partner with Us?</h2>
+          <p data-i18n="legacy.part_p">Reach out and find how we can help your business grow with Peoples Bakers. We would love to discuss partnership and franchise opportunities with you.</p>
         </div>
         <div class="ab-partner-btns">
-          <a href="index.html#findus" class="btn btn-primary">Contact Us</a>
-          <a href="#" class="btn btn-outline">Franchise Info</a>
+          <a href="find-us.html" class="btn btn-primary" data-i18n="legacy.part_contact">Contact Us</a>
+          <a href="find-us.html" class="btn btn-outline" data-i18n="legacy.part_fr">Franchise Info</a>
         </div>
       </div>
     </section>
@@ -271,59 +286,98 @@
   </main>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer>
+    <footer class="site-footer site-footer--classic">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3 class="footer-title">Peoples Bakers</h3>
-          <p>Classic Sri Lankan bakery excellence since 2015.</p>
-          <p>Freshly baked, every day.</p>
+      <div class="footer-main-grid">
+        <div class="footer-col footer-col--brand">
+          <a href="index.html" class="footer-logo-link" aria-label="Peoples Bakers Home">
+            <img src="images/logo.png" alt="Peoples Bakers Logo" class="footer-logo-img" width="110" height="110">
+          </a>
+          <p class="footer-about">For over a decade, Peoples Bakers has brought classic Sri Lankan bakery excellence to families across the island — from fresh daily bread and savouries to celebration cakes and custom photo cakes, baked with care every day.</p>
         </div>
         <div class="footer-col">
-          <h3 class="footer-title">Quick Links</h3>
-          <a href="index.html">Home</a>
-          <a href="legacy.html">Our History</a>
-          <a href="products.html">Products</a>
-          <a href="products.html#cakes">Our Cakes</a>
-          <a href="order.html">Order Online</a>
-          <a href="feedback.html">Feedback</a>
+          <h4 class="footer-heading">Our Products</h4>
+          <nav class="footer-list" aria-label="Product categories">
+            <a href="products.html">Breads</a>
+            <a href="products.html#cakes">Cakes</a>
+            <a href="products.html">Savouries</a>
+            <a href="products.html">Beverages</a>
+            <a href="special-cake.html">Photo Cake</a>
+          </nav>
         </div>
         <div class="footer-col">
-          <h3 class="footer-title">Connect</h3>
-          <a href="https://www.facebook.com/share/1Fbz4YYA8t/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="https://www.tiktok.com/@peoplesbakers" target="_blank" rel="noopener noreferrer">TikTok</a>
-          <a href="order.html">Order Online</a>
+          <h4 class="footer-heading" data-i18n="footer.quick_links">Quick Links</h4>
+                    <nav class="footer-list" aria-label="Quick links">
+            <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
+            <a href="products.html" data-i18n="nav.products">Products</a>
+            <a href="special-cake.html">Customize Cake</a>
+            <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
+            <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
+            <a href="feedback.html" data-i18n="nav.feedback">Feedback</a>
+          </nav>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h4 class="footer-heading">Get In Touch</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-map"></i></span>
+              <div class="footer-contact-text">
+                <strong>Head Office :</strong>
+                <span>NO.623, Egaloya, Bulathsinhala, Sri Lanka</span>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-phone"></i></span>
+              <div class="footer-contact-text">
+                <strong>Telephone :</strong>
+                <a href="tel:+94228955477">+94 22 895 5477</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <span class="footer-contact-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+              <div class="footer-contact-text">
+                <strong>Email :</strong>
+                <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="footer-extra">
-        <div class="footer-extra-left">
-          <div class="footer-contact-row">
-            <p class="footer-email">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <span><strong>Email :</strong> <a href="mailto:hello@peoplesbakers.lk">hello@peoplesbakers.lk</a></span>
-            </p>
-            <p class="footer-whatsapp">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-              <span><strong>WhatsApp :</strong> <a href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">+94 71 234 5678</a></span>
-            </p>
-          </div>
-          <div class="footer-pay">
-            <span class="footer-pay-label">We Accept</span>
-            <ul class="footer-pay-logos" aria-label="Accepted payment methods">
-              <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
-              <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
-              <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
-              <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
-            </ul>
-          </div>
+    </div>
+    <div class="footer-strip footer-strip--base">
+      <div class="container footer-base">
+        <div class="footer-base-contact">
+          <a class="footer-base-link" href="mailto:hello@peoplesbakers.lk">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span><strong>Email :</strong> hello@peoplesbakers.lk</span>
+          </a>
+          <a class="footer-base-link footer-base-link--wa" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20get%20in%20touch" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span><strong>WhatsApp :</strong> +94 22 895 5477</span>
+          </a>
         </div>
-        <p class="footer-extra-copy">&copy; 2026 Peoples Bakers.</p>
+        <div class="footer-base-pay">
+          <span class="footer-pay-label">We Accept</span>
+          <ul class="footer-pay-logos" aria-label="Accepted payment methods">
+            <li title="Visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+            <li title="Mastercard"><i class="fa-brands fa-cc-mastercard" aria-hidden="true"></i></li>
+            <li title="UnionPay"><span class="footer-pay-text">UnionPay</span></li>
+            <li title="American Express"><i class="fa-brands fa-cc-amex" aria-hidden="true"></i></li>
+          </ul>
+        </div>
+        <div class="footer-base-bottom">
+          <div class="footer-socials footer-socials--dark" aria-label="Social media">
+            <a href="https://www.instagram.com/peoplesbakers/" class="footer-social footer-social--ig" data-social-instagram target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1Fbz4YYA8t/" class="footer-social footer-social--fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@peoplesbakers" class="footer-social footer-social--tt" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+          <p class="footer-copy footer-copy--dark">&copy; 2026 Peoples Bakers.</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <a class="order-fab" href="https://wa.me/94712345678?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a class="order-fab" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     <span class="order-fab-label">Chat &amp; order</span>
   </a>
@@ -331,5 +385,59 @@
   <script src="js/main.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/cart.js"></script>
+  <script>
+    (function () {
+      var nav = document.querySelector('.legacy-jump-nav');
+      if (!nav) return;
+      var links = nav.querySelectorAll('.legacy-jump-nav__link');
+      var sections = [];
+      links.forEach(function (link) {
+        var id = (link.getAttribute('href') || '').replace('#', '');
+        var el = id ? document.getElementById(id) : null;
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+
+      function setActive(id) {
+        links.forEach(function (l) {
+          l.classList.toggle('is-active', l.getAttribute('href') === '#' + id);
+        });
+      }
+
+      links.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var href = link.getAttribute('href');
+          if (!href || href.charAt(0) !== '#') return;
+          var target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setActive(href.slice(1));
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) setActive(entry.target.id);
+            });
+          },
+          { rootMargin: '-40% 0px -45% 0px', threshold: 0 }
+        );
+        sections.forEach(function (s) {
+          obs.observe(s.el);
+        });
+      }
+
+      nav.classList.toggle('is-stuck', false);
+      window.addEventListener(
+        'scroll',
+        function () {
+          nav.classList.toggle('is-stuck', window.scrollY > 420);
+        },
+        { passive: true }
+      );
+    })();
+  </script>
 </body>
 </html>

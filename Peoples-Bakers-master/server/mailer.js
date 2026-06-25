@@ -94,16 +94,30 @@ function sendWelcomeEmail(user) {
 
 function sendOrderConfirmation(order) {
   if (!order || !order.customer || !order.customer.email) return Promise.resolve(false);
-  const items = (order.items || [])
-    .map(
-      (it) =>
-        '<tr><td style="padding:6px 0;font-size:13px">' +
-        escapeHtml(it.qty + "× " + it.title) +
-        '</td><td style="padding:6px 0;font-size:13px;text-align:right">Rs. ' +
-        (Number(it.price) * Number(it.qty)).toLocaleString("en-LK") +
+  const lineItems = (order.items || []).map(function (it) {
+    return (
+      '<tr><td style="padding:6px 0;font-size:13px">' +
+      escapeHtml(it.qty + "× " + it.title) +
+      '</td><td style="padding:6px 0;font-size:13px;text-align:right">Rs. ' +
+      (Number(it.price) * Number(it.qty)).toLocaleString("en-LK") +
+      "</td></tr>"
+    );
+  });
+  const subtotal =
+    Number(order.subtotal) ||
+    (order.items || []).reduce(function (s, it) {
+      return s + (Number(it.price) || 0) * (Number(it.qty) || 1);
+    }, 0);
+  const discount = Math.max(0, Number(order.discount) || 0);
+  if (discount > 0) {
+    lineItems.push(
+      '<tr><td style="padding:6px 0;font-size:13px;color:#2d6a4f">Phone discount</td>' +
+        '<td style="padding:6px 0;font-size:13px;text-align:right;color:#2d6a4f">− Rs. ' +
+        discount.toLocaleString("en-LK") +
         "</td></tr>"
-    )
-    .join("");
+    );
+  }
+  const items = lineItems.join("");
   const ref = "#" + String(order.id).slice(-6).toUpperCase();
   const body =
     '<p style="line-height:1.6;font-size:14px">Hi <strong>' +

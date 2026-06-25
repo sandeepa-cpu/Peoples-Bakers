@@ -2,7 +2,12 @@
  * Order Online page — interactive studio, zone check, live status.
  */
 (function () {
-  var WHATSAPP_NUMBER = '94712345678';
+  function getWhatsAppNumber() {
+    if (window.PB_CONTACT && window.PB_CONTACT.whatsappNumber) {
+      return String(window.PB_CONTACT.whatsappNumber).replace(/\D/g, '');
+    }
+    return '947228955477';
+  }
   var EMAIL_TO = 'hello@peoplesbakers.lk';
 
   function t(key, vars) {
@@ -260,7 +265,7 @@
         var msg = buildOrderMessage(getStudioState());
         var url =
           'https://wa.me/' +
-          WHATSAPP_NUMBER +
+          getWhatsAppNumber() +
           '?text=' +
           encodeURIComponent(msg);
         waBtn.setAttribute('href', url);

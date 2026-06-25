@@ -21,7 +21,7 @@ const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, "peoples-bakers.db");
 const db = new DatabaseSync(DB_PATH);
 db.exec("PRAGMA journal_mode = WAL;");
 
-const COLLECTIONS = ["users", "orders", "feedback", "products"];
+const COLLECTIONS = ["users", "orders", "feedback", "products", "settings"];
 
 function safeName(name) {
   if (!/^[a-z_]+$/.test(name)) {
@@ -80,15 +80,26 @@ function putRaw(name, record) {
 
 function write(name, rows) {
   ensureTable(name);
-  const tx = db.prepare("DELETE FROM " + name);
-  tx.run();
-  rows.forEach((r) => {
-    const record = Object.assign(
-      { id: genId(name.slice(0, 3)), createdAt: new Date().toISOString() },
-      r
+  db.exec("BEGIN IMMEDIATE");
+  try {
+    db.prepare("DELETE FROM " + name).run();
+    const insert = db.prepare(
+      "INSERT OR REPLACE INTO " +
+        name +
+        " (id, createdAt, doc) VALUES (?, ?, ?)"
     );
-    putRaw(name, record);
-  });
+    rows.forEach((r) => {
+      const record = Object.assign(
+        { id: genId(name.slice(0, 3)), createdAt: new Date().toISOString() },
+        r
+      );
+      insert.run(record.id, record.createdAt || "", JSON.stringify(record));
+    });
+    db.exec("COMMIT");
+  } catch (err) {
+    db.exec("ROLLBACK");
+    throw err;
+  }
 }
 
 function insert(name, row) {

@@ -1,0 +1,33 @@
+# Render Blueprint — Peoples Bakers
+# Deploy: Render Dashboard → New → Blueprint → select this repo
+services:
+  - type: web
+    name: peoples-bakers
+    runtime: node
+    plan: free
+    region: singapore
+    branch: master
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SITE_URL
+        value: https://www.peoplesbakers.lk
+      - key: DB_PATH
+        value: /var/data/peoples-bakers.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+    disk:
+      name: peoples-bakers-data
+      mountPath: /var/data
+      sizeGB: 1

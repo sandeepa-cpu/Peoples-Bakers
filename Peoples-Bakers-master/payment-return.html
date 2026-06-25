@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | Peoples Bakers</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .pr-wrap { max-width: 520px; margin: 0 auto; padding: 3rem 1.25rem; text-align: center; }
+    .pr-card { background: #fff; border: 1px solid rgba(155,45,142,.14); border-radius: 18px; padding: 2rem 1.5rem; box-shadow: var(--shadow-soft); }
+    .pr-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .pr-icon.ok { color: #2d6a4f; }
+    .pr-icon.bad { color: #c0392b; }
+    .pr-icon.wait { color: var(--brand-purple); }
+    .pr-links { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+  </style>
+</head>
+<body class="order-page">
+  <div class="pr-wrap">
+    <div class="pr-card" id="pr-card">
+      <div class="pr-icon wait" id="pr-icon"><i class="fa-solid fa-spinner fa-spin"></i></div>
+      <h1 id="pr-title">Processing payment…</h1>
+      <p id="pr-text">Please wait.</p>
+      <div class="pr-links" id="pr-links"></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var KEY = "peoples-bakers-cart-v1";
+    var p = new URLSearchParams(location.search);
+    var status = p.get("status_code");
+    var orderId = p.get("order_id");
+    var icon = document.getElementById("pr-icon");
+    var title = document.getElementById("pr-title");
+    var text = document.getElementById("pr-text");
+    var links = document.getElementById("pr-links");
+
+    function setIcon(cls, html) {
+      icon.className = "pr-icon " + cls;
+      icon.innerHTML = html;
+    }
+
+    if (status === "2") {
+      try { localStorage.setItem(KEY, "[]"); } catch (e) {}
+      window.dispatchEvent(new CustomEvent("peoples-cart-changed", { detail: { items: [] } }));
+      setIcon("ok", '<i class="fa-solid fa-circle-check"></i>');
+      title.textContent = "Payment successful!";
+      text.textContent = "Thank you — your order" + (orderId ? " #" + orderId.slice(-6).toUpperCase() : "") + " is confirmed. We'll prepare it soon.";
+      links.innerHTML = '<a class="btn btn-primary" href="account.html#orders">My Orders</a><a class="btn btn-outline" href="index.html">Home</a>';
+    } else if (status === "-1") {
+      setIcon("bad", '<i class="fa-solid fa-circle-xmark"></i>');
+      title.textContent = "Payment cancelled";
+      text.textContent = "No charge was made. You can try again or choose cash on delivery.";
+      links.innerHTML = '<a class="btn btn-primary" href="order.html#checkout">Back to checkout</a>';
+    } else if (status === "-2") {
+      setIcon("bad", '<i class="fa-solid fa-circle-xmark"></i>');
+      title.textContent = "Payment failed";
+      text.textContent = "Please try again or contact us on WhatsApp.";
+      links.innerHTML = '<a class="btn btn-primary" href="order.html#checkout">Try again</a><a class="btn btn-outline" href="https://wa.me/947228955477" target="_blank" rel="noopener">WhatsApp</a>';
+    } else {
+      setIcon("wait", '<i class="fa-solid fa-hourglass-half"></i>');
+      title.textContent = "Payment pending";
+      text.textContent = "If you completed payment, check My Orders in a minute.";
+      links.innerHTML = '<a class="btn btn-primary" href="account.html#orders">My Orders</a><a class="btn btn-outline" href="order.html#checkout">Checkout</a>';
+    }
+  })();
+  </script>
+</body>
+</html>

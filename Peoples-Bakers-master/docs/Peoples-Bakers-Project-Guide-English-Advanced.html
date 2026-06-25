@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peoples Bakers — Advanced Technical Project Guide</title>
+  <style>
+    @page { size: A4; margin: 14mm 12mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #1a1a1a;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 10mm;
+    }
+    h1 {
+      font-size: 20pt;
+      color: #6b1f63;
+      margin: 0 0 4px;
+      border-bottom: 3px solid #ef9f27;
+      padding-bottom: 8px;
+      line-height: 1.25;
+    }
+    .subtitle { color: #555; font-size: 9.5pt; margin-bottom: 16px; }
+    h2 {
+      font-size: 12pt;
+      color: #854f0b;
+      margin: 18px 0 7px;
+      page-break-after: avoid;
+      border-bottom: 1px solid #e8dcc8;
+      padding-bottom: 3px;
+    }
+    h3 { font-size: 10.5pt; color: #333; margin: 11px 0 4px; page-break-after: avoid; }
+    h4 { font-size: 10pt; color: #444; margin: 8px 0 3px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 7px 0 11px;
+      font-size: 9pt;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #faf6f1; color: #6b1f63; font-weight: 600; }
+    tr:nth-child(even) td { background: #fcfcfc; }
+    .box {
+      background: #faf6f1;
+      border-left: 4px solid #ef9f27;
+      padding: 9px 11px;
+      margin: 9px 0;
+      font-size: 9.5pt;
+    }
+    .box-purple { background: #f8f0f7; border-left-color: #6b1f63; }
+    .box-green { background: #eef7ef; border-left-color: #2e7d32; }
+    .box-red { background: #fdecea; border-left-color: #c0392b; }
+    .box-blue { background: #e8f4fd; border-left-color: #1565c0; }
+    pre, .code-block {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 9px 11px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 8.5pt;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 7px 0 11px;
+    }
+    ul, ol { margin: 5px 0; padding-left: 18px; }
+    li { margin: 2px 0; }
+    .diagram {
+      background: #fff;
+      border: 1px dashed #bbb;
+      padding: 11px;
+      font-family: Consolas, monospace;
+      font-size: 8pt;
+      line-height: 1.4;
+      margin: 9px 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 8pt;
+      font-weight: 600;
+    }
+    .badge-ok { background: #e8f5e9; color: #2e7d32; }
+    .badge-warn { background: #fff8e1; color: #854f0b; }
+    .badge-fix { background: #e3f2fd; color: #1565c0; }
+    .toc { font-size: 9.5pt; columns: 2; column-gap: 24px; }
+    .toc li { margin: 4px 0; break-inside: avoid; }
+    .footer {
+      margin-top: 18px;
+      padding-top: 7px;
+      border-top: 1px solid #ddd;
+      font-size: 8.5pt;
+      color: #666;
+      text-align: center;
+    }
+    .page-break { page-break-before: always; }
+    code { font-family: Consolas, monospace; font-size: 9pt; background: #f0f0f0; padding: 0 3px; }
+    @media print {
+      body { padding: 0; }
+      h2, h3 { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Peoples Bakers — Advanced Technical Project Guide</h1>
+<p class="subtitle">
+  Full-stack bakery e-commerce platform · Architecture, API, security, deployment &amp; QA<br>
+  <strong>Version:</strong> 2.0 Advanced &nbsp;|&nbsp; <strong>Date:</strong> June 2026 &nbsp;|&nbsp;
+  <strong>Stack:</strong> Vanilla JS + Node.js 22.5+ + Express 4 + SQLite (node:sqlite)
+</p>
+
+<div class="box box-purple">
+  <strong>Audience:</strong> Developers, technical interviewers, DevOps, and stakeholders who need a
+  production-grade understanding of the system — not just how to run it locally, but how it is
+  designed, secured, and deployed.
+</div>
+
+<h2>Table of Contents</h2>
+<ol class="toc">
+  <li>Executive Summary</li>
+  <li>System Architecture</li>
+  <li>Technology Stack</li>
+  <li>Repository Structure</li>
+  <li>Local Development Setup</li>
+  <li>Application Routes &amp; URLs</li>
+  <li>REST API Reference</li>
+  <li>Authentication &amp; Authorization</li>
+  <li>Order &amp; Payment Lifecycle</li>
+  <li>Database Layer (SQLite)</li>
+  <li>Admin Dashboard</li>
+  <li>Internationalization (i18n)</li>
+  <li>PWA, Caching &amp; Performance</li>
+  <li>Mobile Responsive Design</li>
+  <li>Security Audit &amp; Bug Fixes</li>
+  <li>Environment Configuration</li>
+  <li>Testing &amp; Quality Assurance</li>
+  <li>Deployment &amp; Hosting</li>
+  <li>Troubleshooting</li>
+  <li>Quick Reference</li>
+</ol>
+
+<h2 class="page-break">1. Executive Summary</h2>
+<p>
+  <strong>Peoples Bakers</strong> is a full-stack web application for a Sri Lankan bakery business.
+  Customers browse products, build a cart, place orders (WhatsApp, cash-on-delivery, or PayHere online
+  payment), manage accounts, submit feedback, and locate outlets on a map. Staff use a protected admin
+  dashboard for order fulfilment, catalog management, and analytics.
+</p>
+
+<h3>Key characteristics</h3>
+<table>
+  <tr><th>Aspect</th><th>Detail</th></tr>
+  <tr><td>Architecture</td><td>Monolithic Express server serving static frontend + JSON REST API</td></tr>
+  <tr><td>Frontend</td><td>Multi-page application (MPA) — HTML/CSS/vanilla JS, no React/Vue build step</td></tr>
+  <tr><td>Backend</td><td>Node.js 22.5+ with Express 4, modular route handlers</td></tr>
+  <tr><td>Persistence</td><td>SQLite file via Node built-in <code>node:sqlite</code> — no MySQL/Postgres required</td></tr>
+  <tr><td>Auth</td><td>JWT in httpOnly cookie (<code>pb_token</code>), bcrypt password hashing, optional Google OAuth</td></tr>
+  <tr><td>Payments</td><td>PayHere (Sri Lanka) with server-side hash verification and webhook notify URL</td></tr>
+  <tr><td>Languages</td><td>English, Sinhala (සිං), Tamil (த) — client-side i18n with JSON dictionaries</td></tr>
+  <tr><td>Mobile</td><td>Responsive CSS (30+ breakpoints), hamburger nav, progressive image loading</td></tr>
+</table>
+
+<div class="box box-red">
+  <strong>Critical constraint:</strong> This is <em>not</em> a static site. Opening HTML files directly
+  (<code>file://</code>), VS Code Live Server, GitHub Pages, or PHP-only hosting will break login, orders,
+  admin, and payments. A Node.js process must run continuously in production.
+</div>
+
+<h2>2. System Architecture</h2>
+
+<h3>2.1 High-level diagram</h3>
+<div class="diagram">
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │                         CLIENT (Browser / PWA)                          │
+  │  index.html · order.html · checkout.html · admin.html · js/*.js         │
+  │  cart (localStorage) · i18n · service-worker.js · css/style.css         │
+  └───────────────────────────────┬─────────────────────────────────────────┘
+                                  │ HTTP/HTTPS
+                                  │ GET static assets · POST/GET /api/*
+                                  ▼
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │                    EXPRESS SERVER (server/server.js)                    │
+  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐│
+  │  │ auth.js     │ │ store.js    │ │ payhere.js  │ │ admin-api.js        ││
+  │  │ JWT/cookies │ │ SQLite CRUD │ │ checkout +  │ │ stats, pagination,  ││
+  │  │ middleware  │ │ transactions│ │ webhooks    │ │ audit, kitchen mode ││
+  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────────────┘│
+  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                        │
+  │  │ outlets.js  │ │ discounts.js│ │ mailer.js   │  Static file serving   │
+  │  │ GeoJSON API │ │ phone promo │ │ SMTP emails │  from project root     │
+  │  └─────────────┘ └─────────────┘ └─────────────┘                        │
+  └───────────────────────────────┬─────────────────────────────────────────┘
+                                  │
+          ┌───────────────────────┼───────────────────────┐
+          ▼                       ▼                       ▼
+  ┌───────────────┐     ┌─────────────────┐     ┌─────────────────┐
+  │ SQLite DB     │     │ PayHere Gateway │     │ External APIs   │
+  │ peoples-      │     │ (card / LankaQR)│     │ Google OAuth,   │
+  │ bakers.db     │     │ notify webhook  │     │ Maps, SMTP      │
+  └───────────────┘     └─────────────────┘     └─────────────────┘
+</div>
+
+<h3>2.2 Frontend vs backend responsibilities</h3>
+<table>
+  <tr><th>Layer</th><th>Responsibility</th><th>Cannot do alone</th></tr>
+  <tr>
+    <td><strong>Frontend</strong></td>
+    <td>UI rendering, cart state (localStorage), form validation, language switching, map display, PayHere redirect</td>
+    <td>Persist orders, authenticate users, enforce prices, process payments, admin data</td>
+  </tr>
+  <tr>
+    <td><strong>Backend</strong></td>
+    <td>Serve files, validate &amp; price orders, JWT auth, SQLite persistence, PayHere hash/webhook, rate limits, admin RBAC</td>
+    <td>Replace responsive UI — frontend still required for customer experience</td>
+  </tr>
+</table>
+
+<h3>2.3 Typical checkout request flow</h3>
+<div class="diagram">
+  User fills checkout form (checkout-page.js)
+       │
+       ▼
+  POST /api/orders  ──► Server validates items against catalog prices
+       │                 Applies phone discount (logged-in + matching phone only)
+       │                 Creates order record (status: pending / awaiting_payment)
+       ▼
+  [COD / WhatsApp] ──► Order confirmed · optional SMTP email · admin notified
+       │
+  [PayHere] ──► POST /api/payments/payhere/checkout ──► Returns signed checkout payload
+       │           Browser redirects to PayHere
+       ▼
+  PayHere POST /api/payments/payhere/notify ──► Hash verified · paymentStatus = paid
+</div>
+
+<h2 class="page-break">3. Technology Stack</h2>
+<table>
+  <tr><th>Category</th><th>Technology</th><th>Version / Notes</th></tr>
+  <tr><td>Runtime</td><td>Node.js</td><td>&gt;= 22.5.0 (uses built-in <code>node:sqlite</code>)</td></tr>
+  <tr><td>HTTP framework</td><td>Express</td><td>^4.19 — middleware, routing, static files</td></tr>
+  <tr><td>Database</td><td>SQLite</td><td>WAL mode; document-style JSON in TEXT columns</td></tr>
+  <tr><td>Password hashing</td><td>bcryptjs</td><td>Registration &amp; login</td></tr>
+  <tr><td>Tokens</td><td>jsonwebtoken</td><td>7-day expiry; httpOnly cookie</td></tr>
+  <tr><td>Email</td><td>nodemailer</td><td>Optional SMTP (Gmail app password supported)</td></tr>
+  <tr><td>Google login</td><td>google-auth-library</td><td>Optional; verify ID token server-side</td></tr>
+  <tr><td>Payments</td><td>PayHere REST + redirect</td><td>MD5 hash; sandbox/live via env</td></tr>
+  <tr><td>Frontend</td><td>HTML5, CSS3, ES modules</td><td>No bundler; cache-busted query strings</td></tr>
+  <tr><td>PWA</td><td>service-worker.js + manifest</td><td>Network-first for critical JS/CSS</td></tr>
+  <tr><td>PDF generation</td><td>puppeteer-core + Edge</td><td>Dev tooling only (this guide)</td></tr>
+</table>
+
+<h2>4. Repository Structure</h2>
+<pre>
+Peoples-Bakers-master/
+├── index.html, order.html, products.html, account.html, login.html
+├── checkout.html, feedback.html, find-us.html, special-cake.html, cakes.html
+├── admin.html, pb-office.html          ← Admin UI (same app; secret URL configurable)
+├── css/                                ← style.css (~13k lines), admin.css, account.css
+├── js/
+│   ├── main.js                         ← Site-wide: cart hooks, mobile nav, progressive images
+│   ├── cart.js, checkout-page.js, order-page.js, account-page.js
+│   ├── auth.js, admin.js, i18n.js, find-us.js
+│   └── translations/                   ← en.json, si.json, ta.json
+├── images/, icons/, data/outlets.json
+├── server/
+│   ├── server.js                       ← Entry point (npm start)
+│   ├── auth.js, store.js, seed.js, payhere.js, mailer.js
+│   ├── admin-api.js, outlets.js, discounts.js
+│   └── data/peoples-bakers.db          ← Auto-created; git-ignored
+├── scripts/verify-backend.js           ← Automated health checks
+├── docs/                               ← Hosting guides + this PDF source
+├── render.yaml                         ← Render.com deploy blueprint
+├── .env / .env.example                 ← Secrets (never commit .env)
+└── package.json
+</pre>
+
+<h2>5. Local Development Setup</h2>
+
+<h3>Prerequisites</h3>
+<ul>
+  <li>Node.js 22.5 or newer — <a href="https://nodejs.org">nodejs.org</a></li>
+  <li>Git or ZIP of project folder</li>
+  <li>Terminal (PowerShell on Windows)</li>
+</ul>
+
+<h3>Commands</h3>
+<pre>cd "C:\path\to\Peoples-Bakers-master"
+npm install          # First time only — installs node_modules
+npm start            # Starts Express on http://localhost:3000
+npm run dev          # Auto-restart on file changes (Node --watch)
+npm run verify       # Health checks (server must be running)
+npm run seed         # Re-seed products/admin (no duplicates)
+npm run promote-admin -- user@email.com</pre>
+
+<div class="box box-green">
+  <strong>Success indicator:</strong> Terminal prints <code>Peoples Bakers server running at http://localhost:3000</code>.
+  Keep the terminal open — closing it stops the server. Use <strong>Ctrl+C</strong> to stop intentionally.
+</div>
+
+<h3>First-run seed data</h3>
+<ul>
+  <li>Admin account created automatically (credentials printed in terminal)</li>
+  <li>Default dev: <code>admin@peoplesbakers.lk</code> / <code>admin123</code> — change before production</li>
+  <li>Products imported from seed data into SQLite</li>
+</ul>
+
+<h2 class="page-break">6. Application Routes &amp; URLs</h2>
+<table>
+  <tr><th>URL</th><th>Page</th><th>Description</th></tr>
+  <tr><td><code>/</code></td><td>index.html</td><td>Home — hero carousel, featured products, outlets</td></tr>
+  <tr><td><code>/order.html</code></td><td>Order Online</td><td>Delivery zones, FAQ, WhatsApp order, cart link</td></tr>
+  <tr><td><code>/checkout.html</code></td><td>Checkout</td><td>Order submission, PayHere, phone discount</td></tr>
+  <tr><td><code>/products.html</code></td><td>Catalogue</td><td>Full product &amp; cake listing</td></tr>
+  <tr><td><code>/account.html</code></td><td>My Account</td><td>Profile, order history (auth required)</td></tr>
+  <tr><td><code>/login.html</code></td><td>Auth</td><td>Register, login, Google Sign-In (optional)</td></tr>
+  <tr><td><code>/find-us.html</code></td><td>Outlet finder</td><td>Map, search, nearby branches</td></tr>
+  <tr><td><code>/feedback.html</code></td><td>Feedback</td><td>Customer reviews → POST /api/feedback</td></tr>
+  <tr><td><code>/special-cake.html</code></td><td>Custom cakes</td><td>Photo cake requests via WhatsApp</td></tr>
+  <tr><td><code>/pb-office.html</code></td><td>Admin</td><td>Staff dashboard (configurable via ADMIN_PATH)</td></tr>
+  <tr><td><code>/admin.html</code></td><td>Admin (alt)</td><td>Same dashboard — both URLs supported</td></tr>
+  <tr><td><code>/api/health</code></td><td>API</td><td>JSON health check for monitoring</td></tr>
+  <tr><td><code>/api/config</code></td><td>API</td><td>Public site config (WhatsApp, phone, social URLs)</td></tr>
+</table>
+
+<h2>7. REST API Reference</h2>
+
+<h3>7.1 Authentication</h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/api/auth/register</td><td>—</td><td>Create customer account (name, email, password, phone)</td></tr>
+  <tr><td>POST</td><td>/api/auth/login</td><td>—</td><td>Sets httpOnly JWT cookie</td></tr>
+  <tr><td>POST</td><td>/api/auth/logout</td><td>—</td><td>Clears cookie</td></tr>
+  <tr><td>GET</td><td>/api/auth/me</td><td>Cookie</td><td>Current user profile</td></tr>
+  <tr><td>PATCH</td><td>/api/auth/profile</td><td>User</td><td>Update name, phone</td></tr>
+  <tr><td>POST</td><td>/api/auth/google</td><td>—</td><td>Google ID token → account + cookie</td></tr>
+</table>
+
+<h3>7.2 Orders &amp; payments</h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/api/orders</td><td>Optional</td><td>Create order; server validates catalog &amp; prices</td></tr>
+  <tr><td>GET</td><td>/api/orders</td><td>User</td><td>Own orders (admin sees all)</td></tr>
+  <tr><td>GET</td><td>/api/orders/:id</td><td>User</td><td>Single order detail</td></tr>
+  <tr><td>PATCH</td><td>/api/orders/:id</td><td>Admin</td><td>Update status, admin notes</td></tr>
+  <tr><td>POST</td><td>/api/orders/:id/cancel</td><td>User/Admin</td><td>Cancel order</td></tr>
+  <tr><td>POST</td><td>/api/payments/payhere/checkout</td><td>—</td><td>Generate PayHere signed checkout</td></tr>
+  <tr><td>POST</td><td>/api/payments/payhere/notify</td><td>PayHere</td><td>Webhook — updates paymentStatus</td></tr>
+</table>
+
+<p><strong>Order statuses:</strong> pending → awaiting_payment → confirmed → preparing → delivered | cancelled</p>
+<p><strong>Payment statuses:</strong> cod, pending, paid, failed, cancelled, refund_pending</p>
+
+<h3>7.3 Products, feedback, outlets, config</h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/products</td><td>—</td><td>Public product catalogue</td></tr>
+  <tr><td>POST/PUT/DELETE</td><td>/api/products[/:id]</td><td>Admin</td><td>CRUD products</td></tr>
+  <tr><td>POST</td><td>/api/feedback</td><td>—</td><td>Submit review (rate-limited)</td></tr>
+  <tr><td>GET/PATCH</td><td>/api/feedback[/:id]</td><td>Admin</td><td>List / moderate feedback</td></tr>
+  <tr><td>GET</td><td>/api/outlets, /nearby, /bounds, /geojson</td><td>—</td><td>Branch finder APIs</td></tr>
+  <tr><td>GET</td><td>/api/discount/preview</td><td>—</td><td>Preview phone discount eligibility</td></tr>
+  <tr><td>GET</td><td>/api/config</td><td>—</td><td>Runtime public configuration</td></tr>
+</table>
+
+<h3>7.4 Admin API (prefix /api/admin/*)</h3>
+<p>Mounted via <code>admin-api.js</code>. All routes require <code>requireAuth</code> + <code>requireAdmin</code>.</p>
+<ul>
+  <li>Dashboard stats, revenue analytics, order volume</li>
+  <li>Paginated orders with search, status filters, date range</li>
+  <li>User management, settings (WhatsApp, business name, social links)</li>
+  <li>Audit trail for admin actions</li>
+  <li>Kitchen display mode endpoints</li>
+</ul>
+
+<h2 class="page-break">8. Authentication &amp; Authorization</h2>
+
+<h3>8.1 JWT cookie model</h3>
+<ul>
+  <li>Cookie name: <code>pb_token</code></li>
+  <li>Flags: <code>httpOnly</code>, <code>sameSite: lax</code>, <code>secure: true</code> in production</li>
+  <li>Expiry: 7 days</li>
+  <li>Payload: user id, name, email, phone, role (customer | admin)</li>
+</ul>
+
+<h3>8.2 Role-based access</h3>
+<table>
+  <tr><th>Role</th><th>Access</th></tr>
+  <tr><td>customer</td><td>Own profile, own orders, public pages</td></tr>
+  <tr><td>admin</td><td>All admin API routes, order management, products, feedback, users, settings</td></tr>
+</table>
+
+<h3>8.3 Security hardening (implemented)</h3>
+<ul>
+  <li><strong>Production JWT_SECRET:</strong> Minimum 32 characters required; server exits if missing</li>
+  <li><strong>Stale JWT role fix:</strong> Middleware re-loads user from DB on each request — promoted/demoted roles apply immediately</li>
+  <li><strong>Admin seed password:</strong> <code>ADMIN_SEED_PASSWORD</code> required in production (no default admin123)</li>
+  <li><strong>Secret admin URL:</strong> <code>ADMIN_PATH</code> env (default pb-office.html) — not linked from public nav</li>
+  <li><strong>Server-side pricing:</strong> Client-submitted prices ignored; catalog is source of truth</li>
+  <li><strong>Phone discount:</strong> Only applied when logged-in user's phone matches checkout phone</li>
+</ul>
+
+<h2>9. Order &amp; Payment Lifecycle</h2>
+
+<h3>9.1 Order creation</h3>
+<ol>
+  <li>Frontend sends cart items + customer details to <code>POST /api/orders</code></li>
+  <li>Server maps product IDs to catalog entries; rejects unknown or zero-qty items</li>
+  <li>Discount calculated server-side (<code>discounts.js</code>)</li>
+  <li>Order persisted with timestamps, payment method, delivery mode</li>
+  <li>Optional confirmation email via <code>mailer.js</code></li>
+</ol>
+
+<h3>9.2 PayHere integration</h3>
+<ul>
+  <li>Checkout endpoint returns merchant_id, hash, amount, return/cancel/notify URLs</li>
+  <li>User completes payment on PayHere hosted page</li>
+  <li>PayHere POSTs to <code>/api/payments/payhere/notify</code> — MD5 hash verified server-side</li>
+  <li>Failed payment no longer auto-cancels order (fixed) — staff can follow up manually</li>
+  <li>Production defaults to <strong>live</strong> mode unless <code>PAYHERE_SANDBOX=true</code></li>
+</ul>
+
+<h2>10. Database Layer (SQLite)</h2>
+
+<h3>10.1 Design pattern</h3>
+<p>
+  Collections: <code>users</code>, <code>orders</code>, <code>feedback</code>, <code>products</code>, <code>settings</code>.
+  Each table: <code>(id TEXT PK, createdAt TEXT, doc TEXT)</code> where <code>doc</code> is JSON.
+  This document-store pattern keeps route code simple while using a real SQL database.
+</p>
+
+<h3>10.2 Operations</h3>
+<ul>
+  <li>WAL journal mode for concurrent read performance</li>
+  <li>Write transactions for crash-safe multi-step updates</li>
+  <li>Legacy JSON files auto-migrated on first run</li>
+  <li>Override path: <code>DB_PATH=/persistent/peoples-bakers.db</code></li>
+</ul>
+
+<h3>10.3 Reset</h3>
+<pre>Stop server → delete server/data/ folder → npm start (re-seeds)</pre>
+
+<h2 class="page-break">11. Admin Dashboard</h2>
+<p>Accessible at <code>/pb-office.html</code> (or custom <code>ADMIN_PATH</code>). Frontend: <code>admin.html</code> + <code>js/admin.js</code> + <code>css/admin.css</code>.</p>
+
+<table>
+  <tr><th>Feature</th><th>Capability</th></tr>
+  <tr><td>Orders</td><td>Filter, search, paginate; update status pipeline; admin notes</td></tr>
+  <tr><td>Products</td><td>Add, edit, delete catalogue items synced to /api/products</td></tr>
+  <tr><td>Feedback</td><td>Read and moderate customer submissions</td></tr>
+  <tr><td>Users</td><td>View registered customers</td></tr>
+  <tr><td>Settings</td><td>WhatsApp number, phone, business info, social URLs</td></tr>
+  <tr><td>Analytics</td><td>Revenue, order counts, status breakdown</td></tr>
+  <tr><td>Kitchen mode</td><td>Simplified display for fulfilment screens</td></tr>
+</table>
+
+<h2>12. Internationalization (i18n)</h2>
+<ul>
+  <li>Engine: <code>js/i18n.js</code> loads <code>js/translations/{en,si,ta}.json</code></li>
+  <li>Markup: <code>data-i18n="section.key"</code> on HTML elements</li>
+  <li>Switcher: EN | සිං | த — preference stored in localStorage</li>
+  <li>Coverage: navigation, footer, home, order, account, checkout strings, mobile menu labels</li>
+</ul>
+
+<h2>13. PWA, Caching &amp; Performance</h2>
+<ul>
+  <li><strong>service-worker.js:</strong> Caches static assets; network-first strategy for main JS/CSS (prevents stale code)</li>
+  <li><strong>Cache versioning:</strong> Bumped on releases (e.g. peoples-bakers-v147)</li>
+  <li><strong>Asset query strings:</strong> CSS/JS <code>?v=N</code> for cache busting</li>
+  <li><strong>Config API:</strong> Contact numbers loaded dynamically — single source of truth</li>
+</ul>
+
+<h2>14. Mobile Responsive Design</h2>
+
+<div class="box box-green">
+  Majority of Sri Lankan e-commerce traffic is mobile. The site implements responsive layout,
+  touch-friendly controls, and network-aware image loading.
+</div>
+
+<h3>14.1 CSS breakpoints</h3>
+<p><code>css/style.css</code> includes 30+ media queries at 768px, 900px, 1024px, etc. Grids collapse to single column on small screens.</p>
+
+<h3>14.2 Hamburger navigation (≤900px)</h3>
+<ul>
+  <li><code>js/main.js</code> — <code>setupMobileNav()</code></li>
+  <li>Side drawer with backdrop; closes on link click, backdrop tap, Escape key</li>
+  <li><code>body.nav-open { overflow: hidden }</code> prevents background scroll</li>
+</ul>
+
+<h3>14.3 Progressive image loading (3G / slow networks)</h3>
+<table>
+  <tr><th>Technique</th><th>Implementation</th></tr>
+  <tr><td>Hero defer</td><td>Only first slide loads immediately; others staggered</td></tr>
+  <tr><td>Hero preload</td><td>First hero image preloaded for faster LCP</td></tr>
+  <tr><td>Lazy images</td><td><code>loading="lazy"</code> on below-fold images</td></tr>
+  <tr><td>Product backgrounds</td><td><code>setupProgressiveImages()</code> — IntersectionObserver-based</td></tr>
+</table>
+
+<h2 class="page-break">15. Security Audit &amp; Bug Fixes</h2>
+
+<h3>15.1 Critical <span class="badge badge-ok">FIXED</span></h3>
+<table>
+  <tr><th>Issue</th><th>Resolution</th></tr>
+  <tr><td>Stale cart at checkout</td><td>Re-read cart + proper event binding before submit</td></tr>
+  <tr><td>Client-side price tampering</td><td>Server catalog prices only; invalid products rejected</td></tr>
+  <tr><td>Default admin password in prod</td><td>ADMIN_SEED_PASSWORD required when NODE_ENV=production</td></tr>
+  <tr><td>Weak JWT secret</td><td>32+ char JWT_SECRET enforced in production</td></tr>
+</table>
+
+<h3>15.2 Medium <span class="badge badge-fix">FIXED</span></h3>
+<table>
+  <tr><th>Issue</th><th>Resolution</th></tr>
+  <tr><td>Admin URL 404</td><td>Both /pb-office.html and /admin.html served</td></tr>
+  <tr><td>Stale JWT role</td><td>DB user lookup on each authenticated request</td></tr>
+  <tr><td>PayHere sandbox default</td><td>Production uses live unless PAYHERE_SANDBOX=true</td></tr>
+  <tr><td>Payment fail cancels order</td><td>Order retained for manual follow-up</td></tr>
+  <tr><td>Phone discount fraud</td><td>Logged-in phone must match checkout phone</td></tr>
+  <tr><td>Wrong WhatsApp numbers</td><td>Centralized via /api/config; default 947228955477</td></tr>
+  <tr><td>Service worker stale cache</td><td>Network-first for critical assets</td></tr>
+</table>
+
+<h3>15.3 Low priority <span class="badge badge-fix">FIXED</span></h3>
+<ul>
+  <li>Social links (Instagram, LinkedIn) — real URLs + config API</li>
+  <li>Full i18n on home, order, account pages</li>
+  <li>Feedback rate limiting</li>
+  <li>SQLite write transactions</li>
+  <li>Outlets catalog graceful fallback</li>
+  <li>Mobile hamburger menu + progressive images</li>
+</ul>
+
+<h2>16. Environment Configuration</h2>
+<p>Copy <code>.env.example</code> → <code>.env</code>. Never commit <code>.env</code> to version control.</p>
+
+<table>
+  <tr><th>Variable</th><th>Required</th><th>Purpose</th></tr>
+  <tr><td>JWT_SECRET</td><td>Production: yes</td><td>Sign login tokens (32+ random chars)</td></tr>
+  <tr><td>NODE_ENV</td><td>Production: yes</td><td>production → secure cookies, stricter checks</td></tr>
+  <tr><td>SITE_URL</td><td>Recommended</td><td>Email links, PayHere return URLs</td></tr>
+  <tr><td>ADMIN_SEED_PASSWORD</td><td>Production: yes</td><td>Initial admin account password</td></tr>
+  <tr><td>ADMIN_PATH</td><td>Optional</td><td>Secret staff URL filename</td></tr>
+  <tr><td>WHATSAPP_NUMBER</td><td>Optional</td><td>Default: 947228955477</td></tr>
+  <tr><td>PAYHERE_*</td><td>For online pay</td><td>Merchant ID, secret, sandbox flag</td></tr>
+  <tr><td>SMTP_*</td><td>Optional</td><td>Order confirmation emails</td></tr>
+  <tr><td>GOOGLE_CLIENT_ID</td><td>Optional</td><td>Google Sign-In</td></tr>
+  <tr><td>DB_PATH</td><td>Optional</td><td>Persistent disk path on host</td></tr>
+  <tr><td>PHONE_DISCOUNT_*</td><td>Optional</td><td>Checkout phone promo rules</td></tr>
+</table>
+
+<h2>17. Testing &amp; Quality Assurance</h2>
+
+<h3>17.1 Automated verification</h3>
+<pre>npm start          # Terminal 1 — keep running
+npm run verify     # Terminal 2 — runs scripts/verify-backend.js</pre>
+<p>Checks: /api/health, /api/config, /api/outlets, admin auth, static assets.</p>
+
+<h3>17.2 Manual test checklist</h3>
+<ol>
+  <li>Home page — images, language switch (EN → සිං → த)</li>
+  <li>Products → add to cart → checkout (COD path)</li>
+  <li>Register → login → account order history</li>
+  <li>Admin login → view/update orders</li>
+  <li>WhatsApp buttons — verify +94 22 895 5477</li>
+  <li>PayHere sandbox checkout (if keys configured)</li>
+  <li>Mobile: hamburger menu, checkout on phone keyboard</li>
+  <li>Hard refresh Ctrl+Shift+R after deploy</li>
+</ol>
+
+<h2 class="page-break">18. Deployment &amp; Hosting</h2>
+
+<div class="box box-blue">
+  <strong>Companion document:</strong> Full hosting checklist, provider comparison, and Mobitel inquiry
+  template — see <code>docs/Peoples-Bakers-Hosting-Guide.pdf</code> (English) or
+  <code>Peoples-Bakers-Hosting-Guide-Sinhala.pdf</code> on Desktop.
+</div>
+
+<h3>18.1 Requirements</h3>
+<table>
+  <tr><th>Requirement</th><th>Detail</th></tr>
+  <tr><td>Runtime</td><td>Node.js 22.5+ running 24/7</td></tr>
+  <tr><td>Start command</td><td><code>npm start</code></td></tr>
+  <tr><td>Storage</td><td>Persistent disk for SQLite (~1 GB)</td></tr>
+  <tr><td>SSL/HTTPS</td><td>Required — login cookies, PayHere webhooks</td></tr>
+  <tr><td>RAM</td><td>512 MB min, 1 GB recommended</td></tr>
+</table>
+
+<h3>18.2 Compatible hosts</h3>
+<table>
+  <tr><th>Option</th><th>Suitable</th><th>Notes</th></tr>
+  <tr><td>Render.com</td><td>✓ Best</td><td>render.yaml included; Singapore region</td></tr>
+  <tr><td>VPS (DO, Linode)</td><td>✓ Good</td><td>Full control; PM2/systemd for process</td></tr>
+  <tr><td>Railway / Fly.io</td><td>✓ Good</td><td>Node-native PaaS</td></tr>
+  <tr><td>PHP-only cPanel</td><td>✗ No</td><td>Cannot run Express backend</td></tr>
+  <tr><td>GitHub Pages</td><td>✗ No</td><td>Static only — no API</td></tr>
+</table>
+
+<h3>18.3 Production vs local</h3>
+<p>
+  Locally you run <code>npm start</code> manually. On a live host, the platform keeps Node running
+  automatically — customers never need your laptop online. Set all production env vars on the host
+  dashboard before go-live.
+</p>
+
+<h2>19. Troubleshooting</h2>
+<table>
+  <tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr>
+  <tr><td>Login/API fails</td><td>Opened HTML directly or Live Server</td><td>Use <code>npm start</code> → localhost:3000</td></tr>
+  <tr><td>Site stops working</td><td>Terminal closed</td><td>Restart <code>npm start</code>; production: check host logs</td></tr>
+  <tr><td>Port 3000 in use</td><td>Another process</td><td>Close old terminal or <code>PORT=3001 npm start</code></td></tr>
+  <tr><td>Server exits on start</td><td>Missing JWT_SECRET in production</td><td>Set .env on host</td></tr>
+  <tr><td>Old UI after update</td><td>Browser or SW cache</td><td>Ctrl+Shift+R; clear site data</td></tr>
+  <tr><td>PayHere notify fails</td><td>HTTP not HTTPS</td><td>Enable SSL; notify URL must be public</td></tr>
+  <tr><td>Orders lost on restart</td><td>Ephemeral disk on host</td><td>Set DB_PATH to persistent volume</td></tr>
+</table>
+
+<h2>20. Quick Reference</h2>
+<table>
+  <tr><th>Task</th><th>Command / URL</th></tr>
+  <tr><td>Install dependencies</td><td><code>npm install</code></td></tr>
+  <tr><td>Start server</td><td><code>npm start</code></td></tr>
+  <tr><td>Website</td><td><code>http://localhost:3000</code></td></tr>
+  <tr><td>Admin panel</td><td><code>http://localhost:3000/pb-office.html</code></td></tr>
+  <tr><td>Health check</td><td><code>GET /api/health</code></td></tr>
+  <tr><td>Verify script</td><td><code>npm run verify</code></td></tr>
+  <tr><td>Database file</td><td><code>server/data/peoples-bakers.db</code></td></tr>
+  <tr><td>Default WhatsApp</td><td>+94 22 895 5477 (947228955477)</td></tr>
+  <tr><td>Mobile nav breakpoint</td><td>900px — hamburger menu</td></tr>
+  <tr><td>Stop server</td><td>Ctrl+C in terminal</td></tr>
+</table>
+
+<div class="box box-purple">
+  <strong>For interviews / handover:</strong> Emphasize server-side price validation, JWT httpOnly cookies,
+  PayHere webhook verification, SQLite persistence on hosted disks, and the requirement for Node.js
+  hosting — these distinguish this from a static bakery brochure site.
+</div>
+
+<div class="footer">
+  Peoples Bakers — Advanced Technical Project Guide v2.0 &nbsp;|&nbsp; June 2026<br>
+  20 sections · English · For technical review, onboarding &amp; deployment planning<br>
+  hello@peoplesbakers.lk
+</div>
+
+</body>
+</html>

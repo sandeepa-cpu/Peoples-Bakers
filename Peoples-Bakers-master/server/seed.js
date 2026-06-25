@@ -9,11 +9,23 @@ const path = require("path");
 const bcrypt = require("bcryptjs");
 const store = require("./store");
 
-const DEFAULT_ADMIN = {
-  name: "Bakery Admin",
-  email: "admin@peoplesbakers.lk",
-  password: "admin123",
-};
+const DEV_ADMIN_PASSWORD = "admin123";
+
+function adminSeedCredentials() {
+  const email = String(process.env.ADMIN_SEED_EMAIL || "admin@peoplesbakers.lk")
+    .trim()
+    .toLowerCase();
+  const password = String(process.env.ADMIN_SEED_PASSWORD || "").trim();
+  const isProd = process.env.NODE_ENV === "production";
+
+  if (password) {
+    return { email, password, source: "env" };
+  }
+  if (isProd) {
+    return null;
+  }
+  return { email, password: DEV_ADMIN_PASSWORD, source: "dev" };
+}
 
 function parsePrice(label) {
   // "MRP Rs. 1600.00" -> 1600
@@ -25,20 +37,35 @@ function parsePrice(label) {
 function seedAdmin() {
   const existing = store.findOne("users", (u) => u.role === "admin");
   if (existing) return existing;
+
+  const creds = adminSeedCredentials();
+  if (!creds) {
+    console.warn(
+      "\n  No admin account found. Set ADMIN_SEED_PASSWORD in .env or run:\n" +
+        "    npm run promote-admin -- your@email.com\n"
+    );
+    return null;
+  }
+
   const user = store.insert("users", {
-    name: DEFAULT_ADMIN.name,
-    email: DEFAULT_ADMIN.email.toLowerCase(),
+    name: "Bakery Admin",
+    email: creds.email,
     phone: "",
     role: "admin",
-    passwordHash: bcrypt.hashSync(DEFAULT_ADMIN.password, 10),
+    passwordHash: bcrypt.hashSync(creds.password, 10),
   });
-  console.log(
-    "\n  Seeded admin account:\n    email:    " +
-      DEFAULT_ADMIN.email +
-      "\n    password: " +
-      DEFAULT_ADMIN.password +
-      "\n  (change this after first login)\n"
-  );
+
+  if (creds.source === "dev") {
+    console.log(
+      "\n  Seeded dev admin account:\n    email:    " +
+        creds.email +
+        "\n    password: " +
+        DEV_ADMIN_PASSWORD +
+        "\n  (dev only — set ADMIN_SEED_PASSWORD before production)\n"
+    );
+  } else {
+    console.log("\n  Seeded admin account:\n    email:    " + creds.email + "\n");
+  }
   return user;
 }
 

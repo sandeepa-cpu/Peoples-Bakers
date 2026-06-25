@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "node --watch server/server.js",
-    "seed": "node server/seed.js"
+    "seed": "node server/seed.js",
+    "promote-admin": "node scripts/promote-admin.js",
+    "verify": "node scripts/verify-backend.js"
   },
   "keywords": [
     "bakery",
@@ -15,6 +17,9 @@
   ],
   "author": "Peoples Bakers",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
