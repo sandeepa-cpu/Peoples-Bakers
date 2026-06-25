@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=28">
+  <link rel="stylesheet" href="css/style.css?v=29">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -131,6 +131,25 @@
           <button type="button" class="product-filter" data-filter="sweets" role="tab" aria-selected="false" data-i18n="products_page.f_sweets">Sweets</button>
           <button type="button" class="product-filter" data-filter="savory" role="tab" aria-selected="false" data-i18n="products_page.f_savory">Savory</button>
           <button type="button" class="product-filter" data-filter="drinks" role="tab" aria-selected="false" data-i18n="products_page.f_drinks">Drinks</button>
+        </div>
+
+        <div class="products-search-bar">
+          <label class="products-search-bar__label" for="products-search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <span data-i18n="products_page.search_label">Search products</span>
+          </label>
+          <input
+            type="search"
+            id="products-search"
+            class="products-search-bar__input"
+            autocomplete="off"
+            data-i18n-placeholder="products_page.search_ph"
+            placeholder="Search by name, flavour, or price…"
+            data-i18n-aria-label="products_page.search_aria"
+            aria-label="Search products"
+          />
+          <button type="button" class="products-search-bar__clear" id="products-search-clear" hidden data-i18n="products_page.search_clear">Clear</button>
+          <p class="products-search-bar__hint" id="products-search-status" role="status" aria-live="polite" hidden></p>
         </div>
 
         <div class="products-bread-gallery" id="breads">
@@ -1024,6 +1043,6 @@
   <script src="js/i18n.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/cakes-page.js"></script>
-  <script src="js/products-page.js?v=1"></script>
+  <script src="js/products-page.js?v=2"></script>
 </body>
 </html>

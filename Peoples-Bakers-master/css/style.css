@@ -3374,6 +3374,66 @@ body.page-products .product-toolbar--categories .product-filter[data-filter="swe
   color: #f5d4ef;
 }
 
+body.page-products .products-search-bar {
+  max-width: 640px;
+  margin: 1.25rem auto 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+}
+
+body.page-products .products-search-bar__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--light-gold);
+  width: 100%;
+}
+
+body.page-products .products-search-bar__input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 159, 39, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--cream);
+  font-size: 0.95rem;
+}
+
+body.page-products .products-search-bar__input:focus {
+  outline: 2px solid rgba(239, 159, 39, 0.45);
+  outline-offset: 2px;
+}
+
+body.page-products .products-search-bar__input::placeholder {
+  color: rgba(200, 184, 148, 0.65);
+}
+
+body.page-products .products-search-bar__clear {
+  border: 1px solid rgba(239, 159, 39, 0.35);
+  background: transparent;
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+body.page-products .products-search-bar__clear:hover {
+  background: rgba(239, 159, 39, 0.12);
+}
+
+body.page-products .products-search-bar__hint {
+  width: 100%;
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(200, 184, 148, 0.88);
+}
+
 /* Bread gallery — warm full-bleed band */
 body.page-products .products-bread-gallery {
   margin: 2rem 0 2.5rem;

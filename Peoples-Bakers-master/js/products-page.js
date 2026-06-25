@@ -1,5 +1,5 @@
 /**
- * Products page — top category filters (All, Breads, Cakes, Sweets, Savory, Drinks).
+ * Products page — category filters + search (All, Breads, Cakes, …).
  */
 (function () {
   var buttons = document.querySelectorAll(".product-toolbar--categories .product-filter");
@@ -14,7 +14,23 @@
   var savoryZone = document.getElementById("savory");
   var categoryHint = document.getElementById("cakes-category-hint");
   var shapeLabel = document.getElementById("cakes-shape-label");
+  var searchInput = document.getElementById("products-search");
+  var searchClear = document.getElementById("products-search-clear");
+  var searchStatus = document.getElementById("products-search-status");
   var currentFilter = "all";
+  var searchQuery = "";
+
+  function cardSearchText(card) {
+    return String(card.textContent || "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function matchesSearch(card) {
+    if (!searchQuery) return true;
+    return cardSearchText(card).indexOf(searchQuery) !== -1;
+  }
 
   function setZoneVisible(el, show) {
     if (!el) return;
@@ -35,14 +51,28 @@
   function countVisibleCards() {
     var n = 0;
     cards.forEach(function (card) {
-      if (card.style.display !== "none") n++;
+      if (!card.hidden && card.style.display !== "none") n++;
     });
     return n;
   }
 
-  function applyCategoryFilter(filter) {
-    currentFilter = filter || "all";
+  function updateSearchStatus(visibleCards, cakeVisible) {
+    if (!searchStatus) return;
+    if (!searchQuery) {
+      searchStatus.hidden = true;
+      searchStatus.textContent = "";
+      return;
+    }
+    var total = visibleCards + (cakeVisible || 0);
+    searchStatus.hidden = false;
+    if (total === 0) {
+      searchStatus.textContent = 'No products match "' + searchQuery + '".';
+    } else {
+      searchStatus.textContent = total + " result(s) for \"" + searchQuery + "\".";
+    }
+  }
 
+  function applyFilters() {
     buttons.forEach(function (b) {
       var match = b.getAttribute("data-filter") === currentFilter;
       b.classList.toggle("is-active", match);
@@ -55,6 +85,7 @@
     var isSweets = currentFilter === "sweets";
     var isSavory = currentFilter === "savory";
     var isDrinks = currentFilter === "drinks";
+    var hasSearch = searchQuery.length > 0;
 
     document.body.classList.toggle("is-cakes-focus", isCakes);
     document.body.classList.toggle("is-breads-focus", isBreads);
@@ -62,24 +93,36 @@
     document.body.classList.toggle("is-savory-focus", isSavory);
     document.body.classList.toggle("is-drinks-focus", isDrinks);
     document.body.classList.toggle("is-products-filter-all", isAll);
+    document.body.classList.toggle("is-products-search-active", hasSearch);
     document.body.setAttribute("data-product-filter", currentFilter);
 
-    setZoneVisible(breadZone, isAll || isBreads);
-    setZoneVisible(sweetZone, isAll || isSweets);
-    setZoneVisible(savoryZone, isAll || isSavory);
-    setZoneVisible(cakeZone, isAll || isCakes);
+    var showCakesZone = isAll || isCakes;
+    if (hasSearch && !isCakes && !isAll) {
+      showCakesZone = false;
+    }
 
-    if (categoryHint) categoryHint.hidden = !isCakes;
-    if (shapeLabel) shapeLabel.classList.toggle("is-linked-to-cakes-filter", isCakes);
+    setZoneVisible(breadZone, (isAll || isBreads) && !hasSearch);
+    setZoneVisible(sweetZone, (isAll || isSweets) && !hasSearch);
+    setZoneVisible(savoryZone, (isAll || isSavory) && !hasSearch);
+    setZoneVisible(cakeZone, showCakesZone);
+
+    if (categoryHint) categoryHint.hidden = !isCakes && !(hasSearch && showCakesZone);
+    if (shapeLabel) {
+      shapeLabel.classList.toggle(
+        "is-linked-to-cakes-filter",
+        isCakes || (hasSearch && showCakesZone)
+      );
+    }
 
     cards.forEach(function (card) {
       var cat = card.getAttribute("data-category") || "";
-      var show = isAll || cat === currentFilter;
+      var catOk = isAll || cat === currentFilter;
+      var show = catOk && matchesSearch(card);
       card.style.display = show ? "" : "none";
       card.hidden = !show;
     });
 
-    var showGrid = !isCakes;
+    var showGrid = !isCakes || hasSearch;
     if (productGrid) {
       productGrid.hidden = !showGrid;
       productGrid.setAttribute("aria-hidden", showGrid ? "false" : "true");
@@ -88,12 +131,37 @@
       pageNote.hidden = !showGrid || countVisibleCards() === 0;
     }
 
-    if (isSavory) scrollToEl(savoryZone);
+    var cakeVisible = 0;
+    if (
+      window.ProductsCakeCatalog &&
+      typeof window.ProductsCakeCatalog.applySearch === "function"
+    ) {
+      cakeVisible = window.ProductsCakeCatalog.applySearch(searchQuery, showCakesZone);
+    }
+
+    updateSearchStatus(countVisibleCards(), cakeVisible);
+
+    if (hasSearch) {
+      if (cakeVisible > 0 && showCakesZone) scrollToEl(cakeZone);
+      else if (countVisibleCards() > 0 && showGrid) scrollToEl(productGrid);
+    } else if (isSavory) scrollToEl(savoryZone);
     else if (isSweets) scrollToEl(sweetZone);
     else if (isBreads) scrollToEl(breadZone);
     else if (isCakes) scrollToEl(cakeZone);
     else if (isDrinks) scrollToEl(productGrid);
-    else if (isAll) scrollToEl(document.getElementById("products-menu"));
+  }
+
+  function applyCategoryFilter(filter) {
+    currentFilter = filter || "all";
+    applyFilters();
+  }
+
+  function applySearch(value) {
+    searchQuery = String(value || "")
+      .toLowerCase()
+      .trim();
+    if (searchClear) searchClear.hidden = !searchQuery;
+    applyFilters();
   }
 
   buttons.forEach(function (btn) {
@@ -101,6 +169,26 @@
       applyCategoryFilter(btn.getAttribute("data-filter"));
     });
   });
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      applySearch(searchInput.value);
+    });
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        applySearch("");
+      }
+    });
+  }
+
+  if (searchClear) {
+    searchClear.addEventListener("click", function () {
+      if (searchInput) searchInput.value = "";
+      applySearch("");
+      if (searchInput) searchInput.focus();
+    });
+  }
 
   document.querySelectorAll("[data-apply-cake-filter]").forEach(function (link) {
     link.addEventListener("click", function (e) {
@@ -144,5 +232,6 @@
     current: function () {
       return currentFilter;
     },
+    search: applySearch,
   };
 })();

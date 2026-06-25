@@ -275,6 +275,10 @@
     "f_sweets": "Sweets",
     "f_savory": "Savory",
     "f_drinks": "Drinks",
+    "search_label": "නිෂ්පාදන සොයන්න",
+    "search_ph": "නම, රස, මිල…",
+    "search_aria": "නිෂ්පාදන සොයන්න",
+    "search_clear": "Clear",
     "note": "Prices may vary by outlet. Use <a href=\"order.html\"><strong>Order Online</strong></a> or visit <a href=\"find-us.html\">Find Us</a> for the branch nearest you.",
     "offer": "20% off all cakes —"
   },

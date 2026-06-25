@@ -22,6 +22,7 @@
   var lastRenderedCakes = null;
   var PRICE_SLIDER_MAX = 8500;
   var advFilterState = { min: 0, max: PRICE_SLIDER_MAX, flavours: [] };
+  var textSearchQuery = "";
 
   function i18nT(key, vars) {
     if (typeof window !== 'undefined' && window.i18n && typeof window.i18n.t === 'function') {
@@ -53,6 +54,37 @@
       return w.PEOPLES_CAKES_DATA;
     }
     return null;
+  }
+
+  function mapApiProductToCake(p) {
+    if (!p) return null;
+    return {
+      category: p.category || 'round',
+      title: p.title || 'Untitled',
+      description: p.description || '',
+      price: p.priceLabel || (p.price ? 'Rs. ' + p.price : ''),
+      imageUrl: p.imageUrl || '',
+      imageAlt: p.imageAlt || p.title || '',
+      orderLabel: i18nT('cakes_js.order'),
+    };
+  }
+
+  function fetchProductsFromApi(query) {
+    var url = '/api/products';
+    if (query) {
+      url += '?q=' + encodeURIComponent(query);
+    }
+    return fetch(url)
+      .then(function (res) {
+        if (!res.ok) {
+          throw new Error('Could not load products (' + res.status + ')');
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        var rows = Array.isArray(data.products) ? data.products : [];
+        return rows.map(mapApiProductToCake).filter(Boolean);
+      });
   }
 
   function resolveCatalogUrl(path) {
@@ -366,7 +398,9 @@
     var minP = advFilterState.min;
     var maxP = advFilterState.max;
     var wantFl = advFilterState.flavours;
+    var q = textSearchQuery;
     var cards = document.querySelectorAll('.cakes-catalog-groups .cake-card');
+    var visible = 0;
     cards.forEach(function (card) {
       var bucket = card.getAttribute('data-cake-bucket') || 'birthday';
       var okO = occ === 'all' || bucket === occ;
@@ -383,9 +417,14 @@
         wantFl.some(function (f) {
           return keys.indexOf(f) !== -1;
         });
-      card.style.display = okO && okP && okF ? '' : 'none';
+      var text = String(card.textContent || '').toLowerCase();
+      var okQ = !q || text.indexOf(q) !== -1;
+      var show = okO && okP && okF && okQ;
+      card.style.display = show ? '' : 'none';
+      if (show) visible += 1;
     });
     updateGroupVisibility();
+    return visible;
   }
 
   function getMaxPriceFromCakes(cakes) {
@@ -560,40 +599,51 @@
   function load() {
     var embedded = getEmbeddedCakes();
 
-    if (embedded && embedded.length) {
-      renderCakes(embedded);
+    function finish(cakes) {
+      renderCakes(cakes);
       bindFilters();
       setActiveFilterButton(
         document.querySelector('.cakes-shapes-wrap .product-filter.cakes-cat-tile.is-active') ||
           document.querySelector('.cakes-shapes-wrap .product-filter.cakes-cat-tile')
       );
       applyCakeVisibility();
-      return;
     }
 
     if (window.location.protocol === 'file:') {
+      if (embedded && embedded.length) {
+        finish(embedded);
+        return;
+      }
       showError(i18nT('cakes.err_load'));
       return;
     }
 
-    fetch(resolveCatalogUrl(apiUrl))
-      .then(function (res) {
-        if (!res.ok) {
-          throw new Error('Could not load cakes (' + res.status + ')');
+    fetchProductsFromApi()
+      .then(function (apiCakes) {
+        if (apiCakes.length) {
+          finish(apiCakes);
+          return;
         }
-        return res.json();
+        throw new Error('No API products');
       })
-      .then(function (data) {
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid cakes data');
+      .catch(function () {
+        if (embedded && embedded.length) {
+          finish(embedded);
+          return;
         }
-        renderCakes(data);
-        bindFilters();
-        setActiveFilterButton(
-          document.querySelector('.cakes-shapes-wrap .product-filter.cakes-cat-tile.is-active') ||
-            document.querySelector('.cakes-shapes-wrap .product-filter.cakes-cat-tile')
-        );
-        applyCakeVisibility();
+        return fetch(resolveCatalogUrl(apiUrl))
+          .then(function (res) {
+            if (!res.ok) {
+              throw new Error('Could not load cakes (' + res.status + ')');
+            }
+            return res.json();
+          })
+          .then(function (data) {
+            if (!Array.isArray(data)) {
+              throw new Error('Invalid cakes data');
+            }
+            finish(data);
+          });
       })
       .catch(function (err) {
         console.error(err);
@@ -660,4 +710,26 @@
       bootCakes();
     }
   }, 2000);
+
+  window.ProductsCakeCatalog = {
+    applySearch: function (query, zoneActive) {
+      textSearchQuery = String(query || '')
+        .toLowerCase()
+        .trim();
+      if (!zoneActive) {
+        return 0;
+      }
+      return applyCakeVisibility();
+    },
+    reloadFromApi: function (query) {
+      return fetchProductsFromApi(query).then(function (rows) {
+        if (rows.length) {
+          renderCakes(rows);
+          bindFilters();
+          applyCakeVisibility();
+        }
+        return rows.length;
+      });
+    },
+  };
 })();

@@ -484,7 +484,28 @@ app.get("/api/products", (req, res) => {
   if (!req.user || req.user.role !== "admin") {
     rows = rows.filter((p) => p.available !== false);
   }
-  res.json({ products: rows });
+  const q = str(req.query.q).toLowerCase();
+  const category = str(req.query.category).toLowerCase();
+  if (category) {
+    rows = rows.filter(
+      (p) => String(p.category || "").toLowerCase() === category
+    );
+  }
+  if (q) {
+    rows = rows.filter((p) => {
+      const hay = [
+        p.title,
+        p.description,
+        p.priceLabel,
+        p.category,
+        p.imageAlt,
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+  }
+  res.json({ products: rows, total: rows.length, query: q || null, category: category || null });
 });
 
 app.post("/api/products", requireAuth, requireAdmin, (req, res) => {
