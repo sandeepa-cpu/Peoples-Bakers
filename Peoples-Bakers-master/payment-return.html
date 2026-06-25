@@ -42,29 +42,96 @@
       icon.innerHTML = html;
     }
 
-    if (status === "2") {
+    function clearCart() {
       try { localStorage.setItem(KEY, "[]"); } catch (e) {}
+      try { sessionStorage.removeItem("pb-payhere-pending"); } catch (e) {}
       window.dispatchEvent(new CustomEvent("peoples-cart-changed", { detail: { items: [] } }));
-      setIcon("ok", '<i class="fa-solid fa-circle-check"></i>');
-      title.textContent = "Payment successful!";
-      text.textContent = "Thank you — your order" + (orderId ? " #" + orderId.slice(-6).toUpperCase() : "") + " is confirmed. We'll prepare it soon.";
-      links.innerHTML = '<a class="btn btn-primary" href="account.html#orders">My Orders</a><a class="btn btn-outline" href="index.html">Home</a>';
-    } else if (status === "-1") {
+    }
+
+    function showCancelled() {
       setIcon("bad", '<i class="fa-solid fa-circle-xmark"></i>');
       title.textContent = "Payment cancelled";
-      text.textContent = "No charge was made. You can try again or choose cash on delivery.";
+      text.textContent = "No charge was made. Your basket is still saved — you can try again or choose cash on delivery.";
       links.innerHTML = '<a class="btn btn-primary" href="order.html#checkout">Back to checkout</a>';
-    } else if (status === "-2") {
+    }
+
+    function showFailed() {
       setIcon("bad", '<i class="fa-solid fa-circle-xmark"></i>');
       title.textContent = "Payment failed";
       text.textContent = "Please try again or contact us on WhatsApp.";
       links.innerHTML = '<a class="btn btn-primary" href="order.html#checkout">Try again</a><a class="btn btn-outline" href="https://wa.me/947228955477" target="_blank" rel="noopener">WhatsApp</a>';
-    } else {
+    }
+
+    function showSuccess(ref) {
+      clearCart();
+      setIcon("ok", '<i class="fa-solid fa-circle-check"></i>');
+      title.textContent = "Payment successful!";
+      text.textContent = "Thank you — your order" + (ref ? " #" + ref : "") + " is confirmed. We'll prepare it soon.";
+      links.innerHTML = '<a class="btn btn-primary" href="account.html#orders">My Orders</a><a class="btn btn-outline" href="index.html">Home</a>';
+    }
+
+    function showPending(ref) {
       setIcon("wait", '<i class="fa-solid fa-hourglass-half"></i>');
       title.textContent = "Payment pending";
-      text.textContent = "If you completed payment, check My Orders in a minute.";
+      text.textContent = "We're confirming your payment" + (ref ? " for #" + ref : "") + ". Check My Orders in a minute.";
       links.innerHTML = '<a class="btn btn-primary" href="account.html#orders">My Orders</a><a class="btn btn-outline" href="order.html#checkout">Checkout</a>';
     }
+
+    function verifyWithServer(attempt) {
+      if (!orderId) {
+        if (status === "-1") showCancelled();
+        else if (status === "-2") showFailed();
+        else showPending();
+        return;
+      }
+
+      var url =
+        "/api/payments/payhere/return-status?order_id=" +
+        encodeURIComponent(orderId) +
+        "&status_code=" +
+        encodeURIComponent(status || "");
+
+      fetch(url)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (status === "2") {
+            if (data.paid) {
+              showSuccess(data.orderRef || orderId.slice(-6).toUpperCase());
+              return;
+            }
+            if (data.pending && attempt < 8) {
+              window.setTimeout(function () {
+                verifyWithServer(attempt + 1);
+              }, 1500);
+              return;
+            }
+            showPending(data.orderRef || orderId.slice(-6).toUpperCase());
+            return;
+          }
+          if (status === "-1" || data.cancelled) {
+            showCancelled();
+            return;
+          }
+          if (status === "-2" || data.failed) {
+            showFailed();
+            return;
+          }
+          showPending(data.orderRef || (orderId ? orderId.slice(-6).toUpperCase() : ""));
+        })
+        .catch(function () {
+          if (status === "2") {
+            showPending(orderId ? orderId.slice(-6).toUpperCase() : "");
+          } else if (status === "-1") {
+            showCancelled();
+          } else if (status === "-2") {
+            showFailed();
+          } else {
+            showPending(orderId ? orderId.slice(-6).toUpperCase() : "");
+          }
+        });
+    }
+
+    verifyWithServer(0);
   })();
   </script>
 </body>

@@ -63,6 +63,7 @@
     "aria_drawer": "Shopping basket",
     "aria_close": "Close basket",
     "add_to_cart": "Add to cart",
+    "not_online": "Online checkout is for cakes in our menu. Visit an outlet or WhatsApp for other items.",
     "added_short": "Added!"
   },
   "hero": {

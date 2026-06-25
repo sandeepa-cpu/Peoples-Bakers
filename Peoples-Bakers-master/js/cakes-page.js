@@ -59,6 +59,7 @@
   function mapApiProductToCake(p) {
     if (!p) return null;
     return {
+      id: p.id || '',
       category: p.category || 'round',
       title: p.title || 'Untitled',
       description: p.description || '',
@@ -83,7 +84,12 @@
       })
       .then(function (data) {
         var rows = Array.isArray(data.products) ? data.products : [];
-        return rows.map(mapApiProductToCake).filter(Boolean);
+        return rows
+          .filter(function (p) {
+            return Number(p.price) > 0;
+          })
+          .map(mapApiProductToCake)
+          .filter(Boolean);
       });
   }
 
@@ -179,13 +185,14 @@
       .slice(0, 48);
     var cartPayload = encodeURIComponent(
       JSON.stringify({
-        id: 'cake-' + idx + '-' + slug,
+        id: cake.id || ('cake-' + idx + '-' + slug),
         title: cake.title,
         priceLabel: cake.price,
         image: imgSrc,
       })
     );
     var priceLkr = parsePriceLkr(cake.price);
+    var canOrderOnline = priceLkr != null && priceLkr > 0;
     var flavourKeys = inferFlavourKeys(cake);
     var priceAttr = priceLkr != null && !isNaN(priceLkr) ? String(Math.round(priceLkr)) : '';
     var flavAttr = flavourKeys.length ? escapeHtml(flavourKeys.join(' ')) : '';
@@ -226,11 +233,13 @@
       escapeHtml(cake.price) +
       '</span>' +
       '<div class="cake-card-btns">' +
-      '<button type="button" class="btn-add-cart-fresh btn-add-cart-fresh--sm" data-add-cart data-cart-payload="' +
-      cartPayload +
-      '"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> ' +
-      escapeHtml(i18nT('cart.add_to_cart')) +
-      '</button>' +
+      (canOrderOnline
+        ? '<button type="button" class="btn-add-cart-fresh btn-add-cart-fresh--sm" data-add-cart data-cart-payload="' +
+          cartPayload +
+          '"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> ' +
+          escapeHtml(i18nT('cart.add_to_cart')) +
+          '</button>'
+        : '') +
       '<a href="order.html" class="cake-order-btn">' +
       escapeHtml(cake.orderLabel || i18nT('cakes_js.order')) +
       '</a>' +

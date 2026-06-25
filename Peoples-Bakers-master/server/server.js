@@ -482,7 +482,9 @@ app.get("/api/products", (req, res) => {
   let rows = store.read("products");
   // Customers only see available items; admins see all.
   if (!req.user || req.user.role !== "admin") {
-    rows = rows.filter((p) => p.available !== false);
+    rows = rows.filter(
+      (p) => p.available !== false && (Number(p.price) || 0) > 0
+    );
   }
   const q = str(req.query.q).toLowerCase();
   const category = str(req.query.category).toLowerCase();
@@ -550,18 +552,38 @@ function byNewest(a, b) {
   return String(b.createdAt || "").localeCompare(String(a.createdAt || ""));
 }
 
+function normalizeProductTitle(value) {
+  return str(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function findProductByIdOrTitle(productId, title) {
+  if (productId) {
+    const byId = store.findOne("products", (x) => x.id === productId);
+    if (byId) return byId;
+  }
+  const want = normalizeProductTitle(title);
+  if (!want) return null;
+  return store.findOne(
+    "products",
+    (x) => normalizeProductTitle(x.title) === want
+  );
+}
+
 function resolveServerPrice(it) {
   const qty = Math.min(99, Math.max(1, parseInt(it.qty, 10) || 1));
   const productId = str(it.id || it.productId);
-  if (!productId) {
-    return { error: "Each item must include a valid product id." };
+  const title = str(it.title);
+  if (!productId && !title) {
+    return { error: "Each item must include a valid product id or title." };
   }
 
-  const p = store.findOne("products", (x) => x.id === productId);
+  const p = findProductByIdOrTitle(productId, title);
   if (!p || p.available === false) {
     return {
-      error:
-        "Product not available: " + (str(it.title) || productId),
+      error: "Product not available: " + (title || productId),
     };
   }
 
@@ -571,7 +593,7 @@ function resolveServerPrice(it) {
   }
 
   return {
-    title: str(p.title) || str(it.title) || "Item",
+    title: str(p.title) || title || "Item",
     qty,
     price,
     productId: p.id,
@@ -694,6 +716,39 @@ app.post("/api/payments/payhere/checkout", (req, res) => {
 
   const checkout = payhere.buildCheckoutFields(order, cfg);
   res.status(201).json({ order, payhere: checkout, discount: parsed.discount });
+});
+
+app.get("/api/payments/payhere/return-status", (req, res) => {
+  const orderId = str(req.query.order_id);
+  const statusCode = str(req.query.status_code);
+  if (!orderId) {
+    return res.status(400).json({ error: "order_id is required." });
+  }
+
+  const order = store.findOne("orders", (o) => o.id === orderId);
+  if (!order) {
+    return res.json({ ok: false, reason: "not_found" });
+  }
+
+  const ref = order.id.slice(-6).toUpperCase();
+
+  if (statusCode === "2") {
+    const paid =
+      order.paymentStatus === "paid" || order.status === "confirmed";
+    return res.json({
+      ok: paid,
+      paid,
+      pending: !paid && order.paymentStatus === "pending",
+      orderRef: ref,
+    });
+  }
+  if (statusCode === "-1") {
+    return res.json({ ok: true, cancelled: true, orderRef: ref });
+  }
+  if (statusCode === "-2") {
+    return res.json({ ok: true, failed: true, orderRef: ref });
+  }
+  return res.json({ ok: false, pending: true, orderRef: ref });
 });
 
 app.post(

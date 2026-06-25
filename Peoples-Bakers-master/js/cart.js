@@ -4,6 +4,67 @@
  */
 (function () {
   var STORAGE_KEY = 'peoples-bakers-cart-v1';
+  var productByTitle = null;
+
+  function normalizeTitle(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function isDbProductId(id) {
+    return String(id || '').indexOf('prd_') === 0;
+  }
+
+  function resolveProductId(title, fallbackId) {
+    if (isDbProductId(fallbackId)) return fallbackId;
+    if (productByTitle && title) {
+      var mapped = productByTitle[normalizeTitle(title)];
+      if (mapped) return mapped;
+    }
+    return fallbackId;
+  }
+
+  function loadProductCatalog() {
+    if (window.location.protocol === 'file:') {
+      return Promise.resolve({});
+    }
+    return fetch('/api/products')
+      .then(function (res) {
+        return res.ok ? res.json() : { products: [] };
+      })
+      .then(function (data) {
+        var map = {};
+        (data.products || []).forEach(function (p) {
+          if (p.title && Number(p.price) > 0) {
+            map[normalizeTitle(p.title)] = p.id;
+          }
+        });
+        productByTitle = map;
+        return map;
+      })
+      .catch(function () {
+        productByTitle = {};
+        return {};
+      });
+  }
+
+  function canCheckoutItem(payload) {
+    if (!payload || !payload.title) return false;
+    if (isDbProductId(payload.id)) return true;
+    var id = resolveProductId(payload.title, payload.id);
+    if (isDbProductId(id)) return true;
+    if (productByTitle && productByTitle[normalizeTitle(payload.title)]) return true;
+    if (
+      payload.id &&
+      String(payload.id).indexOf('cake-') === 0 &&
+      parseAmount(payload.priceLabel) != null
+    ) {
+      return true;
+    }
+    return false;
+  }
 
   function loadCart() {
     try {
@@ -38,7 +99,11 @@
   }
 
   function addFromPayload(payload) {
-    if (!payload || !payload.id || !payload.title) return;
+    if (!payload || !payload.title) return;
+    payload = Object.assign({}, payload, {
+      id: resolveProductId(payload.title, payload.id),
+    });
+    if (!payload.id) return;
     var items = loadCart();
     var amount =
       payload.amount != null ? payload.amount : parseAmount(payload.priceLabel);
@@ -487,7 +552,12 @@
 
       var title = h3.textContent.trim();
       var price = priceEl.textContent.trim();
-      var id = 'prd-' + (slugifyTitle(title) || 'item') + '-' + i;
+      var amount = parseAmount(price);
+      if (amount == null) return;
+      var id = resolveProductId(title, 'prd-' + (slugifyTitle(title) || 'item') + '-' + i);
+      if (!isDbProductId(id) && !(productByTitle && productByTitle[normalizeTitle(title)])) {
+        return;
+      }
       body.appendChild(
         buildAddCartButton({
           id: id,
@@ -511,13 +581,19 @@
         var h3 = block.querySelector('h3');
         var priceEl = block.querySelector('strong');
         if (!h3 || !priceEl) return;
-        block.setAttribute('data-cart-enhanced', '1');
 
         var heroMain = block.closest(
           '.products-bread-hero__main, .products-sweet-hero__main, .products-savory-hero__main'
         );
         var title = h3.textContent.trim();
         var price = priceEl.textContent.trim();
+        if (parseAmount(price) == null) return;
+        var heroId = resolveProductId(
+          title,
+          'gal-hero-' + (slugifyTitle(title) || 'item') + '-' + i
+        );
+        if (!canCheckoutItem({ id: heroId, title: title })) return;
+        block.setAttribute('data-cart-enhanced', '1');
         var actions = block.querySelector('.gallery-cart-actions');
         if (!actions) {
           actions = document.createElement('div');
@@ -531,7 +607,7 @@
         actions.insertBefore(
           buildAddCartButton(
             {
-              id: 'gal-hero-' + (slugifyTitle(title) || 'item') + '-' + i,
+              id: heroId,
               title: title,
               priceLabel: price,
               image: extractProductImage(heroMain),
@@ -551,14 +627,20 @@
         var h4 = mini.querySelector('h4');
         var priceEl = mini.querySelector('span');
         if (!h4 || !priceEl) return;
-        mini.setAttribute('data-cart-enhanced', '1');
 
         var title = h4.textContent.trim();
         var price = priceEl.textContent.trim();
+        if (parseAmount(price) == null) return;
+        var miniId = resolveProductId(
+          title,
+          'gal-mini-' + (slugifyTitle(title) || 'item') + '-' + i
+        );
+        if (!canCheckoutItem({ id: miniId, title: title })) return;
+        mini.setAttribute('data-cart-enhanced', '1');
         mini.appendChild(
           buildAddCartButton(
             {
-              id: 'gal-mini-' + (slugifyTitle(title) || 'item') + '-' + i,
+              id: miniId,
               title: title,
               priceLabel: price,
               image: extractProductImage(mini),
@@ -577,14 +659,20 @@
         var fig = item.querySelector('figcaption');
         var priceSpan = fig && fig.querySelector('span');
         if (!fig || !priceSpan) return;
-        item.setAttribute('data-cart-enhanced', '1');
 
         var price = priceSpan.textContent.trim();
         var title = fig.textContent.replace(price, '').trim();
+        if (parseAmount(price) == null) return;
+        var stripId = resolveProductId(
+          title,
+          'gal-strip-' + (slugifyTitle(title) || 'item') + '-' + i
+        );
+        if (!canCheckoutItem({ id: stripId, title: title })) return;
+        item.setAttribute('data-cart-enhanced', '1');
         item.appendChild(
           buildAddCartButton(
             {
-              id: 'gal-strip-' + (slugifyTitle(title) || 'item') + '-' + i,
+              id: stripId,
               title: title,
               priceLabel: price,
               image: extractProductImage(item),
@@ -612,7 +700,10 @@
     ensureShell();
     updateBadges();
     renderLines();
-    enhanceAllProductItems();
+
+    loadProductCatalog().then(function () {
+      enhanceAllProductItems();
+    });
 
     document.addEventListener('click', function (e) {
       if (e.target.closest('[data-cart-open]')) {
@@ -625,6 +716,13 @@
         e.preventDefault();
         var payload = readPayload(addBtn);
         if (payload) {
+          if (!canCheckoutItem(payload)) {
+            showToast(
+              i18nT('cart.not_online') ||
+                'Online checkout is for cakes in our menu. Visit outlet or WhatsApp for other items.'
+            );
+            return;
+          }
           addFromPayload(payload);
           updateBadges();
           renderLines();
@@ -646,7 +744,9 @@
     });
 
     window.addEventListener('load', function () {
-      enhanceAllProductItems();
+      loadProductCatalog().then(function () {
+        enhanceAllProductItems();
+      });
       updateBadges();
     });
 

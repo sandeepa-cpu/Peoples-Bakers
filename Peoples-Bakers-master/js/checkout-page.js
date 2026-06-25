@@ -589,22 +589,23 @@
         .then(function (d) {
           if (usePayhere && d.payhere) {
             try {
-              localStorage.setItem(KEY, "[]");
+              sessionStorage.setItem("pb-payhere-pending", d.order.id);
             } catch (err) {}
-            window.dispatchEvent(
-              new CustomEvent("peoples-cart-changed", { detail: { items: [] } })
-            );
             redirectToPayHere(d.payhere);
             return;
           }
           try {
             localStorage.setItem(KEY, "[]");
           } catch (err) {}
-          window.dispatchEvent(new CustomEvent("peoples-cart-changed", { detail: { items: [] } }));
+          window.dispatchEvent(
+            new CustomEvent("peoples-cart-changed", { detail: { items: [] } })
+          );
           grid.classList.add("hidden");
           successEl.classList.remove("hidden");
-          document.getElementById("co-ref").textContent =
-            "#" + d.order.id.slice(-6).toUpperCase();
+          var refEl = document.getElementById("co-ref");
+          if (refEl) {
+            refEl.textContent = "#" + d.order.id.slice(-6).toUpperCase();
+          }
           document.getElementById("co-success-links").innerHTML =
             '<a href="account.html#orders">View in My Orders</a> · <a href="index.html">Back to home</a>';
           var lines = items
@@ -637,7 +638,11 @@
           successEl.scrollIntoView({ behavior: "smooth" });
         })
         .catch(function (err) {
-          msg.textContent = err.message + " — is the server running at localhost:3000?";
+          var hint =
+            err && err.message && /failed to fetch|network/i.test(String(err.message))
+              ? " — check your connection and that the site server is running."
+              : "";
+          msg.textContent = (err && err.message ? err.message : "Checkout failed.") + hint;
           msg.classList.add("err");
           submitBtn.disabled = false;
         });

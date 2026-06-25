@@ -82,29 +82,49 @@ function seedProducts() {
     return [];
   }
 
-  const rows = cakes.map((c) => ({
-    id: store.genId("prd"),
-    createdAt: new Date().toISOString(),
-    title: c.title || "Untitled",
-    category: c.category || "other",
-    description: c.description || "",
-    price: parsePrice(c.price),
-    priceLabel: c.price || "",
-    imageUrl: c.imageUrl || "",
-    imageAlt: c.imageAlt || c.title || "",
-    available: true,
-  }));
+  const rows = cakes.map((c) => {
+    const price = parsePrice(c.price);
+    return {
+      id: store.genId("prd"),
+      createdAt: new Date().toISOString(),
+      title: c.title || "Untitled",
+      category: c.category || "other",
+      description: c.description || "",
+      price,
+      priceLabel: c.price || "",
+      imageUrl: c.imageUrl || "",
+      imageAlt: c.imageAlt || c.title || "",
+      available: price > 0,
+    };
+  });
   store.write("products", rows);
   console.log("  Seeded " + rows.length + " products from data/cakes.json");
   return rows;
 }
 
+/** Mark zero-price catalogue rows as unavailable (safe on every start). */
+function fixZeroPriceProducts() {
+  const rows = store.read("products");
+  if (!rows.length) return;
+  let changed = false;
+  const updated = rows.map((p) => {
+    const price = Math.max(0, Number(p.price) || 0);
+    if (price <= 0 && p.available !== false) {
+      changed = true;
+      return { ...p, available: false };
+    }
+    return p;
+  });
+  if (changed) store.write("products", updated);
+}
+
 function run() {
   seedAdmin();
   seedProducts();
+  fixZeroPriceProducts();
 }
 
-module.exports = { run, seedAdmin, seedProducts, parsePrice };
+module.exports = { run, seedAdmin, seedProducts, fixZeroPriceProducts, parsePrice };
 
 // Allow `npm run seed`
 if (require.main === module) {
