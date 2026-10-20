@@ -73,33 +73,37 @@
     var dec = form.querySelector('[data-cake-qty-dec]');
     var inc = form.querySelector('[data-cake-qty-inc]');
 
+    function syncWhatsAppLink() {
+      if (!whatsapp) return;
+      var message = buildLines(getFormState(form)).join('\n');
+      whatsapp.setAttribute(
+        'href',
+        'https://wa.me/' + getWhatsAppNumber() + '?text=' + encodeURIComponent(message)
+      );
+    }
+
     form.addEventListener('change', function () {
       syncMessageField(form);
+      syncWhatsAppLink();
     });
+    form.addEventListener('input', syncWhatsAppLink);
     if (dec) {
       dec.addEventListener('click', function () {
         var current = parseInt(form.querySelector('[name="qty"]').value, 10) || 1;
         setQty(form, current - 1);
+        syncWhatsAppLink();
       });
     }
     if (inc) {
       inc.addEventListener('click', function () {
         var current = parseInt(form.querySelector('[name="qty"]').value, 10) || 1;
         setQty(form, current + 1);
-      });
-    }
-
-    if (whatsapp) {
-      whatsapp.addEventListener('click', function () {
-        var message = buildLines(getFormState(form)).join('\n');
-        whatsapp.setAttribute(
-          'href',
-          'https://wa.me/' + getWhatsAppNumber() + '?text=' + encodeURIComponent(message)
-        );
+        syncWhatsAppLink();
       });
     }
 
     syncMessageField(form);
+    syncWhatsAppLink();
   }
 
   if (document.readyState === 'loading') {

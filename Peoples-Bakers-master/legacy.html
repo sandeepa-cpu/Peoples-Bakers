@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=142">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -52,6 +52,7 @@
         <div class="nav-links">
           <a href="legacy.html" class="nav-active" data-i18n="nav.legacy">Our History</a>
           <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="cakes.html" data-i18n="nav.cakes">All Cakes</a>
           <a href="special-cake.html">Customize Cake</a>
           <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
           <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
@@ -122,9 +123,43 @@
         <a href="#story" class="legacy-jump-nav__link is-active" data-i18n="legacy.jump_story">Story</a>
         <a href="#growth" class="legacy-jump-nav__link" data-i18n="legacy.jump_growth">Growth</a>
         <a href="#purpose" class="legacy-jump-nav__link" data-i18n="legacy.jump_purpose">Vision</a>
+        <a href="#promise" class="legacy-jump-nav__link" data-i18n="legacy.jump_values">Values</a>
         <a href="#csr" class="legacy-jump-nav__link" data-i18n="legacy.jump_csr">CSR</a>
       </div>
     </nav>
+
+    <section class="legacy-values-strip" aria-label="What still defines us">
+      <div class="container legacy-values-strip__grid">
+        <article class="legacy-value-chip">
+          <span class="legacy-value-chip__icon" aria-hidden="true"><i class="fa-solid fa-wheat-awn"></i></span>
+          <div>
+            <h3 data-i18n="legacy.val1_h">Honest baking</h3>
+            <p data-i18n="legacy.val1_p">Quality first — the same promise as 2015.</p>
+          </div>
+        </article>
+        <article class="legacy-value-chip">
+          <span class="legacy-value-chip__icon" aria-hidden="true"><i class="fa-solid fa-sun"></i></span>
+          <div>
+            <h3 data-i18n="legacy.val2_h">Fresh every morning</h3>
+            <p data-i18n="legacy.val2_p">Ovens on before dawn, island-wide.</p>
+          </div>
+        </article>
+        <article class="legacy-value-chip">
+          <span class="legacy-value-chip__icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></span>
+          <div>
+            <h3 data-i18n="legacy.val3_h">Family favourite</h3>
+            <p data-i18n="legacy.val3_p">From neighbourhood tables to 150+ outlets.</p>
+          </div>
+        </article>
+        <article class="legacy-value-chip">
+          <span class="legacy-value-chip__icon" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+          <div>
+            <h3 data-i18n="legacy.val4_h">Same first loaf</h3>
+            <p data-i18n="legacy.val4_p">Every bake still carries that first love.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <!-- ═══════════════ OUR HISTORY ═══════════════ -->
     <section class="ab-history-section" id="story">
@@ -134,6 +169,7 @@
             <figure class="legacy-story-photo">
               <img src="images/history/peoples-bakers-storefront.png" alt="Peoples Bakers storefront with outdoor seating" width="640" height="800" loading="lazy" decoding="async">
               <span class="legacy-story-visual__badge" data-i18n="legacy.hero_tag">EST. 2015</span>
+              <span class="legacy-story-visual__float" data-i18n="legacy.history_float_caption">Baked fresh daily</span>
             </figure>
             <p class="legacy-story-visual__caption" data-i18n="legacy.history_caption">From a modest kitchen in Bulathsinhala to a name families trust across Sri Lanka.</p>
           </div>
@@ -144,29 +180,45 @@
 
             <ol class="legacy-timeline">
               <li class="legacy-timeline__item">
-                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl1_year">2015</span></div>
+                <div class="legacy-timeline__marker">
+                  <span class="legacy-timeline__ch">01</span>
+                  <span data-i18n="legacy.tl1_year">2015</span>
+                </div>
                 <article class="legacy-timeline__card">
+                  <span class="legacy-timeline__icon" aria-hidden="true"><i class="fa-solid fa-bread-slice"></i></span>
                   <h3 data-i18n="legacy.tl1_title">The first loaf</h3>
                   <p data-i18n="legacy.p1">In 2015—with more determination than capital, and a simple promise to earn an honest living through quality bakes—our founder pulled the very first loaf from a modest kitchen in Bulathsinhala. Through every barrier, he served the neighbourhood with warmth and consistency.</p>
                 </article>
               </li>
               <li class="legacy-timeline__item">
-                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl2_year">Growing</span></div>
+                <div class="legacy-timeline__marker">
+                  <span class="legacy-timeline__ch">02</span>
+                  <span data-i18n="legacy.tl2_year">Growing</span>
+                </div>
                 <article class="legacy-timeline__card">
+                  <span class="legacy-timeline__icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></span>
                   <h3 data-i18n="legacy.tl2_title">Word of mouth</h3>
                   <p data-i18n="legacy.p2">As word spread through the community — not through advertising, but through honest taste and genuine care — the little bakery began to grow. New products joined the shelves: cream buns, seeni sambol rolls, celebration cakes, and seasonal treats that became household favourites across generations.</p>
                 </article>
               </li>
               <li class="legacy-timeline__item">
-                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl3_year">Expanding</span></div>
+                <div class="legacy-timeline__marker">
+                  <span class="legacy-timeline__ch">03</span>
+                  <span data-i18n="legacy.tl3_year">Expanding</span>
+                </div>
                 <article class="legacy-timeline__card">
+                  <span class="legacy-timeline__icon" aria-hidden="true"><i class="fa-solid fa-map-location-dot"></i></span>
                   <h3 data-i18n="legacy.tl3_title">Across Sri Lanka</h3>
                   <p data-i18n="legacy.p3">Penetrating all barriers which stood before them, Peoples Bakers kept expanding while maintaining the impeccable essence of their products. New outlets opened in Nugegoda, Kandy, Galle, and beyond. The bakery that started before dawn at a single counter had become a trusted name across Sri Lanka — loved for its consistency, its quality, and its heart.</p>
                 </article>
               </li>
               <li class="legacy-timeline__item">
-                <div class="legacy-timeline__marker"><span data-i18n="legacy.tl4_year">Today</span></div>
+                <div class="legacy-timeline__marker">
+                  <span class="legacy-timeline__ch">04</span>
+                  <span data-i18n="legacy.tl4_year">Today</span>
+                </div>
                 <article class="legacy-timeline__card">
+                  <span class="legacy-timeline__icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></span>
                   <h3 data-i18n="legacy.tl4_title">Digital &amp; delivery</h3>
                   <p data-i18n="legacy.p4">Today, with 150+ outlets island-wide, an online ordering platform, and partnerships with Uber Eats and PickMe Food, Peoples Bakers continues to grow — while holding firmly to the belief that every bake must carry the same love as the very first loaf.</p>
                 </article>
@@ -185,6 +237,25 @@
         <p class="section-subtitle centered ab-growth-sub" data-i18n="legacy.grow_sub">
           A team of skilful hands putting individual commitment into one shared goal — delivering the finest bakes, every single day.
         </p>
+
+        <ol class="legacy-journey" aria-label="Growth journey">
+          <li>
+            <strong>2015</strong>
+            <span data-i18n="legacy.j1">One kitchen in Bulathsinhala</span>
+          </li>
+          <li>
+            <strong data-i18n="legacy.j2_h">Word of mouth</strong>
+            <span data-i18n="legacy.j2">Neighbourhood favourite</span>
+          </li>
+          <li>
+            <strong>150+</strong>
+            <span data-i18n="legacy.j3">Outlets across Sri Lanka</span>
+          </li>
+          <li>
+            <strong data-i18n="legacy.j4_h">Today</strong>
+            <span data-i18n="legacy.j4">Order online, island-wide</span>
+          </li>
+        </ol>
 
         <div class="ab-stats-grid legacy-stats-grid">
           <div class="ab-stat-card legacy-stat-card">
@@ -233,6 +304,39 @@
       </div>
     </section>
 
+    <section class="legacy-quote-band" aria-label="Our promise">
+      <div class="container">
+        <blockquote>
+          <p data-i18n="legacy.quote_band">Every bake must carry the same love as the very first loaf.</p>
+          <cite data-i18n="legacy.quote_cite">Peoples Bakers — since 2015</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="legacy-promise-section" id="promise">
+      <div class="container">
+        <span class="section-tag centered" data-i18n="legacy.promise_tag">What we stand for</span>
+        <h2 class="section-title centered" data-i18n="legacy.promise_h2">Three promises we still keep</h2>
+        <div class="legacy-promise-grid">
+          <article class="legacy-promise-card">
+            <span class="legacy-promise-card__n">01</span>
+            <h3 data-i18n="legacy.pr1_h">Craft</h3>
+            <p data-i18n="legacy.pr1_p">Recipes, ovens, and hands that still treat every bun and cake as if it were the first of the day.</p>
+          </article>
+          <article class="legacy-promise-card">
+            <span class="legacy-promise-card__n">02</span>
+            <h3 data-i18n="legacy.pr2_h">Freshness</h3>
+            <p data-i18n="legacy.pr2_p">Daily bakes, local ingredients, and outlets that open with warm bread — not yesterday’s leftover.</p>
+          </article>
+          <article class="legacy-promise-card">
+            <span class="legacy-promise-card__n">03</span>
+            <h3 data-i18n="legacy.pr3_h">Community</h3>
+            <p data-i18n="legacy.pr3_p">We grew because neighbours trusted us. We give back to the towns that built this bakery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══════════════ CSR CARDS ═══════════════ -->
     <section class="ab-csr-section" id="csr">
       <div class="container">
@@ -247,7 +351,7 @@
             </div>
             <h3 data-i18n="legacy.csr_e1h">Environmental</h3>
             <p data-i18n="legacy.csr_e1p">We are on a mission to reduce waste across all production units, source sustainably, and minimise our environmental footprint by 2027.</p>
-            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="legacy-csr-note" data-i18n="legacy.csr_e1n">Less waste. Cleaner kitchens. Better tomorrow.</span>
           </div>
           <div class="ab-csr-card">
             <div class="ab-csr-icon">
@@ -255,7 +359,7 @@
             </div>
             <h3 data-i18n="legacy.csr_e2h">Social</h3>
             <p data-i18n="legacy.csr_e2p">Our community initiative focuses on education, healthcare, and social welfare — empowering the neighbourhoods that built us.</p>
-            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="legacy-csr-note" data-i18n="legacy.csr_e2n">Jobs, skills, and support close to home.</span>
           </div>
           <div class="ab-csr-card">
             <div class="ab-csr-icon">
@@ -263,22 +367,23 @@
             </div>
             <h3 data-i18n="legacy.csr_e3h">Local Sourcing</h3>
             <p data-i18n="legacy.csr_e3p">We partner with local farmers and suppliers to ensure fresh, natural ingredients while supporting Sri Lanka's agricultural economy.</p>
-            <a href="legacy.html#csr" class="ab-csr-link"><span data-i18n="legacy.more">View More</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="legacy-csr-note" data-i18n="legacy.csr_e3n">Sri Lankan farms. Sri Lankan flavour.</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════ PARTNERSHIP CTA ═══════════════ -->
-    <section class="ab-partner-section">
+    <section class="ab-partner-section legacy-partner-section">
       <div class="container ab-partner-wrap">
         <div class="ab-partner-text">
+          <span class="section-tag" data-i18n="legacy.part_tag">Grow with us</span>
           <h2 data-i18n="legacy.part_h2">Wish to Partner with Us?</h2>
           <p data-i18n="legacy.part_p">Reach out and find how we can help your business grow with Peoples Bakers. We would love to discuss partnership and franchise opportunities with you.</p>
         </div>
         <div class="ab-partner-btns">
           <a href="find-us.html" class="btn btn-primary" data-i18n="legacy.part_contact">Contact Us</a>
-          <a href="find-us.html" class="btn btn-outline" data-i18n="legacy.part_fr">Franchise Info</a>
+          <a href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%20am%20interested%20in%20franchise%20%2F%20partnership%20opportunities." class="btn btn-outline" data-i18n="legacy.part_fr" target="_blank" rel="noopener noreferrer">Franchise Info</a>
         </div>
       </div>
     </section>
@@ -299,7 +404,7 @@
           <h4 class="footer-heading">Our Products</h4>
           <nav class="footer-list" aria-label="Product categories">
             <a href="products.html">Breads</a>
-            <a href="products.html#cakes">Cakes</a>
+            <a href="cakes.html">Cakes</a>
             <a href="products.html">Savouries</a>
             <a href="products.html">Beverages</a>
             <a href="special-cake.html">Photo Cake</a>
@@ -382,9 +487,10 @@
     <span class="order-fab-label">Chat &amp; order</span>
   </a>
 
-  <script src="js/main.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/cart.js"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/i18n.js?v=8"></script>
+  <script src="js/cart.js?v=9"></script>
+  <script src="js/order-menu.js?v=2"></script>
   <script>
     (function () {
       var nav = document.querySelector('.legacy-jump-nav');

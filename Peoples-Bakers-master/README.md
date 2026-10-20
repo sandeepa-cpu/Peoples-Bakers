@@ -1,57 +1,46 @@
-# Peoples Bakers — Full-Stack Bakery E-Commerce Platform
+# Peoples Bakers — Full-Stack Bakery E-Commerce
 
-A production-ready web application for a Sri Lankan bakery business. Customers browse products, place orders, and pay online; staff manage orders and inventory through a secure admin dashboard.
+Sri Lankan bakery e-commerce: customers browse products, add to a cart, check out in three steps (cart → details → complete), and pay with **Cash on delivery** or **PayHere**. Staff run orders, products, and feedback from a hidden admin dashboard.
 
-**Author:** [Channa Sandeepa](https://github.com/sandeepa-cpu)
+**Author:** [Channa Sandeepa](https://github.com/sandeepa-cpu) · **Repo:** [sandeepa-cpu/Peoples-Bakers](https://github.com/sandeepa-cpu/Peoples-Bakers)
+
+This is a **Node.js + Express** app with **HTML / CSS / vanilla JavaScript** pages (not Next.js / React). A static host such as GitHub Pages will not run it.
 
 ---
 
-## Live demo (local)
+## What I built
 
-This project requires a **Node.js server** — it is not a static HTML site.
+End-to-end product, not a landing-page mock. A reviewer can open these files and see the behaviour.
 
-```bash
-npm install
-copy .env.example .env    # Windows — edit JWT_SECRET if needed
-npm start
+| Area | What it does | Where to look |
+|------|----------------|---------------|
+| Multi-step checkout | Shopping cart → billing/payment → order complete; hash restore (`#checkout`, `#checkout-details`, `#checkout-complete`); qty/remove syncs `localStorage` | [`order.html`](order.html), [`js/checkout-page.js`](js/checkout-page.js) |
+| Payments | COD in-place success; PayHere hosted POST + MD5 notify webhook; cancel returns to checkout details | [`server/payhere.js`](server/payhere.js), [`payment-return.html`](payment-return.html) |
+| REST API | Auth, orders, products, outlets, config, health | [`server/server.js`](server/server.js) |
+| Auth | Register / login / logout; JWT in httpOnly cookie; bcrypt passwords; optional Google Sign-In | [`server/auth.js`](server/auth.js) |
+| Persistence | SQLite via `node:sqlite` (no separate DB process); prices re-checked on the server | [`server/store.js`](server/store.js) |
+| Admin | Orders, products, users, settings, stats (staff URL, not linked from the public nav) | [`server/admin-api.js`](server/admin-api.js), `pb-office.html` |
+| i18n | English, Sinhala, Tamil dictionaries | [`js/i18n.js`](js/i18n.js), [`js/translations/`](js/translations/) |
+| Home hero | Auto-playing promo carousel (two product banners) | [`js/hero-banner.js`](js/hero-banner.js), [`index.html`](index.html) |
+| PWA | Service worker, cache bumping | [`service-worker.js`](service-worker.js) |
+
+**Security choices:** `.env` and `server/data/` are git-ignored; production rejects a weak `JWT_SECRET` and the default admin password; checkout amounts are not trusted from the client; PayHere notify payloads are hash-verified.
+
+---
+
+## Architecture
+
+```mermaid
+flowchart LR
+  Browser["HTML pages + vanilla JS"] --> Express["Express REST API"]
+  Express --> SQLite["SQLite store"]
+  Browser -->|"COD POST /api/orders"| Express
+  Browser -->|"PayHere checkout"| PayHere["PayHere hosted"]
+  PayHere -->|"notify webhook"| Express
+  PayHere --> ReturnPage["payment-return.html"]
 ```
 
-| URL | Description |
-|-----|-------------|
-| http://localhost:3000 | Customer website |
-| http://localhost:3000/pb-office.html | Admin dashboard |
-| http://localhost:3000/api/health | API health check |
-
-**Dev admin (first run):** `admin@peoplesbakers.lk` / `admin123` — change before production.
-
----
-
-## Features
-
-### Customer
-- Product catalogue, shopping cart, checkout (COD / WhatsApp / PayHere)
-- User registration, login, optional Google Sign-In
-- Order history on account page
-- Outlet finder with map and search
-- Feedback form
-- Custom cake requests
-- **Tri-lingual UI:** English · Sinhala · Tamil
-- Mobile responsive layout (hamburger menu, lazy images)
-
-### Admin
-- Order management (status pipeline, search, pagination)
-- Product CRUD
-- Customer feedback moderation
-- User list, site settings (WhatsApp, phone, social links)
-- Analytics and kitchen display mode
-
-### Backend & security
-- REST API with Express 4
-- JWT authentication (httpOnly cookie)
-- Server-side price validation (anti-tampering)
-- PayHere payment gateway with webhook verification
-- SQLite persistence (`node:sqlite` — no separate DB server)
-- Rate limiting on feedback, production env checks
+Customer flow: catalogue → cart (`peoples-bakers-cart-v1`) → checkout steps → COD success on the same page, or PayHere redirect then return.
 
 ---
 
@@ -59,14 +48,41 @@ npm start
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | HTML5, CSS3, Vanilla JavaScript |
+| Frontend | HTML5, CSS3, vanilla JavaScript |
 | Backend | Node.js 22.5+, Express 4 |
-| Database | SQLite (document-store pattern) |
+| Database | SQLite (`node:sqlite`) |
 | Auth | JWT, bcrypt, httpOnly cookies |
-| Payments | PayHere (Sri Lanka) |
+| Payments | PayHere (LKR; sandbox supported) |
 | Email | Nodemailer (optional SMTP) |
-| i18n | JSON dictionaries (en / si / ta) |
-| PWA | Service worker (network-first for API) |
+| i18n | JSON dictionaries (`en` / `si` / `ta`) |
+| PWA | Service worker |
+
+---
+
+## How to run
+
+```bash
+cd Peoples-Bakers-master
+npm install
+copy .env.example .env    # Windows — change JWT_SECRET
+npm start
+```
+
+| URL | Description |
+|-----|-------------|
+| http://localhost:3000 | Customer site |
+| http://localhost:3000/pb-office.html | Admin dashboard |
+| http://localhost:3000/api/health | API health |
+
+**Dev admin (first run):** `admin@peoplesbakers.lk` / `admin123` — change before production.
+
+```bash
+npm start              # Server
+npm run dev            # Restart on file changes
+npm run verify         # Health checks (server must be running)
+npm run seed           # Re-seed products
+npm run promote-admin -- user@email.com
+```
 
 ---
 
@@ -74,20 +90,19 @@ npm start
 
 ```
 Peoples-Bakers-master/
-├── index.html, order.html, checkout.html, …   # Customer pages
-├── admin.html, pb-office.html                 # Admin UI
-├── js/                                        # Frontend logic
-├── css/                                       # Styles
+├── index.html, order.html, products.html, cakes.html, …
+├── js/checkout-page.js, hero-banner.js, i18n.js, cart.js, …
+├── css/style.css
 ├── server/
-│   ├── server.js          # Main API + static server
-│   ├── auth.js            # JWT middleware
-│   ├── store.js           # SQLite layer
-│   ├── admin-api.js       # Admin REST API
-│   ├── payhere.js         # Payment integration
-│   └── data/              # Database (git-ignored)
-├── scripts/verify-backend.js
-├── .env.example           # Environment template
-└── render.yaml            # Deploy blueprint
+│   ├── server.js      # HTTP + REST
+│   ├── auth.js
+│   ├── store.js
+│   ├── admin-api.js
+│   ├── payhere.js
+│   └── data/          # SQLite — git-ignored
+├── js/translations/   # en.json, si.json, ta.json
+├── .env.example
+└── render.yaml
 ```
 
 ---
@@ -98,67 +113,47 @@ Peoples-Bakers-master/
 |------|-----------|
 | Auth | `POST /api/auth/register`, `login`, `logout`, `GET /api/auth/me` |
 | Orders | `POST /api/orders`, `GET /api/orders`, `PATCH /api/orders/:id` |
-| Products | `GET /api/products`, admin `POST/PUT/DELETE` |
+| Products | `GET /api/products` (+ admin write) |
 | Payments | `POST /api/payments/payhere/checkout`, `/notify` |
 | Outlets | `GET /api/outlets`, `/nearby`, `/geojson` |
 | Admin | `GET /api/admin/stats`, `/orders`, `/users`, `/settings` |
 | Config | `GET /api/config`, `GET /api/health` |
 
-Full technical guide: see `docs/Peoples-Bakers-Project-Guide-English-Advanced.html`
+Longer notes: [`docs/Peoples-Bakers-Project-Guide-English-Advanced.html`](docs/Peoples-Bakers-Project-Guide-English-Advanced.html)
 
 ---
 
-## Environment variables
+## Environment
 
-Copy `.env.example` to `.env`. **Never commit `.env` to git.**
+Copy `.env.example` to `.env`. **Never commit `.env`.**
 
 | Variable | Purpose |
 |----------|---------|
 | `JWT_SECRET` | Login token signing (32+ chars in production) |
-| `SITE_URL` | Public site URL for emails and PayHere |
+| `SITE_URL` | Public URL for emails and PayHere |
 | `PAYHERE_MERCHANT_ID` / `PAYHERE_MERCHANT_SECRET` | Online payments |
-| `WHATSAPP_NUMBER` | Business WhatsApp (default: 947228955477) |
-| `SMTP_*` | Optional order confirmation emails |
-| `DB_PATH` | Optional custom SQLite file path on host |
-
----
-
-## Commands
-
-```bash
-npm start              # Run server (production)
-npm run dev            # Auto-restart on file changes
-npm run verify         # Health checks (server must be running)
-npm run seed           # Re-seed products (no duplicates)
-npm run promote-admin -- user@email.com
-```
+| `PAYHERE_SANDBOX` | `true` while testing |
+| `WHATSAPP_NUMBER` | Business WhatsApp |
+| `SMTP_*` | Optional order emails |
+| `DB_PATH` | Optional SQLite path on the host |
 
 ---
 
 ## Deployment
 
-Requires **Node.js hosting** (Render, Railway, VPS). GitHub Pages and PHP-only hosting will **not** work.
+Needs **Node.js hosting** (Render, Railway, VPS). GitHub Pages / PHP-only hosts will not work.
 
-- Set `NODE_ENV=production`, strong `JWT_SECRET`, `ADMIN_SEED_PASSWORD`
-- Use HTTPS for PayHere webhooks
-- Mount persistent disk for SQLite (`DB_PATH`)
+- `NODE_ENV=production`, strong `JWT_SECRET`, `ADMIN_SEED_PASSWORD`
+- HTTPS for PayHere notify
+- Persistent disk for SQLite (`DB_PATH`)
 
-See `docs/Peoples-Bakers-Hosting-Guide.html` for full checklist.
-
----
-
-## Security notes
-
-- `.env` and `server/data/` are git-ignored
-- Production rejects weak JWT secrets and default admin passwords
-- Order prices validated server-side against product catalogue
-- PayHere notify requests verified with MD5 hash
+See [`docs/Peoples-Bakers-Hosting-Guide.html`](docs/Peoples-Bakers-Hosting-Guide.html).
 
 ---
 
 ## License
 
-MIT — see project use terms as applicable for Peoples Bakers branding.
+MIT — Peoples Bakers branding remains with the business.
 
 ---
 
@@ -166,3 +161,4 @@ MIT — see project use terms as applicable for Peoples Bakers branding.
 
 - **GitHub:** [@sandeepa-cpu](https://github.com/sandeepa-cpu)
 - **Project:** [Peoples-Bakers](https://github.com/sandeepa-cpu/Peoples-Bakers)
+- **Email:** channasandep77@gmail.com

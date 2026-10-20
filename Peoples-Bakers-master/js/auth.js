@@ -116,7 +116,17 @@
         return r.json();
       })
       .then(function (cfg) {
-        if (!cfg.googleClientId) return; // not configured — keep email/password only
+        if (!cfg.googleClientId) {
+          document.querySelectorAll(".btn-google").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var f = btn.closest("form");
+              if (f) {
+                setMsg(f, "Google sign-in isn’t set up yet. Please use email and password.");
+              }
+            });
+          });
+          return;
+        }
         (function waitForGsi() {
           if (
             !(window.google && google.accounts && google.accounts.id)

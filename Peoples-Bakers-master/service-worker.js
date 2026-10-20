@@ -1,4 +1,4 @@
-const CACHE_NAME = "peoples-bakers-v147";
+const CACHE_NAME = "peoples-bakers-v281";
 const APP_SHELL_FILES = [
   "./",
   "index.html",
@@ -100,12 +100,20 @@ function isFreshAlwaysRequest(url) {
     p.endsWith("/css/admin.css") ||
     p.endsWith("/js/main.js") ||
     p.endsWith("/js/cart.js") ||
+    p.endsWith("/js/cakes-page.js") ||
+    p.endsWith("/js/i18n.js") ||
+    p.endsWith("/js/products-page.js") ||
     p.endsWith("/js/order-page.js") ||
     p.endsWith("/js/checkout-page.js") ||
     p.endsWith("/js/auth.js") ||
     p.endsWith("/js/account-page.js") ||
     p.endsWith("/js/admin.js")
   );
+}
+
+function isMediaNoCache(url) {
+  const p = url.pathname.toLowerCase();
+  return p.endsWith(".mp4") || p.endsWith(".webm") || p.endsWith(".mov");
 }
 
 self.addEventListener("fetch", (event) => {
@@ -119,6 +127,15 @@ self.addEventListener("fetch", (event) => {
     requestUrl.origin === self.location.origin &&
     requestUrl.pathname.startsWith("/api/")
   ) {
+    return;
+  }
+
+  if (
+    requestUrl.origin === self.location.origin &&
+    isMediaNoCache(requestUrl)
+  ) {
+    // Never cache homepage highlight videos — they change often and are large.
+    event.respondWith(fetch(event.request));
     return;
   }
 

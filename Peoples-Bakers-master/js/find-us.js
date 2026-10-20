@@ -179,23 +179,31 @@
       .addTo(map);
   }
 
+  function setPlaceholderLink(el, href) {
+    if (!el) return;
+    if (href) {
+      el.href = href;
+      el.removeAttribute("aria-disabled");
+    } else {
+      el.href = "#";
+      el.setAttribute("aria-disabled", "true");
+    }
+  }
+
   function updateMapHeader(outlet) {
     if (!outlet || !mapHead) return;
     mapHead.hidden = false;
     if (mapTitle) mapTitle.textContent = outlet.area || outlet.name;
     if (mapSub) mapSub.textContent = outlet.address;
 
-    if (actionDirections) {
-      actionDirections.href = outlet.directionsUrl;
-    }
-    if (googleLink) {
-      googleLink.href = outlet.directionsUrl;
-    }
+    setPlaceholderLink(actionDirections, outlet.directionsUrl);
+    setPlaceholderLink(googleLink, outlet.directionsUrl);
     if (actionCall) {
       if (outlet.phone) {
-        actionCall.href = phoneHref(outlet.phone);
+        setPlaceholderLink(actionCall, phoneHref(outlet.phone));
         actionCall.hidden = false;
       } else {
+        setPlaceholderLink(actionCall, null);
         actionCall.hidden = true;
       }
     }
@@ -369,6 +377,10 @@
         if (active) {
           updateMapHeader(active);
           focusMap(active);
+        } else {
+          setPlaceholderLink(googleLink, null);
+          setPlaceholderLink(actionDirections, null);
+          setPlaceholderLink(actionCall, null);
         }
 
         setStatus(buildStatus(data));
@@ -401,6 +413,22 @@
         if (mapLoading) mapLoading.textContent = "Map unavailable";
       });
   }
+
+  function guardPlaceholderClick(el) {
+    if (!el) return;
+    el.addEventListener("click", function (e) {
+      var href = el.getAttribute("href");
+      if (el.getAttribute("aria-disabled") === "true" || !href || href === "#") {
+        e.preventDefault();
+      }
+    });
+  }
+  setPlaceholderLink(actionDirections, null);
+  setPlaceholderLink(actionCall, null);
+  setPlaceholderLink(googleLink, null);
+  guardPlaceholderClick(actionDirections);
+  guardPlaceholderClick(actionCall);
+  guardPlaceholderClick(googleLink);
 
   listEl.addEventListener("click", function (e) {
     var btn = e.target.closest("[data-outlet-id]");

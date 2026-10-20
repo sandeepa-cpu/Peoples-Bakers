@@ -31,7 +31,7 @@ function getConfig() {
       ? "https://sandbox.payhere.lk/pay/checkout"
       : "https://www.payhere.lk/pay/checkout",
     returnUrl: base + "/payment-return.html",
-    cancelUrl: base + "/order.html#checkout",
+    cancelUrl: base + "/order.html#checkout-details",
     notifyUrl: base + "/api/payments/payhere/notify",
   };
 }

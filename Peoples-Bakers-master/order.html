@@ -9,7 +9,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=140">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -52,6 +52,7 @@
         <div class="nav-links">
           <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
           <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="cakes.html" data-i18n="nav.cakes">All Cakes</a>
           <a href="special-cake.html" data-i18n="nav.special_cake">Customize Cake</a>
           <a href="index.html#offers" data-i18n="nav.offers">Offers</a>
           <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
@@ -93,7 +94,7 @@
     </section>
 
     <!-- ═══════════ THE ORDER BUILDER ═══════════ -->
-    <section class="orderx-builder" id="quick-order">
+    <section class="orderx-builder orderx-builder--v2" id="quick-order">
       <div class="container orderx-grid">
 
         <!-- MAIN: ordering options -->
@@ -102,69 +103,150 @@
           <h2 class="orderx-ways-title" data-i18n="order.page.builder_h2">How would you like to order?</h2>
           <p class="orderx-ways-sub" data-i18n="order.page.builder_sub">Pick whatever suits you — our team confirms your items, pricing and timing in minutes.</p>
 
-          <div class="orderx-ways-grid">
-            <a class="orderx-way-card orderx-way-card--wa" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer">
-              <span class="orderx-way-icon"><i class="fa-brands fa-whatsapp"></i></span>
-              <span class="orderx-way-body">
-                <span class="orderx-way-name" data-i18n="order.page.way_wa_name">WhatsApp</span>
-                <span class="orderx-way-text" data-i18n="order.page.way_wa_text">Chat &amp; order in seconds</span>
+          <!-- Steps strip -->
+          <ol class="orderx-steps" aria-label="How ordering works">
+            <li class="orderx-steps__item is-active">
+              <span class="orderx-steps__num">1</span>
+              <span class="orderx-steps__body">
+                <span class="orderx-steps__title" data-i18n="order.page.step1_t">Pick a way</span>
+                <span class="orderx-steps__sub" data-i18n="order.page.step1_s">WhatsApp, app, or site</span>
               </span>
-              <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
-            </a>
+            </li>
+            <li class="orderx-steps__item">
+              <span class="orderx-steps__num">2</span>
+              <span class="orderx-steps__body">
+                <span class="orderx-steps__title" data-i18n="order.page.step2_t">Confirm items</span>
+                <span class="orderx-steps__sub" data-i18n="order.page.step2_s">Our team replies in minutes</span>
+              </span>
+            </li>
+            <li class="orderx-steps__item">
+              <span class="orderx-steps__num">3</span>
+              <span class="orderx-steps__body">
+                <span class="orderx-steps__title" data-i18n="order.page.step3_t">Fresh &amp; delivered</span>
+                <span class="orderx-steps__sub" data-i18n="order.page.step3_s">~30 min city delivery</span>
+              </span>
+            </li>
+          </ol>
 
-            <a class="orderx-way-card" href="tel:+94228955477" data-site-phone>
+          <!-- Featured WhatsApp card (recommended) -->
+          <a class="orderx-way-featured" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer">
+            <span class="orderx-way-featured__badge"><i class="fa-solid fa-star" aria-hidden="true"></i> <span data-i18n="order.page.badge_recommended">Recommended</span></span>
+            <span class="orderx-way-featured__glow" aria-hidden="true"></span>
+            <span class="orderx-way-featured__icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <span class="orderx-way-featured__body">
+              <span class="orderx-way-featured__row">
+                <span class="orderx-way-featured__name" data-i18n="order.page.way_wa_name">WhatsApp</span>
+                <span class="orderx-way-featured__live"><span class="orderx-way-featured__dot" aria-hidden="true"></span><span data-i18n="order.page.wa_live">Team online</span></span>
+              </span>
+              <span class="orderx-way-featured__text" data-i18n="order.page.wa_lede">Chat, share your order, and confirm in seconds. Custom, bulk, and urgent orders welcome.</span>
+              <span class="orderx-way-featured__meta">
+                <span class="orderx-way-featured__chip"><i class="fa-solid fa-bolt" aria-hidden="true"></i> <span data-i18n="order.page.chip_reply">Reply ~1 min</span></span>
+                <span class="orderx-way-featured__chip"><i class="fa-solid fa-comments" aria-hidden="true"></i> <span data-i18n="order.page.chip_easiest">Easiest</span></span>
+                <span class="orderx-way-featured__chip"><i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i> <span data-i18n="order.page.chip_free">Free to use</span></span>
+              </span>
+            </span>
+            <span class="orderx-way-featured__cta">
+              <span data-i18n="order.page.wa_cta">Chat &amp; order</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <div class="orderx-ways-grid orderx-ways-grid--v2">
+            <a class="orderx-way-card orderx-way-card--v2" href="tel:+94228955477" data-site-phone>
+              <span class="orderx-way-card__badge"><i class="fa-solid fa-phone"></i> <span data-i18n="order.page.badge_direct">Direct line</span></span>
               <span class="orderx-way-icon"><i class="fa-solid fa-phone"></i></span>
               <span class="orderx-way-body">
                 <span class="orderx-way-name" data-i18n="order.page.way_call_name">Call us</span>
                 <span class="orderx-way-text" data-site-phone-display data-i18n="order.page.way_call_text">+94 22 895 5477 · 7am–9pm</span>
+                <span class="orderx-way-chips">
+                  <span class="orderx-way-chip"><i class="fa-solid fa-clock"></i> <span data-i18n="order.page.chip_hours">7am–9pm</span></span>
+                  <span class="orderx-way-chip"><i class="fa-solid fa-user"></i> <span data-i18n="order.page.chip_real">Real person</span></span>
+                </span>
               </span>
               <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
             </a>
 
-            <a class="orderx-way-card orderx-way-card--uber" href="https://www.ubereats.com/lk" target="_blank" rel="noopener noreferrer">
+            <a class="orderx-way-card orderx-way-card--v2 orderx-way-card--uber" href="https://www.ubereats.com/lk" target="_blank" rel="noopener noreferrer">
+              <span class="orderx-way-card__badge orderx-way-card__badge--uber"><i class="fa-solid fa-location-arrow"></i> <span data-i18n="order.page.badge_live">Live tracking</span></span>
               <span class="orderx-way-icon"><i class="fa-solid fa-utensils"></i></span>
               <span class="orderx-way-body">
                 <span class="orderx-way-name" data-i18n="order.page.way_uber_name">Uber Eats</span>
-                <span class="orderx-way-text" data-i18n="order.page.way_uber_text">Order on the app &middot; live tracking</span>
+                <span class="orderx-way-text" data-i18n="order.page.way_uber_text">Order on the app · live tracking</span>
+                <span class="orderx-way-chips">
+                  <span class="orderx-way-chip"><i class="fa-solid fa-mobile-screen-button"></i> <span data-i18n="order.page.chip_app">In-app pay</span></span>
+                  <span class="orderx-way-chip"><i class="fa-solid fa-map-location-dot"></i> <span data-i18n="order.page.chip_track">Track rider</span></span>
+                </span>
               </span>
               <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
             </a>
 
-            <a class="orderx-way-card orderx-way-card--pickme" href="https://pickme.lk/" target="_blank" rel="noopener noreferrer">
+            <a class="orderx-way-card orderx-way-card--v2 orderx-way-card--pickme" href="https://pickme.lk/" target="_blank" rel="noopener noreferrer">
+              <span class="orderx-way-card__badge orderx-way-card__badge--pickme"><i class="fa-solid fa-globe"></i> <span data-i18n="order.page.badge_island">Island-wide</span></span>
               <span class="orderx-way-icon"><i class="fa-solid fa-motorcycle"></i></span>
               <span class="orderx-way-body">
                 <span class="orderx-way-name" data-i18n="order.page.way_pickme_name">PickMe Food</span>
                 <span class="orderx-way-text" data-i18n="order.page.way_pickme_text">Fast island-wide delivery</span>
+                <span class="orderx-way-chips">
+                  <span class="orderx-way-chip"><i class="fa-solid fa-bolt"></i> <span data-i18n="order.page.chip_fast">Fast riders</span></span>
+                  <span class="orderx-way-chip"><i class="fa-solid fa-credit-card"></i> <span data-i18n="order.page.chip_card">Card / cash</span></span>
+                </span>
               </span>
               <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
             </a>
 
-            <a class="orderx-way-card orderx-way-card--site" href="#checkout">
+            <a class="orderx-way-card orderx-way-card--v2 orderx-way-card--site" href="#checkout">
+              <span class="orderx-way-card__badge orderx-way-card__badge--site"><i class="fa-solid fa-tag"></i> <span data-i18n="order.page.badge_direct_price">Best price</span></span>
               <span class="orderx-way-icon"><i class="fa-solid fa-basket-shopping"></i></span>
               <span class="orderx-way-body">
                 <span class="orderx-way-name" data-i18n="order.page.way_site_name">Website checkout</span>
                 <span class="orderx-way-text" data-i18n="order.page.way_site_text">Basket items · pick location · confirm</span>
+                <span class="orderx-way-chips">
+                  <span class="orderx-way-chip"><i class="fa-solid fa-percent"></i> <span data-i18n="order.page.chip_offers">Offer codes</span></span>
+                  <span class="orderx-way-chip"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="order.page.chip_secure">PayHere secure</span></span>
+                </span>
               </span>
               <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
             </a>
 
-            <a class="orderx-way-card orderx-way-card--outlet" href="find-us.html">
+            <a class="orderx-way-card orderx-way-card--v2 orderx-way-card--outlet" href="find-us.html">
+              <span class="orderx-way-card__badge orderx-way-card__badge--outlet"><i class="fa-solid fa-store"></i> <span data-i18n="order.page.badge_walk">Walk in</span></span>
               <span class="orderx-way-icon"><i class="fa-solid fa-store"></i></span>
               <span class="orderx-way-body">
                 <span class="orderx-way-name" data-i18n="order.page.way_outlet_name">Visit an outlet</span>
-                <span class="orderx-way-text" data-i18n="order.page.way_outlet_text">150+ outlets &middot; find one near you</span>
+                <span class="orderx-way-text" data-i18n="order.page.way_outlet_text">150+ outlets · find one near you</span>
+                <span class="orderx-way-chips">
+                  <span class="orderx-way-chip"><i class="fa-solid fa-map-pin"></i> <span data-i18n="order.page.chip_outlets">150+ outlets</span></span>
+                  <span class="orderx-way-chip"><i class="fa-solid fa-eye"></i> <span data-i18n="order.page.chip_see">See &amp; pick</span></span>
+                </span>
               </span>
               <i class="fa-solid fa-arrow-right orderx-way-go" aria-hidden="true"></i>
             </a>
           </div>
         </div>
 
-        <!-- SIDE: help + zone + assurance -->
+        <!-- SIDE: live status + zone + assurance -->
         <aside class="orderx-aside">
-          <div class="orderx-aside-card orderx-aside-card--accent">
-            <span class="orderx-aside-kicker"><i class="fa-solid fa-headset" aria-hidden="true"></i> <span data-i18n="order.page.aside_kicker">Need it faster?</span></span>
+          <div class="orderx-aside-card orderx-aside-card--accent orderx-live-card">
+            <div class="orderx-live-status">
+              <span class="orderx-live-dot" aria-hidden="true"></span>
+              <span class="orderx-live-label" data-i18n="order.page.live_online">Team is online now</span>
+            </div>
             <h3 class="orderx-aside-title" data-i18n="order.page.aside_h2">Talk to us directly</h3>
             <p class="orderx-aside-text" data-i18n="order.page.aside_p">Custom, bulk, or urgent order? Chat or call and a real person sorts it instantly.</p>
+            <ul class="orderx-live-stats" aria-label="Live service stats">
+              <li>
+                <span class="orderx-live-stats__k" data-i18n="order.page.stat_reply">Reply time</span>
+                <strong>~1 <span data-i18n="order.page.stat_min">min</span></strong>
+              </li>
+              <li>
+                <span class="orderx-live-stats__k" data-i18n="order.page.stat_rating">Rating</span>
+                <strong><i class="fa-solid fa-star" aria-hidden="true"></i> 4.9</strong>
+              </li>
+              <li>
+                <span class="orderx-live-stats__k" data-i18n="order.page.stat_orders">Orders today</span>
+                <strong>120+</strong>
+              </li>
+            </ul>
             <div class="orderx-aside-actions">
               <a class="btn btn-primary" href="https://wa.me/947228955477?text=Hi%20Peoples%20Bakers%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="order.page.aside_wa">WhatsApp</span></a>
               <a class="btn btn-outline" href="tel:+94228955477" data-site-phone><i class="fa-solid fa-phone"></i> <span data-site-phone-display>+94 22 895 5477</span></a>
@@ -199,38 +281,90 @@
       </div>
     </section>
 
-    <!-- ═══════════ BASKET CHECKOUT (Uber/PickMe-style location) ═══════════ -->
+    <!-- ═══════════ MULTI-STEP CHECKOUT ═══════════ -->
     <section class="orderx-checkout" id="checkout" aria-labelledby="checkout-heading">
       <div class="container orderx-checkout-inner">
-        <span class="orderx-aside-kicker"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-i18n="order.page.checkout_kicker">Order Online</span></span>
-        <h2 class="orderx-ways-title" id="checkout-heading" data-i18n="order.page.checkout_h2">Complete your basket</h2>
-        <p class="orderx-ways-sub" data-i18n="order.page.checkout_sub">Choose delivery or pickup, set your location, and confirm — like Uber Eats or PickMe, but direct with Peoples Bakers.</p>
+        <span class="orderx-aside-kicker"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> <span data-i18n="order.page.checkout_kicker">Order Online</span></span>
 
-        <div class="orderx-checkout-empty hidden" id="co-empty">
-          <p data-i18n="order.page.empty_p">Your basket is empty.</p>
-          <a class="btn btn-primary" href="products.html"><span data-i18n="order.page.empty_btn">Browse products</span></a>
+        <nav class="co-stepper" id="co-stepper" aria-label="Checkout steps">
+          <ol class="co-stepper__list">
+            <li class="co-stepper__item is-active" data-co-goto="cart">
+              <button type="button" class="co-stepper__btn" data-co-goto="cart" aria-current="step">
+                <span class="co-stepper__num">1</span>
+                <span class="co-stepper__label" data-i18n="order.page.step_cart">Shopping Cart</span>
+              </button>
+            </li>
+            <li class="co-stepper__item" data-co-goto="details">
+              <button type="button" class="co-stepper__btn" data-co-goto="details">
+                <span class="co-stepper__num">2</span>
+                <span class="co-stepper__label" data-i18n="order.page.step_details">Checkout details</span>
+              </button>
+            </li>
+            <li class="co-stepper__item" data-co-goto="complete">
+              <button type="button" class="co-stepper__btn" data-co-goto="complete" disabled>
+                <span class="co-stepper__num">3</span>
+                <span class="co-stepper__label" data-i18n="order.page.step_complete">Order Complete</span>
+              </button>
+            </li>
+          </ol>
+        </nav>
+
+        <h2 class="orderx-ways-title" id="checkout-heading" data-i18n="order.page.cart_h2">Shopping cart</h2>
+        <p class="orderx-ways-sub" id="checkout-sub" data-i18n="order.page.cart_sub">Review your items, then continue to billing and payment.</p>
+
+        <!-- STEP 1 · Cart -->
+        <div class="co-view is-active" id="co-view-cart" data-co-step="cart">
+          <div class="co-cart-card orderx-checkout-card">
+            <div class="orderx-checkout-empty hidden" id="co-empty">
+              <p data-i18n="order.page.empty_p">Your basket is empty.</p>
+              <a class="btn btn-primary" href="products.html"><span data-i18n="order.page.empty_btn">Browse products</span></a>
+            </div>
+            <div id="co-cart-lines" class="co-cart-lines"></div>
+            <div class="co-cart-foot">
+              <div class="orderx-checkout-subtotal" id="co-subtotal-row" hidden>
+                <span data-i18n="order.page.subtotal">Subtotal</span><strong id="co-subtotal">Rs. 0</strong>
+              </div>
+              <div class="orderx-checkout-discount" id="co-discount-row" hidden>
+                <span id="co-discount-label" data-i18n="order.page.discount">Phone discount</span><strong id="co-discount">− Rs. 0</strong>
+              </div>
+              <div class="orderx-checkout-total"><span data-i18n="order.page.total">Estimated total</span><strong id="co-total">Rs. 0</strong></div>
+              <p class="orderx-checkout-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> <span data-i18n="order.page.basket_note">Prices are indicative; final amount confirmed by our team.</span></p>
+              <div class="co-cart-actions">
+                <a class="btn btn-outline" href="products.html" data-i18n="order.page.continue_shop">Continue shopping</a>
+                <button type="button" class="btn btn-primary" id="co-proceed">
+                  <span data-i18n="order.page.proceed">Proceed to checkout</span>
+                </button>
+              </div>
+              <p class="orderx-checkout-msg" id="co-proceed-hint" hidden></p>
+            </div>
+          </div>
         </div>
 
-        <div class="orderx-checkout-success hidden" id="co-success">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-          <h3 data-i18n="order.page.success_h3">Order placed!</h3>
-          <p data-i18n="order.page.success_p">Your order <strong id="co-ref"></strong> is in. Our team will confirm shortly.</p>
-          <a class="btn btn-primary" id="co-wa" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="order.page.success_wa">Send on WhatsApp</span></a>
-          <div id="co-success-links" class="orderx-checkout-success-links"></div>
-        </div>
-
-        <div class="orderx-checkout-grid" id="co-grid">
-          <div class="orderx-checkout-card">
-            <h3 data-i18n="order.page.delivery_h3">Delivery &amp; location</h3>
-            <form id="co-form">
-              <div class="orderx-checkout-row2">
-                <div class="orderx-checkout-field">
-                  <label for="c-mode" data-i18n="order.page.mode_label">How do you want it?</label>
-                  <select id="c-mode">
-                    <option value="Delivery" data-i18n="order.page.mode_delivery">Delivery to my address</option>
-                    <option value="Pickup from outlet" data-i18n="order.page.mode_pickup">Pickup from outlet</option>
-                  </select>
+        <!-- STEP 2 · Details -->
+        <div class="co-view" id="co-view-details" data-co-step="details" hidden>
+          <form id="co-form" class="co-details-grid">
+            <div class="co-details-billing orderx-checkout-card orderx-checkout-card--form">
+              <div class="cox-step">
+                <div class="cox-step-head">
+                  <span class="cox-step-num">1</span>
+                  <h3 data-i18n="order.page.cox_s1">How &amp; where?</h3>
                 </div>
+                <div class="cox-mode-toggle" role="tablist" aria-label="Delivery or pickup">
+                  <button type="button" class="cox-mode-btn is-active" id="cox-mode-delivery" data-mode="Delivery" role="tab" aria-selected="true">
+                    <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+                    <span class="cox-mode-name" data-i18n="order.page.cox_delivery">Delivery</span>
+                    <span class="cox-mode-sub" data-i18n="order.page.cox_delivery_sub">To your door</span>
+                  </button>
+                  <button type="button" class="cox-mode-btn" id="cox-mode-pickup" data-mode="Pickup from outlet" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-store" aria-hidden="true"></i>
+                    <span class="cox-mode-name" data-i18n="order.page.cox_pickup">Pickup</span>
+                    <span class="cox-mode-sub" data-i18n="order.page.cox_pickup_sub">From an outlet</span>
+                  </button>
+                </div>
+                <select id="c-mode" class="cox-mode-select" aria-hidden="true" tabindex="-1">
+                  <option value="Delivery" data-i18n="order.page.mode_delivery">Delivery to my address</option>
+                  <option value="Pickup from outlet" data-i18n="order.page.mode_pickup">Pickup from outlet</option>
+                </select>
                 <div class="orderx-checkout-field orderx-checkout-field--loc">
                   <label for="c-area" data-i18n="order.page.area_label">Area / location *</label>
                   <div class="orderx-loc-bar">
@@ -239,7 +373,52 @@
                   </div>
                   <ul class="orderx-loc-suggest" id="co-suggest" hidden role="listbox"></ul>
                 </div>
+                <div class="orderx-loc-result" id="co-loc-result" hidden></div>
+                <div class="orderx-app-shortcuts">
+                  <span data-i18n="order.page.prefer_app">Prefer an app?</span>
+                  <a href="https://www.ubereats.com/lk" target="_blank" rel="noopener noreferrer" class="orderx-app-chip orderx-app-chip--uber"><i class="fa-solid fa-utensils"></i> Uber Eats</a>
+                  <a href="https://pickme.lk/" target="_blank" rel="noopener noreferrer" class="orderx-app-chip orderx-app-chip--pickme"><i class="fa-solid fa-motorcycle"></i> PickMe</a>
+                </div>
               </div>
+
+              <div class="cox-step">
+                <div class="cox-step-head">
+                  <span class="cox-step-num">2</span>
+                  <h3 data-i18n="order.page.billing_h3">Billing details</h3>
+                </div>
+                <div class="orderx-checkout-row2">
+                  <div class="orderx-checkout-field"><label for="c-name" data-i18n="order.page.name_label">Full name *</label><input id="c-name" autocomplete="name" required data-i18n-placeholder="order.page.cox_name_ph" placeholder="e.g. Nimal Perera"></div>
+                  <div class="orderx-checkout-field">
+                    <label for="c-phone" data-i18n="order.page.phone_label">Phone (WhatsApp) *</label>
+                    <input id="c-phone" type="tel" autocomplete="tel" data-i18n-placeholder="order.page.phone_ph" placeholder="07X XXX XXXX" required>
+                    <p class="orderx-phone-hint" id="co-phone-hint" hidden></p>
+                  </div>
+                </div>
+                <div class="orderx-discount-banner" id="co-discount-banner" hidden>
+                  <i class="fa-solid fa-percent" aria-hidden="true"></i>
+                  <span id="co-discount-banner-text"></span>
+                </div>
+                <div class="orderx-checkout-field">
+                  <label for="c-email"><span data-i18n="order.page.email_label">Email</span> <em class="cox-optional" data-i18n="order.page.cox_optional">optional</em></label>
+                  <input id="c-email" type="email" autocomplete="email">
+                </div>
+                <div class="orderx-checkout-field">
+                  <label for="c-notes"><span data-i18n="order.page.notes_label">Notes (allergies, cake message…)</span> <em class="cox-optional" data-i18n="order.page.cox_optional">optional</em></label>
+                  <textarea id="c-notes" rows="2" data-i18n-placeholder="order.page.cox_notes_ph" placeholder="e.g. Happy Birthday Amma on the cake, less sugar…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <aside class="co-details-summary orderx-checkout-card orderx-checkout-card--basket orderx-checkout-card--basket-v2">
+              <h3><i class="fa-solid fa-receipt" aria-hidden="true"></i> <span data-i18n="order.page.summary_h3">Order summary</span></h3>
+              <div id="co-lines"></div>
+              <div class="orderx-checkout-subtotal" id="co-summary-subtotal-row" hidden>
+                <span data-i18n="order.page.subtotal">Subtotal</span><strong id="co-summary-subtotal">Rs. 0</strong>
+              </div>
+              <div class="orderx-checkout-discount" id="co-summary-discount-row" hidden>
+                <span id="co-summary-discount-label" data-i18n="order.page.discount">Phone discount</span><strong id="co-summary-discount">− Rs. 0</strong>
+              </div>
+              <div class="orderx-checkout-total"><span data-i18n="order.page.total">Estimated total</span><strong id="co-summary-total">Rs. 0</strong></div>
 
               <div class="orderx-checkout-field">
                 <label for="c-outlet" data-i18n="order.page.outlet_label">Nearest Peoples Bakers outlet</label>
@@ -249,61 +428,60 @@
                 <p class="orderx-loc-hint" id="co-outlet-hint" data-i18n="order.page.outlet_hint">We route your order to the closest branch.</p>
               </div>
 
-              <div class="orderx-loc-result" id="co-loc-result" hidden></div>
-
-              <div class="orderx-app-shortcuts">
-                <span data-i18n="order.page.prefer_app">Prefer an app?</span>
-                <a href="https://www.ubereats.com/lk" target="_blank" rel="noopener noreferrer" class="orderx-app-chip orderx-app-chip--uber"><i class="fa-solid fa-utensils"></i> Uber Eats</a>
-                <a href="https://pickme.lk/" target="_blank" rel="noopener noreferrer" class="orderx-app-chip orderx-app-chip--pickme"><i class="fa-solid fa-motorcycle"></i> PickMe</a>
+              <div class="orderx-checkout-field">
+                <label for="c-when"><span data-i18n="order.page.when_label">Preferred date &amp; time</span> <em class="cox-optional" data-i18n="order.page.cox_optional">optional</em></label>
+                <input id="c-when" type="datetime-local">
+                <p class="orderx-loc-hint" data-i18n="order.page.when_hint">We’ll confirm the slot on WhatsApp.</p>
               </div>
-
-              <h3 class="orderx-checkout-subhead" data-i18n="order.page.details_h3">Your details</h3>
-              <div class="orderx-checkout-row2">
-                <div class="orderx-checkout-field"><label for="c-name" data-i18n="order.page.name_label">Full name *</label><input id="c-name" autocomplete="name" required></div>
-                <div class="orderx-checkout-field">
-                  <label for="c-phone" data-i18n="order.page.phone_label">Phone (WhatsApp) *</label>
-                  <input id="c-phone" type="tel" autocomplete="tel" data-i18n-placeholder="order.page.phone_ph" placeholder="07X XXX XXXX" required>
-                  <p class="orderx-phone-hint" id="co-phone-hint" hidden></p>
-                </div>
-              </div>
-              <div class="orderx-discount-banner" id="co-discount-banner" hidden>
-                <i class="fa-solid fa-percent" aria-hidden="true"></i>
-                <span id="co-discount-banner-text"></span>
-              </div>
-              <div class="orderx-checkout-field"><label for="c-email" data-i18n="order.page.email_label">Email</label><input id="c-email" type="email" autocomplete="email"></div>
 
               <div class="orderx-checkout-field">
-                <span class="orderx-checkout-label" data-i18n="order.page.pay_label">Payment method</span>
-                <div class="orderx-pay-methods" role="radiogroup" aria-label="Payment method">
-                  <label class="orderx-pay-option">
+                <span class="co-pay-legend" data-i18n="order.page.pay_label">Payment method</span>
+                <div class="orderx-pay-methods orderx-pay-methods--v2" role="radiogroup" aria-label="Payment method">
+                  <label class="orderx-pay-option orderx-pay-option--v2">
                     <input type="radio" name="c-payment" value="cod" checked>
-                    <span><i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i> <span data-i18n="order.page.pay_cod">Cash on delivery / pay at outlet</span>
+                    <span class="cox-pay-body">
+                      <i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i>
+                      <span class="cox-pay-text">
+                        <span class="cox-pay-name" data-i18n="order.page.cox_cod">Cash</span>
+                        <span class="cox-pay-sub" data-i18n="order.page.cox_cod_sub">Pay on delivery or at outlet</span>
+                      </span>
+                      <span class="cox-pay-check" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+                    </span>
                   </label>
-                  <label class="orderx-pay-option" id="co-payhere-option" hidden>
+                  <label class="orderx-pay-option orderx-pay-option--v2" id="co-payhere-option" hidden>
                     <input type="radio" name="c-payment" value="payhere" id="c-payhere">
-                    <span><i class="fa-solid fa-credit-card" aria-hidden="true"></i> <span data-i18n="order.page.pay_payhere">Pay online — PayHere (Visa, Mastercard, LankaQR, Genie…)</span>
+                    <span class="cox-pay-body">
+                      <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                      <span class="cox-pay-text">
+                        <span class="cox-pay-name" data-i18n="order.page.cox_card">Pay online</span>
+                        <span class="cox-pay-sub" data-i18n="order.page.cox_card_sub">Card, LankaQR, Genie — via PayHere</span>
+                      </span>
+                      <span class="cox-pay-check" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+                    </span>
                   </label>
                 </div>
                 <p class="orderx-loc-hint" id="co-payhere-hint" hidden data-i18n="order.page.pay_payhere_hint">Secure redirect to PayHere. Card, LankaQR &amp; mobile wallets accepted.</p>
               </div>
 
-              <div class="orderx-checkout-field"><label for="c-notes" data-i18n="order.page.notes_label">Notes (allergies, cake message…)</label><textarea id="c-notes" rows="2"></textarea></div>
-              <button type="submit" class="btn btn-primary orderx-checkout-submit"><i class="fa-solid fa-bag-shopping"></i> <span id="co-submit-label" data-i18n="order.page.place_order">Place order</span></button>
+              <button type="submit" class="btn btn-primary orderx-checkout-submit orderx-checkout-submit--v2">
+                <span class="cox-submit-text"><i class="fa-solid fa-bag-shopping"></i> <span id="co-submit-label" data-i18n="order.page.place_order">Place order</span></span>
+                <span class="cox-submit-total" id="cox-submit-total"></span>
+              </button>
+              <p class="cox-trust-line"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> <span id="co-trust-text" data-i18n="order.page.cox_trust">No payment needed now — we confirm on WhatsApp first.</span></p>
               <p class="orderx-checkout-msg" id="co-msg"></p>
-            </form>
-          </div>
+              <button type="button" class="co-back-cart" id="co-back-cart" data-i18n="order.page.back_cart">← Back to cart</button>
+            </aside>
+          </form>
+        </div>
 
-          <div class="orderx-checkout-card orderx-checkout-card--basket">
-            <h3 data-i18n="order.page.basket_h3">Your basket</h3>
-            <div id="co-lines"></div>
-            <div class="orderx-checkout-subtotal" id="co-subtotal-row" hidden>
-              <span data-i18n="order.page.subtotal">Subtotal</span><strong id="co-subtotal">Rs. 0</strong>
-            </div>
-            <div class="orderx-checkout-discount" id="co-discount-row" hidden>
-              <span id="co-discount-label" data-i18n="order.page.discount">Phone discount</span><strong id="co-discount">− Rs. 0</strong>
-            </div>
-            <div class="orderx-checkout-total"><span data-i18n="order.page.total">Estimated total</span><strong id="co-total">Rs. 0</strong></div>
-            <p class="orderx-checkout-note" data-i18n="order.page.basket_note">Prices are indicative; final amount confirmed by our team.</p>
+        <!-- STEP 3 · Complete -->
+        <div class="co-view" id="co-view-complete" data-co-step="complete" hidden>
+          <div class="orderx-checkout-success" id="co-success">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <h3 data-i18n="order.page.success_h3">Order placed!</h3>
+            <p data-i18n="order.page.success_p">Your order <strong id="co-ref"></strong> is in. Our team will confirm shortly.</p>
+            <a class="btn btn-primary" id="co-wa" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="order.page.success_wa">Send on WhatsApp</span></a>
+            <div id="co-success-links" class="orderx-checkout-success-links"></div>
           </div>
         </div>
       </div>
@@ -374,7 +552,7 @@
           <h4 class="footer-heading" data-i18n="footer.products_heading">Our Products</h4>
           <nav class="footer-list" aria-label="Product categories">
             <a href="products.html" data-i18n="footer.fp_breads">Breads</a>
-            <a href="products.html#cakes" data-i18n="footer.fp_cakes">Cakes</a>
+            <a href="cakes.html" data-i18n="footer.fp_cakes">Cakes</a>
             <a href="products.html" data-i18n="footer.fp_savouries">Savouries</a>
             <a href="products.html" data-i18n="footer.fp_beverages">Beverages</a>
             <a href="special-cake.html" data-i18n="footer.fp_photo_cake">Photo Cake</a>
@@ -452,10 +630,12 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/cart.js?v=2"></script>
+  <script src="js/main.js?v=20"></script>
+  <script src="js/i18n.js?v=10"></script>
+  <script src="js/cart.js?v=9"></script>
+  <script src="js/order-menu.js?v=2"></script>
   <script src="js/order-page.js"></script>
-  <script src="js/checkout-page.js?v=126"></script>
+  <script src="js/checkout-page.js?v=132"></script>
+  <script src="js/checkout-ui.js?v=1"></script>
 </body>
 </html>

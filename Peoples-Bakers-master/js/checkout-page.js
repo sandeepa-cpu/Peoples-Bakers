@@ -5,8 +5,9 @@
   "use strict";
 
   var KEY = "peoples-bakers-cart-v1";
-  var grid = document.getElementById("co-grid");
-  if (!grid) return;
+  var COMPLETE_KEY = "pb-checkout-complete";
+  var root = document.getElementById("checkout");
+  if (!root) return;
 
   var emptyEl = document.getElementById("co-empty");
   var successEl = document.getElementById("co-success");
@@ -20,17 +21,28 @@
   var discountConfig = { phoneDiscountEnabled: false };
   var basketSubtotal = 0;
   var discountTimer;
+  var currentStep = "cart";
+  var STEP_ORDER = { cart: 0, details: 1, complete: 2 };
+  var STEP_HASH = {
+    cart: "#checkout",
+    details: "#checkout-details",
+    complete: "#checkout-complete",
+  };
 
   function redirectToPayHere(checkout) {
+    if (!checkout || !checkout.action || !checkout.fields || !checkout.fields.hash) {
+      throw new Error("PayHere checkout could not start. Try again or choose Cash.");
+    }
     var form = document.createElement("form");
     form.method = "POST";
     form.action = checkout.action;
+    form.acceptCharset = "utf-8";
     form.style.display = "none";
     Object.keys(checkout.fields).forEach(function (key) {
       var input = document.createElement("input");
       input.type = "hidden";
       input.name = key;
-      input.value = checkout.fields[key];
+      input.value = checkout.fields[key] == null ? "" : String(checkout.fields[key]);
       form.appendChild(input);
     });
     document.body.appendChild(form);
@@ -42,7 +54,26 @@
     return picked ? picked.value : "cod";
   }
 
+  var paymentUiBound = false;
+
+  function applyPayhereVisibility() {
+    var opt = document.getElementById("co-payhere-option");
+    if (opt) {
+      opt.hidden = !payhereEnabled;
+      if (payhereEnabled) opt.removeAttribute("hidden");
+      else opt.setAttribute("hidden", "hidden");
+    }
+    if (!payhereEnabled) {
+      var ph = document.getElementById("c-payhere");
+      var cod = document.querySelector('input[name="c-payment"][value="cod"]');
+      if (ph) ph.checked = false;
+      if (cod) cod.checked = true;
+    }
+    updatePayLabel();
+  }
+
   function setupPaymentUi() {
+    applyPayhereVisibility();
     fetch("/api/config", { credentials: "same-origin" })
       .then(function (res) {
         return res.ok ? res.json() : {};
@@ -50,16 +81,20 @@
       .then(function (cfg) {
         payhereEnabled = !!cfg.payhereEnabled;
         discountConfig = cfg;
-        var opt = document.getElementById("co-payhere-option");
-        if (payhereEnabled && opt) opt.hidden = false;
-        document.querySelectorAll('input[name="c-payment"]').forEach(function (el) {
-          el.addEventListener("change", updatePayLabel);
-        });
-        updatePayLabel();
+        applyPayhereVisibility();
+        if (!paymentUiBound) {
+          paymentUiBound = true;
+          document.querySelectorAll('input[name="c-payment"]').forEach(function (el) {
+            el.addEventListener("change", updatePayLabel);
+          });
+        }
         setupDiscountBanner(cfg);
         refreshDiscountPreview();
       })
-      .catch(function () {});
+      .catch(function () {
+        payhereEnabled = false;
+        applyPayhereVisibility();
+      });
   }
 
   function setupDiscountBanner(cfg) {
@@ -88,11 +123,28 @@
     }
   }
 
+  function setText(id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function setHidden(id, hidden) {
+    var el = document.getElementById(id);
+    if (el) el.hidden = !!hidden;
+  }
+
+  function setTotals(value) {
+    setText("co-total", value);
+    setText("co-summary-total", value);
+  }
+
   function resetDiscountRows(subRow, discRow, hint) {
     if (subRow) subRow.hidden = true;
     if (discRow) discRow.hidden = true;
+    setHidden("co-summary-subtotal-row", true);
+    setHidden("co-summary-discount-row", true);
     if (hint) hint.hidden = true;
-    document.getElementById("co-total").textContent = rs(basketSubtotal);
+    setTotals(rs(basketSubtotal));
   }
 
   function refreshDiscountPreview() {
@@ -107,7 +159,9 @@
       if (!discountConfig.phoneDiscountEnabled || basketSubtotal <= 0) {
         if (subRow) subRow.hidden = true;
         if (discRow) discRow.hidden = true;
-        document.getElementById("co-total").textContent = rs(basketSubtotal);
+        setHidden("co-summary-subtotal-row", true);
+        setHidden("co-summary-discount-row", true);
+        setTotals(rs(basketSubtotal));
         if (hint) hint.hidden = true;
         return;
       }
@@ -128,20 +182,27 @@
             return;
           }
           updateDiscountBanner(d, phone);
+          var showSub = d.discount > 0 || d.reason === "min_order";
+          var showDisc = d.applied && d.discount > 0;
           if (subRow) {
-            subRow.hidden = !(d.discount > 0 || d.reason === "min_order");
-            document.getElementById("co-subtotal").textContent = rs(d.subtotal);
+            subRow.hidden = !showSub;
+            setText("co-subtotal", rs(d.subtotal));
           }
+          setHidden("co-summary-subtotal-row", !showSub);
+          setText("co-summary-subtotal", rs(d.subtotal));
           if (discRow) {
-            discRow.hidden = !(d.applied && d.discount > 0);
-            if (d.applied && d.discount > 0) {
-              document.getElementById("co-discount-label").textContent =
-                d.label || "Phone discount";
-              document.getElementById("co-discount").textContent =
-                "− " + rs(d.discount);
+            discRow.hidden = !showDisc;
+            if (showDisc) {
+              setText("co-discount-label", d.label || "Phone discount");
+              setText("co-discount", "− " + rs(d.discount));
             }
           }
-          document.getElementById("co-total").textContent = rs(d.total);
+          setHidden("co-summary-discount-row", !showDisc);
+          if (showDisc) {
+            setText("co-summary-discount-label", d.label || "Phone discount");
+            setText("co-summary-discount", "− " + rs(d.discount));
+          }
+          setTotals(rs(d.total));
           if (hint) {
             if (d.applied) {
               hint.hidden = false;
@@ -162,6 +223,16 @@
                   "en-LK"
                 ) +
                 ".";
+            } else if (phone && d.reason === "login_required") {
+              hint.hidden = false;
+              hint.className = "orderx-phone-hint is-warn";
+              hint.textContent =
+                "Sign in with your account to unlock the phone discount.";
+            } else if (phone && d.reason === "phone_mismatch") {
+              hint.hidden = false;
+              hint.className = "orderx-phone-hint is-warn";
+              hint.textContent =
+                "Use the mobile number saved on your account to get the discount.";
             } else {
               hint.hidden = true;
             }
@@ -173,13 +244,35 @@
     }, 180);
   }
 
+  function applyI18nText(el, key, fallback) {
+    if (!el) return;
+    el.setAttribute("data-i18n", key);
+    if (window.i18n && typeof window.i18n.t === "function") {
+      var translated = window.i18n.t(key);
+      el.textContent =
+        translated && translated !== key ? translated : fallback;
+    } else {
+      el.textContent = fallback;
+    }
+  }
+
   function updatePayLabel() {
     var label = document.getElementById("co-submit-label");
     var hint = document.getElementById("co-payhere-hint");
+    var trust = document.getElementById("co-trust-text");
     var isPayhere = getPaymentMethod() === "payhere";
-    if (label) {
-      label.textContent = isPayhere ? "Pay with PayHere" : "Place order";
-    }
+    applyI18nText(
+      label,
+      isPayhere ? "order.page.pay_with_payhere" : "order.page.place_order",
+      isPayhere ? "Pay with PayHere" : "Place order"
+    );
+    applyI18nText(
+      trust,
+      isPayhere ? "order.page.cox_trust_payhere" : "order.page.cox_trust",
+      isPayhere
+        ? "You will pay securely on PayHere. We mark the order paid only after the bank confirms."
+        : "No payment needed now — we confirm on WhatsApp first."
+    );
     if (hint) hint.hidden = !isPayhere;
   }
 
@@ -189,6 +282,30 @@
     } catch (e) {
       return [];
     }
+  }
+
+  function saveCart(items) {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(items));
+    } catch (e) {}
+    window.dispatchEvent(
+      new CustomEvent("peoples-cart-changed", { detail: { items: items } })
+    );
+  }
+
+  function setCartQty(id, qty) {
+    var items = loadCart();
+    var n = parseInt(qty, 10);
+    if (isNaN(n) || n < 1) {
+      items = items.filter(function (l) {
+        return l.id !== id;
+      });
+    } else {
+      items.forEach(function (l) {
+        if (l.id === id) l.qty = n;
+      });
+    }
+    saveCart(items);
   }
 
   function esc(s) {
@@ -201,25 +318,184 @@
     return "Rs. " + (Number(n) || 0).toLocaleString("en-LK");
   }
 
-  function renderBasket(items) {
-    var total = 0;
-    document.getElementById("co-lines").innerHTML = items
+  function hasPricedLine(items) {
+    return (items || []).some(function (it) {
+      return (Number(it.amount) || 0) > 0;
+    });
+  }
+
+  function setSubmitEnabled(on) {
+    var submitBtn = document.querySelector("#co-form .orderx-checkout-submit");
+    if (submitBtn) submitBtn.disabled = !on;
+    var proceed = document.getElementById("co-proceed");
+    if (proceed) proceed.disabled = !on;
+  }
+
+  function renderCartTable(items) {
+    var wrap = document.getElementById("co-cart-lines");
+    var list = items || [];
+    if (!wrap) return;
+    if (!list.length) {
+      wrap.innerHTML = "";
+      wrap.hidden = true;
+      if (emptyEl) emptyEl.classList.remove("hidden");
+      return;
+    }
+    wrap.hidden = false;
+    if (emptyEl) emptyEl.classList.add("hidden");
+    wrap.innerHTML = list
       .map(function (it) {
         var amt = Number(it.amount) || 0;
-        total += amt * (it.qty || 1);
+        var qty = it.qty || 1;
+        var img = it.image
+          ? '<img src="' +
+            esc(it.image) +
+            '" alt="" class="co-cart-img" loading="lazy" decoding="async">'
+          : '<div class="co-cart-img co-cart-img--ph" aria-hidden="true"><i class="fa-solid fa-image"></i></div>';
         return (
-          '<div class="orderx-checkout-line"><span>' +
-          esc((it.qty || 1) + "× " + it.title) +
-          '</span><span>' +
-          (amt ? rs(amt * (it.qty || 1)) : "—") +
-          "</span></div>"
+          '<div class="co-cart-row" data-id="' +
+          esc(it.id) +
+          '">' +
+          img +
+          '<div class="co-cart-main">' +
+          '<p class="co-cart-title">' +
+          esc(it.title) +
+          "</p>" +
+          '<p class="co-cart-meta">' +
+          (it.priceLabel ? esc(it.priceLabel) : amt ? rs(amt) : "") +
+          "</p>" +
+          '<div class="co-cart-controls">' +
+          '<button type="button" class="cart-qty-btn" data-cart-dec="' +
+          esc(it.id) +
+          '" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>' +
+          '<span class="cart-qty-val">' +
+          qty +
+          "</span>" +
+          '<button type="button" class="cart-qty-btn" data-cart-inc="' +
+          esc(it.id) +
+          '" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>' +
+          '<button type="button" class="cart-remove-btn" data-cart-remove="' +
+          esc(it.id) +
+          '" aria-label="Remove item"><i class="fa-solid fa-trash-can"></i></button>' +
+          "</div></div>" +
+          '<div class="co-cart-sum">' +
+          (amt ? rs(amt * qty) : "—") +
+          "</div></div>"
         );
       })
       .join("");
-    document.getElementById("co-total").textContent = rs(total);
+  }
+
+  function renderBasket(items) {
+    var lines = document.getElementById("co-lines");
+    var list = items || [];
+    var total = 0;
+    list.forEach(function (it) {
+      total += (Number(it.amount) || 0) * (it.qty || 1);
+    });
+    if (lines) {
+      if (!list.length) {
+        lines.innerHTML =
+          '<p class="orderx-checkout-basket-empty">Your basket is empty.</p>';
+      } else {
+        lines.innerHTML = list
+          .map(function (it) {
+            var amt = Number(it.amount) || 0;
+            return (
+              '<div class="orderx-checkout-line"><span>' +
+              esc((it.qty || 1) + "× " + it.title) +
+              "</span><span>" +
+              (amt ? rs(amt * (it.qty || 1)) : "—") +
+              "</span></div>"
+            );
+          })
+          .join("");
+      }
+    }
     basketSubtotal = total;
+    setTotals(rs(total));
+    setSubmitEnabled(hasPricedLine(list));
     refreshDiscountPreview();
     return total;
+  }
+
+  function setCheckoutStep(step, opts) {
+    opts = opts || {};
+    var cartItems = loadCart();
+    if (step === "details" && !hasPricedLine(cartItems)) step = "cart";
+    if (step === "complete" && !opts.force) {
+      var allowed = false;
+      try {
+        allowed = !!sessionStorage.getItem(COMPLETE_KEY);
+      } catch (e) {}
+      if (!allowed) step = "cart";
+    }
+    currentStep = step;
+    ["cart", "details", "complete"].forEach(function (s) {
+      var view = document.getElementById("co-view-" + s);
+      if (!view) return;
+      var on = s === step;
+      view.hidden = !on;
+      view.classList.toggle("is-active", on);
+    });
+    document.querySelectorAll(".co-stepper__item").forEach(function (item) {
+      var s = item.getAttribute("data-co-goto");
+      var idx = STEP_ORDER[s] || 0;
+      var cur = STEP_ORDER[step] || 0;
+      item.classList.toggle("is-active", s === step);
+      item.classList.toggle("is-done", idx < cur);
+      var btn = item.querySelector(".co-stepper__btn");
+      if (!btn) return;
+      if (s === step) btn.setAttribute("aria-current", "step");
+      else btn.removeAttribute("aria-current");
+      if (step === "complete") {
+        btn.disabled = s !== "complete";
+      } else {
+        btn.disabled = s === "complete";
+      }
+    });
+    var heading = document.getElementById("checkout-heading");
+    var sub = document.getElementById("checkout-sub");
+    if (step === "details") {
+      applyI18nText(heading, "order.page.details_h2", "Checkout details");
+      applyI18nText(
+        sub,
+        "order.page.details_sub",
+        "Enter billing details, choose payment, and place your order."
+      );
+    } else if (step === "complete") {
+      applyI18nText(heading, "order.page.complete_h2", "Order complete");
+      applyI18nText(
+        sub,
+        "order.page.complete_sub",
+        "Thank you — your order is in."
+      );
+    } else {
+      applyI18nText(heading, "order.page.cart_h2", "Shopping cart");
+      applyI18nText(
+        sub,
+        "order.page.cart_sub",
+        "Review your items, then continue to billing and payment."
+      );
+    }
+    if (!opts.fromHash) {
+      var hash = STEP_HASH[step] || "#checkout";
+      if (history.replaceState) {
+        history.replaceState(null, "", hash);
+      } else {
+        location.hash = hash.slice(1);
+      }
+    }
+    if (!opts.skipScroll && root) {
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function stepFromHash() {
+    var h = (location.hash || "").replace(/^#/, "");
+    if (h === "checkout-details") return "details";
+    if (h === "checkout-complete") return "complete";
+    return "cart";
   }
 
   function showLocResult(html, ok) {
@@ -424,24 +700,48 @@
 
   function refreshCheckoutCart() {
     var cartItems = loadCart();
-    if (!cartItems.length) {
-      grid.classList.add("hidden");
-      if (emptyEl) emptyEl.classList.remove("hidden");
+    if (currentStep === "complete") {
       return cartItems;
     }
-    grid.classList.remove("hidden");
-    if (emptyEl) emptyEl.classList.add("hidden");
+    renderCartTable(cartItems);
     renderBasket(cartItems);
-    refreshDiscountPreview();
+    if (!cartItems.length && currentStep === "details") {
+      setCheckoutStep("cart", { skipScroll: true });
+    }
     return cartItems;
   }
 
   var items = refreshCheckoutCart();
-  if (!items.length) {
-    /* empty — basket hidden */
-  } else {
-    loadAllOutlets();
+  loadAllOutlets();
     setupPaymentUi();
+    window.addEventListener("i18n:languageChanged", function () {
+      updatePayLabel();
+      setCheckoutStep(currentStep, { skipScroll: true, fromHash: true });
+    });
+    window.addEventListener("i18n:ready", updatePayLabel);
+
+    var whenEl = document.getElementById("c-when");
+    if (whenEl) {
+      var now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      whenEl.min = now.toISOString().slice(0, 16);
+    }
+
+    var initialStep = stepFromHash();
+    if (initialStep === "complete") {
+      var ok = false;
+      try {
+        ok = !!sessionStorage.getItem(COMPLETE_KEY);
+      } catch (e) {}
+      if (!ok) initialStep = "cart";
+    }
+    setCheckoutStep(initialStep, { skipScroll: true, force: initialStep === "complete" });
+
+    if (/^#checkout/.test(location.hash)) {
+      setTimeout(function () {
+        if (root) root.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+    }
 
     fetch("/api/auth/me", { credentials: "same-origin" })
       .then(function (res) {
@@ -463,13 +763,8 @@
       phoneInput.addEventListener("blur", refreshDiscountPreview);
     }
 
-    if (location.hash === "#checkout") {
-      setTimeout(function () {
-        document.getElementById("checkout").scrollIntoView({ behavior: "smooth" });
-      }, 120);
-    }
-
-    document.getElementById("co-use-location").addEventListener("click", useMyLocation);
+    var locBtn = document.getElementById("co-use-location");
+    if (locBtn) locBtn.addEventListener("click", useMyLocation);
 
     if (modeSelect) {
       modeSelect.addEventListener("change", updateModeUi);
@@ -512,7 +807,79 @@
       refreshCheckoutCart();
     });
 
-    document.getElementById("co-form").addEventListener("submit", function (e) {
+    window.addEventListener("hashchange", function () {
+      setCheckoutStep(stepFromHash(), { fromHash: true, skipScroll: true });
+    });
+
+    document.getElementById("co-stepper") &&
+      document.getElementById("co-stepper").addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-co-goto]");
+        if (!btn || btn.disabled) return;
+        var next = btn.getAttribute("data-co-goto");
+        if (next === "complete" && currentStep !== "complete") return;
+        if (next === "details" && !hasPricedLine(loadCart())) return;
+        if (currentStep === "complete") return;
+        setCheckoutStep(next);
+      });
+
+    var proceedBtn = document.getElementById("co-proceed");
+    if (proceedBtn) {
+      proceedBtn.addEventListener("click", function () {
+        var hint = document.getElementById("co-proceed-hint");
+        if (!hasPricedLine(loadCart())) {
+          if (hint) {
+            hint.hidden = false;
+            hint.className = "orderx-checkout-msg err";
+            applyI18nText(
+              hint,
+              "order.page.proceed_hint",
+              "Add items to your basket before checkout."
+            );
+          }
+          return;
+        }
+        if (hint) {
+          hint.hidden = true;
+          hint.textContent = "";
+        }
+        setCheckoutStep("details");
+      });
+    }
+
+    var backBtn = document.getElementById("co-back-cart");
+    if (backBtn) {
+      backBtn.addEventListener("click", function () {
+        setCheckoutStep("cart");
+      });
+    }
+
+    var cartLines = document.getElementById("co-cart-lines");
+    if (cartLines) {
+      cartLines.addEventListener("click", function (e) {
+        var inc = e.target.closest("[data-cart-inc]");
+        var dec = e.target.closest("[data-cart-dec]");
+        var rem = e.target.closest("[data-cart-remove]");
+        if (inc) {
+          var idI = inc.getAttribute("data-cart-inc");
+          var lineI = loadCart().find(function (l) {
+            return l.id === idI;
+          });
+          if (lineI) setCartQty(idI, (lineI.qty || 1) + 1);
+        } else if (dec) {
+          var idD = dec.getAttribute("data-cart-dec");
+          var lineD = loadCart().find(function (l) {
+            return l.id === idD;
+          });
+          if (lineD) setCartQty(idD, (lineD.qty || 1) - 1);
+        } else if (rem) {
+          setCartQty(rem.getAttribute("data-cart-remove"), 0);
+        }
+      });
+    }
+
+    var checkoutForm = document.getElementById("co-form");
+    if (!checkoutForm) return;
+    checkoutForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var msg = document.getElementById("co-msg");
       msg.textContent = "";
@@ -528,8 +895,8 @@
         name: document.getElementById("c-name").value.trim(),
         phone: document.getElementById("c-phone").value.trim(),
         email: document.getElementById("c-email").value.trim(),
-        area: areaInput.value.trim(),
-        mode: modeSelect.value,
+        area: areaInput ? areaInput.value.trim() : "",
+        mode: modeSelect ? modeSelect.value : "",
       };
 
       if (!customer.name || !customer.phone) {
@@ -544,6 +911,10 @@
       }
 
       var notesParts = [document.getElementById("c-notes").value.trim()];
+      var whenInput = document.getElementById("c-when");
+      if (whenInput && whenInput.value) {
+        notesParts.push("When: " + whenInput.value.replace("T", " "));
+      }
       if (outletLabel) notesParts.push("Outlet: " + outletLabel);
       if (outletSelect && outletSelect.value) notesParts.push("Outlet ID: " + outletSelect.value);
 
@@ -569,9 +940,15 @@
       };
 
       var submitBtn = e.target.querySelector(".orderx-checkout-submit");
-      submitBtn.disabled = true;
+      if (submitBtn) submitBtn.disabled = true;
 
       var usePayhere = getPaymentMethod() === "payhere";
+      if (usePayhere && !payhereEnabled) {
+        msg.textContent = "Online payment is not available. Choose Cash instead.";
+        msg.classList.add("err");
+        if (submitBtn) submitBtn.disabled = false;
+        return;
+      }
       var endpoint = usePayhere ? "/api/payments/payhere/checkout" : "/api/orders";
 
       fetch(endpoint, {
@@ -587,7 +964,10 @@
           });
         })
         .then(function (d) {
-          if (usePayhere && d.payhere) {
+          if (usePayhere) {
+            if (!d.payhere) {
+              throw new Error("PayHere checkout could not start. Try again or choose Cash.");
+            }
             try {
               sessionStorage.setItem("pb-payhere-pending", d.order.id);
             } catch (err) {}
@@ -595,13 +975,15 @@
             return;
           }
           try {
+            sessionStorage.setItem(COMPLETE_KEY, "1");
+          } catch (err) {}
+          setCheckoutStep("complete", { force: true });
+          try {
             localStorage.setItem(KEY, "[]");
           } catch (err) {}
           window.dispatchEvent(
             new CustomEvent("peoples-cart-changed", { detail: { items: [] } })
           );
-          grid.classList.add("hidden");
-          successEl.classList.remove("hidden");
           var refEl = document.getElementById("co-ref");
           if (refEl) {
             refEl.textContent = "#" + d.order.id.slice(-6).toUpperCase();
@@ -635,7 +1017,8 @@
               : "947228955477") +
             "?text=" +
             encodeURIComponent(waText);
-          successEl.scrollIntoView({ behavior: "smooth" });
+          var checkoutRoot = document.getElementById("checkout");
+          if (checkoutRoot) checkoutRoot.scrollIntoView({ behavior: "smooth", block: "start" });
         })
         .catch(function (err) {
           var hint =
@@ -644,8 +1027,7 @@
               : "";
           msg.textContent = (err && err.message ? err.message : "Checkout failed.") + hint;
           msg.classList.add("err");
-          submitBtn.disabled = false;
+          if (submitBtn) submitBtn.disabled = false;
         });
     });
-  }
 })();

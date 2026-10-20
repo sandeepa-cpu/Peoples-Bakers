@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peoples Bakers — Company Show</title>
+  <meta name="description" content="Open this show and read. Shop visitors and internet visitors can understand Peoples Bakers without anyone talking.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #7a2474;
+      --purple-deep: #3d123c;
+      --gold: #d4a017;
+      --cream: #f7f1e6;
+      --ink: #1a1418;
+      --muted: #5c534c;
+      --line: #e4d9c8;
+      --white: #fffdf8;
+      --ok: #1f6b3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Plus Jakarta Sans", "Noto Sans Sinhala", sans-serif;
+      background: #120e12;
+      color: var(--ink);
+    }
+    .deck { height: 100%; overflow: hidden; }
+    .slide {
+      display: none;
+      height: 100%;
+      padding: 36px 52px 80px;
+      background: var(--cream);
+      flex-direction: column;
+      overflow: auto;
+    }
+    .slide.is-on { display: flex; }
+    .slide.cover {
+      background: var(--purple-deep);
+      color: var(--white);
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h1, h2 {
+      font-family: "Playfair Display", "Noto Sans Sinhala", serif;
+      font-weight: 700;
+      line-height: 1.18;
+    }
+    h1 { font-size: 46px; max-width: 18ch; }
+    h2 { font-size: 28px; color: var(--purple-deep); margin-bottom: 6px; }
+    .lede { font-size: 16px; color: var(--muted); max-width: 72ch; margin: 6px 0 16px; line-height: 1.55; }
+    .cover .lede { color: rgba(255,253,248,.82); font-size: 17px; max-width: 48ch; }
+    .si { font-family: "Noto Sans Sinhala", "Plus Jakarta Sans", sans-serif; }
+    .grid { display: grid; gap: 12px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr 1fr; }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px 13px;
+    }
+    .card h3 { font-size: 14px; color: var(--purple); margin-bottom: 5px; }
+    .card p, .card li { font-size: 13.5px; color: var(--ink); line-height: 1.48; }
+    .card ul { padding-left: 17px; }
+    .card li { margin: 2px 0; }
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .stat b { display: block; font-size: 26px; color: var(--purple-deep); }
+    .stat span { font-size: 12px; color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #efe6d6; color: var(--purple-deep); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+    .flow { display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; }
+    .step {
+      flex: 1;
+      min-width: 110px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .step .n { display: block; color: var(--gold); font-weight: 700; font-size: 11px; margin-bottom: 3px; }
+    .step b { display: block; font-size: 13px; margin-bottom: 3px; }
+    .step p { font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .say {
+      margin-top: auto;
+      background: #efe6d6;
+      border-left: 4px solid var(--gold);
+      padding: 11px 13px;
+      font-size: 13px;
+      color: var(--ink);
+      border-radius: 0 8px 8px 0;
+      line-height: 1.5;
+    }
+    .say strong { color: var(--purple); }
+    .quote {
+      font-family: "Playfair Display", "Noto Sans Sinhala", serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--purple-deep);
+      line-height: 1.4;
+      max-width: 40ch;
+      margin: 8px 0 14px;
+    }
+    .cover .quote { color: #f3eadc; font-size: 22px; max-width: 22ch; }
+    .bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      height: 52px;
+      background: #0d0a0d;
+      color: #f3eadc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      z-index: 5;
+      font-size: 12px;
+    }
+    .bar button {
+      background: transparent;
+      color: #f3eadc;
+      border: 1px solid #3a3036;
+      border-radius: 8px;
+      padding: 6px 11px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .bar button:hover { border-color: var(--gold); color: var(--gold); }
+    .dots { display: flex; gap: 5px; flex-wrap: wrap; max-width: 42%; }
+    .dots i { width: 6px; height: 6px; border-radius: 50%; background: #3a3036; display: block; }
+    .dots i.on { background: var(--gold); }
+    .hint { color: #9a8d82; font-size: 11px; margin-right: 8px; }
+    .ok { color: var(--ok); font-weight: 600; }
+    .no { color: #8a2a22; }
+    .cover-meta { margin-top: 22px; font-size: 14px; color: rgba(255,253,248,.7); }
+    .cover-meta b { color: var(--gold); font-weight: 600; }
+    .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
+    ol.script { padding-left: 22px; line-height: 1.65; font-size: 14.5px; }
+    ol.script li { margin: 4px 0; }
+    .en-h { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+    .cover .en-h { color: rgba(255,253,248,.72); }
+    .progress { position: fixed; left: 0; right: 0; top: 0; height: 3px; background: #2a2026; z-index: 6; }
+    .progress i { display: block; height: 100%; background: var(--gold); width: 0; }
+    .bar button.on { border-color: var(--gold); color: var(--gold); }
+    .menu {
+      position: fixed; inset: 0; background: rgba(18,14,18,.55);
+      z-index: 8; display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .menu.is-on { display: flex; }
+    .menu-box {
+      background: var(--cream); max-width: 720px; width: 100%; max-height: 86vh;
+      overflow: auto; border-radius: 14px; padding: 18px;
+    }
+    .menu-box h3 { color: var(--purple-deep); margin-bottom: 10px; }
+    .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+    .toc button {
+      text-align: left; background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; padding: 8px 10px; cursor: pointer; font: inherit; color: var(--ink);
+    }
+    .toc button:hover { border-color: var(--gold); }
+    .toc b { color: var(--purple); margin-right: 6px; }
+    @media (max-width: 900px) {
+      .slide { padding: 22px 16px 72px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 22px; }
+      .g2, .g3, .g4, .two-col, .toc { grid-template-columns: 1fr; }
+      .dots { display: none; }
+    }
+    @media print {
+      .bar, .progress, .menu { display: none !important; }
+      .deck { height: auto; overflow: visible; }
+      .slide { display: flex !important; height: auto; min-height: 100vh; page-break-after: always; overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <div class="deck" id="deck">
+
+    <section class="slide cover is-on">
+      <p class="eyebrow">Company show · Peoples Bakers · 2026</p>
+      <p class="quote si">2015දී එක ලෝෆ් එකකින් පටන් ගත්ත bakery එකට, දැන් තියෙන්නේ තමන්ගේම digital shop එකක්.</p>
+      <h1 class="si">අපි Peoples Bakers.</h1>
+      <p class="en-h">A Sri Lankan bakery family — since 2015. Open this show and read. Nobody needs to explain it.</p>
+      <p class="lede si">මේක template එකක් නෙවෙයි. Facebook page එකක්ත් නෙවෙයි. PickMe shop එකක්ත් නෙවෙයි. මේක ඔයාලගේ brand එකට, ඔයාලගේ cakes වලට, ඔයාලගේ kitchen එකට හදපු complete online bakery එකක්.</p>
+      <p class="cover-meta">Est. <b>2015</b> · Head office <b>Bulathsinhala</b> · Island-wide · English · සිංහල · தமிழ்</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">00 · How to use this show</p>
+      <h2 class="si">විවෘත කළාම කරන්න ඕනේ මේක විතරයි</h2>
+      <p class="en-h">Nobody needs to stand next to you and talk.</p>
+      <p class="lede si">එක slide එකක් කියවලා, පහළ Next ඔබන්න. ආපහු යන්න Back. Keyboard ඊතලත් වැඩ කරනවා. Shop TV එකකට Play ඔබන්න — තත්පර 22කට පස්සේ �න — තත්පර 22කට පස්සේ තනියම යනවා.</p>
+      <div class="grid g3">
+        <div class="card">
+          <h3 class="si">Shop එකට ආපු කෙනෙක්</h3>
+          <p>Counter අසල screen එකේ මේක open කරලා තියන්න. Customer ට අපේ කතාව, shops, menu, order කරන හැටි කියවන්න පුළුවන්. Staff ළඟින් සිටගෙන explain කරන්න ඕන නැහැ.</p>
+        </div>
+        <div class="card">
+          <h3 class="si">Internet එකෙන් ආපු කෙනෙක්</h3>
+          <p>Link එක open කරලා එකම show එක �න් ආපු කෙනෙක්</h3>
+          <p>Link එක open කරලා එකම show එක බලන්න. WhatsApp හෝ email එකට යවලාත් පුළුවන්. දුරින් ඉන්න කෙනෙක්ටත් අපේ company �ත් පුළුවන්. දුරින් ඉන්න කෙනෙක්ටත් අපේ company එක තේරෙනවා.</p>
+        </div>
+        <div class="card">
+          <h3>Jump / Print</h3>
+          <p>Contents එකෙන් ඕන slide එකකට පනින්න පුළුවන්. PDF ඕන නම් keyboard එකේ P ඔබලා print කරන්න.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> මේක speech එකක් �      </div>
+      <p class="say si"><strong>තේරුම:</strong> මේක speech එකක් නෙවෙයි. මේක කියවන පොතක් වගේ company show එකක්. ඔබන්නේ Next විතරයි.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">01 · Who we are</p>
+      <h2 class="si">තත්පර 30කින් — අපි කවුද?</h2>
+      <p class="en-h">The short answer, before the long story.</p>
+      <p class="lede si">Peoples Bakers කියන්නේ 2015දී Bulathsinhala එකේ කුඩා kitchen එකකින් පටන් ගත්ත Sri Lankan bakery එකක්. අද island පුරා පවුල් වලට daily bread, bun, rusk, drink, සහ birthday cake එකම නමෙන් දෙනවා.</p>
+      <div class="grid g4" style="margin-bottom:12px">
+        <div class="stat"><b>2015</b><span>First loaf in Bulathsinhala</span></div>
+        <div class="stat"><b>150+</b><span>Island-wide outlets</span></div>
+        <div class="stat"><b>500+</b><span>Team members</span></div>
+        <div class="stat"><b>3</b><span>Languages · සිංහල · English · தமிழ்</span></div>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3 class="si">අපේ පොරොන්දුව</h3>
+          <p>Warmth, the same taste, good quality. Neighbour first, then the island. The love of the first loaf must still be here today.</p>
+        </div>
+        <div class="card">
+          <h3>What that means for you</h3>
+          <p>If you walk into a shop or order on your phone, it is the same brand and the same bakery. We are not a food app taking commission in the middle. We are Peoples Bakers.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> අපි template website එකක් නෙවෙයි. අපි 2015 ඉඳන් bake කරන bakery එකක්. දැන් ඒ bakery එකට තමන්ගේම digital shop එකක්ත් තියෙනවා.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">02 · Vision and mission</p>
+      <h2 class="si">අපි යන්නේ කොහෙද?</h2>
+      <p class="en-h">Vision and mission in ordinary words.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3 class="si">දැක්ම · Vision</h3>
+          <p>We want to lead Sri Lankan bakery and food manufacturing by making, distributing and marketing the best quality products so families get what they need. A big name is not enough.</p>
+        </div>
+        <div class="card">
+          <h3 class="si">මෙහෙවර · Mission</h3>
+          <p>Happy customers, fair relationships with our people, and fresh healthy food — with less waste and an honest price.</p>
+        </div>
+      </div>
+      <div class="grid g3" style="margin-top:12px">
+        <div class="card"><h3>1. Fresh</h3><p>Baked in the morning. Yesterday leftover is not called fresh today.</p></div>
+        <div class="card"><h3>2. Fair</h3><p>The price lives in the catalogue. Nobody can type Rs. 1 in the browser and take a cake.</p></div>
+        <div class="card"><h3>3. Together</h3><p>Farmers, staff, outlet, rider, accountant — one process. Not 200 chats.</p></div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> විශාල වෙන්න ඕන. ඒත් පළවෙනි loaf එක අමතක කරලා නෙවෙයි. Mission එක poster එකක් නෙවෙයි — උදේ 6ට oven එක දාන හේතුව.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">03 · Walk-in or internet</p>
+      <h2 class="si">දොරෙන් ආවත්, phone එකෙන් ආවත්</h2>
+      <p class="en-h">Two doors. One company.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3 class="si">Shop එකට ආවොත්</h3>
+          <ul>
+            <li>Daily bakery — bread, bun, rusk, drink</li>
+            <li>Pick a cake from the cabinet</li>
+            <li>Reserve a cake for tomorrow</li>
+            <li>Talk to staff about a photo cake</li>
+            <li>Read this show on the screen</li>
+          </ul>
+          <p style="margin-top:8px">HQ hours: 6:00 AM – 10:00 PM. Other shops usually 6:00/6:30 AM to 8:00–10:00 PM. Exact hours are on Find Us.</p>
+        </div>
+        <div class="card">
+          <h3 class="si">Internet එකෙන් ආවොත්</h3>
+          <ul>
+            <li>Open the website. Switch සිංහල / English / Tamil</li>
+            <li>Add cakes, products, drinks to the basket</li>
+            <li>Register, login, or Google</li>
+            <li>Delivery, or collect from a mapped outlet</li>
+            <li>Pay cash, WhatsApp, or PayHere card / LankaQR</li>
+            <li>Track the order on My Account</li>
+          </ul>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> දොරෙන් ඇතුලට ආවා නම් අපි ඔයාව දකිනවා. දොර වහලා ගියාට පස්සේත්, website එකෙන් අපි ඔයාව දකිනවා. Inbox us කියලා බලාගෙන ඉන්න ඕන නැහැ.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">04 · What we bake</p>
+      <h2 class="si">තේ එක්කත්, උපන්දිනේටත්</h2>
+      <p class="en-h">Everyday bakery and celebration cakes. Both are Peoples Bakers.</p>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Bread, buns, rusks</h3>
+          <p>Loaf, cream bun, seeni sambol, katta sambol bun, rusk, hulan, wine biscuit, wiskirigngna, macaroni biscuit — for home, for the road, with tea.</p>
+        </div>
+        <div class="card">
+          <h3>PB drinks</h3>
+          <p>Iced coffee, fruit drinks, bakery drinks. Buy in the shop on a hot day, or add them to an order.</p>
+        </div>
+        <div class="card">
+          <h3>211+ cakes</h3>
+          <p>Round, square, heart, rectangle, gateau. Real photos and LKR prices. Staff can hide a flavour tomorrow. No dummy cupcakes.</p>
+        </div>
+      </div>
+      <p class="lede" style="margin-top:12px">For a photo cake: open Customize Cake, set weight, optional message (Rs. 120), attach the photo, tap. WhatsApp opens with the sentences already written. Staff quote a real price. The photo is not lost in chat 47.</p>
+      <p class="say si"><strong>තේරුම:</strong> අපි celebration bakery එකක් විතරක් නෙවෙයි. අපි ඔයාගේ සතියේ bakery එකක්. Cake එකක් කියන්නේ photo එකක් නෙවෙයි — හෙට උදේ මේසේ උඩ තියෙන දෙයක්.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">05 · Featured shops</p>
+      <h2 class="si">Website map එකේ තියෙන doors අට</h2>
+      <p class="en-h">Eight doors you can find, search, and collect from. The island has 150+ more.</p>
+      <table>
+        <thead><tr><th>Shop</th><th>Address</th><th>Phone</th><th>Hours</th></tr></thead>
+        <tbody>
+          <tr><td>Head Office and Factory</td><td>NO.623, Egaloya, Bulathsinhala</td><td>+94 2289 55477</td><td>6:00 AM – 10:00 PM</td></tr>
+          <tr><td>Colombo 2</td><td>40/34 Metro Homes, Malay Street</td><td>+94 11 230 0066</td><td>6:00 AM – 10:00 PM</td></tr>
+          <tr><td>Colombo 3 · Main branch</td><td>25 Galle Road, Colombo 03</td><td>+94 11 234 5678</td><td>6:00 AM – 10:00 PM</td></tr>
+          <tr><td>Athurugiriya</td><td>No. 175/1/3, Boralla Road</td><td>+94 76 004 0656</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Malabe</td><td>888/1, Athurugiriya Road, Thalangama North</td><td>+94 11 234 5678</td><td>6:30 AM – 9:00 PM</td></tr>
+          <tr><td>Bandaragama</td><td>Panadura Road, Bandaragama</td><td>+94 71 592 7673</td><td>6:30 AM – 8:00 PM</td></tr>
+          <tr><td>Nugegoda · Cover shop</td><td>45 High Level Road</td><td>+94 11 234 5678</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Kandy · Cover shop</td><td>12 Dalada Veediya</td><td>+94 81 234 5678</td><td>6:00 AM – 9:00 PM</td></tr>
+        </tbody>
+      </table>
+      <p class="say si"><strong>තේරුම:</strong> මේ අට මුළු company එකේ දොරවල් �ුළු company එකේ දොරවල් නෙවෙයි. මේ අට website map එකේ හොයාගන්න සහ collect කරන්න පුළුවන් doors. Founder: Mr. Sandeepa Bandara. HQ phone +94 2289 55477.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">06 · Community and partners</p>
+      <h2 class="si">Bakery එකෙන් එහාටත්</h2>
+      <p class="en-h">A shop that only takes is not the shop that opened in 2015.</p>
+      <div class="grid g3">
+        <div class="card">
+          <h3 class="si">පරිසරය</h3>
+          <p>Less waste in production units. Sustainable sourcing. Aim to cut our footprint by 2027.</p>
+        </div>
+        <div class="card">
+          <h3 class="si">සමාජය</h3>
+          <p>Education, health, and welfare for the neighbourhoods that built us. No bakery without a neighbourhood.</p>
+        </div>
+        <div class="card">
+          <h3 class="si">ලංකාවේ farmers</h3>
+          <p>Local suppliers. Fresh ingredients. Money that also supports Sri Lankan agriculture.</p>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:12px">
+        <div class="card">
+          <h3>Partnership / franchise</h3>
+          <p>A new outlet, a supply partner, corporate cakes, or a franchise talk — the door is open. This is not a closed club.</p>
+        </div>
+        <div class="card">
+          <h3>Find us online</h3>
+          <p>Facebook, Instagram, TikTok: @peoplesbakers. LinkedIn: Peoples Bakers. This show: /company-show.html. Also: home, Our History, Products, All Cakes, Find Us, Feedback.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> හ�, Feedback.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> හොඳ bakery එකක් කියන්නේ රසය විතරක් නෙවෙයි. කියන්නේ ඒ රසය හදන රටත් බලාගන්න එක. අපේ නම �ටත් බලාගන්න එක. අපේ නම ඔයාගේ ගමේ දොරක් වෙන්නත් පුළුවන්.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">07 · Why this meeting matters</p>
+      <h2 class="si">අද කතා කරන්නේ website එකක් ගැන නෙවෙයි</h2>
+      <p class="lede">We are talking about the next ten years of how Sri Lankan families find you, trust you, and pay you — without waiting on a ringing phone.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3 class="si">අද bakery එකේ ඇත්ත ජීවිතය</h3>
+          <p>Amma කෙනෙක් birthday cake එකක් ඕන. එයා Facebook එකේ photos බලනවා. Call එකක් ගහනවා — busy. WhatsApp එකට message එකක් දානවා — 40ක් unread. හෙටට ඕන cake එක අනිත් bakery එකෙන් ගන්නවා. ඔයාලගේ oven එක හොඳයි. Problem එක oven එක නෙවෙයි. <b>Order එක ඔයාලට එන්නේ නැති වෙන එක.</b></p>
+        </div>
+        <div class="card">
+          <h3 class="si">මේ system එකෙන් වෙන්නේ</h3>
+          <p>එම Amma, 11 පාරට phone එකෙන් සිංහලෙන් menu එක බලනවා. Cake එක basket එකට දානවා. ගෙවනවා. උදේ kitchen board එකේ ඒ order එක තියෙනවා — name, phone, cake, money paid. කාටවත් chat එකක් හොයන්න ඕන නැහැ. <b>Brand එක රෑටත් වැඩ කරනවා.</b></p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “අපි හදලා තියෙන්නේ Peoples Bakers විකුණන තැනක්. ඒත් ඇත්තටම හදලා තියෙන්නේ, customer කෙනෙක්ට ඔයාලව හරි වෙලාවට හොයාගන්න තැනක්.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">02 · The bakery you already built</p>
+      <h2 class="si">2015 ඉඳන් ඔයාලා හදපු දේ digital එකට ගේනවා</h2>
+      <p class="lede si">Bulathsinhala එකේ modest kitchen එකකින්, අවංක ජීවිකාවක් කියලා පොරොන්දුවක් එක්ක, පළවෙනි loaf එක එළියට ආවා. ඒක brand එකේ හදවත. Website එක ඒ හදවතට ලැජ්ජාවක් නොවෙන්න හදලා තියෙනවා.</p>
+      <div class="grid g3">
+        <div class="card">
+          <h3>The promise</h3>
+          <p>Warmth, consistency, quality. Neighbourhood first — then the island. That story already lives on the Legacy page, in your colours, in your logo.</p>
+        </div>
+        <div class="card">
+          <h3>The shops</h3>
+          <p>Head office &amp; factory in Bulathsinhala. Colombo 2, Colombo 3, Athurugiriya, Malabe, Bandaragama, Nugegoda, Kandy. Eight doors. One name.</p>
+        </div>
+        <div class="card">
+          <h3>The gap until now</h3>
+          <p>People already love the cakes. Online, most bakeries still look like a Facebook album plus a phone number. That is not how a 2015–2026 brand should take money.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “ඔයාලා oven එකේ හොඳ. අපි හදලා තියෙන්නේ ඒ හොඳට සරිලන digital counter එකක්.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">03 · What other bakeries usually have</p>
+      <h2>This is what “online” means for most shops</h2>
+      <p class="lede si">Client ට මේ table එක පෙන්වලා කියන්න: අනිත් අයට තියෙන්නේ මේක. ඔයාලට හදලා තියෙන්නේ ඒක නෙවෙයි.</p>
+      <table>
+        <thead>
+          <tr><th>What they use</th><th>What the customer feels</th><th>What the bakery loses</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Facebook / Instagram only</td>
+            <td>Pretty photos. Then “inbox us”. Price in comments. No cart.</td>
+            <td>Night orders. Tamil customers. Anyone who hates chatting for a cake.</td>
+          </tr>
+          <tr>
+            <td>PickMe / Uber Eats shop</td>
+            <td>Fast for a bun. Not for a birthday cake with a photo and a message.</td>
+            <td>Commission on every order. Your customer becomes their customer.</td>
+          </tr>
+          <tr>
+            <td>Wix / WordPress template</td>
+            <td>Looks “international”. English only. PayHere often bolted on badly.</td>
+            <td>No kitchen board. Prices can be faked. You still run WhatsApp.</td>
+          </tr>
+          <tr>
+            <td>WhatsApp Business catalogue</td>
+            <td>Familiar. Also messy. 200 unread. Photo cakes in 12 chats.</td>
+            <td>No paid/unpaid truth. No report for the accountant. Staff burnout.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="say si"><strong>තේරුම:</strong> “ලංකාවේ bakery වලට මේ 4ම තියෙනවා. Peoples Bakers එකට හදලා තියෙන්නේ ඒ 4ම එකතු කරලා, ඒවාගේ දුක නැති කරපු තැනක් — තමන්ගේ shop එක, තමන්ගේ customer, තමන්ගේ money.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">04 · Why this site is not “another website”</p>
+      <h2 class="si">මේ වගේ එකක් shelf එකෙන් ගන්න බැහැ</h2>
+      <p class="lede">A random agency site is a brochure. This is a shop + a till + a kitchen wall + a map of your island — built around Peoples Bakers, not around a theme.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Built for this bakery, not for “any business”</h3>
+          <ul>
+            <li>211+ of <b>your</b> cake designs, not dummy cupcakes</li>
+            <li>Your rusks, hulan, wiskirigngna, katta sambol bun, PB drinks</li>
+            <li>Your 8 outlets with real addresses and map pins</li>
+            <li>Your purple and gold, your logo, your Since 2015 story</li>
+            <li>Your WhatsApp number, your phone, your socials</li>
+            <li>LKR, PayHere.lk, 07 mobile numbers — Sri Lanka, not a US checkout</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Things a template almost never has together</h3>
+          <ul>
+            <li>Sinhala + English + Tamil on the real shop UI</li>
+            <li>PayHere with bank notify, amount check, refund_pending</li>
+            <li>Server that refuses fake prices (anti-tamper)</li>
+            <li>Kitchen display + live order poll for staff</li>
+            <li>Phone-number loyalty discount with login rules</li>
+            <li>Photo cake flow that writes the WhatsApp message for the customer</li>
+            <li>Customer can cancel only before the oven starts</li>
+          </ul>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “මේක Google එකෙන් download කරපු bakery theme එකක් නෙවෙයි. මේක Peoples Bakers කියන නමට විතරක් හදපු machine එකක්.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">05 · The heart</p>
+      <h2 class="si">කාටද මේක හදලා තියෙන්නේ?</h2>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Amma in Malabe · 9:40 pm</h3>
+          <p class="si">හෙට පාසලට cake එකක්. එයාට English forms බයයි. සිංහලට switch කරලා, heart cake එකක් දාලා, 07 number එකෙන් 20% එනවා. Cash on delivery. දරුවාට උදේ cake එක තියෙනවා. එයාට “inbox us” කියලා බලාගෙන ඉන්න ඕන නැහැ.</p>
+        </div>
+        <div class="card">
+          <h3>Appa in Kandy · Tamil</h3>
+          <p>He opens the same shop. The buttons speak Tamil. He finds the Kandy cover shop on the map. Collect, not delivery. He is not a “Colombo customer”. He is still Peoples Bakers.</p>
+        </div>
+        <div class="card">
+          <h3>The baker at 6:00 am</h3>
+          <p class="si">Kitchen board එකේ columns තියෙනවා. Awaiting payment නෙවෙයි. Paid. Confirmed. Preparing. කාගේද WhatsApp voice note එකද කියලා හොයන්න ඕන නැහැ. අත ඔනේ oven එකට. Phone එකට නෙවෙයි.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “මේක IT project එකක් වගේ නෙවෙයි පේන්න ඕන. මේක අම්මලාට, අප්පලාට, සහ bakery එකේ අත්වලට හදපු දෙයක්.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">06 · Goals — what success looks like</p>
+      <h2>Five results you can hold</h2>
+      <table>
+        <thead><tr><th>#</th><th>Goal</th><th>What changes in the bakery</th><th>How you know it worked</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Orders after closing time</td>
+            <td>The shop does not go dark at 8 pm</td>
+            <td>Morning kitchen board has orders that arrived at night</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Fewer missed calls</td>
+            <td>Staff bake instead of repeating prices on the phone</td>
+            <td>WhatsApp is for exceptions (photo cakes), not every bun</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Money you can trust</td>
+            <td>COD vs paid-online is clear. No “I paid, bro” without the bank</td>
+            <td>PayHere paid flag only after signature + amount + LKR match</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Your customer stays yours</td>
+            <td>No 20–30% food-app commission on birthday cakes</td>
+            <td>Repeat login, order history, phone on the account</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>One island, three languages</td>
+            <td>Sinhala, Tamil, English — same cakes, same pride</td>
+            <td>A Kandy customer and a Colombo 2 customer both finish checkout</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="say"><strong>තේරුම:</strong> “If we only wanted a pretty page, we would have stopped at photos. We built the path from ‘I want a cake’ to ‘the baker is already mixing’.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">07 · What is already built — numbers</p>
+      <h2>This is not a sketch</h2>
+      <div class="grid g4" style="margin-bottom:12px">
+        <div class="stat"><b>211+</b><span>Cake designs in the catalogue</span></div>
+        <div class="stat"><b>8</b><span>Outlets on the live map</span></div>
+        <div class="stat"><b>3</b><span>Languages on the real UI</span></div>
+        <div class="stat"><b>3</b><span>Ways to pay (COD · WhatsApp · PayHere)</span></div>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Customer rooms</h3>
+          <p>Home, Legacy, Products, All Cakes, Customize Cake, Offers, Find Us, Feedback, Login, Order, Checkout, Account, payment return. Basket on every page. PWA — add to phone home screen.</p>
+        </div>
+        <div class="card">
+          <h3>Staff rooms</h3>
+          <p>Hidden office at /pb-office.html: Overview, Kitchen, Orders, Feedback, Products, Users, Reports, Settings. Live refresh. CSV for accounts.</p>
+        </div>
+        <div class="card">
+          <h3>Everyday bakery too</h3>
+          <p>Not only celebration cakes. Drinks, rusks, wine biscuits, hulan, macaroni biscuits, katta sambol bun — the things people buy with tea, priced in LKR.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">08 · The one-order story</p>
+      <h2 class="si">එක order එකක මුළු පාර — login ඉඳන් oven එක දක්වා</h2>
+      <p class="lede">Walk the client through this with your hands. This is the film of one birthday.</p>
+      <div class="flow">
+        <div class="step"><span class="n">01</span><b>Arrive</b><p>Home. Brand. Language → සිංහල. Drinks and cakes they already know from the shop.</p></div>
+        <div class="step"><span class="n">02</span><b>Sign in</b><p>New family: register. Old family: login or Google. Cookie, 7 days. They are known.</p></div>
+        <div class="step"><span class="n">03</span><b>Choose</b><p>211 cakes, or rusks, or a custom photo cake. Basket survives if they close the tab.</p></div>
+        <div class="step"><span class="n">04</span><b>Tell us where</b><p>Delivery to an area, or collect from Malabe / Kandy / Colombo 3. Map, nearby, search.</p></div>
+        <div class="step"><span class="n">05</span><b>Pay</b><p>Cash at the door, WhatsApp for a special cake, or PayHere card. Server counts the rupees.</p></div>
+        <div class="step"><span class="n">06</span><b>Bake</b><p>Staff see it. Status: confirmed → preparing → delivered. Amma tracks it on My Account.</p></div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “මේ steps 6ම phone එකෙන්. Staff ට ඒක admin එකේ එකවර පේනවා. අතරේ කතාවක් නැති වෙන්නේ නැහැ — system එකේ තියෙනවා.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">09 · Login — in full</p>
+      <h2>How a family becomes “your customer”</h2>
+      <p class="lede si">Login නැතුවත් බලන්න පුළුවන්. Account එකක් හදනකොට තමයි ඒ පවුල ඔයාලගේ shop එකේ මිනිස්සු වෙන්නේ.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What they do</th><th>What the system does</th><th>Why it is kind</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Register</td>
+            <td>Name, email, phone, password 6+</td>
+            <td>Blocks duplicate emails. Hashes password (bcrypt). Optional welcome email.</td>
+            <td>One family, one account. Phone later unlocks the discount.</td>
+          </tr>
+          <tr>
+            <td>Login</td>
+            <td>Email + password</td>
+            <td>Same error if email or password is wrong</td>
+            <td>We do not help strangers hunt for who shops here</td>
+          </tr>
+          <tr>
+            <td>Google</td>
+            <td>One tap</td>
+            <td>Google verifies. New users created. Avatar saved</td>
+            <td>No password to forget on a busy school night</td>
+          </tr>
+          <tr>
+            <td>Stay signed in</td>
+            <td>Nothing — it just works</td>
+            <td>JWT in httpOnly cookie, 7 days, Secure on live HTTPS</td>
+            <td>A hacked page cannot steal the login with JavaScript</td>
+          </tr>
+          <tr>
+            <td>My Account</td>
+            <td>See orders, edit name/phone, cancel early</td>
+            <td>Only their orders. Never another family’s cake</td>
+            <td>Trust. Privacy. Dignity.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="say si"><strong>තේරුම:</strong> “Account එකක් කියන්නේ password එකක් නෙවෙයි. කියන්නේ ‘ඔයා Peoples Bakers පවුලේ කෙනෙක්’ කියන එකයි.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">10 · Catalogue &amp; basket</p>
+      <h2>The counter, on the phone</h2>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Celebration cakes</h3>
+          <p>Round, square, heart, rectangle, gateau — 211+ designs with photos and LKR prices. Search and filter. Staff can hide a cake tomorrow; customers stop seeing it. No developer needed.</p>
+        </div>
+        <div class="card">
+          <h3>Customize cake (the emotional order)</h3>
+          <p>Weight, quantity, optional message (Rs. 120), photo. One tap opens WhatsApp with the sentences already written: “Hi Peoples Bakers, I would like to order a Customize Cake…” Staff quote a real price. The photo is not lost in a random chat.</p>
+        </div>
+        <div class="card">
+          <h3>Basket that does not forget</h3>
+          <p>If they go to school pickup and come back, the basket is still there. Only real catalogue items with a real price can checkout. Someone cannot type Rs. 1 in the browser and steal a gateau.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “Price එක website එකේ වෙනස් කරලා අඩුවෙන් ගෙවන්න බැහැ. Server එක ඔයාලගේ catalogue එකෙන් ආයෙත් ගණන් කරනවා. ඒක ඔයාලගේ oven එක බේරගන්නවා.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">11 · Checkout — the digital counter</p>
+      <h2 class="si">Order එක ලියවෙන්නේ කොහොමද?</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Customer tells the truth of the order</h3>
+          <ul>
+            <li>Name — so the box has a person, not a ticket number only</li>
+            <li>Valid Sri Lankan mobile (07xxxxxxxx) — so a rider or outlet can call</li>
+            <li>Email optional — confirmation if SMTP is on</li>
+            <li>Area / address — delivery</li>
+            <li>Mode: Delivery or Collect</li>
+            <li>Outlet picker, search, nearby (Uber-style map tools)</li>
+            <li>Notes for the kitchen (“no peanuts”, “write Amma”) </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>The bakery’s computer decides the bill</h3>
+          <ul>
+            <li>Each line matched to a real product id/title</li>
+            <li>Unavailable and zero-price items rejected</li>
+            <li>Qty 1–99, not a joke number</li>
+            <li>Discount only if login + phone rules pass</li>
+            <li>COD → status <b>pending</b></li>
+            <li>PayHere → status <b>awaiting_payment</b> until the bank speaks</li>
+            <li>Phone saved on the account if they had none</li>
+          </ul>
+        </div>
+      </div>
+      <p class="say"><strong>තේරුම:</strong> “The phone can lie. The catalogue cannot. That is the difference between a toy website and a shop.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">12 · Payments — the money path</p>
+      <h2 class="si">ගෙවීම් තුනක්. Kitchen එකක්.</h2>
+      <p class="lede">This is the slide to slow down on. If they remember one thing, let it be this table.</p>
+      <table>
+        <thead>
+          <tr><th>Method</th><th>Customer feeling</th><th>Order truth</th><th>When the baker should start</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Cash on delivery / collect</b></td>
+            <td>I will pay when I see the cake. Trust in both directions.</td>
+            <td>pending → staff confirm → preparing → delivered</td>
+            <td>After a human in the office says yes (and the phone number is real).</td>
+          </tr>
+          <tr>
+            <td><b>WhatsApp</b></td>
+            <td>I need to talk — photo cake, odd size, a funeral wreath of icing.</td>
+            <td>Conversation, then staff put it on the board</td>
+            <td>After a person replies. The site writes the first message so nothing is missing.</td>
+          </tr>
+          <tr>
+            <td><b>PayHere</b> (cards, LankaQR, and what PayHere offers)</td>
+            <td>I already paid. Please just bake.</td>
+            <td>awaiting_payment until notify. Then paymentStatus = paid</td>
+            <td><span class="ok">Only after PayHere + our server agree</span> — signature, amount, currency. Not after a pretty “success” screen.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="say si"><strong>තේරුම:</strong> “Card එකෙන් ගෙවුවම, bank එක අපේ server එකට කියනවා. ඒකෙන් පස්සේ විතරයි cake එක bake කරන්න ඕන. Fake page එකකින් kitchen එක මරු කරන්න බැහැ. ඒක තමයි අනිත් ‘website’ වලට නැති දේ.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">13 · PayHere — why it is safe to bake</p>
+      <h2>Five locks on the money</h2>
+      <div class="flow" style="margin-bottom:12px">
+        <div class="step"><span class="n">1</span><b>Lock the total</b><p>Server creates the order in LKR from catalogue prices. The form is signed.</p></div>
+        <div class="step"><span class="n">2</span><b>Pay on PayHere</b><p>Customer leaves your page. They pay on PayHere’s site. Sandbox now; live with your merchant ID.</p></div>
+        <div class="step"><span class="n">3</span><b>Bank calls us</b><p>PayHere POSTs to /api/payments/payhere/notify. Not the customer’s browser.</p></div>
+        <div class="step"><span class="n">4</span><b>Three checks</b><p>MD5 signature. Amount equals our total. Currency is LKR. Cancelled orders refused.</p></div>
+        <div class="step"><span class="n">5</span><b>Then we bake</b><p>paid + confirmed. Email if SMTP is on. Kitchen may start. Return page tells the family the truth.</p></div>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>If they cancel or fail</h3>
+          <p>Not paid. Kitchen does not move. They can try again or choose COD. No silent “maybe”.</p>
+        </div>
+        <div class="card">
+          <h3>If they cancel after paying</h3>
+          <p>Only before preparing/delivered. Status becomes <b>refund_pending</b>. Accounts know money must go back. It is not forgotten in a chat.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">14 · The 20% phone offer</p>
+      <h2 class="si">අම්මලාට reward එකක් — cheat කරන්න බැරි විදිහට</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>All of these must be true</h3>
+          <ul>
+            <li>Logged in — a real account</li>
+            <li>Valid mobile 07… / 947…</li>
+            <li>Checkout phone matches the account phone</li>
+            <li>Subtotal at least Rs. 500 (you can change this)</li>
+            <li>Percent you choose (default 20). Code will not allow 100% by accident (cap 50%)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why this is a business tool, not a leak</h3>
+          <p class="si">Fake numbers වලින් discount ගන්න බැහැ. Login නැතුව ගන්න බැහැ. Avurudu week එකට percent එක උඩට ගන්න පුළුවන්. ඊට පස්සේ අඩු කරන්න පුළුවන්. Site එක ආයෙත් හදන්න ඕන නැහැ. Loyalty එක ඔයාලගේ අතේ.</p>
+        </div>
+      </div>
+      <p class="say"><strong>තේරුම:</strong> “We are not giving the shop away. We are saying: if you are a real family with a real number, Peoples Bakers remembers you.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">15 · After they order</p>
+      <h2>The relationship does not end at “place order”</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Tracking on My Account</h3>
+          <p>Placed → Confirmed → Preparing → Delivered. They can cancel until the kitchen starts. After that, a kind message: please WhatsApp or call — the cake may already be in the oven. That protects the baker’s time and the family’s money.</p>
+        </div>
+        <div class="card">
+          <h3>Find Us — eight doors, one map</h3>
+          <p>Bulathsinhala HQ, Colombo 2, Colombo 3, Athurugiriya, Malabe, Bandaragama, Nugegoda, Kandy. Search, nearby, map bounds, GeoJSON. A person in Nugegoda does not have to guess which shop is closest.</p>
+        </div>
+        <div class="card">
+          <h3>Feedback with a spine</h3>
+          <p>Stars, categories, a message. Rate-limited so one angry bot cannot flood you. Admin marks handled. This is how a 2015 bakery stays humble in 2026 — you hear people, you do not drown.</p>
+        </div>
+        <div class="card">
+          <h3>Phone home screen (PWA)</h3>
+          <p>They can put Peoples Bakers next to WhatsApp. It feels like an app. It is still your shop. Food apps cannot insert themselves between you and the birthday.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">16 · Sri Lanka, on purpose</p>
+      <h2 class="si">මේක ලංකාවට හදපු දෙයක් — ඇමරිකාවේ theme එකක් නෙවෙයි</h2>
+      <div class="grid g3">
+        <div class="card">
+          <h3>English · සිංහල · தமிழ்</h3>
+          <p>Not a Google-translate sticker. The real buttons, errors, cart, checkout. A Tamil family in Kandy and a Sinhala family in Bandaragama buy from the same pride.</p>
+        </div>
+        <div class="card">
+          <h3>Phone first</h3>
+          <p>Hamburger menu, thumb basket, sticky order bar, lazy images. Most cake orders will not come from a desktop in an office. They come from a queue, a bus, a kitchen table.</p>
+        </div>
+        <div class="card">
+          <h3>The island’s rails</h3>
+          <p>PayHere, WhatsApp, 07 numbers, LKR, PickMe/Uber mentioned as delivery partners where you already use them — without giving those apps your birthday-cake margin.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “අනිත් site වලට මේක නැහැ කියලා කියන්නේ උඩඟුකමකින් නෙවෙයි. කියන්නේ: මේක අපේ රටේ bakery එකක හදවතට හදපු දෙයක්. ඒක දුර්ලභයි.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">17 · Staff dashboard — the other half of the heart</p>
+      <h2>The bakers get a board. Not a pile of chats.</h2>
+      <p class="lede">URL <b>/pb-office.html</b> — not in the public menu. Only admin accounts. This is the quiet room behind the counter.</p>
+      <table>
+        <thead><tr><th>Screen</th><th>What a tired human can do in 20 seconds</th></tr></thead>
+        <tbody>
+          <tr><td>Overview</td><td>Today’s orders, money that counts as real (not unpaid PayHere), pending pile, ratings, live pulse.</td></tr>
+          <tr><td>Kitchen</td><td>Columns by status. Eyes on “what do I mix now?” instead of scrolling WhatsApp at 6 am.</td></tr>
+          <tr><td>Orders</td><td>Search name / phone / id. Change status. Write a note. See who changed what, when.</td></tr>
+          <tr><td>Products</td><td>Add a seasonal cake. Hide yesterday’s flavour. Change Rs. Staff do this. Not a programmer.</td></tr>
+          <tr><td>Users</td><td>Promote only a trusted person to admin. The rest stay customers.</td></tr>
+          <tr><td>Feedback</td><td>Read the hard sentences. Mark handled. Delete spam.</td></tr>
+          <tr><td>Reports + CSV</td><td>Month for the accountant. Export. No “I think we sold okay”.</td></tr>
+          <tr><td>Settings</td><td>WhatsApp, phone, Instagram, LinkedIn — change without waiting on a developer.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">18 · Trust you can say out loud</p>
+      <h2>If they ask “is this safe?”</h2>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Money</h3>
+          <p>Catalogue prices on the server. PayHere signature. Amount and currency must match. Paid comes from the bank notify, not from a clever customer.</p>
+        </div>
+        <div class="card">
+          <h3>People</h3>
+          <p>Passwords hashed. httpOnly cookies. Admin routes need an admin. Live hosting refuses a weak secret and a default admin password.</p>
+        </div>
+        <div class="card">
+          <h3>Kindness as security</h3>
+          <p>Feedback cannot be flooded. Login cannot send you to an evil website. You only see your own orders. The office URL is unlisted.</p>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “කවුරුහරි page එකේ Rs. 1 කියලා type කළත්, bill එක catalogue එකේ price එක. PayHere ගෙවලා නැත්නම් cake එක confirmed නෙවෙයි. ඒ වාක්‍ය දෙක client ට හිතට තියාගන්න දෙන්න.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">19 · Side by side</p>
+      <h2 class="si">ඔයාලගේ system vs ලංකාවේ සාමාන්‍ය bakery online</h2>
+      <table>
+        <thead>
+          <tr><th></th><th>Typical bakery online</th><th>Peoples Bakers platform</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sinhala + Tamil checkout</td><td class="no">Rare / broken</td><td class="ok">Built in</td></tr>
+          <tr><td>211+ of your own cakes</td><td class="no">A few photos</td><td class="ok">Full catalogue, hide/show</td></tr>
+          <tr><td>PayHere with bank verify</td><td class="no">Often missing or unsafe</td><td class="ok">Hash + amount + LKR</td></tr>
+          <tr><td>Kitchen board</td><td class="no">WhatsApp</td><td class="ok">Status columns + live poll</td></tr>
+          <tr><td>Anti fake prices</td><td class="no">Almost never</td><td class="ok">Server is the till</td></tr>
+          <tr><td>8-outlet map</td><td class="no">One address in the footer</td><td class="ok">Nearby, search, collect</td></tr>
+          <tr><td>Loyalty with rules</td><td class="no">Random “inbox for discount”</td><td class="ok">Login + real 07 number</td></tr>
+          <tr><td>You keep the customer</td><td class="no">Food app owns the repeat</td><td class="ok">Account + history is yours</td></tr>
+          <tr><td>Brand since 2015</td><td class="no">Generic template look</td><td class="ok">Your colours, story, shops</td></tr>
+        </tbody>
+      </table>
+      <p class="say si"><strong>තේරුම:</strong> “මේ row ටික එකට තියෙන bakery site එකක් ලංකාවේ හොයන්න අමාරුයි. ඒක නිසා තමයි මේක ‘තව website එකක්’ නෙවෙයි කියලා කියන්නේ.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">20 · What this is worth to the business</p>
+      <h2>Not poetry — the till</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>You stop leaking</h3>
+          <ul>
+            <li>Night and lunch-break orders that used to die in missed calls</li>
+            <li>Commission on cakes that do not belong on a food app</li>
+            <li>Staff hours spent typing the same price list into WhatsApp</li>
+            <li>Cakes baked for “I paid” that never actually paid</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>You start keeping</h3>
+          <ul>
+            <li>A phone number and an order history per family</li>
+            <li>A button to hide a sold-out item before the next customer is disappointed</li>
+            <li>A CSV for the person who does VAT and wages</li>
+            <li>A brand that looks like it will still be here in 2030</li>
+          </ul>
+        </div>
+      </div>
+      <p class="say"><strong>තේරුම:</strong> “A website that only looks nice is a cost. A website that takes the order, the money, and the kitchen ticket is an extra counter that never asks for EPF.”</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">21 · Live demo — click this order</p>
+      <h2 class="si">රැස්වීමේදී මේ පිළිවෙලට</h2>
+      <ol class="script si">
+        <li><b>Home</b> — logo, purple/gold, language → සිංහල. “මේක අපේ bakery එකමයි.”</li>
+        <li><b>Legacy</b> — 30 seconds. 2015, Bulathsinhala, first loaf. Heart.</li>
+        <li><b>Login</b> — register a demo amma. Google button. “පවුලක් වෙනවා.”</li>
+        <li><b>Cakes</b> — two items into the basket. Open the drawer. “Price එක server එකේ.”</li>
+        <li><b>Customize cake</b> — show the WhatsApp message already written.</li>
+        <li><b>Checkout</b> — 07 number, collect from an outlet, COD. Place order.</li>
+        <li><b>Account</b> — tracking steps. “තමන්ගේ order විතරයි.”</li>
+        <li><b>Admin</b> — localhost:3000/pb-office.html → Kitchen → Preparing → Delivered.</li>
+        <li><b>Find Us + Feedback</b> — thirty seconds. The island. The humility.</li>
+      </ol>
+      <p class="say">Server: <b>npm start</b> · open <b>http://localhost:3000</b> — not a file. If PayHere sandbox keys exist, a second order with card shows awaiting_payment → paid.</p>
+    </section>
+
+    <section class="slide">
+      <p class="eyebrow">22 · To go live — a short honest list</p>
+      <h2>The software is ready. The business still brings a few keys.</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>You provide</h3>
+          <ul>
+            <li>Node.js hosting (Render, Railway, or a VPS) — not GitHub Pages</li>
+            <li>A real HTTPS domain</li>
+            <li>PayHere merchant ID and secret</li>
+            <li>A strong JWT secret and a real admin password</li>
+            <li>WhatsApp business number; SMTP if you want emails</li>
+            <li>Final check of outlet phones and hours</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Then this is true</h3>
+          <ul>
+            <li>Families order in three languages on a phone</li>
+            <li>COD and paid-online are not mixed up</li>
+            <li>Kitchen sees a board</li>
+            <li>Staff change prices without a programmer</li>
+            <li>The accountant gets a CSV</li>
+            <li>Peoples Bakers owns the customer — not a food app</li>
+          </ul>
+        </div>
+      </div>
+      <p class="say si"><strong>තේරුම:</strong> “මේක working system එකක්. Live එකට ඕනේ ඔයාලගේ keys ටිකයි, hosting එකයි. ඊට පස්සේ 2015දී පටන් ගත්ත bakery එක, රෑටත් order ගන්නවා.”</p>
+    </section>
+
+    <section class="slide cover">
+      <p class="eyebrow">Thank you · Peoples Bakers</p>
+      <p class="quote si">අපි හදලා තියෙන්නේ තවත් website එකක් නෙවෙයි. හදලා තියෙන්නේ, අම්මෙකුට රෑට cake එකක් ඇණවුම් කරන්න පුළුවන් තැනක් — සහ bakery එකේ අයට උදේට ඒක bake කරන්න පුළුවන් තැනක්.</p>
+      <h1>The oven is yours.<br>The night counter is ready.</h1>
+      <p class="lede si">ප්‍රශ්න තියෙනවා නම් දැන් අහන්න. Login, ගෙවීම්, kitchen, හෝ live යන දවස.</p>
+      <p class="cover-meta">Peoples Bakers · Est. 2015 · One shop. Three languages. Orders that do not get lost.</p>
+    </section>
+  </div>
+
+  <div class="bar">
+    <span id="label">1 / 24 · Cover</span>
+    <div class="dots" id="dots"></div>
+    <div>
+      <span class="hint">← → · P print PDF</span>
+      <button type="button" id="prev">Back</button>
+      <button type="button" id="next">Next</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var slides = [].slice.call(document.querySelectorAll(".slide"));
+      var dots = document.getElementById("dots");
+      var label = document.getElementById("label");
+      var i = 0;
+      var titles = [
+        "Cover", "Why we are here", "2015 story", "What others have", "Not a template",
+        "The heart", "Five goals", "Numbers", "One order", "Login",
+        "Catalogue", "Checkout", "Payments", "PayHere locks", "Discount",
+        "After the order", "Sri Lanka", "Admin", "Trust", "Comparison",
+        "The till", "Demo", "Go live", "Thank you"
+      ];
+      slides.forEach(function () {
+        var d = document.createElement("i");
+        dots.appendChild(d);
+      });
+      function show(n) {
+        i = Math.max(0, Math.min(slides.length - 1, n));
+        slides.forEach(function (s, k) { s.classList.toggle("is-on", k === i); });
+        [].forEach.call(dots.children, function (d, k) { d.className = k === i ? "on" : ""; });
+        label.textContent = (i + 1) + " / " + slides.length + " · " + (titles[i] || "");
+      }
+      show(0);
+      document.getElementById("next").onclick = function () { show(i + 1); };
+      document.getElementById("prev").onclick = function () { show(i - 1); };
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); show(i + 1); }
+        if (e.key === "ArrowLeft") show(i - 1);
+        if (e.key === "Home") show(0);
+        if (e.key === "End") show(slides.length - 1);
+      });
+    })();
+  </script>
+</body>
+</html>

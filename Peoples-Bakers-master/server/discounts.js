@@ -14,7 +14,8 @@ function isValidPhone(phone) {
   const d = digitsOnly(phone);
   if (d.length === 10 && d.startsWith("07")) return true;
   if (d.length === 11 && d.startsWith("947")) return true;
-  if (d.length === 12 && d.startsWith("94") && d.charAt(2) === "7") return true;
+  // +94 0 7XXXXXXXX (leading trunk 0 kept)
+  if (d.length === 12 && d.startsWith("9407")) return true;
   return false;
 }
 
@@ -22,7 +23,7 @@ function normalizePhone(phone) {
   const d = digitsOnly(phone);
   if (d.length === 10 && d.startsWith("07")) return d;
   if (d.length === 11 && d.startsWith("947")) return "0" + d.slice(2);
-  if (d.length === 12 && d.startsWith("947")) return "0" + d.slice(3);
+  if (d.length === 12 && d.startsWith("9407")) return d.slice(2);
   return str(phone);
 }
 

@@ -559,6 +559,14 @@ function normalizeProductTitle(value) {
     .trim();
 }
 
+const PRODUCT_TITLE_ALIASES = {
+  "vanilla cupcake": "vanilla sprinkle cupcake",
+  "sprinkle donut": "chocolate sprinkle donut",
+  "chocolate muffin": "dark chocolate muffin",
+  "jujubs 100g": "jujubes 100g",
+  "icing gem biscuit 70g": "icing gem biscuits 70g",
+};
+
 function findProductByIdOrTitle(productId, title) {
   if (productId) {
     const byId = store.findOne("products", (x) => x.id === productId);
@@ -566,9 +574,13 @@ function findProductByIdOrTitle(productId, title) {
   }
   const want = normalizeProductTitle(title);
   if (!want) return null;
+  const canonical = PRODUCT_TITLE_ALIASES[want] || want;
   return store.findOne(
     "products",
-    (x) => normalizeProductTitle(x.title) === want
+    (x) => {
+      const t = normalizeProductTitle(x.title);
+      return t === want || t === canonical;
+    }
   );
 }
 
@@ -807,7 +819,11 @@ app.post(
       payhereStatusCode: statusCode,
     };
     if (statusCode === "-1" || statusCode === "-2") {
-      patch.paymentStatus = "failed";
+      if (order.paymentStatus === "paid") {
+        return res.send("OK");
+      }
+      patch.paymentStatus = statusCode === "-1" ? "cancelled" : "failed";
+      patch.status = "cancelled";
     }
     store.update("orders", orderId, patch);
     res.send("OK");
@@ -963,14 +979,51 @@ app.use(function (err, req, res, next) {
   res.status(500).json({ error: "Something went wrong. Please try again." });
 });
 
-app.listen(PORT, () => {
+function printListenBanner() {
+  const os = require("os");
+  const nets = os.networkInterfaces();
+  const localIps = [];
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name] || []) {
+      if (net.family === "IPv4" && !net.internal) {
+        localIps.push(net.address);
+      }
+    }
+  }
+
   console.log("\n  Peoples Bakers server running:");
-  console.log("    Site:  http://localhost:" + PORT);
+  console.log("    Local:   http://localhost:" + PORT);
+  if (localIps.length) {
+    localIps.forEach((ip, i) => {
+      const label = i === 0 ? "Network:" : "        ";
+      console.log("    " + label + " http://" + ip + ":" + PORT + "   (share this with people on your Wi-Fi)");
+    });
+  } else {
+    console.log("    Network: (no external IPv4 detected — connect to Wi-Fi/LAN)");
+  }
   console.log(
-    "    Admin: http://localhost:" +
+    "    Admin:   http://localhost:" +
       PORT +
       "/" +
       ADMIN_PATH +
       "  (staff URL — not on public site)\n"
   );
+}
+
+// Bind dual-stack (IPv4 + IPv6) so http://localhost works on Windows.
+// exclusive:true avoids a second process silently sharing port 3000.
+const httpServer = app.listen({ port: Number(PORT), exclusive: true }, printListenBanner);
+
+httpServer.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(
+      "\n  FATAL: Port " +
+        PORT +
+        " is already in use.\n" +
+        "  Stop the other Node app on that port, or set PORT in .env to a free port.\n"
+    );
+    process.exit(1);
+  }
+  console.error("\n  FATAL: Could not start server:", err.message, "\n");
+  process.exit(1);
 });

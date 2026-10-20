@@ -51,7 +51,7 @@ class I18n {
     }
 
     try {
-      const response = await fetch(`js/translations/${lang}.json`);
+      const response = await fetch(`js/translations/${lang}.json?v=14`);
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
@@ -232,13 +232,14 @@ class I18n {
         <button class="language-btn" data-lang="si" type="button" title="Sinhala">සිං</button>
         <button class="language-btn" data-lang="ta" type="button" title="Tamil">த</button>
       `;
-      
-      // Add to nav-actions
-      const navActions = document.querySelector('.nav-actions');
-      if (navActions) {
-        navActions.appendChild(switcher);
-      }
     }
+
+    this.placeLanguageSwitcher(switcher);
+
+    window.addEventListener('resize', function () {
+      var el = document.querySelector('.language-switcher');
+      if (el) this.placeLanguageSwitcher(el);
+    }.bind(this));
 
     // Add click handlers
     switcher.querySelectorAll('.language-btn').forEach(btn => {
@@ -250,6 +251,18 @@ class I18n {
     });
 
     this.updateLanguageSwitcher();
+  }
+
+  placeLanguageSwitcher(switcher) {
+    if (!switcher) return;
+    const links = document.querySelector('.nav-links');
+    const actions = document.querySelector('.nav-actions');
+    const mobile = window.matchMedia('(max-width: 900px)').matches;
+    if (mobile && links) {
+      links.appendChild(switcher);
+    } else if (actions) {
+      actions.appendChild(switcher);
+    }
   }
 
   updateLanguageSwitcher() {

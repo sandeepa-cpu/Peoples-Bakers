@@ -8,12 +8,14 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="preload" as="image" href="images/home/hero-bakery-interior-1.png" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css?v=27">
+  <link rel="preload" as="image" href="images/hero/pb-hero-delight-cake.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=185">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.6/swiper-bundle.min.css">
 </head>
 <body class="home-page">
   <header>
@@ -51,6 +53,7 @@
         <div class="nav-links">
           <a href="legacy.html" data-i18n="nav.legacy">Our History</a>
           <a href="products.html" data-i18n="nav.products">Products</a>
+          <a href="cakes.html" data-i18n="nav.cakes">All Cakes</a>
           <a href="special-cake.html" data-i18n="nav.special_cake">Customize Cake</a>
           <a href="#offers" data-i18n="nav.offers">Offers</a>
           <a href="find-us.html" data-i18n="nav.findus">Find Us</a>
@@ -72,39 +75,634 @@
   </header>
 
   <main>
-    <section class="hero hero-slider" id="home">
-      <div class="hero-slides" aria-hidden="true">
-        <img class="hero-slide" src="images/home/hero-bakery-interior-1.png" alt="Peoples Bakers shop interior with display counter and seating" decoding="async" fetchpriority="high">
-        <img class="hero-slide" src="images/home/hero-bakery-interior-2.png" alt="Peoples Bakers cafe with cakes and pastries on display" decoding="async">
-        <img class="hero-slide hero-slide--promo" src="images/home/hero-chocolate-brownies.png" alt="Peoples Bakers chocolate brownies" decoding="async">
-        <img class="hero-slide hero-slide--promo" src="images/home/hero-chocolate-swiss-roll.png" alt="PB Chocolate Swiss Roll" decoding="async">
-        <img class="hero-slide hero-slide--wide" src="images/home/hero-cupcakes.png" alt="Fresh cupcakes with teal frosting and sprinkles" decoding="async">
-      </div>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <span class="hero-tag" data-i18n="hero.tag">FRESH BAKED DAILY</span>
-        <h1 data-i18n="hero.title">Turning meals into memories</h1>
-        <p data-i18n="hero.subtitle">Authentic Sri Lankan baking traditions, handcrafted every morning with quality ingredients and heart.</p>
-        <div class="hero-cta">
-          <a href="order.html" class="btn btn-primary" data-i18n="hero.cta_primary">Order Now</a>
-          <a href="products.html" class="btn btn-outline" data-i18n="hero.cta_secondary">View Menu</a>
+    <section class="hero hero-slider hero-drinks hero--fab" id="home" aria-roledescription="carousel" aria-label="Peoples Bakers featured products">
+      <h1 class="visually-hidden">Peoples Bakers</h1>
+      <div class="hero-fab-shell" data-home-banner tabindex="0" aria-live="polite">
+        <div class="hero-fab-copy" data-hero-overlay>
+          <img class="hero-fab-logo" src="images/logo.png" alt="Peoples Bakers" width="110" height="110">
+          <div class="hero-fab-headline" data-hero-copy>
+            <span class="hero-copy-badge" data-hero-copy-badge hidden></span>
+            <p class="hero-copy-name" data-hero-copy-name>Indulge in our Delight Cakes</p>
+            <p class="hero-copy-price" data-hero-copy-price hidden></p>
+          </div>
+          <a href="order.html" class="hero-fab-order" data-hero-cta-primary data-i18n="hero.cta_primary">Order Now</a>
         </div>
-        <ul class="hero-features" aria-label="Why Peoples Bakers">
-          <li><i class="fa-solid fa-wheat-awn"></i> <span data-i18n="home.hero_f1">100% Natural</span></li>
-          <li><i class="fa-solid fa-clock"></i> <span data-i18n="home.hero_f2">Baked Daily</span></li>
-          <li><i class="fa-solid fa-truck-fast"></i> <span data-i18n="home.hero_f3">Island-wide Delivery</span></li>
-        </ul>
-        <div class="platform-links">
-          <span data-i18n="home.also_on">Also available on</span>
-          <a href="order.html#delivery" data-i18n="common.uber_eats" aria-label="Uber Eats">Uber Eats</a> &amp;
-          <a href="order.html#delivery" data-i18n="common.pickme" aria-label="PickMe Food">PickMe</a>
+
+        <div class="hero-stage">
+          <div class="swiper hero-swiper" data-hero-swiper>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide hero-drinks-slider__slide hero-fab-slide" data-slide-index="0" data-hero-name="Indulge in our Delight Cakes" data-hero-price="" data-hero-badge="" data-hero-bg="#F3EBDD" data-hero-light="true">
+                <figure class="hero-fab-photo">
+                  <img src="images/hero/pb-hero-delight-cake.jpg" alt="Peoples Bakers Delight Cake — sweet moments, beautiful memories" width="1600" height="700" fetchpriority="high" decoding="async">
+                </figure>
+              </div>
+              <div class="swiper-slide hero-drinks-slider__slide hero-fab-slide" data-slide-index="1" data-hero-name="Taste our Delicious Egg Pastry" data-hero-price="" data-hero-badge="" data-hero-bg="#F3EBDD" data-hero-light="true">
+                <figure class="hero-fab-photo">
+                  <img src="images/hero/pb-hero-egg-pastry.jpg" alt="Peoples Bakers Delicious Egg Pastry" width="1600" height="700" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="hero-banner-nav hero-banner-nav--prev" data-home-banner-prev aria-label="Previous slide">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="hero-banner-nav hero-banner-nav--next" data-home-banner-next aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="hero-banner-dots" data-home-banner-dots role="tablist" aria-label="Slide indicators">
+          <button type="button" class="hero-banner-dot is-active" role="tab" aria-label="Show slide 1" aria-selected="true" data-slide-to="0"></button>
+          <button type="button" class="hero-banner-dot" role="tab" aria-label="Show slide 2" aria-selected="false" data-slide-to="1"></button>
         </div>
       </div>
+    </section>
 
-      <a href="#why-us" class="hero-scroll" data-i18n-aria-label="common.scroll_down" aria-label="Scroll down">
-        <span></span>
-      </a>
+    <section id="categories" class="categories-section home-reveal">
+      <div class="container">
+        <div class="home-reveal-item">
+        <span class="section-tag centered" data-i18n="home.cat_tag">Shop by category</span>
+        <h2 class="section-title centered" data-i18n="home.cat_h2">Explore our kitchen</h2>
+        <p class="section-subtitle centered" data-i18n="home.cat_sub">Handcrafted bakery delights, from morning buns to celebration cakes.</p>
+        </div>
+        <div class="categories-grid categories-grid--scrollable">
+          <a href="products.html#breads" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/breads/fresh-bread-loaf.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_breads">Breads &amp; Buns</h3>
+              <span><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="cakes.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/cakes/chocolate-gateau-cake-1kg.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_cakes">Cakes</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#sweets" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/strawberry-muffin.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_muffins">Muffins</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#sweets" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_cupcakes">Cupcakes</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#sweets" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/glazed-donut.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_donuts">Donuts</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#sweets" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/chocolate-eclair.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_eclairs">Eclairs</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#cookies" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/cookies/pb-rusks-200g.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_cookies">Cookies</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="products.html#drinks" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/drinks/pb-drinks-lineup-garden.png');">
+            <div class="category-overlay">
+              <h3 data-i18n="home.cat_drinks">Drinks</h3>
+              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+        <p class="categories-swipe-hint" aria-hidden="true"><i class="fa-solid fa-hand-pointer"></i> <span data-i18n="home.cat_swipe">Swipe to see more</span></p>
+      </div>
+    </section>
+
+    <section id="products" class="products-section home-reveal">
+      <div class="container">
+        <div class="home-reveal-item">
+        <span class="section-tag centered" data-i18n="home.best_tag">Bestsellers</span>
+        <h2 class="section-title centered" data-i18n="sections.products_title">Popular Products</h2>
+        <p class="section-subtitle centered" data-i18n="sections.products_subtitle">Daily favorites, baked fresh and loved across generations.</p>
+        </div>
+
+        <div class="home-showcase-stack">
+
+        <article class="home-showcase-row" data-category="cookies">
+          <a class="home-showcase-banner" href="products.html#cookies">
+            <div class="home-showcase-banner__img" style="background-image: url('images/cookies/pb-rusks-200g.png');" role="img" aria-hidden="true"></div>
+            <div class="home-showcase-banner__body">
+              <h3 data-i18n="home.row_cookies">Cookies &amp; Rusks</h3>
+              <span class="home-showcase-banner__cta"><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <div class="home-showcase-track">
+            <div class="home-showcase-nav">
+              <button type="button" class="swiper-button-prev" aria-label="Previous cookies"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="swiper-button-next" aria-label="Next cookies"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="swiper home-showcase-swiper">
+              <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cookies/pb-rusks-200g.png');" role="img" aria-label="Rusks 200g">
+                  <span class="product-badge product-badge--best"><i class="fa-solid fa-fire"></i> <span data-i18n="home.badge_best">Best seller</span></span>
+                </div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(264)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i41.n">Rusks 200g</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 200</p>
+                    <button type="button" class="product-add" data-add-product="Rusks 200g" data-add-price="200" aria-label="Add Rusks 200g to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cookies/pb-rusks-100g.png');" role="img" aria-label="Rusks 100g"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(188)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Rusks 100g</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 110</p>
+                    <button type="button" class="product-add" data-add-product="Rusks 100g" data-add-price="110" aria-label="Add Rusks 100g to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cookies/pb-wine-biscuits-90g.png');" role="img" aria-label="Wine Biscuits 90g"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.5 <span class="product-rating__count">(142)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Wine Biscuits 90g</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 140</p>
+                    <button type="button" class="product-add" data-add-product="Wine Biscuits 90g" data-add-price="140" aria-label="Add Wine Biscuits 90g to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cookies/pb-cookies-vanilla-90g.png');" role="img" aria-label="Vanilla Cookies 90g"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(167)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Vanilla Cookies 90g</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 115</p>
+                    <button type="button" class="product-add" data-add-product="Vanilla Cookies 90g" data-add-price="115" aria-label="Add Vanilla Cookies 90g to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="home-showcase-row">
+          <a class="home-showcase-banner" href="products.html#drinks">
+            <div class="home-showcase-banner__img" style="background-image: url('images/drinks/pb-iced-coffee.png');" role="img" aria-hidden="true"></div>
+            <div class="home-showcase-banner__body">
+              <h3 data-i18n="home.row_drinks">Drinks &amp; Coffee</h3>
+              <span class="home-showcase-banner__cta"><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <div class="home-showcase-track">
+            <div class="home-showcase-nav">
+              <button type="button" class="swiper-button-prev" aria-label="Previous drinks"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="swiper-button-next" aria-label="Next drinks"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="swiper home-showcase-swiper">
+              <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-iced-coffee.png');" role="img" aria-label="Iced Coffee">
+                  <span class="product-badge product-badge--new"><i class="fa-solid fa-sparkles"></i> <span data-i18n="home.badge_new">New</span></span>
+                </div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(191)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i34.n">Iced Coffee</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 180</p>
+                    <button type="button" class="product-add" data-add-product="Iced Coffee" data-add-price="180" aria-label="Add Iced Coffee to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-rose-faluda-drink.png');" role="img" aria-label="Rose Faluda Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(154)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i35.n">Rose Faluda Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 170</p>
+                    <button type="button" class="product-add" data-add-product="Rose Faluda Drink" data-add-price="170" aria-label="Add Rose Faluda Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-mixed-fruit-drink.png');" role="img" aria-label="Mixed Fruit Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(138)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i36.n">Mixed Fruit Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 150</p>
+                    <button type="button" class="product-add" data-add-product="Mixed Fruit Drink" data-add-price="150" aria-label="Add Mixed Fruit Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-lime-drink.png');" role="img" aria-label="Lime Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.5 <span class="product-rating__count">(121)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i37.n">Lime Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 140</p>
+                    <button type="button" class="product-add" data-add-product="Lime Drink" data-add-price="140" aria-label="Add Lime Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-mango-drink.png');" role="img" aria-label="Mango Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(163)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i38.n">Mango Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 140</p>
+                    <button type="button" class="product-add" data-add-product="Mango Drink" data-add-price="140" aria-label="Add Mango Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-orange-drink.png');" role="img" aria-label="Orange Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(147)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i39.n">Orange Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 140</p>
+                    <button type="button" class="product-add" data-add-product="Orange Drink" data-add-price="140" aria-label="Add Orange Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/drinks/pb-pineapple-drink.png');" role="img" aria-label="Pineapple Drink"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.5 <span class="product-rating__count">(132)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i40.n">Pineapple Drink</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 140</p>
+                    <button type="button" class="product-add" data-add-product="Pineapple Drink" data-add-price="140" aria-label="Add Pineapple Drink to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="home-showcase-row">
+          <a class="home-showcase-banner" href="products.html#breads">
+            <div class="home-showcase-banner__img" style="background-image: url('images/breads/fresh-bread-loaf.png');" role="img" aria-hidden="true"></div>
+            <div class="home-showcase-banner__body">
+              <h3 data-i18n="home.row_breads">Breads &amp; Savoury</h3>
+              <span class="home-showcase-banner__cta"><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <div class="home-showcase-track">
+            <div class="home-showcase-nav">
+              <button type="button" class="swiper-button-prev" aria-label="Previous breads"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="swiper-button-next" aria-label="Next breads"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="swiper home-showcase-swiper">
+              <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/breads/butter-bun.png');" role="img" aria-label="Butter bun">
+                  <span class="product-badge product-badge--best"><i class="fa-solid fa-fire"></i> <span data-i18n="home.badge_best">Best seller</span></span>
+                </div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.9 <span class="product-rating__count">(842)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i13.n">Butter Bun</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 90</p>
+                    <button type="button" class="product-add" data-add-product="Butter Bun" data-add-price="90" aria-label="Add Butter Bun to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/breads/cream-bun.png');" role="img" aria-label="Cream bun"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(521)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i2.n">Cream Bun</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 80</p>
+                    <button type="button" class="product-add" data-add-product="Cream Bun" data-add-price="80" aria-label="Add Cream Bun to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/breads/butter-croissant.png');" role="img" aria-label="Butter croissant"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(298)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Butter Croissant</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 280</p>
+                    <button type="button" class="product-add" data-add-product="Butter Croissant" data-add-price="280" aria-label="Add Butter Croissant to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/breads/cherry-jam-bun.png');" role="img" aria-label="Cherry jam bun"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(214)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Cherry Jam Bun</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 110</p>
+                    <button type="button" class="product-add" data-add-product="Cherry Jam Bun" data-add-price="110" aria-label="Add Cherry Jam Bun to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="home-showcase-row">
+          <a class="home-showcase-banner" href="products.html#sweets">
+            <div class="home-showcase-banner__img" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');" role="img" aria-hidden="true"></div>
+            <div class="home-showcase-banner__body">
+              <h3 data-i18n="home.row_sweets">Sweets &amp; Cupcakes</h3>
+              <span class="home-showcase-banner__cta"><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <div class="home-showcase-track">
+            <div class="home-showcase-nav">
+              <button type="button" class="swiper-button-prev" aria-label="Previous sweets"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="swiper-button-next" aria-label="Next sweets"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="swiper home-showcase-swiper">
+              <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');" role="img" aria-label="Vanilla Sprinkle Cupcake"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(287)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i19.n">Vanilla Cupcake</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 220</p>
+                    <button type="button" class="product-add" data-add-product="Vanilla Sprinkle Cupcake" data-add-price="220" aria-label="Add Vanilla Sprinkle Cupcake to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/sweets/chocolate-eclair.png');" role="img" aria-label="Chocolate Eclair">
+                  <span class="product-badge product-badge--best"><i class="fa-solid fa-fire"></i> <span data-i18n="home.badge_best">Best seller</span></span>
+                </div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.9 <span class="product-rating__count">(613)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i30.n">Chocolate Eclair</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 190</p>
+                    <button type="button" class="product-add" data-add-product="Chocolate Eclair" data-add-price="190" aria-label="Add Chocolate Eclair to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/sweets/strawberry-donut.png');" role="img" aria-label="Sprinkle Donut"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.6 <span class="product-rating__count">(198)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i28.n">Sprinkle Donut</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 180</p>
+                    <button type="button" class="product-add" data-add-product="Chocolate Sprinkle Donut" data-add-price="180" aria-label="Add Chocolate Sprinkle Donut to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/sweets/dark-chocolate-muffin.png');" role="img" aria-label="Chocolate Muffin"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(356)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i24.n">Chocolate Muffin</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 210</p>
+                    <button type="button" class="product-add" data-add-product="Dark Chocolate Muffin" data-add-price="210" aria-label="Add Dark Chocolate Muffin to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="home-showcase-row home-showcase-row--cakes">
+          <a class="home-showcase-banner" href="cakes.html">
+            <div class="home-showcase-banner__img" style="background-image: url('images/cakes/chocolate-gateau-cake-1kg.png');" role="img" aria-hidden="true"></div>
+            <div class="home-showcase-banner__body">
+              <h3 data-i18n="home.row_cakes">Cakes &amp; Gateaux</h3>
+              <span class="home-showcase-banner__cta"><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <div class="home-showcase-track">
+            <div class="home-showcase-nav">
+              <button type="button" class="swiper-button-prev" aria-label="Previous cakes"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="swiper-button-next" aria-label="Next cakes"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="swiper home-showcase-swiper" data-home-cakes-showcase>
+              <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/home/hero-chocolate-swiss-roll.png');" role="img" aria-label="Chocolate Swiss Roll">
+                  <span class="product-badge product-badge--new"><i class="fa-solid fa-sparkles"></i> <span data-i18n="home.badge_new">New</span></span>
+                </div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(431)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3 data-i18n="products_catalog.items.i16.n">Chocolate Swiss Roll</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 850</p>
+                    <button type="button" class="product-add" data-add-product="Chocolate Swiss Roll" data-add-price="850" aria-label="Add Chocolate Swiss Roll to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cakes/chocolate-gateau-cake-1kg.png');" role="img" aria-label="Chocolate Gateau Cake 1kg"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.9 <span class="product-rating__count">(512)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Chocolate Gateau Cake 1kg</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 2,950</p>
+                    <button type="button" class="product-add" data-add-product="Chocolate Gateau Cake 1kg" data-add-price="2950" aria-label="Add Chocolate Gateau Cake 1kg to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cakes/butter-gateau-cake-1kg.png');" role="img" aria-label="Butter Gateau Cake 1kg"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(388)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Butter Gateau Cake 1kg</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 2,850</p>
+                    <button type="button" class="product-add" data-add-product="Butter Gateau Cake 1kg" data-add-price="2850" aria-label="Add Butter Gateau Cake 1kg to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cakes/black-forest-chocolate-gateau-cake.png');" role="img" aria-label="Black Forest Chocolate Gateau Cake"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.8 <span class="product-rating__count">(274)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Black Forest Chocolate Gateau Cake</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 2,690</p>
+                    <button type="button" class="product-add" data-add-product="Black Forest Chocolate Gateau Cake" data-add-price="2690" aria-label="Add Black Forest Chocolate Gateau Cake to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cakes/printed-butter-round-1kg.png');" role="img" aria-label="Butter Round Printed Cake 1kg"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(196)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Butter Round Printed Cake 1kg</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 2,500</p>
+                    <button type="button" class="product-add" data-add-product="Butter Round Printed Cake 1kg" data-add-price="2500" aria-label="Add Butter Round Printed Cake 1kg to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="card product-card-modern">
+                <div class="card-image product-card-img" style="background-image: url('images/cakes/coffee-gateau-cake.png');" role="img" aria-label="Coffee Gateau Cake"></div>
+                <div class="card-body">
+                  <div class="product-meta">
+                    <span class="product-rating"><i class="fa-solid fa-star"></i> 4.7 <span class="product-rating__count">(158)</span></span>
+                    <span class="product-fresh"><i class="fa-solid fa-clock"></i> <span data-i18n="home.chip_fresh">Fresh today</span></span>
+                  </div>
+                  <h3>Coffee Gateau Cake</h3>
+                  <div class="product-footer">
+                    <p class="price">Rs. 1,925</p>
+                    <button type="button" class="product-add" data-add-product="Coffee Gateau Cake" data-add-price="1925" aria-label="Add Coffee Gateau Cake to basket"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        </div>
+        <p class="products-home-cta"><a href="products.html" class="btn btn-outline"><span data-i18n="home.view_products">View all products</span> <i class="fa-solid fa-arrow-right"></i></a></p>
+      </div>
     </section>
 
     <section class="why-us home-reveal" id="why-us">
@@ -135,33 +733,6 @@
             <h3 data-i18n="home.why_c4h">Made With Love</h3>
             <p data-i18n="home.why_c4p">Traditional recipes crafted by our passionate bakers.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-showcase home-reveal" aria-label="Peoples Bakers photo gallery">
-      <div class="container">
-        <div class="section-head section-head--center home-reveal-item">
-          <span class="section-tag centered" data-i18n="home.show_tag">Step inside</span>
-          <h2 class="section-title centered" data-i18n="home.show_h2">Fresh from our kitchen</h2>
-          <p class="section-subtitle centered home-showcase-lede" data-i18n="home.show_lede">Warm interiors, handcrafted treats, and celebration cakes — baked with care every morning.</p>
-        </div>
-        <div class="home-showcase-grid">
-          <figure class="home-showcase-item home-reveal-item home-reveal-photo">
-            <img src="images/home/hero-bakery-interior-1.png" alt="Peoples Bakers shop interior" width="480" height="360" loading="lazy" decoding="async">
-          </figure>
-          <figure class="home-showcase-item home-reveal-item home-reveal-photo">
-            <img src="images/home/hero-bakery-interior-2.png" alt="Cakes and desserts on display" width="480" height="360" loading="lazy" decoding="async">
-          </figure>
-          <figure class="home-showcase-item home-reveal-item home-reveal-photo">
-            <img src="images/home/hero-cupcakes.png" alt="Colourful cupcakes" width="480" height="360" loading="lazy" decoding="async">
-          </figure>
-          <figure class="home-showcase-item home-reveal-item home-reveal-photo">
-            <img src="images/home/hero-chocolate-brownies.png" alt="Chocolate brownies" width="480" height="360" loading="lazy" decoding="async">
-          </figure>
-          <figure class="home-showcase-item home-reveal-item home-reveal-photo">
-            <img src="images/home/hero-chocolate-swiss-roll.png" alt="PB Chocolate Swiss Roll" width="480" height="360" loading="lazy" decoding="async">
-          </figure>
         </div>
       </div>
     </section>
@@ -249,109 +820,6 @@
       </div>
     </section>
 
-    <section id="categories" class="categories-section home-reveal">
-      <div class="container">
-        <div class="home-reveal-item">
-        <span class="section-tag centered" data-i18n="home.cat_tag">Shop by category</span>
-        <h2 class="section-title centered" data-i18n="home.cat_h2">Explore our kitchen</h2>
-        <p class="section-subtitle centered" data-i18n="home.cat_sub">Handcrafted bakery delights, from morning buns to celebration cakes.</p>
-        </div>
-        <div class="categories-grid">
-          <a href="products.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/breads/fresh-bread-loaf.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_breads">Breads &amp; Buns</h3>
-              <span><span data-i18n="common.explore">Explore</span> <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-          <a href="products.html#cakes" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/cakes/chocolate-gateau-cake-1kg.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_cakes">Cakes</h3>
-              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-          <a href="products.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/strawberry-muffin.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_muffins">Muffins</h3>
-              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-          <a href="products.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_cupcakes">Cupcakes</h3>
-              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-          <a href="products.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/glazed-donut.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_donuts">Donuts</h3>
-              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-          <a href="products.html" class="category-card home-reveal-item home-reveal-photo" style="background-image: url('images/sweets/chocolate-eclair.png');">
-            <div class="category-overlay">
-              <h3 data-i18n="home.cat_eclairs">Eclairs</h3>
-              <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="products" class="home-reveal">
-      <div class="container">
-        <div class="home-reveal-item">
-        <span class="section-tag centered" data-i18n="home.best_tag">Bestsellers</span>
-        <h2 class="section-title centered" data-i18n="sections.products_title">Popular Products</h2>
-        <p class="section-subtitle centered" data-i18n="sections.products_subtitle">Daily favorites, baked fresh and loved across generations.</p>
-        </div>
-        <div class="grid products-grid home-products-grid">
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/breads/butter-bun.png');" role="img" aria-label="Butter bun"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i13.n">Butter Bun</h3>
-              <p class="price">Rs. 90</p>
-            </div>
-          </article>
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/home/hero-chocolate-swiss-roll.png');" role="img" aria-label="Chocolate Swiss Roll"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i16.n">Chocolate Swiss Roll</h3>
-              <p class="price">Rs. 850</p>
-            </div>
-          </article>
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');" role="img" aria-label="Vanilla Sprinkle Cupcake"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i19.n">Vanilla Cupcake</h3>
-              <p class="price">Rs. 220</p>
-            </div>
-          </article>
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/sweets/chocolate-eclair.png');" role="img" aria-label="Chocolate Eclair"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i30.n">Chocolate Eclair</h3>
-              <p class="price">Rs. 200</p>
-            </div>
-          </article>
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/sweets/strawberry-donut.png');" role="img" aria-label="Sprinkle Donut"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i28.n">Sprinkle Donut</h3>
-              <p class="price">Rs. 180</p>
-            </div>
-          </article>
-          <article class="card home-reveal-item">
-            <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/sweets/dark-chocolate-muffin.png');" role="img" aria-label="Chocolate Muffin"></div>
-            <div class="card-body">
-              <h3 data-i18n="products_catalog.items.i24.n">Chocolate Muffin</h3>
-              <p class="price">Rs. 200</p>
-            </div>
-          </article>
-        </div>
-        <p class="products-home-cta"><a href="products.html" class="btn btn-outline"><span data-i18n="home.view_products">View all products</span> <i class="fa-solid fa-arrow-right"></i></a></p>
-      </div>
-    </section>
-
     <section class="offer-banner" id="offers">
       <span data-i18n="home.offer_banner">20% off all cakes —</span> <span>CAKE20</span>
     </section>
@@ -387,7 +855,11 @@
         <h2 class="section-title centered" data-i18n="sections.cakes_title">Cakes for every moment</h2>
         <p class="section-subtitle centered" data-i18n="sections.cakes_subtitle">Birthdays, weddings, or a Tuesday treat — explore the full catalogue anytime.</p>
         </div>
-        <div class="grid cakes-grid">
+        <div class="home-cakes-rail" data-home-cakes-rail>
+          <button type="button" class="home-cakes-rail__nav home-cakes-rail__nav--prev" data-home-cakes-prev aria-label="Previous cakes">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="grid cakes-grid cakes-grid--rail" data-home-cakes-track>
           <article class="card home-reveal-item">
             <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/cakes/branded-5029-2-1-birthday.png');" role="img" aria-label="Birthday cakes"></div>
             <div class="card-body"><h3 data-i18n="home.cake_birthday">Birthday Cakes</h3></div>
@@ -404,8 +876,13 @@
             <div class="card-image product-card-img home-reveal-photo" style="background-image: url('images/sweets/vanilla-sprinkle-cupcake.png');" role="img" aria-label="Cupcakes"></div>
             <div class="card-body"><h3>Cupcakes</h3></div>
           </article>
+          </div>
+          <button type="button" class="home-cakes-rail__nav home-cakes-rail__nav--next" data-home-cakes-next aria-label="Next cakes">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
         </div>
-        <p class="home-cakes-cta"><a href="products.html#cakes" class="btn btn-primary"><span data-i18n="home.cake_catalog_cta">View full cake catalogue</span> <i class="fa-solid fa-arrow-right"></i></a></p>
+        <p class="home-cakes-swipe-hint" aria-hidden="true"><i class="fa-solid fa-hand-pointer"></i> <span data-i18n="home.cat_swipe">Swipe to see more</span></p>
+        <p class="home-cakes-cta"><a href="cakes.html" class="btn btn-primary"><span data-i18n="home.cake_catalog_cta">View full cake catalogue</span> <i class="fa-solid fa-arrow-right"></i></a></p>
       </div>
     </section>
 
@@ -474,7 +951,7 @@
             <h2 data-i18n="home.news_h2">Join the Peoples Bakers family</h2>
             <p data-i18n="home.news_sub">Subscribe for exclusive offers, new product launches, and seasonal treats straight to your inbox.</p>
           </div>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Subscribed ✓';">
+          <form class="newsletter-form" id="home-newsletter-form">
             <input type="email" required data-i18n-placeholder="home.news_ph" placeholder="your@email.com" data-i18n-aria-label="home.news_aria" aria-label="Email address">
             <button type="submit" class="btn btn-primary" data-i18n="home.news_btn">Subscribe</button>
           </form>
@@ -499,6 +976,16 @@
     </section>
   </main>
 
+  <!-- Mobile sticky order bar (visible only on mobile, after user scrolls past hero) -->
+  <div class="mobile-order-bar" id="mobile-order-bar" role="complementary" aria-label="Quick order">
+    <button type="button" class="mobile-order-bar__close" id="mobile-order-bar-close" aria-label="Dismiss order bar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="mobile-order-bar__body">
+      <span class="mobile-order-bar__eyebrow"><span class="mobile-order-bar__dot" aria-hidden="true"></span> <span data-i18n="home.mob_bar_eye">Delivering now</span></span>
+      <span class="mobile-order-bar__title" data-i18n="home.mob_bar_title">Order fresh · ~30 min</span>
+    </div>
+    <a href="order.html" class="mobile-order-bar__cta" data-i18n="home.mob_bar_cta">Order Now <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+
   <footer class="site-footer site-footer--classic">
     <div class="container">
       <div class="footer-main-grid">
@@ -511,10 +998,11 @@
         <div class="footer-col">
           <h4 class="footer-heading" data-i18n="footer.products_heading">Our Products</h4>
           <nav class="footer-list" aria-label="Product categories">
-            <a href="products.html" data-i18n="footer.fp_breads">Breads</a>
-            <a href="products.html#cakes" data-i18n="footer.fp_cakes">Cakes</a>
-            <a href="products.html" data-i18n="footer.fp_savouries">Savouries</a>
-            <a href="products.html" data-i18n="footer.fp_beverages">Beverages</a>
+            <a href="products.html#breads" data-i18n="footer.fp_breads">Breads</a>
+            <a href="cakes.html" data-i18n="footer.fp_cakes">Cakes</a>
+            <a href="products.html#savory" data-i18n="footer.fp_savouries">Savouries</a>
+            <a href="products.html#cookies" data-i18n="footer.fp_cookies">Cookies</a>
+            <a href="products.html#drinks" data-i18n="footer.fp_beverages">Beverages</a>
             <a href="special-cake.html" data-i18n="footer.fp_photo_cake">Photo Cake</a>
           </nav>
         </div>
@@ -595,9 +1083,19 @@
     <span class="order-fab-label">Chat &amp; order</span>
   </a>
 
-  <script src="js/main.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/cart.js"></script>
+  <button type="button" class="back-to-top" id="back-to-top" data-i18n-aria-label="common.back_to_top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.6/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="js/hero-banner.js?v=11"></script>
+  <script src="js/main.js?v=32"></script>
+  <script src="js/i18n.js?v=10"></script>
+  <script src="js/cart.js?v=12"></script>
+  <script src="js/home-mobile-ux.js?v=3"></script>
+  <script src="js/order-menu.js?v=2"></script>
 </body>
 </html>
 
