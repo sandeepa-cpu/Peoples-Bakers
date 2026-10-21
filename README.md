@@ -71,9 +71,8 @@ npm start
 |-----|-------------|
 | http://localhost:3000 | Customer site |
 | http://localhost:3000/pb-office.html | Admin dashboard |
-| http://localhost:3000/api/health | API health |
 
-**Dev admin (first run):** `admin@peoplesbakers.lk` / `admin123` — change before production.
+> **Security Notice:** Production administrative access and live API keys are strictly secured via environment variables (`.env.local`) and authentication policies. No live credentials or default passkeys are stored in this repository.
 
 ```bash
 npm start              # Server
